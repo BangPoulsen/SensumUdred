@@ -19,4 +19,37 @@ public class Citizen {
         ciPhoneNumber = phoneNumber;
         ciEmail = email;
     }
+
+    public String getCiName() {
+        return ciName;
+    }
+
+    public void setCiName(String ciName) {
+        this.ciName = ciName;
+    }
+
+    public String getCiAdress() {
+        return ciAdress;
+    }
+
+    public void setCiAdress(String ciAdress) {
+        this.ciAdress = ciAdress;
+    }
+
+    public String getCiPhoneNumber() {
+        return ciPhoneNumber;
+    }
+
+    public void setCiPhoneNumber(String ciPhoneNumber) {
+        this.ciPhoneNumber = ciPhoneNumber;
+    }
+
+    public String getCiEmail() {
+        return ciEmail;
+    }
+
+    public void setCiEmail(String ciEmail) {
+        this.ciEmail = ciEmail;
+    }
+    
 }
