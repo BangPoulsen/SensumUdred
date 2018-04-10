@@ -20,4 +20,9 @@ public class Case {
         cCitizen = citizen;
         cJournal = journal;
     }
-}
+    
+} 
+
+
+
+

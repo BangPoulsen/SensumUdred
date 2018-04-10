@@ -18,4 +18,40 @@ public class Consultant {
         cPhoneNumber = phoneNumber;
         cEmail = email;
     }
+
+    public String getcName() {
+        return cName;
+    }
+
+    public void setcName(String cName) {
+        this.cName = cName;
+    }
+
+    public String getcAdress() {
+        return cAdress;
+    }
+
+    public void setcAdress(String cAdress) {
+        this.cAdress = cAdress;
+    }
+
+    public String getcPhoneNumber() {
+        return cPhoneNumber;
+    }
+
+    public void setcPhoneNumber(String cPhoneNumber) {
+        this.cPhoneNumber = cPhoneNumber;
+    }
+
+    public String getcEmail() {
+        return cEmail;
+    }
+
+    public void setcEmail(String cEmail) {
+        this.cEmail = cEmail;
+    }
+    
+    
+    
 }
+
