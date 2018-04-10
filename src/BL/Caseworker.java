@@ -22,4 +22,36 @@ public class Caseworker {
         //System.out.println("caseworker name :"+ name + "caseworker adress : " + adress + "caseworker phonenumber :" + phoneNumber + "caseworker email : " + email );
     }
 
+    public String getCwName() {
+        return cwName;
+    }
+
+    public void setCwName(String cwName) {
+        this.cwName = cwName;
+    }
+
+    public String getCwAdress() {
+        return cwAdress;
+    }
+
+    public void setCwAdress(String cwAdress) {
+        this.cwAdress = cwAdress;
+    }
+
+    public String getCwPhoneNumber() {
+        return cwPhoneNumber;
+    }
+
+    public void setCwPhoneNumber(String cwPhoneNumber) {
+        this.cwPhoneNumber = cwPhoneNumber;
+    }
+
+    public String getCwEmail() {
+        return cwEmail;
+    }
+
+    public void setCwEmail(String cwEmail) {
+        this.cwEmail = cwEmail;
+    }
+
 }
