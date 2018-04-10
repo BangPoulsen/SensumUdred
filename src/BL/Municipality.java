@@ -19,4 +19,37 @@ public class Municipality {
         coEmail = email;
 
     }
+
+    public String getCoName() {
+        return coName;
+    }
+
+    public void setCoName(String coName) {
+        this.coName = coName;
+    }
+
+    public String getCoAdress() {
+        return coAdress;
+    }
+
+    public void setCoAdress(String coAdress) {
+        this.coAdress = coAdress;
+    }
+
+    public String getCoPhoneNumber() {
+        return coPhoneNumber;
+    }
+
+    public void setCoPhoneNumber(String coPhoneNumber) {
+        this.coPhoneNumber = coPhoneNumber;
+    }
+
+    public String getCoEmail() {
+        return coEmail;
+    }
+
+    public void setCoEmail(String coEmail) {
+        this.coEmail = coEmail;
+    }
+    
 }
