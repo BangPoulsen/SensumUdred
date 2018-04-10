@@ -10,7 +10,7 @@ public class Case {
     private String cCitizen;
     private String cJournal;
 
-    /** This is kinda a change
+    /**
      * constructor for creating a instance of a case
      */
     public Case(String date, String status, String responsible, String citizen, String journal) {
