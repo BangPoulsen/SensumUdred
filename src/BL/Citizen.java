@@ -2,7 +2,7 @@ package BL;
 
 public class Citizen {
 
-    /**
+    /** asd
      * attributes for creating a new citizen
      */
     private String ciName;
