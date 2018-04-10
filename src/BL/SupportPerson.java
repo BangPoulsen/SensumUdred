@@ -18,4 +18,37 @@ public class SupportPerson {
         sPhoneNumber = phoneNumber;
         sEmail = email;
     }
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public String getsAdress() {
+        return sAdress;
+    }
+
+    public void setsAdress(String sAdress) {
+        this.sAdress = sAdress;
+    }
+
+    public String getsPhoneNumber() {
+        return sPhoneNumber;
+    }
+
+    public void setsPhoneNumber(String sPhoneNumber) {
+        this.sPhoneNumber = sPhoneNumber;
+    }
+
+    public String getsEmail() {
+        return sEmail;
+    }
+
+    public void setsEmail(String sEmail) {
+        this.sEmail = sEmail;
+    }
+    
 }
