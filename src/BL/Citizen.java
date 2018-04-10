@@ -10,7 +10,6 @@ public class Citizen {
     private String ciPhoneNumber;
     private String ciEmail;
 
-    private
 
 
     /**
