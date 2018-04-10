@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/SensumUdred.iml" filepath="$PROJECT_DIR$/.idea/SensumUdred.iml" />
+=======
       <module fileurl="file://$PROJECT_DIR$/SensumUdred.iml" filepath="$PROJECT_DIR$/SensumUdred.iml" />
+>>>>>>> bc230871fd7f2f30154593bdc65a10773d483236
     </modules>
   </component>
 </project>
