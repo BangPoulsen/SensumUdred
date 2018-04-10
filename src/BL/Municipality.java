@@ -1,6 +1,6 @@
 package BL;
 
-public class Commune {
+public class Municipality {
     /**
      * attributes for creating a new commune
      */
@@ -12,7 +12,7 @@ public class Commune {
     /**
      * constructor for creating a instance of a commune
      */
-    public Commune(String name, String adress, String phoneNumber, String email) {
+    public Municipality(String name, String adress, String phoneNumber, String email) {
         coName = name;
         coAdress = adress;
         coPhoneNumber = phoneNumber;
