@@ -11,7 +11,7 @@ public class Citizen {
     private String ciEmail;
 
     private
-//hej
+
 
     /**
      * constructor for creating a instance of a citizen
