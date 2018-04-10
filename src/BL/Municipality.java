@@ -21,14 +21,17 @@ public class Municipality {
     }
 
     public String getCoName() {
+
         return coName;
     }
 
     public void setCoName(String coName) {
+
         this.coName = coName;
     }
 
     public String getCoAdress() {
+
         return coAdress;
     }
 
@@ -41,14 +44,17 @@ public class Municipality {
     }
 
     public void setCoPhoneNumber(String coPhoneNumber) {
+
         this.coPhoneNumber = coPhoneNumber;
     }
 
     public String getCoEmail() {
+
         return coEmail;
     }
 
     public void setCoEmail(String coEmail) {
+
         this.coEmail = coEmail;
     }
     

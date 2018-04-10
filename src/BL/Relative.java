@@ -23,34 +23,42 @@ public class Relative {
     }
 
     public String getrName() {
+
         return rName;
     }
 
     public void setrName(String rName) {
+
         this.rName = rName;
     }
 
     public String getrAdress() {
+
         return rAdress;
     }
 
     public void setrAdress(String rAdress) {
+
         this.rAdress = rAdress;
     }
 
     public String getrPhoneNumber() {
+
         return rPhoneNumber;
     }
 
     public void setrPhoneNumber(String rPhoneNumber) {
+
         this.rPhoneNumber = rPhoneNumber;
     }
 
     public String getrEmail() {
+
         return rEmail;
     }
 
     public void setrEmail(String rEmail) {
+
         this.rEmail = rEmail;
     }
     
