@@ -9,7 +9,10 @@ public class Citizen {
     private String ciAdress;
     private String ciPhoneNumber;
     private String ciEmail;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a671ea80bdca995eccff2428eefec0e2b394245
 
     /**
      * constructor for creating a instance of a citizen
