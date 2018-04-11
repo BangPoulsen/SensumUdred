@@ -10,7 +10,11 @@ public class Municipality {
     private String muEmail;
 
     /**
-     * munstructor for creating a instance of a municipality
+     * Constructor for creating a instance of a municipality
+     * @param name
+     * @param adress
+     * @param phoneNumber
+     * @param email
      */
     public Municipality(String name, String adress, String phoneNumber, String email) {
         muName = name;
