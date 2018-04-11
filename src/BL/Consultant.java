@@ -18,11 +18,19 @@ public class Consultant {
         cPhoneNumber = phoneNumber;
         cEmail = email;
     }
-
+/**
+ *   This method is a getter for cName
+ *   This is the same for the rest of the "get" methods in Consultant
+ *   @return String current value of cName
+ */
     public String getcName() {
         return cName;
     }
-
+/**
+ *   This method is a setter for cName
+ *   This is the same for the rest of the "set" methods in Consultant
+ *   @param String cdate sets the initial value of cName
+ */
     public void setcName(String cName) {
         this.cName = cName;
     }

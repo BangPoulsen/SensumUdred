@@ -23,12 +23,20 @@ public class Municipality {
         muEmail = email;
 
     }
-
+/**
+ *   This method is a getter for muName
+ *   This is the same for the rest of the "get" methods in Municipality
+ *   @return String current value of muName
+ */
     public String getMuName() {
 
         return muName;
     }
-
+/**
+ *   This method is a setter for muName
+ *   This is the same for the rest of the "set" methods in Municipality
+ *   @param String cdate sets the initial value of muName
+ */
     public void setMuName(String muName) {
 
         this.muName = muName;

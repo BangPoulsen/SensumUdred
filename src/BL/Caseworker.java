@@ -21,11 +21,19 @@ public class Caseworker {
         // for testing
         //System.out.println("caseworker name :"+ name + "caseworker adress : " + adress + "caseworker phonenumber :" + phoneNumber + "caseworker email : " + email );
     }
-
+/**
+ *   This method is a getter for cwName
+ *   This is the same for the rest of the "get" methods in Caseworker
+ *   @return String current value of cwName
+ */
     public String getCwName() {
         return cwName;
     }
-
+/**
+ *   This method is a setter for cdate
+ *   This is the same for the rest of the "set" methods in Caseworker
+ *   @param String cwName sets the initial value of cdate
+ */
     public void setCwName(String cwName) {
         this.cwName = cwName;
     }

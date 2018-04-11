@@ -21,12 +21,20 @@ public class Relative {
         //System.out.println("relative name: " + rName );
 
     }
-
+/**
+ *   This method is a getter for rName
+ *   This is the same for the rest of the "get" methods in Relative
+ *   @return String current value of rName
+ */
     public String getrName() {
 
         return rName;
     }
-
+/**
+ *   This method is a setter for rName
+ *   This is the same for the rest of the "set" methods in Relative
+ *   @param String cdate sets the initial value of rName
+ */
     public void setrName(String rName) {
 
         this.rName = rName;

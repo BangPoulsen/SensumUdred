@@ -21,72 +21,50 @@ public class Case {
         cJournal = journal;
     }
 /**
- * 
- * @return 
+ *   This method is a getter for cdate
+ *   This is the same for the rest of the "get" methods in Case
+ *   @return String current value of cdate
  */
     public String getCdate() {
         return cdate;
     }
 /**
- * 
- * @param cdate 
+ *   This method is a setter for cdate
+ *   This is the same for the rest of the "set" methods in Case
+ *   @param String cdate sets the initial value of cdate
  */
     public void setCdate(String cdate) {
         this.cdate = cdate;
     }
-/**
- * 
- * @return 
- */
+
     public String getcStatus() {
         return cStatus;
     }
-/**
- * 
- * @param cStatus 
- */
+
     public void setcStatus(String cStatus) {
         this.cStatus = cStatus;
     }
-/**
- * 
- * @return 
- */
+
     public String getcResponsible() {
         return cResponsible;
     }
-/**
- * 
- * @param cResponsible 
- */
+
     public void setcResponsible(String cResponsible) {
         this.cResponsible = cResponsible;
     }
-/**
- * 
- * @return 
- */
+
     public String getcCitizen() {
         return cCitizen;
     }
-/**
- * 
- * @param cCitizen 
- */
+
     public void setcCitizen(String cCitizen) {
         this.cCitizen = cCitizen;
     }
-/**
- * 
- * @return 
- */
+
     public String getcJournal() {
         return cJournal;
     }
-/**
- * 
- * @param cJournal 
- */
+
     public void setcJournal(String cJournal) {
         this.cJournal = cJournal;
     }

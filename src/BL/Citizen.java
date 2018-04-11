@@ -19,11 +19,19 @@ public class Citizen {
         ciPhoneNumber = phoneNumber;
         ciEmail = email;
     }
-
+/**
+ *   This method is a getter for ciName
+ *   This is the same for the rest of the "get" methods in Citizen
+ *   @return String current value of ciName
+ */
     public String getCiName() {
         return ciName;
     }
-
+/**
+ *   This method is a setter for ciName
+ *   This is the same for the rest of the "set" methods in Citizen
+ *   @param String cdate sets the initial value of ciName
+ */
     public void setCiName(String ciName) {
         this.ciName = ciName;
     }

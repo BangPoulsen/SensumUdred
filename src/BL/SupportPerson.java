@@ -18,11 +18,19 @@ public class SupportPerson {
         sPhoneNumber = phoneNumber;
         sEmail = email;
     }
-
+/**
+ *   This method is a getter for sName
+ *   This is the same for the rest of the "get" methods in SupportPerson
+ *   @return String current value of sName
+ */
     public String getsName() {
         return sName;
     }
-
+/**
+ *   This method is a setter for sName
+ *   This is the same for the rest of the "set" methods in SupportPerson
+ *   @param String cdate sets the initial value of sName
+ */
     public void setsName(String sName) {
         this.sName = sName;
     }
