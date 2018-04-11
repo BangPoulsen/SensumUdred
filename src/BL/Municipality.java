@@ -35,25 +35,25 @@ public class Municipality {
         return muAdress;
     }
 
-    public void setCoAdress(String muAdress) {
+    public void setMuAdress(String muAdress) {
         this.muAdress = muAdress;
     }
 
-    public String getCoPhoneNumber() {
+    public String getMuPhoneNumber() {
         return muPhoneNumber;
     }
 
-    public void setCoPhoneNumber(String muPhoneNumber) {
+    public void setMuPhoneNumber(String muPhoneNumber) {
 
         this.muPhoneNumber = muPhoneNumber;
     }
 
-    public String getCoEmail() {
+    public String getMuEmail() {
 
         return muEmail;
     }
 
-    public void setCoEmail(String muEmail) {
+    public void setMuEmail(String muEmail) {
 
         this.muEmail = muEmail;
     }
