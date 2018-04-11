@@ -2,60 +2,60 @@ package BL;
 
 public class Municipality {
     /**
-     * attributes for creating a new commune
+     * attributes for creating a new municipality
      */
-    private String coName;
-    private String coAdress;
-    private String coPhoneNumber;
-    private String coEmail;
+    private String muName;
+    private String muAdress;
+    private String muPhoneNumber;
+    private String muEmail;
 
     /**
-     * constructor for creating a instance of a commune
+     * munstructor for creating a instance of a municipality
      */
     public Municipality(String name, String adress, String phoneNumber, String email) {
-        coName = name;
-        coAdress = adress;
-        coPhoneNumber = phoneNumber;
-        coEmail = email;
+        muName = name;
+        muAdress = adress;
+        muPhoneNumber = phoneNumber;
+        muEmail = email;
 
     }
 
-    public String getCoName() {
+    public String getMuName() {
 
-        return coName;
+        return muName;
     }
 
-    public void setCoName(String coName) {
+    public void setMuName(String muName) {
 
-        this.coName = coName;
+        this.muName = muName;
     }
 
-    public String getCoAdress() {
+    public String getMuAdress() {
 
-        return coAdress;
+        return muAdress;
     }
 
-    public void setCoAdress(String coAdress) {
-        this.coAdress = coAdress;
+    public void setCoAdress(String muAdress) {
+        this.muAdress = muAdress;
     }
 
     public String getCoPhoneNumber() {
-        return coPhoneNumber;
+        return muPhoneNumber;
     }
 
-    public void setCoPhoneNumber(String coPhoneNumber) {
+    public void setCoPhoneNumber(String muPhoneNumber) {
 
-        this.coPhoneNumber = coPhoneNumber;
+        this.muPhoneNumber = muPhoneNumber;
     }
 
     public String getCoEmail() {
 
-        return coEmail;
+        return muEmail;
     }
 
-    public void setCoEmail(String coEmail) {
+    public void setCoEmail(String muEmail) {
 
-        this.coEmail = coEmail;
+        this.muEmail = muEmail;
     }
     
 }
