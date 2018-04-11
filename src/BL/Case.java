@@ -69,6 +69,15 @@ public class Case {
         this.cJournal = cJournal;
     }
     
+    @Override
+    public String toString(){
+        return "Date: " + cdate + "\n" +
+               "Status: " + cStatus + "\n" +
+               "Responsible: " + cResponsible + "\n" +
+               "Citizen: " + cCitizen + "\n" +
+               "Journal: " + cJournal;
+    }
+    
 } 
 
 

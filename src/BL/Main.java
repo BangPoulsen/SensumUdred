@@ -23,7 +23,6 @@ public class Main {
     Connection db = DriverManager.getConnection(url, username, pasword);
     //for testing
     //Caseworker cw=new Caseworker("ole", "månen", "112", "cirkus@blabla.dk");
-// sup
 }
 
 
