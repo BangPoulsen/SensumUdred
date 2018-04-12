@@ -69,6 +69,10 @@ public class Case {
         this.cJournal = cJournal;
     }
     
+    /**
+     * The toString method for a case
+     * @return A String with the date, status, responsible, citizen and journal of a case.
+     */
     @Override
     public String toString(){
         return "Date: " + cdate + "\n" +
