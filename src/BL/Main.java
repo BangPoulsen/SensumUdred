@@ -8,7 +8,7 @@ public class Main {
     public Main() throws SQLException {
     }
 
-//patter og bajere
+
     public static void main(String[] args) {
         try {
             Class.forName("org.postgresql.Driver");
