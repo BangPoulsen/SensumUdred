@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="BL">
+  <ClassDiagramComponents>
+    <Class name="Case" package="BL" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="cdate" type="String" visibility="private"/>
+        <Field name="cStatus" type="String" visibility="private"/>
+        <Field name="cResponsible" type="String" visibility="private"/>
+        <Field name="cCitizen" type="String" visibility="private"/>
+        <Field name="cJournal" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="date"/>
+          <Argument type="String" name="status"/>
+          <Argument type="String" name="responsible"/>
+          <Argument type="String" name="citizen"/>
+          <Argument type="String" name="journal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCdate" returnType="String" visibility="public"/>
+        <Method name="setCdate" returnType="void" visibility="public">
+          <Argument type="String" name="cdate"/>
+        </Method>
+        <Method name="getcStatus" returnType="String" visibility="public"/>
+        <Method name="setcStatus" returnType="void" visibility="public">
+          <Argument type="String" name="cStatus"/>
+        </Method>
+        <Method name="getcResponsible" returnType="String" visibility="public"/>
+        <Method name="setcResponsible" returnType="void" visibility="public">
+          <Argument type="String" name="cResponsible"/>
+        </Method>
+        <Method name="getcCitizen" returnType="String" visibility="public"/>
+        <Method name="setcCitizen" returnType="void" visibility="public">
+          <Argument type="String" name="cCitizen"/>
+        </Method>
+        <Method name="getcJournal" returnType="String" visibility="public"/>
+        <Method name="setcJournal" returnType="void" visibility="public">
+          <Argument type="String" name="cJournal"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Caseworker" package="BL" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="cwName" type="String" visibility="private"/>
+        <Field name="cwAdress" type="String" visibility="private"/>
+        <Field name="cwPhoneNumber" type="String" visibility="private"/>
+        <Field name="cwEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCwName" returnType="String" visibility="public"/>
+        <Method name="setCwName" returnType="void" visibility="public">
+          <Argument type="String" name="cwName"/>
+        </Method>
+        <Method name="getCwAdress" returnType="String" visibility="public"/>
+        <Method name="setCwAdress" returnType="void" visibility="public">
+          <Argument type="String" name="cwAdress"/>
+        </Method>
+        <Method name="getCwPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setCwPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="cwPhoneNumber"/>
+        </Method>
+        <Method name="getCwEmail" returnType="String" visibility="public"/>
+        <Method name="setCwEmail" returnType="void" visibility="public">
+          <Argument type="String" name="cwEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Citizen" package="BL" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="ciName" type="String" visibility="private"/>
+        <Field name="ciAdress" type="String" visibility="private"/>
+        <Field name="ciPhoneNumber" type="String" visibility="private"/>
+        <Field name="ciEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCiName" returnType="String" visibility="public"/>
+        <Method name="setCiName" returnType="void" visibility="public">
+          <Argument type="String" name="ciName"/>
+        </Method>
+        <Method name="getCiAdress" returnType="String" visibility="public"/>
+        <Method name="setCiAdress" returnType="void" visibility="public">
+          <Argument type="String" name="ciAdress"/>
+        </Method>
+        <Method name="getCiPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setCiPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="ciPhoneNumber"/>
+        </Method>
+        <Method name="getCiEmail" returnType="String" visibility="public"/>
+        <Method name="setCiEmail" returnType="void" visibility="public">
+          <Argument type="String" name="ciEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Consultant" package="BL" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="cName" type="String" visibility="private"/>
+        <Field name="cAdress" type="String" visibility="private"/>
+        <Field name="cPhoneNumber" type="String" visibility="private"/>
+        <Field name="cEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getcName" returnType="String" visibility="public"/>
+        <Method name="setcName" returnType="void" visibility="public">
+          <Argument type="String" name="cName"/>
+        </Method>
+        <Method name="getcAdress" returnType="String" visibility="public"/>
+        <Method name="setcAdress" returnType="void" visibility="public">
+          <Argument type="String" name="cAdress"/>
+        </Method>
+        <Method name="getcPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setcPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="cPhoneNumber"/>
+        </Method>
+        <Method name="getcEmail" returnType="String" visibility="public"/>
+        <Method name="setcEmail" returnType="void" visibility="public">
+          <Argument type="String" name="cEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Controller" package="BL" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Main" package="BL" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="url" type="String" visibility="package"/>
+        <Field name="username" type="String" visibility="package"/>
+        <Field name="pasword" type="String" visibility="package"/>
+        <Field name="db" type="Connection" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Municipality" package="BL" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="muName" type="String" visibility="private"/>
+        <Field name="muAdress" type="String" visibility="private"/>
+        <Field name="muPhoneNumber" type="String" visibility="private"/>
+        <Field name="muEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMuName" returnType="String" visibility="public"/>
+        <Method name="setMuName" returnType="void" visibility="public">
+          <Argument type="String" name="muName"/>
+        </Method>
+        <Method name="getMuAdress" returnType="String" visibility="public"/>
+        <Method name="setMuAdress" returnType="void" visibility="public">
+          <Argument type="String" name="muAdress"/>
+        </Method>
+        <Method name="getMuPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setMuPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="muPhoneNumber"/>
+        </Method>
+        <Method name="getMuEmail" returnType="String" visibility="public"/>
+        <Method name="setMuEmail" returnType="void" visibility="public">
+          <Argument type="String" name="muEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Relative" package="BL" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="rName" type="String" visibility="private"/>
+        <Field name="rAdress" type="String" visibility="private"/>
+        <Field name="rPhoneNumber" type="String" visibility="private"/>
+        <Field name="rEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getrName" returnType="String" visibility="public"/>
+        <Method name="setrName" returnType="void" visibility="public">
+          <Argument type="String" name="rName"/>
+        </Method>
+        <Method name="getrAdress" returnType="String" visibility="public"/>
+        <Method name="setrAdress" returnType="void" visibility="public">
+          <Argument type="String" name="rAdress"/>
+        </Method>
+        <Method name="getrPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setrPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="rPhoneNumber"/>
+        </Method>
+        <Method name="getrEmail" returnType="String" visibility="public"/>
+        <Method name="setrEmail" returnType="void" visibility="public">
+          <Argument type="String" name="rEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SupportPerson" package="BL" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="sName" type="String" visibility="private"/>
+        <Field name="sAdress" type="String" visibility="private"/>
+        <Field name="sPhoneNumber" type="String" visibility="private"/>
+        <Field name="sEmail" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="adress"/>
+          <Argument type="String" name="phoneNumber"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getsName" returnType="String" visibility="public"/>
+        <Method name="setsName" returnType="void" visibility="public">
+          <Argument type="String" name="sName"/>
+        </Method>
+        <Method name="getsAdress" returnType="String" visibility="public"/>
+        <Method name="setsAdress" returnType="void" visibility="public">
+          <Argument type="String" name="sAdress"/>
+        </Method>
+        <Method name="getsPhoneNumber" returnType="String" visibility="public"/>
+        <Method name="setsPhoneNumber" returnType="void" visibility="public">
+          <Argument type="String" name="sPhoneNumber"/>
+        </Method>
+        <Method name="getsEmail" returnType="String" visibility="public"/>
+        <Method name="setsEmail" returnType="void" visibility="public">
+          <Argument type="String" name="sEmail"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
