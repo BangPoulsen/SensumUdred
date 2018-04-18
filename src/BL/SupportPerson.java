@@ -8,11 +8,13 @@ public class SupportPerson {
     private String sAdress;
     private String sPhoneNumber;
     private String sEmail;
+    private String sUserId;
 
     /**
      * constructor for creating a instance of a supportperson
      */
-    public SupportPerson(String name, String adress, String phoneNumber, String email) {
+    public SupportPerson(String name, String adress, String phoneNumber, String email, String userId) {
+        sUserId=userId;
         sName = name;
         sAdress = adress;
         sPhoneNumber = phoneNumber;
@@ -26,11 +28,22 @@ public class SupportPerson {
     public String getsName() {
         return sName;
     }
-/**
+
+
+
+    /**
  *   This method is a setter for sName
  *   This is the same for the rest of the "set" methods in SupportPerson
  *   @param String cdate sets the initial value of sName
  */
+    public String getsUserId() {
+        return sUserId;
+    }
+
+    public void setsUserId(String sUserId) {
+        this.sUserId = sUserId;
+    }
+
     public void setsName(String sName) {
         this.sName = sName;
     }

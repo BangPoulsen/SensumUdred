@@ -8,11 +8,12 @@ public class Consultant {
     private String cAdress;
     private String cPhoneNumber;
     private String cEmail;
-
+    private String cUserId;
     /**
      * constructor for creating a instance of a consultant
      */
-    public Consultant(String name, String adress, String phoneNumber, String email) {
+    public Consultant(String name, String adress, String phoneNumber, String email, String userId) {
+        cUserId=userId;
         cName = name;
         cAdress = adress;
         cPhoneNumber = phoneNumber;
@@ -26,11 +27,22 @@ public class Consultant {
     public String getcName() {
         return cName;
     }
-/**
+
+
+
+    /**
  *   This method is a setter for cName
  *   This is the same for the rest of the "set" methods in Consultant
  *   @param String cdate sets the initial value of cName
  */
+
+    public String getcUserId() {
+        return cUserId;
+    }
+
+    public void setcUserId(String cUserId) {
+        this.cUserId = cUserId;
+    }
     public void setcName(String cName) {
         this.cName = cName;
     }

@@ -9,11 +9,13 @@ public class Caseworker {
     private String cwAdress;
     private String cwPhoneNumber;
     private String cwEmail;
+    private String cwUserID;
 
     /**
      * constructor for creating a instance of a caseworker
      */
-    public Caseworker(String name, String adress, String phoneNumber, String email) {
+    public Caseworker(String name, String adress, String phoneNumber, String email, String userId) {
+        cwUserID=userId;
         cwName = name;
         cwAdress = adress;
         cwPhoneNumber = phoneNumber;
@@ -36,6 +38,14 @@ public class Caseworker {
  */
     public void setCwName(String cwName) {
         this.cwName = cwName;
+    }
+
+    public String getCwUserID() {
+        return cwUserID;
+    }
+
+    public void setCwUserID(String cwUserID) {
+        this.cwUserID = cwUserID;
     }
 
     public String getCwAdress() {

@@ -9,11 +9,13 @@ public class Citizen {
     private String ciAdress;
     private String ciPhoneNumber;
     private String ciEmail;
+    private String ciUserId;
 
     /**
      * constructor for creating a instance of a citizen
      */
-    public Citizen(String name, String adress, String phoneNumber, String email) {
+    public Citizen(String name, String adress, String phoneNumber, String email, String userId) {
+        ciUserId=userId;
         ciName = name;
         ciAdress = adress;
         ciPhoneNumber = phoneNumber;
@@ -32,12 +34,22 @@ public class Citizen {
  *   This is the same for the rest of the "set" methods in Citizen
  *   @param String cdate sets the initial value of ciName
  */
+
     public void setCiName(String ciName) {
         this.ciName = ciName;
     }
 
+    public String getCiUserId() {
+        return ciUserId;
+    }
+
+    public void setCiUserId(String ciUserId) {
+        this.ciUserId = ciUserId;
+    }
+
     public String getCiAdress() {
         return ciAdress;
+
     }
 
     public void setCiAdress(String ciAdress) {
