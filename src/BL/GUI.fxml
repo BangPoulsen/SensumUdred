@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="FrontPage" fx:id="FrontPage" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
+<AnchorPane id="frontPage" fx:id="frontPage" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
    <children>
-      <AnchorPane id="LoginPage" fx:id="LoginPage" depthTest="DISABLE" layoutX="325.0" layoutY="200.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #D3D3D3;">
+      <AnchorPane id="loginPage" fx:id="loginPage" depthTest="DISABLE" layoutX="325.0" layoutY="200.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-color: #D3D3D3;">
          <children>
-            <TextField id="LoginUsername" fx:id="LoginUsername" layoutX="32.0" layoutY="69.0" promptText="Username" />
-            <PasswordField id="LoginPassword" fx:id="LoginPassword" layoutX="32.0" layoutY="100.0" promptText="Password" />
-            <Button id="LoginButton" fx:id="LoginButton" layoutX="32.0" layoutY="150.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="Login" />
-            <Button id="LogoffButton" fx:id="LogoffButton" layoutX="139.0" layoutY="150.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="Logoff" />
-            <Label id="LoginSensumLabel" fx:id="LoginSensumLabel" layoutX="67.0" layoutY="14.0" text="Sensum Udred">
+            <TextField id="loginUsername" fx:id="loginUsername" layoutX="32.0" layoutY="69.0" promptText="Username" />
+            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="32.0" layoutY="100.0" promptText="Password" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="32.0" layoutY="150.0" mnemonicParsing="false" onAction="#Login" prefHeight="31.0" prefWidth="80.0" text="Login" />
+            <Button id="logoffButton" fx:id="logoffButton" layoutX="139.0" layoutY="150.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="80.0" text="Logoff" />
+            <Label id="loginSensumLabel" fx:id="loginSensumLabel" layoutX="67.0" layoutY="14.0" text="Sensum Udred">
                <effect>
                   <Blend />
                </effect>

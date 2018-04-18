@@ -7,6 +7,7 @@ package BL;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,19 +24,19 @@ import javafx.scene.layout.AnchorPane;
 public class GUIController implements Initializable {
 
     @FXML
-    private AnchorPane FrontPage;
+    private AnchorPane frontPage;
     @FXML
-    private AnchorPane LoginPage;
+    private AnchorPane loginPage;
     @FXML
-    private TextField LoginUsername;
+    private TextField loginUsername;
     @FXML
-    private PasswordField LoginPassword;
+    private PasswordField loginPassword;
     @FXML
-    private Button LoginButton;
+    private Button loginButton;
     @FXML
-    private Button LogoffButton;
+    private Button logoffButton;
     @FXML
-    private Label LoginSensumLabel;
+    private Label loginSensumLabel;
 
     /**
      * Initializes the controller class.
@@ -45,4 +46,15 @@ public class GUIController implements Initializable {
         // TODO
     }    
     
+   
+    public void Login(ActionEvent event) {
+    
+        if (loginUsername.getText().equals("user") && loginPassword.getText().equals("password")) {
+            loginSensumLabel.setText("Logged in as + ");
+        } else {
+            loginSensumLabel.setText("Wrong username or password");
+        }
+            
+            
+    }
 }

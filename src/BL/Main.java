@@ -24,6 +24,3 @@ public class Main {
     //for testing
     //Caseworker cw=new Caseworker("ole", "månen", "112", "cirkus@blabla.dk");
 }
-
-
-
