@@ -6,6 +6,9 @@
 package BL;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -67,7 +70,22 @@ public class GUIController extends Application implements Initializable {
      */
     public static void main(String[] args) {
         
-        Controller.helloWorld();
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    
+    String url ="jdbc:postresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
+    String username ="pjgbvjcy";
+    String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
+    
+    try{
+        Connection db = DriverManager.getConnection(url, username, pasword);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
         launch(args);
         
         
