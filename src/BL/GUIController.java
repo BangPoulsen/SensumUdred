@@ -62,7 +62,7 @@ public class GUIController implements Initializable {
         if (loginUsername.getText().equalsIgnoreCase("user") && 
             loginPassword.getText().equals("password")) {
             
-            loginSensumLabel.setText("Logged in as " + getNameFromDatabase());
+            loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
         } else {
             loginSensumLabel.setText("Login failed");
         }
@@ -70,8 +70,11 @@ public class GUIController implements Initializable {
             
     }
 
-    private String getNameFromDatabase() {
+    private String getNameFromDatabase(String CPR) {
         //Return the name of a person in database
-        return "name";
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        return dbHandler.getName(CPR);
+        
+         
     }
 }
