@@ -61,17 +61,9 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-<<<<<<< HEAD
+
     }    
     
-    
-    
-    @FXML
-=======
-    }
-
-
->>>>>>> 6f3e2cfaaf73fff0c180538c152fc0602b95886e
     public void Login(ActionEvent event) {
 
         if (loginUsername.getText().equalsIgnoreCase("user") &&
