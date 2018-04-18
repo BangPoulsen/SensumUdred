@@ -66,7 +66,7 @@ public class GUIController implements Initializable {
             loginSensumLabel.setText("Login failed");
         }
 
-
+        System.out.println("Hello");
     }
 
     private String getNameFromDatabase(String CPR) {
