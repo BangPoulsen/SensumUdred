@@ -30,7 +30,7 @@ public class Citizen {
 /**
  *   This method is a setter for ciName
  *   This is the same for the rest of the "set" methods in Citizen
- *   @param String cdate sets the initial value of ciName
+ *   @param ciName sets the initial value of ciName
  */
     public void setCiName(String ciName) {
         this.ciName = ciName;

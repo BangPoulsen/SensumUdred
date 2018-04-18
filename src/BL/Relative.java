@@ -33,7 +33,7 @@ public class Relative {
 /**
  *   This method is a setter for rName
  *   This is the same for the rest of the "set" methods in Relative
- *   @param String cdate sets the initial value of rName
+ *   @param rName sets the initial value of rName
  */
     public void setrName(String rName) {
 

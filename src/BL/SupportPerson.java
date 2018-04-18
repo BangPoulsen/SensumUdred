@@ -29,7 +29,7 @@ public class SupportPerson {
 /**
  *   This method is a setter for sName
  *   This is the same for the rest of the "set" methods in SupportPerson
- *   @param String cdate sets the initial value of sName
+ *   @param sName  sets the initial value of sName
  */
     public void setsName(String sName) {
         this.sName = sName;

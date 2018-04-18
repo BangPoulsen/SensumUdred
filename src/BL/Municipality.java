@@ -35,7 +35,7 @@ public class Municipality {
 /**
  *   This method is a setter for muName
  *   This is the same for the rest of the "set" methods in Municipality
- *   @param muName cdate sets the initial value of muName
+ *   @param muName sets the initial value of muName
  */
     public void setMuName(String muName) {
 
