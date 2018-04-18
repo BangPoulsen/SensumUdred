@@ -62,7 +62,7 @@ public class GUIController implements Initializable {
         if (loginUsername.getText().equalsIgnoreCase("user") && 
             loginPassword.getText().equals("password")) {
             
-            loginSensumLabel.setText("Logged in " + getNameFromDatabase());
+            loginSensumLabel.setText("Logged in as " + getNameFromDatabase());
         } else {
             loginSensumLabel.setText("Login failed");
         }
