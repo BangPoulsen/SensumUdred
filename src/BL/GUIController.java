@@ -53,28 +53,26 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    
-    
+    }
+
+
     public void Login(ActionEvent event) {
-    
-        if (loginUsername.getText().equalsIgnoreCase("user") && 
+
+        if (loginUsername.getText().equalsIgnoreCase("user") &&
             loginPassword.getText().equals("password")) {
-            
+
             loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
         } else {
             loginSensumLabel.setText("Login failed");
         }
-            
-            
+
+
     }
 
     private String getNameFromDatabase(String CPR) {
         //Return the name of a person in database
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        return dbHandler.getName(CPR);
-        
-         
+
+return null;
     }
+
 }

@@ -16,48 +16,44 @@ import java.sql.Statement;
  * @author malte
  */
 public class DatabaseHandler {
-    
+
     Connection db;
-    
-    public DatabaseHandler(){
-        
+
+    public DatabaseHandler() {
+
     }
-    
-    public void run(){
+
+    public void run() {
         String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
-        String username ="pjgbvjcy";
+        String username = "pjgbvjcy";
         String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
-    
+
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
-        try{
+
+        try {
             db = DriverManager.getConnection(url, username, pasword);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT CPRnummer FROM users");
+
+            while (rs.next()) {
+                String CPRnummer = rs.getString("CPRnummer");
+                System.out.println("CPRnummer: " + "" + CPRnummer);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
+
+
         }
-    }
-    
-    public String getName(String CPR){
-        try {
 
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT name FROM users WHERE CPRnummer = 'CPR'");
-
-                            while (rs.next()) {
-                                String name = rs.getString("CPRnummer");
-                                System.out.println("Name gotten: " + name);
-                                
-                                return name;
-                            }
-                            
-			} catch (Exception e) {
-                            System.out.println(e);		
-                        }
-        return "Name not found";
     }
-    
+
+
+
+
 }
+
