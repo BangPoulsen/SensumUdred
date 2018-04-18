@@ -6,6 +6,9 @@
 package BL;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -27,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Simon
  */
-public class GUIController extends Application implements Initializable {
+public class GUIController implements Initializable {
 
     @FXML
     private AnchorPane frontPage;
@@ -52,34 +55,23 @@ public class GUIController extends Application implements Initializable {
         // TODO
     }    
     
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        Controller.helloWorld();
-        launch(args);
-        
-        
-    }
+    
+    
     public void Login(ActionEvent event) {
     
-        if (loginUsername.getText().equals("user") && loginPassword.getText().equals("password")) {
-            loginSensumLabel.setText("Logged in as + ");
+        if (loginUsername.getText().equalsIgnoreCase("user") && 
+            loginPassword.getText().equals("password")) {
+            
+            loginSensumLabel.setText("Logged in as " + getNameFromDatabase());
         } else {
-            loginSensumLabel.setText("Wrong username or password");
+            loginSensumLabel.setText("Login failed");
         }
             
             
+    }
+
+    private String getNameFromDatabase() {
+        //Return the name of a person in database
+        return "name";
     }
 }
