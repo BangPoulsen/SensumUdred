@@ -50,23 +50,7 @@ public class DatabaseHandler {
 
         }
 
-<<<<<<< HEAD
-=======
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT CPRnummer FROM Users WHERE CPRnummer = 'CPR'");
 
-                            while (rs.next()) {
-                                String dbCPR = rs.getString("CPRnummer");
-                                System.out.println("CPR gotten: " + dbCPR);
-                                
-                                return dbCPR;
-                            }
-                            
-			} catch (Exception e) {
-                            System.out.println(e);		
-                        }
-        return "Name not found";
->>>>>>> 721e03b62355fc27cf692f34ad1592ba1edaa9d4
     }
 
 
