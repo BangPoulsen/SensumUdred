@@ -7,21 +7,27 @@ package BL;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
         
 /**
  * FXML Controller class
  *
  * @author Simon
  */
-public class GUIController implements Initializable {
+public class GUIController extends Application implements Initializable {
 
     @FXML
     private AnchorPane frontPage;
@@ -46,7 +52,26 @@ public class GUIController implements Initializable {
         // TODO
     }    
     
-   
+    @Override
+    public void start(Stage stage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        Controller.helloWorld();
+        launch(args);
+        
+        
+    }
     public void Login(ActionEvent event) {
     
         if (loginUsername.getText().equals("user") && loginPassword.getText().equals("password")) {
