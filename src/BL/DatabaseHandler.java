@@ -45,13 +45,13 @@ public class DatabaseHandler {
         try {
 
 			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT name FROM users WHERE CPRnummer = 'CPR'");
+			ResultSet rs = st.executeQuery("SELECT CPRnummer FROM Users WHERE CPRnummer = 'CPR'");
 
                             while (rs.next()) {
-                                String name = rs.getString("CPRnummer");
-                                System.out.println("Name gotten: " + name);
+                                String dbCPR = rs.getString("CPRnummer");
+                                System.out.println("CPR gotten: " + dbCPR);
                                 
-                                return name;
+                                return dbCPR;
                             }
                             
 			} catch (Exception e) {
