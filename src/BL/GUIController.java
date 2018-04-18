@@ -46,6 +46,14 @@ public class GUIController implements Initializable {
     private Button logoffButton;
     @FXML
     private Label loginSensumLabel;
+    @FXML
+    private AnchorPane menuPage;
+    @FXML
+    private Label menuSensumLabel1;
+    @FXML
+    private Button createCaseButton;
+    @FXML
+    private Button searchCaseButton;
 
     /**
      * Initializes the controller class.
@@ -57,6 +65,7 @@ public class GUIController implements Initializable {
     
     
     
+    @FXML
     public void Login(ActionEvent event) {
     
         if (loginUsername.getText().equalsIgnoreCase("user") && 
