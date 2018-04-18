@@ -34,7 +34,7 @@ public class Caseworker {
 /**
  *   This method is a setter for cdate
  *   This is the same for the rest of the "set" methods in Caseworker
- *   @param String cwName sets the initial value of cdate
+ *   @param cwName sets the initial value of cdate
  */
     public void setCwName(String cwName) {
         this.cwName = cwName;

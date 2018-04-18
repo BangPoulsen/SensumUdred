@@ -33,7 +33,7 @@ public class Consultant {
     /**
  *   This method is a setter for cName
  *   This is the same for the rest of the "set" methods in Consultant
- *   @param String cdate sets the initial value of cName
+ *   @param cName sets the initial value of cName
  */
 
     public String getcUserId() {

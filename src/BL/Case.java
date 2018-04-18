@@ -31,7 +31,7 @@ public class Case {
 /**
  *   This method is a setter for cdate
  *   This is the same for the rest of the "set" methods in Case
- *   @param String cdate sets the initial value of cdate
+ *   @param cdate sets the initial value of cdate
  */
     public void setCdate(String cdate) {
         this.cdate = cdate;
