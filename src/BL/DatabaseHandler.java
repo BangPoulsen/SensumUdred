@@ -72,5 +72,24 @@ public class DatabaseHandler {
         
         return "CPR not found";
     }
+    
+    public String getAllInfoCitizen(String name){
+        try {
+            db = DriverManager.getConnection(url, username, pasword);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM users where name = '" + name + "';");
+
+            while (rs.next()) {
+                String CPRnummer = rs.getString("name");
+                System.out.println("Name: " + CPRnummer);
+                return CPRnummer;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return "Name not found";
+    }
 }
 
