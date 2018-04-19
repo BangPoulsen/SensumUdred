@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
         
 /**
@@ -50,6 +51,9 @@ public class GUIController implements Initializable {
     private Button searchCaseButton;
     @FXML
     private Button exitButton;
+    
+    private int tries = 3;
+    private boolean locked = false;
 
     /**
      * Initializes the controller class.
@@ -65,24 +69,37 @@ public class GUIController implements Initializable {
     
     @FXML
     public void Login(ActionEvent event) {
+        
+        if (!locked) {
+            
+            if (loginUsername.getText().equalsIgnoreCase("user") &&
+                loginPassword.getText().equals("password")) {
 
-        if (loginUsername.getText().equalsIgnoreCase("user") &&
-            loginPassword.getText().equals("password")) {
-
-            loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
+                loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
             
             
             
-            //removes and resets login screen
-            loginPage.setVisible(false);
-            loginUsername.setText("");
-            loginPassword.setText("");
-            loginSensumLabel.setText("Sensum Udred");
+                //removes and resets login screen
+                loginPage.setVisible(false);
+                loginUsername.setText("");
+                loginPassword.setText("");
+                loginSensumLabel.setText("Sensum Udred");
             
+            
+            } else {
+                loginSensumLabel.setText("Login failed \t Tries left: " + tries);
+                tries--;
+            
+            if (tries == 0) {
+                locked = true;
+            }
+        }
             
         } else {
-            loginSensumLabel.setText("Login failed");
+            JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
         }
+
+        
 
         
     }
