@@ -1,10 +1,6 @@
 package BL;
 
-import java.sql.*;
-import java.util.Scanner;
 import static javafx.application.Application.launch;
-
-import com.sun.org.apache.bcel.internal.generic.Select;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
