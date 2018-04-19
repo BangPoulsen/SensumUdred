@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -29,7 +30,6 @@ public class GUIController implements Initializable {
 
     @FXML
     private AnchorPane frontPage;
-    @FXML
     private AnchorPane loginPage;
     @FXML
     private TextField loginUsername;
@@ -41,7 +41,6 @@ public class GUIController implements Initializable {
     private Button logoffButton;
     @FXML
     private Label loginSensumLabel;
-    @FXML
     private AnchorPane menuPage;
     @FXML
     private Label menuSensumLabel1;
@@ -55,7 +54,41 @@ public class GUIController implements Initializable {
     private int tries = 3;
     private boolean locked = false;
     @FXML
-    private Button backToMenu;
+    private Button backButton;
+    @FXML
+    private AnchorPane createCasePane;
+    @FXML
+    private Label menuSensumLabel2;
+    @FXML
+    private Label createCaseLabel;
+    @FXML
+    private TextField txtFirstName;
+    @FXML
+    private TextField txtLastName;
+    @FXML
+    private TextField txtCprNumber;
+    @FXML
+    private TextField txtPhoneNumber;
+    @FXML
+    private TextField txtEmailAdress;
+    @FXML
+    private TextField txtRoadName;
+    @FXML
+    private TextField txtFloorNumber;
+    @FXML
+    private TextField txtZipCode;
+    @FXML
+    private TextField txtJournalNumber;
+    @FXML
+    private TextArea txtEventuelNotes;
+    @FXML
+    private Button createCaseDoneButton;
+    @FXML
+    private Button createCaseCancelButton;
+    @FXML
+    private AnchorPane menuPane;
+    @FXML
+    private AnchorPane loginPane;
 
     /**
      * Initializes the controller class.
@@ -146,6 +179,7 @@ public class GUIController implements Initializable {
     @FXML
     private void backToMenu(ActionEvent event) {
         
+        //Stage stage = (Stage) backButton.getScene()
         menuPage.setVisible(true);
         
     }
