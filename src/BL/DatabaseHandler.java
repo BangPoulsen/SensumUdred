@@ -24,7 +24,7 @@ public class DatabaseHandler {
     String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
 
     public DatabaseHandler() {
-
+            //C:\Users\Malte Hesk\Documents\Github\C
     }
 
     public void run() {
@@ -39,7 +39,7 @@ public class DatabaseHandler {
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT CPRnummer FROM users");
+            ResultSet rs = st.executeQuery("SELECT id FROM person");
 
             while (rs.next()) {
                 String CPRnummer = rs.getString("CPRnummer");
@@ -58,7 +58,7 @@ public class DatabaseHandler {
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users");
+            ResultSet rs = st.executeQuery("SELECT * FROM person");
 
             while (rs.next()) {
                 String CPRnummer = rs.getString("CPRnummer");
@@ -77,7 +77,7 @@ public class DatabaseHandler {
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM users where name = '" + name + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM person where name = '" + name + "';");
 
             while (rs.next()) {
                 String CPRnummer = rs.getString("name");
