@@ -11,9 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" pickOnBounds="false" scaleShape="false" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
+<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" pickOnBounds="false" scaleShape="false" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
    <children>
-      <AnchorPane id="menuPage" fx:id="menuPage" centerShape="false" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;">
+      <Button fx:id="backToMenu" layoutX="234.0" layoutY="155.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="31.0" prefWidth="52.0" text="Back">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <AnchorPane id="menuPage" fx:id="menuPage" centerShape="false" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" visible="false">
          <effect>
             <DropShadow />
          </effect>
@@ -26,7 +31,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCase" prefHeight="59.0" prefWidth="89.0" text="Opret sag">
+            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="59.0" prefWidth="89.0" text="Opret sag">
                <font>
                   <Font size="14.0" />
                </font>
@@ -43,7 +48,7 @@
             </Button>
             <Button id="searchCaseButton" fx:id="searchCaseButton" layoutX="106.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCase" prefHeight="59.0" prefWidth="89.0" text="Søg sag" />
             <Button id="logoffButton" fx:id="logoffButton" layoutX="198.0" layoutY="100.0" mnemonicParsing="false" onAction="#logoff" prefHeight="59.0" prefWidth="89.0" text="Log af " />
-            <AnchorPane id="loginPage" fx:id="loginPage" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;">
+            <AnchorPane id="loginPage" fx:id="loginPage" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" visible="false">
                <children>
                   <TextField id="loginUsername" fx:id="loginUsername" layoutX="76.0" layoutY="72.0" promptText="Username" />
                   <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="76.0" layoutY="103.0" promptText="Password" />

@@ -54,6 +54,8 @@ public class GUIController implements Initializable {
     
     private int tries = 3;
     private boolean locked = false;
+    @FXML
+    private Button backToMenu;
 
     /**
      * Initializes the controller class.
@@ -62,6 +64,7 @@ public class GUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         loginPage.setVisible(true);
+        menuPage.setVisible(true);
         // TODO
        
 
@@ -130,6 +133,21 @@ public class GUIController implements Initializable {
         Stage stage = (Stage) loginButton.getScene().getWindow();
         
         stage.close();
+    }
+
+    @FXML
+    private void createCase(ActionEvent event) {
+        
+        menuPage.setVisible(false);
+
+        
+    }
+
+    @FXML
+    private void backToMenu(ActionEvent event) {
+        
+        menuPage.setVisible(true);
+        
     }
 
 }
