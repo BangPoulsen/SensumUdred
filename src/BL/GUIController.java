@@ -48,6 +48,8 @@ public class GUIController implements Initializable {
     private Button createCaseButton;
     @FXML
     private Button searchCaseButton;
+    @FXML
+    private Button exitButton;
 
     /**
      * Initializes the controller class.
@@ -55,6 +57,7 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        loginPage.setVisible(true);
         // TODO
        
 
@@ -68,15 +71,14 @@ public class GUIController implements Initializable {
 
             loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
             
+            
+            
             //removes and resets login screen
             loginPage.setVisible(false);
             loginUsername.setText("");
             loginPassword.setText("");
             loginSensumLabel.setText("Sensum Udred");
             
-            //Get current stage
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.initStyle(StageStyle.UTILITY);
             
         } else {
             loginSensumLabel.setText("Login failed");
@@ -93,9 +95,6 @@ public class GUIController implements Initializable {
 
     }
 
-    @FXML
-    private void createCase(ActionEvent event) {
-    }
 
     @FXML
     private void searchCase(ActionEvent event) {
@@ -104,11 +103,16 @@ public class GUIController implements Initializable {
     @FXML
     private void logoff(ActionEvent event) {
         
+
         loginPage.setVisible(true);
+    }
+
+    @FXML
+    private void exit(ActionEvent event) {
         
-        //Get current stage
-        /*Stage stage = (Stage) loginButton.getScene().getWindow();
-        stage.initStyle(StageStyle.UNDECORATED);*/
+        Stage stage = (Stage) loginButton.getScene().getWindow();
+        
+        stage.close();
     }
 
 }

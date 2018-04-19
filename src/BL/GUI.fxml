@@ -26,7 +26,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="59.0" prefWidth="89.0" text="Opret sag">
+            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCase" prefHeight="59.0" prefWidth="89.0" text="Opret sag">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,9 +45,9 @@
             <Button id="logoffButton" fx:id="logoffButton" layoutX="198.0" layoutY="100.0" mnemonicParsing="false" onAction="#logoff" prefHeight="59.0" prefWidth="89.0" text="Log af " />
             <AnchorPane id="loginPage" fx:id="loginPage" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;">
                <children>
-                  <TextField id="loginUsername" fx:id="loginUsername" layoutX="57.0" layoutY="69.0" promptText="Username" />
-                  <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="57.0" layoutY="100.0" promptText="Password" />
-                  <Button id="loginButton" fx:id="loginButton" layoutX="57.0" layoutY="150.0" mnemonicParsing="false" onAction="#Login" prefHeight="31.0" prefWidth="187.0" text="Login" />
+                  <TextField id="loginUsername" fx:id="loginUsername" layoutX="76.0" layoutY="72.0" promptText="Username" />
+                  <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="76.0" layoutY="103.0" promptText="Password" />
+                  <Button id="loginButton" fx:id="loginButton" layoutX="33.0" layoutY="154.0" mnemonicParsing="false" onAction="#Login" prefHeight="31.0" prefWidth="117.0" text="Login" />
                   <Label id="loginSensumLabel" fx:id="loginSensumLabel" alignment="CENTER" layoutX="-1.0" layoutY="14.0" prefHeight="27.0" prefWidth="300.0" text="Sensum Udred" textAlignment="CENTER">
                      <effect>
                         <Blend />
@@ -56,6 +56,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button id="loginButton" fx:id="exitButton" layoutX="183.0" layoutY="155.0" mnemonicParsing="false" onAction="#exit" prefHeight="31.0" prefWidth="81.0" text="Exit" />
                </children>
                <effect>
                   <DropShadow />
