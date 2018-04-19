@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
         
 /**
@@ -52,21 +54,35 @@ public class GUIController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
+       
 
     }    
     
+    @FXML
     public void Login(ActionEvent event) {
 
         if (loginUsername.getText().equalsIgnoreCase("user") &&
             loginPassword.getText().equals("password")) {
 
             loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
+            
+            //removes and resets login screen
+            loginPage.setVisible(false);
+            loginUsername.setText("");
+            loginPassword.setText("");
+            loginSensumLabel.setText("Sensum Udred");
+            
+            //Get current stage
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.initStyle(StageStyle.UTILITY);
+            
         } else {
             loginSensumLabel.setText("Login failed");
         }
 
-        System.out.println("Hello");
+        
     }
 
     private String getNameFromDatabase(String CPR) {
@@ -75,6 +91,24 @@ public class GUIController implements Initializable {
         return dbh.getCPR(CPR);
 
 
+    }
+
+    @FXML
+    private void createCase(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchCase(ActionEvent event) {
+    }
+
+    @FXML
+    private void logoff(ActionEvent event) {
+        
+        loginPage.setVisible(true);
+        
+        //Get current stage
+        /*Stage stage = (Stage) loginButton.getScene().getWindow();
+        stage.initStyle(StageStyle.UNDECORATED);*/
     }
 
 }
