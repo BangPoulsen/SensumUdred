@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Simon stationær test
+ * @author Simon
  */
 public class GUIController implements Initializable {
 
