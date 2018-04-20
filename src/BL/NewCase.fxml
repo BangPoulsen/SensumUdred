@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">
+         <effect>
+            <Blend />
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Label>
+      <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Opret ny sag" underline="true">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFirstName" layoutX="52.0" layoutY="143.0" prefHeight="30.0" prefWidth="300.0" promptText="Fornavn">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
+      <TextField fx:id="txtLastName" layoutX="52.0" layoutY="174.0" prefHeight="30.0" prefWidth="300.0" promptText="Efternavn" />
+      <TextField fx:id="txtCprNumber" layoutX="52.0" layoutY="205.0" prefHeight="30.0" prefWidth="300.0" promptText="Personnummer" />
+      <TextField fx:id="txtPhoneNumber" layoutX="52.0" layoutY="236.0" prefHeight="30.0" prefWidth="300.0" promptText="Telefon" />
+      <TextField fx:id="txtEmailAdress" layoutX="52.0" layoutY="267.0" prefHeight="30.0" prefWidth="300.0" promptText="Email" />
+      <TextField fx:id="txtRoadName" layoutX="52.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnavn" />
+      <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="329.0" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
+      <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="360.0" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
+      <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
+      <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
+      <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
+      <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
