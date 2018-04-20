@@ -29,7 +29,6 @@ import javax.swing.JOptionPane;
 public class GUIController implements Initializable {
 
     @FXML
-    private AnchorPane frontPage;
     private AnchorPane loginPage;
     @FXML
     private TextField loginUsername;
@@ -41,9 +40,8 @@ public class GUIController implements Initializable {
     private Button logoffButton;
     @FXML
     private Label loginSensumLabel;
-    private AnchorPane menuPage;
     @FXML
-    private Label menuSensumLabel1;
+    private AnchorPane menuPage;
     @FXML
     private Button createCaseButton;
     @FXML
@@ -114,7 +112,7 @@ public class GUIController implements Initializable {
             
             
                 //removes and resets login screen
-                loginPage.setVisible(false);
+                loginPane.setVisible(false);
                 loginUsername.setText("");
                 loginPassword.setText("");
                 loginSensumLabel.setText("Sensum Udred");
