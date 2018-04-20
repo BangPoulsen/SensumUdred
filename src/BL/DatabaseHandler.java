@@ -27,6 +27,8 @@ public class DatabaseHandler {
             //C:\Users\Malte Hesk\Documents\Github\C
     }
 
+    
+    
     public void run() {
         
 
@@ -102,6 +104,16 @@ public class DatabaseHandler {
                     String journalNumber) {
         
         //SQL Stuff
+        try {
+            db = DriverManager.getConnection(url, username, pasword);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO person (type, password, id, rights, email, phone, name) VALUES (" + "'Borger'" + "," + "'1234'" + ", '" + CPR + "'" + " " + ", '" + email + "'," + "'" + phoneNumber + "','" + fullName + "');");
+
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
         
         

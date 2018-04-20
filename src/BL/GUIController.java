@@ -211,6 +211,8 @@ public class GUIController implements Initializable {
         
         Case caseCreated = new Case(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber, eventuelNotes);
         
+        dbh.createCase(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber);
+        
         
      
         
