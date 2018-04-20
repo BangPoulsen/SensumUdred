@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.UI.NewCaseController">
    <children>
       <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">
          <effect>

@@ -1,0 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package BL.UI;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+
+/**
+ * FXML Controller class
+ *
+ * @author malte
+ */
+public class MenuController implements Initializable {
+
+    @FXML
+    private AnchorPane menuPane;
+    @FXML
+    private Label menuSensumLabel1;
+    @FXML
+    private Button createCaseButton;
+    @FXML
+    private Button searchCaseButton;
+    @FXML
+    private Button logoffButton;
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+
+    @FXML
+    private void createCase(ActionEvent event) {
+    }
+
+    @FXML
+    private void searchCase(ActionEvent event) {
+    }
+
+    @FXML
+    private void logoff(ActionEvent event) {
+    }
+    
+}

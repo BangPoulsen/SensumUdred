@@ -12,7 +12,7 @@ public class Case {
     private Consultant cDoctor;
     private Relative cRelative;
     private String cID;
-    private String cJournal;
+    private Journal cJournal;
 
     /**
      * constructor for creating a instance of a case
