@@ -107,8 +107,9 @@ public class DatabaseHandler {
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO person (type, password, id, rights, email, phone, name) VALUES (" + "'Borger'" + "," + "'1234'" + ", '" + CPR + "'" + " " + ", '" + email + "'," + "'" + phoneNumber + "','" + fullName + "');");
-
+            //ResultSet rs = st.executeQuery("INSERT INTO person (type, password, id, rights, email, phone, name) VALUES ('Borger', '1234', ' + CPR +' + "'," + " " + ", '" + email + "','" + phoneNumber + "','" + fullName + "');");
+            ResultSet rs = st.executeQuery("INSERT INTO person (id, name) VALUES ('1234567890', '" + fullName + "');");
+            System.out.println("Inserted " + fullName);
             
 
         } catch (SQLException e) {
