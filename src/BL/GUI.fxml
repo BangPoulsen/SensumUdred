@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" scaleShape="false" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
+<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" scaleShape="false" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
    <children>
       <AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;">
          <children>
@@ -48,7 +48,7 @@
             <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="360.0" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
             <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
             <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
-            <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
+            <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
             <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
          </children>
          <effect>

@@ -29,8 +29,6 @@ import javax.swing.JOptionPane;
 public class GUIController implements Initializable {
 
     @FXML
-    private AnchorPane loginPage;
-    @FXML
     private TextField loginUsername;
     @FXML
     private PasswordField loginPassword;
@@ -40,8 +38,6 @@ public class GUIController implements Initializable {
     private Button logoffButton;
     @FXML
     private Label loginSensumLabel;
-    @FXML
-    private AnchorPane menuPage;
     @FXML
     private Button createCaseButton;
     @FXML
@@ -87,6 +83,12 @@ public class GUIController implements Initializable {
     private AnchorPane menuPane;
     @FXML
     private AnchorPane loginPane;
+    @FXML
+    private AnchorPane frontPage;
+    @FXML
+    private Label menuSensumLabel1;
+    
+    private DatabaseHandler dbh;
 
     /**
      * Initializes the controller class.
@@ -94,6 +96,7 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        dbh = new DatabaseHandler();
         // TODO
         menuPane.setDisable(true);
         createCasePane.setDisable(true);
@@ -185,6 +188,31 @@ public class GUIController implements Initializable {
         
         //Stage stage = (Stage) backButton.getScene()
         menuPane.setVisible(true);
+        
+    }
+
+    @FXML
+    private void createCaseDoneButtonEvent(ActionEvent event) {
+        
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String CPR = txtCprNumber.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+        String email = txtEmailAdress.getText();
+        String address = txtRoadName.getText();
+        String floor = txtFloorNumber.getText();
+        String zipCode = txtZipCode.getText();
+        String journalNumber = txtJournalNumber.getText();
+        
+        dbh.createCase(firstName, 
+                       lastName, 
+                       CPR, 
+                       phoneNumber, 
+                       email, 
+                       address, 
+                       floor, 
+                       zipCode, 
+                       journalNumber);
         
     }
 
