@@ -153,7 +153,8 @@ public class GUIController implements Initializable {
     private String getNameFromDatabase(String CPR) {
         //Return the name of a person in database
         DatabaseHandler dbh = new DatabaseHandler();
-        return dbh.getCPR(CPR);
+        //TODO fix dbh.getCPR() and return dbh.getCPR(CPR) instead
+        return "Test";
 
 
     }
@@ -208,10 +209,11 @@ public class GUIController implements Initializable {
         String zipCode = txtZipCode.getText();
         String journalNumber = txtJournalNumber.getText();
         String eventuelNotes = txtEventuelNotes.getText();
+
+        Citizen citizen = new Citizen(fullName, address, phoneNumber, email, CPR);
+        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes);
         
-        Case caseCreated = new Case(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber, eventuelNotes);
-        
-        dbh.createCase(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber);
+        dbh.createCase(caseCreated);
         
         
      

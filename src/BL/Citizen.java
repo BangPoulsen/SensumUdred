@@ -15,11 +15,11 @@ public class Citizen {
      * constructor for creating a instance of a citizen
      */
     public Citizen(String name, String adress, String phoneNumber, String email, String userId) {
-        ciUserId=userId;
-        ciName = name;
-        ciAdress = adress;
-        ciPhoneNumber = phoneNumber;
-        ciEmail = email;
+        this.ciUserId=userId;
+        this.ciName = name;
+        this.ciAdress = adress;
+        this.ciPhoneNumber = phoneNumber;
+        this.ciEmail = email;
     }
 /**
  *   This method is a getter for ciName

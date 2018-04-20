@@ -17,17 +17,11 @@ public class Case {
     /**
      * constructor for creating a instance of a case
      */
-    Case(String fullName, 
-         String CPR, 
-         String phoneNumber, 
-         String email, 
-         String address, 
-         String floor, 
-         String zipCode, 
+    Case(Citizen cCitizen,
          String journalNumber,
          String eventuelNotes) {
         
-        cCitizen = new Citizen(fullName, address, phoneNumber, email,CPR);
+        this.cCitizen = cCitizen;
         
         
         

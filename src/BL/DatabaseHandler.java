@@ -44,7 +44,7 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT id FROM person");
 
             while (rs.next()) {
-                String CPRnummer = rs.getString("CPRnummer");
+                String CPRnummer = "Test"; //TODO fix rs.getString("CPRnummer")
                 System.out.println("CPRnummer: " + "" + CPRnummer);
             }
 
@@ -55,8 +55,8 @@ public class DatabaseHandler {
         }
 
     }
-    
-    public String getCPR(String CPR){
+
+/*    public String getCPR(String CPR){
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
@@ -92,22 +92,24 @@ public class DatabaseHandler {
         }
         
         return "Name not found";
-    }
+    }*/
 
-    void createCase(String fullName, 
-                    String CPR, 
-                    String phoneNumber, 
-                    String email, 
-                    String address, 
-                    String floor, 
-                    String zipCode, 
-                    String journalNumber) {
-        
+    void createCase(Case caseI) {
+
+        String fullName = caseI.getcCitizen().getCiName();
+        String CPR = caseI.getcCitizen().getCiUserId();
+        String phoneNumber = caseI.getcCitizen().getCiPhoneNumber();
+        String email = caseI.getcCitizen().getCiEmail();
+        String address = caseI.getcCitizen().getCiAdress();
+        String floor;
+        String zipCode;
+        String journalNumber;
+
         //SQL Stuff
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO person (type, password, id, rights, email, phone, name) VALUES (" + "'Borger'" + "," + "'1234'" + ", '" + CPR + "'" + " " + ", '" + email + "'," + "'" + phoneNumber + "','" + fullName + "');");
+            st.executeUpdate("insert into person (type, password, id, rights, email, phone, name) values ('Borger', '12345678', '" + CPR + "', 'GODMODE', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
 
             
 
