@@ -6,6 +6,7 @@
 package BL;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -100,8 +103,7 @@ public class GUIController implements Initializable {
         
         dbh = new DatabaseHandler();
         // TODO
-        menuPane.setDisable(true);
-        createCasePane.setDisable(true);
+        createCasePane.setVisible(false);
        
 
     }    
@@ -181,6 +183,7 @@ public class GUIController implements Initializable {
     private void createCase(ActionEvent event) {
         
         menuPane.setVisible(false);
+        createCasePane.setVisible(true);
 
         
     }
@@ -204,8 +207,9 @@ public class GUIController implements Initializable {
         String floor = txtFloorNumber.getText();
         String zipCode = txtZipCode.getText();
         String journalNumber = txtJournalNumber.getText();
+        String eventuelNotes = txtEventuelNotes.getText();
         
-        Case caseCreated = new Case(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber);
+        Case caseCreated = new Case(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber, eventuelNotes);
         
         
      
@@ -215,8 +219,48 @@ public class GUIController implements Initializable {
 
     @FXML
     private void createCaseCancelButton(ActionEvent event) {
+        createCasePane.setVisible(false);
         menuPane.setVisible(true);
         
+        
+    }
+
+    @FXML
+    private void isEnterPressed(KeyEvent event) {
+        
+        if (event.getCode()== KeyCode.ENTER) {
+            if (!locked) {
+                
+                if (loginUsername.getText().equalsIgnoreCase("user")
+                        && loginPassword.getText().equals("password")) {
+                    
+                    loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
+                    
+                    menuPane.setDisable(false);
+                    createCasePane.setDisable(false);
+
+                    //removes and resets login screen
+                    loginPane.setVisible(false);
+                    loginUsername.setText("");
+                    loginPassword.setText("");
+                    loginSensumLabel.setText("Sensum Udred");
+                    
+                } else {
+                    
+                    loginSensumLabel.setText("Login failed \t Tries left: " + tries);
+                    tries--;
+                    
+                    if (tries == 0) {
+                        locked = true;
+                    }
+                }
+                
+            } else {
+                
+                
+                JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
+            }
+        }
         
     }
 

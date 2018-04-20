@@ -24,7 +24,8 @@ public class Case {
          String address, 
          String floor, 
          String zipCode, 
-         String journalNumber) {
+         String journalNumber,
+         String eventuelNotes) {
         
         cCitizen = new Citizen(fullName, address, phoneNumber, email,CPR);
         

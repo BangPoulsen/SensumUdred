@@ -8,9 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.effect.DisplacementMap?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.FloatMap?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -61,7 +59,7 @@
             <DropShadow />
          </effect>
          <children>
-            <Label id="menuSensumLabel" fx:id="menuSensumLabel1" alignment="CENTER" focusTraversable="false" layoutX="37.0" layoutY="1.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="1.0">
+            <Label id="menuSensumLabel" fx:id="menuSensumLabel1" alignment="CENTER" focusTraversable="false" layoutX="37.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0">
                <effect>
                   <Blend />
                </effect>
@@ -72,21 +70,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Label>
-            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="60.0" prefWidth="90.0" text="Opret sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="100.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DisplacementMap>
-                     <input>
-                        <Blend />
-                     </input>
-                     <mapData>
-                        <FloatMap />
-                     </mapData>
-                  </DisplacementMap>
-               </effect>
-            </Button>
+            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="60.0" prefWidth="90.0" text="Opret sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="100.0" />
             <Button id="searchCaseButton" fx:id="searchCaseButton" layoutX="106.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCase" prefHeight="60.0" prefWidth="90.0" text="Søg sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="100.0" />
             <Button id="logoffButton" fx:id="logoffButton" layoutX="197.0" layoutY="100.0" mnemonicParsing="false" onAction="#logoff" prefHeight="60.0" prefWidth="90.0" text="Log af " AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="100.0" />
          </children>
@@ -94,7 +78,7 @@
       <AnchorPane id="loginPage" fx:id="loginPane" centerShape="false" depthTest="DISABLE" layoutX="490.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="300.0">
          <children>
             <TextField id="loginUsername" fx:id="loginUsername" layoutX="50.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Username" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />
-            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="50.0" layoutY="102.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="102.0" />
+            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="50.0" layoutY="102.0" onKeyPressed="#isEnterPressed" prefHeight="30.0" prefWidth="200.0" promptText="Password" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="102.0" />
             <Button id="loginButton" fx:id="loginButton" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="200.0" text="Login" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="144.0" />
             <Label id="loginSensumLabel" fx:id="loginSensumLabel" alignment="CENTER" layoutX="5.0" layoutY="1.0" prefHeight="27.0" prefWidth="290.0" text="Sensum Udred" textAlignment="CENTER" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="1.0">
                <effect>
