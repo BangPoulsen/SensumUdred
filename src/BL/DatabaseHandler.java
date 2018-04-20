@@ -92,8 +92,7 @@ public class DatabaseHandler {
         return "Name not found";
     }
 
-    void createCase(String firstName, 
-                    String lastName, 
+    void createCase(String fullName, 
                     String CPR, 
                     String phoneNumber, 
                     String email, 
@@ -101,6 +100,10 @@ public class DatabaseHandler {
                     String floor, 
                     String zipCode, 
                     String journalNumber) {
+        
+        //SQL Stuff
+        
+        
         
     }
 }

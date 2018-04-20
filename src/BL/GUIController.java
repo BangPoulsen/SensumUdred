@@ -66,8 +66,6 @@ public class GUIController implements Initializable {
     @FXML
     private TextField txtEmailAdress;
     @FXML
-    private TextField txtRoadName;
-    @FXML
     private TextField txtFloorNumber;
     @FXML
     private TextField txtZipCode;
@@ -89,6 +87,10 @@ public class GUIController implements Initializable {
     private Label menuSensumLabel1;
     
     private DatabaseHandler dbh;
+    @FXML
+    private TextField txtStreetName;
+    @FXML
+    private TextField txtstreetNumber;
 
     /**
      * Initializes the controller class.
@@ -194,25 +196,27 @@ public class GUIController implements Initializable {
     @FXML
     private void createCaseDoneButtonEvent(ActionEvent event) {
         
-        String firstName = txtFirstName.getText();
-        String lastName = txtLastName.getText();
+        String fullName = txtFirstName.getText() + " " + txtLastName.getText();
         String CPR = txtCprNumber.getText();
         String phoneNumber = txtPhoneNumber.getText();
         String email = txtEmailAdress.getText();
-        String address = txtRoadName.getText();
+        String address = txtStreetName.getText() + " " + txtstreetNumber.getText();
         String floor = txtFloorNumber.getText();
         String zipCode = txtZipCode.getText();
         String journalNumber = txtJournalNumber.getText();
         
-        dbh.createCase(firstName, 
-                       lastName, 
-                       CPR, 
-                       phoneNumber, 
-                       email, 
-                       address, 
-                       floor, 
-                       zipCode, 
-                       journalNumber);
+        Case caseCreated = new Case(fullName, CPR, phoneNumber, email, address, floor, zipCode, journalNumber);
+        
+        
+     
+        
+        
+    }
+
+    @FXML
+    private void createCaseCancelButton(ActionEvent event) {
+        menuPane.setVisible(true);
+        
         
     }
 

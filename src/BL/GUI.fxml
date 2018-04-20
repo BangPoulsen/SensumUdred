@@ -43,13 +43,14 @@
             <TextField fx:id="txtCprNumber" layoutX="52.0" layoutY="205.0" prefHeight="30.0" prefWidth="300.0" promptText="Personnummer" />
             <TextField fx:id="txtPhoneNumber" layoutX="52.0" layoutY="236.0" prefHeight="30.0" prefWidth="300.0" promptText="Telefon" />
             <TextField fx:id="txtEmailAdress" layoutX="52.0" layoutY="267.0" prefHeight="30.0" prefWidth="300.0" promptText="Email" />
-            <TextField fx:id="txtRoadName" layoutX="52.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnavn" />
-            <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="329.0" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
-            <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="360.0" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
-            <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
+            <TextField fx:id="txtStreetName" layoutX="52.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnavn" />
+            <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="361.0" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
+            <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="392.0" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
+            <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="424.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
             <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
-            <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
-            <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
+            <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="492.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
+            <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="492.0" mnemonicParsing="false" onAction="#createCaseCancelButton" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
+            <TextField fx:id="txtstreetNumber" layoutX="52.0" layoutY="329.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnummer" />
          </children>
          <effect>
             <DropShadow />
