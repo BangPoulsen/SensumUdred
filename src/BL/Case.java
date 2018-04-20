@@ -74,11 +74,11 @@ public class Case {
         this.cCitizen = cCitizen;
     }
 
-    public String getcJournal() {
+    public Journal getcJournal() {
         return cJournal;
     }
 
-    public void setcJournal(String cJournal) {
+    public void setcJournal(Journal cJournal) {
         this.cJournal = cJournal;
     }
     
