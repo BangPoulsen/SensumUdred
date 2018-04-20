@@ -97,6 +97,8 @@ public class GUIController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         // TODO
+        menuPane.setDisable(true);
+        createCasePane.setDisable(true);
        
 
     }    
@@ -111,10 +113,12 @@ public class GUIController implements Initializable {
 
                 loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
             
-            
+                menuPane.setDisable(false);
+                createCasePane.setDisable(false);
             
                 //removes and resets login screen
-                loginPage.setVisible(false);
+                
+                loginPane.setVisible(false);
                 loginUsername.setText("");
                 loginPassword.setText("");
                 loginSensumLabel.setText("Sensum Udred");
@@ -157,8 +161,9 @@ public class GUIController implements Initializable {
     @FXML
     private void logoff(ActionEvent event) {
         
-
-        loginPage.setVisible(true);
+        menuPane.setDisable(true);
+        createCasePane.setDisable(true);
+        loginPane.setVisible(true);
     }
 
     @FXML
@@ -172,7 +177,7 @@ public class GUIController implements Initializable {
     @FXML
     private void createCase(ActionEvent event) {
         
-        menuPage.setVisible(false);
+        menuPane.setVisible(false);
 
         
     }
@@ -181,7 +186,7 @@ public class GUIController implements Initializable {
     private void backToMenu(ActionEvent event) {
         
         //Stage stage = (Stage) backButton.getScene()
-        menuPage.setVisible(true);
+        menuPane.setVisible(true);
         
     }
 
