@@ -96,8 +96,6 @@ public class GUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        loginPage.setVisible(true);
-        menuPage.setVisible(true);
         // TODO
        
 
@@ -123,6 +121,9 @@ public class GUIController implements Initializable {
             
             
             } else {
+                
+                
+                
                 loginSensumLabel.setText("Login failed \t Tries left: " + tries);
                 tries--;
             
