@@ -6,19 +6,31 @@ public class Case {
      */
     private String cdate;
     private String cStatus;
-    private String cResponsible;
-    private String cCitizen;
+    private Caseworker cResponsible;
+    private Citizen cCitizen;
+    private SupportPerson cSupport;
+    private Consultant cDoctor;
+    private Relative cRelative;
+    private String cID;
     private String cJournal;
 
     /**
      * constructor for creating a instance of a case
      */
-    public Case(String date, String status, String responsible, String citizen, String journal) {
-        cdate = date;
-        cStatus = status;
-        cResponsible = responsible;
-        cCitizen = citizen;
-        cJournal = journal;
+    Case(String fullName, 
+         String CPR, 
+         String phoneNumber, 
+         String email, 
+         String address, 
+         String floor, 
+         String zipCode, 
+         String journalNumber) {
+        
+        cCitizen = new Citizen(fullName, address, phoneNumber, email,CPR);
+        
+        
+        
+        
     }
 /**
  *   This method is a getter for cdate
@@ -45,19 +57,19 @@ public class Case {
         this.cStatus = cStatus;
     }
 
-    public String getcResponsible() {
+    public Caseworker getcResponsible() {
         return cResponsible;
     }
 
-    public void setcResponsible(String cResponsible) {
+    public void setcResponsible(Caseworker cResponsible) {
         this.cResponsible = cResponsible;
     }
 
-    public String getcCitizen() {
+    public Citizen getcCitizen() {
         return cCitizen;
     }
 
-    public void setcCitizen(String cCitizen) {
+    public void setcCitizen(Citizen cCitizen) {
         this.cCitizen = cCitizen;
     }
 
