@@ -6,7 +6,10 @@ public class Citizen {
      * attributes for creating a new citizen
      */
     private String ciName;
-    private String ciAdress;
+    private String ciStreet;
+    private String ciStreetNumber;
+    private String ciFloor;
+    private String ciZipCode;
     private String ciPhoneNumber;
     private String ciEmail;
     private String ciUserId;
@@ -14,10 +17,17 @@ public class Citizen {
     /**
      * constructor for creating a instance of a citizen
      */
-    public Citizen(String name, String adress, String phoneNumber, String email, String userId) {
+    public Citizen(String name, String street, String streetNumber, String floor, String zipCode, String phoneNumber, String email, String userId) {
         this.ciUserId=userId;
         this.ciName = name;
-        this.ciAdress = adress;
+        this.ciStreet = street;
+        this.ciStreetNumber = streetNumber;
+        if (floor == "") {
+            this.ciFloor = "NULL";
+        } else {
+            this.ciFloor = floor;
+        }
+        this.ciZipCode = zipCode;
         this.ciPhoneNumber = phoneNumber;
         this.ciEmail = email;
     }
@@ -40,24 +50,33 @@ public class Citizen {
     }
 
     public String getCiUserId() {
-        return ciUserId;
+        return this.ciUserId;
     }
 
     public void setCiUserId(String ciUserId) {
         this.ciUserId = ciUserId;
     }
 
-    public String getCiAdress() {
-        return ciAdress;
+    public String getCiStreet() { return this.ciStreet; }
 
+    public void setCiStreet(String ciStreet) {
+        this.ciStreet = ciStreet;
     }
 
-    public void setCiAdress(String ciAdress) {
-        this.ciAdress = ciAdress;
-    }
+    public String getCiStreetNumber() {return this.ciStreetNumber;}
+
+    public void setCiStreetNumber(String ciStreetNumber) {this.ciStreetNumber = ciStreetNumber;}
+
+    public String getCiFloor() {return this.ciFloor;}
+
+    public void setCiFloor(String ciFloor) {this.ciFloor = ciFloor;}
+
+    public String getCiZipCode() {return this.ciZipCode;}
+
+    public void setCiZipCode(String ciZipCode) {this.ciZipCode = ciZipCode;}
 
     public String getCiPhoneNumber() {
-        return ciPhoneNumber;
+        return this.ciPhoneNumber;
     }
 
     public void setCiPhoneNumber(String ciPhoneNumber) {
@@ -65,7 +84,7 @@ public class Citizen {
     }
 
     public String getCiEmail() {
-        return ciEmail;
+        return this.ciEmail;
     }
 
     public void setCiEmail(String ciEmail) {

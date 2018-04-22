@@ -100,17 +100,20 @@ public class DatabaseHandler {
         String CPR = caseI.getcCitizen().getCiUserId();
         String phoneNumber = caseI.getcCitizen().getCiPhoneNumber();
         String email = caseI.getcCitizen().getCiEmail();
-        String address = caseI.getcCitizen().getCiAdress();
-        String floor;
-        String zipCode;
+        String street = caseI.getcCitizen().getCiStreet();
+        String streetNumber = caseI.getcCitizen().getCiStreetNumber();
+        String floor = caseI.getcCitizen().getCiFloor();
+        String zipCode = caseI.getcCitizen().getCiZipCode();
         String journalNumber;
 
         //SQL Stuff
+        //TODO catch duplicate id's
         try {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
             st.executeUpdate("insert into person (type, password, id, rights, email, phone, name) values ('Borger', '12345678', '" + CPR + "', 'GODMODE', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
-
+            //TODO add city in GUI and add it to sql statement
+            st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             
 
         } catch (SQLException e) {

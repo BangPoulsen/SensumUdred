@@ -204,13 +204,14 @@ public class GUIController implements Initializable {
         String CPR = txtCprNumber.getText();
         String phoneNumber = txtPhoneNumber.getText();
         String email = txtEmailAdress.getText();
-        String address = txtStreetName.getText() + " " + txtstreetNumber.getText();
+        String street = txtStreetName.getText();
+        String streetNumber = txtstreetNumber.getText();
         String floor = txtFloorNumber.getText();
         String zipCode = txtZipCode.getText();
         String journalNumber = txtJournalNumber.getText();
         String eventuelNotes = txtEventuelNotes.getText();
 
-        Citizen citizen = new Citizen(fullName, address, phoneNumber, email, CPR);
+        Citizen citizen = new Citizen(fullName, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
         Case caseCreated = new Case(citizen, journalNumber, eventuelNotes);
         
         dbh.createCase(caseCreated);
