@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -12,8 +13,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" scaleShape="false" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
+<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" scaleShape="false" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
    <children>
+      <AnchorPane fx:id="showCasesPane" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ListView fx:id="casesListView" fixedCellSize="10.0" layoutX="14.0" layoutY="108.0" prefHeight="444.0" prefWidth="435.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ListView>
+            <Button fx:id="editCaseButton" layoutX="494.0" layoutY="507.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Rediger sag" />
+            <Button fx:id="deleteCaseButton" layoutX="640.0" layoutY="507.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Slet sag" />
+            <Label fx:id="SearchCaseLabel" layoutX="341.0" layoutY="14.0" prefHeight="45.0" prefWidth="109.0" text="Søg sag">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="searchCaseButtonDone" layoutX="524.0" layoutY="201.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="187.0" text="Søg sag" />
+            <TextField fx:id="txtInsertCprNumber" layoutX="524.0" layoutY="139.0" promptText="Indtast CPR-nummer" />
+            <TextField fx:id="txtInsertCaseNr" layoutX="524.0" layoutY="108.0" promptText="Indtast sagsnr. " />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;">
          <children>
             <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">

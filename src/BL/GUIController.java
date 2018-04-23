@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -94,6 +95,22 @@ public class GUIController implements Initializable {
     private TextField txtStreetName;
     @FXML
     private TextField txtstreetNumber;
+    @FXML
+    private Label SearchCaseLabel;
+    @FXML
+    private TextField txtInsertCaseNr;
+    @FXML
+    private Button searchCaseButtonDone;
+    @FXML
+    private TextField txtInsertCprNumber;
+    @FXML
+    private AnchorPane showCasesPane;
+    @FXML
+    private ListView<?> casesListView;
+    @FXML
+    private Button editCaseButton;
+    @FXML
+    private Button deleteCaseButton;
 
     /**
      * Initializes the controller class.
@@ -104,6 +121,7 @@ public class GUIController implements Initializable {
         dbh = new DatabaseHandler();
         // TODO
         createCasePane.setVisible(false);
+        showCasesPane.setVisible(false);
        
 
     }    
@@ -120,6 +138,7 @@ public class GUIController implements Initializable {
             
                 menuPane.setDisable(false);
                 createCasePane.setDisable(false);
+                showCasesPane.setVisible(false);
             
                 //removes and resets login screen
                 
@@ -162,8 +181,21 @@ public class GUIController implements Initializable {
 
     @FXML
     private void searchCase(ActionEvent event) {
+        
+        showCasesPane.setVisible(true);
+        loginPane.setVisible(false);
+        menuPane.setVisible(false);
+        
     }
 
+
+    @FXML
+    private void showCasesPane(ActionEvent event) {
+        
+        
+        
+        
+    }
     @FXML
     private void logoff(ActionEvent event) {
         
