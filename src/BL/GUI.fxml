@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="frontPage" fx:id="frontPage" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="800.0" prefWidth="1280.0" scaleShape="false" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.GUIController">
+   <children>
+      <AnchorPane fx:id="showCasesPane" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ListView fx:id="casesListView" fixedCellSize="10.0" layoutX="14.0" layoutY="108.0" prefHeight="444.0" prefWidth="435.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </ListView>
+            <Button fx:id="editCaseButton" layoutX="494.0" layoutY="507.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Rediger sag" />
+            <Button fx:id="deleteCaseButton" layoutX="640.0" layoutY="507.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="109.0" text="Slet sag" />
+            <Label fx:id="SearchCaseLabel" layoutX="341.0" layoutY="14.0" prefHeight="45.0" prefWidth="109.0" text="Søg sag">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="searchCaseButtonDone" layoutX="524.0" layoutY="201.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="187.0" text="Søg sag" />
+            <TextField fx:id="txtInsertCprNumber" layoutX="524.0" layoutY="139.0" promptText="Indtast CPR-nummer" />
+            <TextField fx:id="txtInsertCaseNr" layoutX="524.0" layoutY="108.0" promptText="Indtast sagsnr. " />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" visible="false">
+         <children>
+            <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">
+               <effect>
+                  <Blend />
+               </effect>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Opret ny sag" underline="true">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtFirstName" layoutX="52.0" layoutY="143.0" prefHeight="30.0" prefWidth="300.0" promptText="Fornavn">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+            <TextField fx:id="txtLastName" layoutX="52.0" layoutY="174.0" prefHeight="30.0" prefWidth="300.0" promptText="Efternavn" />
+            <TextField fx:id="txtCprNumber" layoutX="52.0" layoutY="205.0" prefHeight="30.0" prefWidth="300.0" promptText="Personnummer" />
+            <TextField fx:id="txtPhoneNumber" layoutX="52.0" layoutY="236.0" prefHeight="30.0" prefWidth="300.0" promptText="Telefon" />
+            <TextField fx:id="txtEmailAdress" layoutX="52.0" layoutY="267.0" prefHeight="30.0" prefWidth="300.0" promptText="Email" />
+            <TextField fx:id="txtStreetName" layoutX="52.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnavn" />
+            <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="361.0" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
+            <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="392.0" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
+            <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="424.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
+            <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
+            <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="492.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
+            <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="492.0" mnemonicParsing="false" onAction="#createCaseCancelButton" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
+            <TextField fx:id="txtstreetNumber" layoutX="52.0" layoutY="329.0" prefHeight="30.0" prefWidth="300.0" promptText="Vejnummer" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane id="menuPage" fx:id="menuPane" focusTraversable="true" layoutX="490.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="300.0">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label id="menuSensumLabel" fx:id="menuSensumLabel1" alignment="CENTER" focusTraversable="false" layoutX="37.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="14.0">
+               <effect>
+                  <Blend />
+               </effect>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="60.0" prefWidth="90.0" text="Opret sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="100.0" />
+            <Button id="searchCaseButton" fx:id="searchCaseButton" layoutX="106.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCase" prefHeight="60.0" prefWidth="90.0" text="Søg sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="100.0" />
+            <Button id="logoffButton" fx:id="logoffButton" layoutX="197.0" layoutY="100.0" mnemonicParsing="false" onAction="#logoff" prefHeight="60.0" prefWidth="90.0" text="Log af " AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="100.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane id="loginPage" fx:id="loginPane" centerShape="false" depthTest="DISABLE" layoutX="490.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="490.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="300.0">
+         <children>
+            <TextField id="loginUsername" fx:id="loginUsername" layoutX="50.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Username" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />
+            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="50.0" layoutY="102.0" onKeyPressed="#isEnterPressed" prefHeight="30.0" prefWidth="200.0" promptText="Password" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="102.0" />
+            <Button id="loginButton" fx:id="loginButton" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="200.0" text="Login" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="144.0" />
+            <Label id="loginSensumLabel" fx:id="loginSensumLabel" alignment="CENTER" layoutX="5.0" layoutY="1.0" prefHeight="27.0" prefWidth="290.0" text="Sensum Udred" textAlignment="CENTER" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="1.0">
+               <effect>
+                  <Blend />
+               </effect>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <Button id="backButton" fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToMenu" prefHeight="31.0" prefWidth="70.0" text="Tilbage" AnchorPane.bottomAnchor="769.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1210.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button id="loginButton" fx:id="exitButton" alignment="TOP_RIGHT" layoutX="1246.0" layoutY="31.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" prefHeight="31.0" prefWidth="34.0" text="X" AnchorPane.bottomAnchor="769.0" AnchorPane.leftAnchor="1246.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>
