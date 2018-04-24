@@ -37,7 +37,7 @@
             <TextField fx:id="txtInsertCaseNr" layoutX="524.0" layoutY="108.0" promptText="Indtast sagsnr. " />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;">
+      <AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="245.0" layoutY="116.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" visible="false">
          <children>
             <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">
                <effect>
