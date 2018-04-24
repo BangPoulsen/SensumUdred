@@ -1,6 +1,7 @@
 package BL;
 
 
+import DL.DatabaseHandler;
 import UI.GUIController;
 
 public class Main {

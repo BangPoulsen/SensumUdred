@@ -8,7 +8,7 @@ package UI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import BL.DatabaseHandler;
+import DL.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

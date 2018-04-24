@@ -20,8 +20,7 @@ public class Caseworker {
         cwAdress = adress;
         cwPhoneNumber = phoneNumber;
         cwEmail = email;
-        // for testing
-        //System.out.println("caseworker name :"+ name + "caseworker adress : " + adress + "caseworker phonenumber :" + phoneNumber + "caseworker email : " + email );
+
     }
 /**
  *   This method is a getter for cwName
