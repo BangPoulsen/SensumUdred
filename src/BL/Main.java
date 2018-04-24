@@ -1,29 +1,13 @@
 package BL;
 
-import static javafx.application.Application.launch;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.application.Application;
-import javafx.stage.StageStyle;
 
+import UI.GUIController;
 
-public class Main extends Application{
+public class Main {
     
-    @Override
-    public void start(Stage stage) throws Exception {
+
         
-        Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setResizable(false);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
+
 
     /**
      * @param args the command line arguments
@@ -32,9 +16,11 @@ public class Main extends Application{
     
         DatabaseHandler dbHandler = new DatabaseHandler();
         dbHandler.run();
+       GUIController guiController = new GUIController();
+       guiController.StartApplication();
 
     
-        launch(args);
+
     }
     
 

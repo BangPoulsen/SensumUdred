@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BL.UI.NewCaseController">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.NewCaseController">
    <children>
       <Label id="menuSensumLabel" fx:id="menuSensumLabel2" alignment="CENTER" focusTraversable="false" layoutX="281.0" layoutY="14.0" prefHeight="27.0" prefWidth="228.0" text="Sensum Udred">
          <effect>
@@ -44,7 +44,7 @@
       <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
       <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
       <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
-      <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
+      <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseCancelButton" prefHeight="31.0" prefWidth="130.0" text="Annuller" />
    </children>
    <effect>
       <DropShadow />

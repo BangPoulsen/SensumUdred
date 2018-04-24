@@ -55,45 +55,6 @@ public class DatabaseHandler {
         }
 
     }
-
-/*    public String getCPR(String CPR){
-        try {
-            db = DriverManager.getConnection(url, username, pasword);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM person");
-
-            while (rs.next()) {
-                String CPRnummer = rs.getString("CPRnummer");
-                System.out.println("CPRnummer: " + CPRnummer);
-                return CPRnummer;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return "CPR not found";
-    }
-    
-    public String getAllInfoCitizen(String name){
-        try {
-            db = DriverManager.getConnection(url, username, pasword);
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM person where name = '" + name + "';");
-
-            while (rs.next()) {
-                String CPRnummer = rs.getString("name");
-                System.out.println("Name: " + CPRnummer);
-                return CPRnummer;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return "Name not found";
-    }*/
-
     void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
