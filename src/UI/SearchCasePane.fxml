@@ -38,5 +38,6 @@
       <Button fx:id="searchCaseOrCprButton" layoutX="39.0" layoutY="309.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Søg på cpr/sags-nummer" />
       <Button fx:id="editCaseButton" layoutX="297.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Rediger sag" />
       <Button fx:id="deleteCaseButton" layoutX="521.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Slet sag" />
+      <Button fx:id="mainMenuButton" layoutX="39.0" layoutY="383.0" mnemonicParsing="false" onAction="#mainMenuButton" prefHeight="45.0" prefWidth="200.0" text="Hovedmenu" />
    </children>
 </AnchorPane>

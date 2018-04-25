@@ -7,8 +7,8 @@ package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -43,13 +44,21 @@ public class SearchCasePaneController extends Application implements Initializab
     private Button editCaseButton;
     @FXML
     private Button deleteCaseButton;
+    @FXML
+    private TextField txtEnterCprNumber;
+    @FXML
+    private TextField txtEnterCaseNumber;
+    @FXML
+    private Button mainMenuButton;
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    @FXML
+    private void mainMenuButton (ActionEvent event) {
+        Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new MenuController());
+
+    
     }
 
 	@Override
@@ -62,4 +71,9 @@ public class SearchCasePaneController extends Application implements Initializab
         primaryStage.sizeToScene();
         primaryStage.show();
 	}
-}
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+
+    }
