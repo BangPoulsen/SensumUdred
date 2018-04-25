@@ -53,6 +53,7 @@ public class MenuController extends Application implements Initializable {
 
     @FXML
     private void searchCase(ActionEvent event) {
+        Switch.switchWindow((Stage)searchCaseButton.getScene().getWindow(),new SearchCasePaneController());
     }
 
     @FXML
