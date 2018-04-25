@@ -122,7 +122,8 @@ public class NewCaseController extends Application implements Initializable {
 
         String street = txtRoadName.getText();
 
-        String streetNumber = street.split(" ")[-1];
+        String[] streetN = street.split(" ");
+        String streetNumber = streetN[streetN.length-1];
 
         String floor = txtFloorNumber.getText();
 
