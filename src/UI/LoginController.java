@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
@@ -96,5 +98,33 @@ import javax.xml.crypto.Data;
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+    }
+
+    @FXML
+    private void isEnterPressed(KeyEvent event) {
+        
+        if (event.getCode()== KeyCode.ENTER) {
+            if (!locked) {
+                
+                if (loginUsername.getText().equalsIgnoreCase("user")
+                        && loginPassword.getText().equals("password")) {
+                    
+                    loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
+                    Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                } else {
+                    
+                    loginSensumLabel.setText("Login failed \t Tries left: " + tries);
+                    tries--;
+                    
+                    if (tries == 0) {
+                        locked = true;
+                    }
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
+            }
+        }
+        
     }
 }
