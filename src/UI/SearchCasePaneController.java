@@ -102,10 +102,16 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void editCaseButton(ActionEvent event) {
+        
+        dbh.editCase();
+        
     }
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
+        
+        dbh.deleteCase();
+        
     }
 
     @FXML
