@@ -87,8 +87,7 @@ import javax.swing.*;
     private String getNameFromDatabase(String CPR) {
         //Return the name of a person in database
         DatabaseHandler dbh = new DatabaseHandler();
-        //TODO fix dbh.getCPR() and return dbh.getCPR(CPR) instead
-        return "Test";
+        return dbh.getName(CPR);
 
     }
 

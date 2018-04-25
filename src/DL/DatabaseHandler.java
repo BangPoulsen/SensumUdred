@@ -58,7 +58,7 @@ public class DatabaseHandler {
 
     }
 
-        public String getCPR(String CPR){
+        public String getName(String CPR){
 
         try {
 
@@ -66,17 +66,17 @@ public class DatabaseHandler {
 
             Statement st = db.createStatement();
 
-            ResultSet rs = st.executeQuery("SELECT * FROM person");
+            ResultSet rs = st.executeQuery("SELECT name FROM person");
 
 
 
             while (rs.next()) {
 
-                String CPRnummer = rs.getString("id");
+                String name = rs.getString("name");
 
-                System.out.println("CPRnummer: " + CPRnummer);
+                System.out.println("Navn: " + name);
 
-                return CPRnummer;
+                return name;
 
             }
 
