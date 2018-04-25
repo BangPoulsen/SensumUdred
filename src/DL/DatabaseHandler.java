@@ -70,5 +70,17 @@ public class DatabaseHandler {
         }
     }
 
+    public void searchCase() {
+        
+    }
+
+    public void editCase() {
+        
+    }
+
+    public void deleteCase() {
+        
+    }
+
 }
 

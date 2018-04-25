@@ -5,10 +5,11 @@
  */
 package UI;
 
+import DL.DatabaseHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -45,13 +47,26 @@ public class SearchCasePaneController extends Application implements Initializab
     private Button editCaseButton;
     @FXML
     private Button deleteCaseButton;
+    @FXML
+    private TextField txtEnterCprNumber;
+    @FXML
+    private TextField txtEnterCaseNumber;
+    @FXML
+    private Button mainMenuButton;
+    
+    private DatabaseHandler dbh;
+    @FXML
+    private TextField txtEnterName;
+    
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    @FXML
+    private void mainMenuButton (ActionEvent event) {
+        Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new MenuController());
+
+    
     }
 
 	@Override
@@ -63,9 +78,54 @@ public class SearchCasePaneController extends Application implements Initializab
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
+        
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+        
+	}
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+        dbh = new DatabaseHandler();
+        
+    }
+
+    @FXML
+    private void searchCaseOrCprButton(ActionEvent event) {
+        
+        //Search a case
+        dbh.searchCase();
+        
+    }
+
+    @FXML
+    private void editCaseButton(ActionEvent event) {
+        
+        dbh.editCase();
+        
+    }
+
+    @FXML
+    private void deleteCaseButton(ActionEvent event) {
+        
+        dbh.deleteCase();
+        
+    }
+
+    @FXML
+    private void txtEnterName(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void txtEnterCprNumber(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtEnterCaseNumber(ActionEvent event) {
+    }
 
     }
-}
+        
