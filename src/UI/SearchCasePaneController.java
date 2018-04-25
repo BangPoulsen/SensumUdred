@@ -72,6 +72,11 @@ public class SearchCasePaneController extends Application implements Initializab
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
+        
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+        
 	}
 
     @Override
@@ -79,10 +84,4 @@ public class SearchCasePaneController extends Application implements Initializab
     }
 
     }
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
-        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
-
-    }
-}
->>>>>>> 21d813979b4a219550b8204f4c79d225214a69a5
+        
