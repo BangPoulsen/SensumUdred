@@ -57,7 +57,7 @@ public class SearchCasePaneController extends Application implements Initializab
         Parent root = FXMLLoader.load(getClass().getResource("SearchCasePane.fxml"));
         Scene scene =new Scene (root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("SearchCase");
+        primaryStage.setTitle("Søg sag");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();

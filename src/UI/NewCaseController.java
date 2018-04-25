@@ -163,7 +163,7 @@ public class NewCaseController extends Application implements Initializable {
 
         Scene scene =new Scene (root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("newCase");
+        primaryStage.setTitle("Opret sag");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
