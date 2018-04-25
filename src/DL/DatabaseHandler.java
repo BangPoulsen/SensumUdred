@@ -138,7 +138,7 @@ public class DatabaseHandler {
 
     }*/
 
-    void createCase(Case caseI) {
+    public void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
         String CPR = caseI.getcCitizen().getCiUserId();

@@ -7,6 +7,10 @@ package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import BL.Case;
+import BL.Citizen;
+import DL.DatabaseHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,7 +76,7 @@ public class NewCaseController extends Application implements Initializable {
     @FXML
     private Button createCaseCancelButton;
 
-
+    private DatabaseHandler dbh = new DatabaseHandler();
 
     /**
      * Initializes the controller class.
@@ -108,6 +112,35 @@ public class NewCaseController extends Application implements Initializable {
     @FXML
     private void createCaseDoneButtonEvent(ActionEvent event) {
         Switch.switchWindow((Stage)createCaseDoneButton.getScene().getWindow(),new MenuController());
+        String fullName = txtFirstName.getText() + " " + txtLastName.getText();
+
+        String CPR = txtCprNumber.getText();
+
+        String phoneNumber = txtPhoneNumber.getText();
+
+        String email = txtEmailAdress.getText();
+
+        String street = txtRoadName.getText();
+
+        String streetNumber = street.split(" ")[-1];
+
+        String floor = txtFloorNumber.getText();
+
+        String zipCode = txtZipCode.getText();
+
+        String journalNumber = txtJournalNumber.getText();
+
+        String eventuelNotes = txtEventuelNotes.getText();
+
+
+
+        Citizen citizen = new Citizen(fullName, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
+
+        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes);
+
+
+
+        dbh.createCase(caseCreated);
     }
     @FXML
     private void createCaseCancelButton (ActionEvent event) {

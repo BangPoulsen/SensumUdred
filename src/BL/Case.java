@@ -17,7 +17,7 @@ public class Case {
     /**
      * constructor for creating a instance of a case
      */
-    Case(Citizen cCitizen,
+    public Case(Citizen cCitizen,
          String journalNumber,
          String eventuelNotes) {
         
