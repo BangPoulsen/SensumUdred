@@ -46,7 +46,7 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT id FROM person");
 
             while (rs.next()) {
-                String CPRnummer = "Test"; //TODO fix rs.getString("CPRnummer")
+                String CPRnummer = rs.getString("id");
                 System.out.println("CPRnummer: " + "" + CPRnummer);
             }
 
@@ -57,6 +57,81 @@ public class DatabaseHandler {
         }
 
     }
+
+        public String getCPR(String CPR){
+
+        try {
+
+            db = DriverManager.getConnection(url, username, pasword);
+
+            Statement st = db.createStatement();
+
+            ResultSet rs = st.executeQuery("SELECT * FROM person");
+
+
+
+            while (rs.next()) {
+
+                String CPRnummer = rs.getString("id");
+
+                System.out.println("CPRnummer: " + CPRnummer);
+
+                return CPRnummer;
+
+            }
+
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+
+        return "CPR not found";
+
+    }
+
+
+/*
+    public String getAllInfoCitizen(String name){
+
+        try {
+
+            db = DriverManager.getConnection(url, username, pasword);
+
+            Statement st = db.createStatement();
+
+            ResultSet rs = st.executeQuery("SELECT * FROM person where name = '" + name + "';");
+
+
+
+            while (rs.next()) {
+
+                String CPRnummer = rs.getString("name");
+
+                System.out.println("Name: " + CPRnummer);
+
+                return CPRnummer;
+
+            }
+
+
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+
+        }
+
+
+
+        return "Name not found";
+
+    }*/
+
     void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
@@ -75,7 +150,6 @@ public class DatabaseHandler {
             db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
             st.executeUpdate("insert into person (type, password, id, rights, email, phone, name) values ('Borger', '12345678', '" + CPR + "', 'GODMODE', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
-            //TODO add city in GUI and add it to sql statement
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             
 
