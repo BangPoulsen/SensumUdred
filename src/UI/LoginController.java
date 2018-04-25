@@ -64,29 +64,7 @@ import javax.xml.crypto.Data;
 
     @FXML
     public void Login(ActionEvent event) throws IOException {
-
-
-        if (!locked) {
-
-            if (loginUsername.getText().equalsIgnoreCase("user") &&
-                loginPassword.getText().equals("password")) {
-
-                loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
-                Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
-            } else {
-
-
-                loginSensumLabel.setText("Login failed \t Tries left: " + tries);
-                tries--;
-
-                if (tries == 0) {
-                    locked = true;
-                }
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
-        }
+        loginMethod();
     }
 
     private String getNameFromDatabase(String CPR) {
@@ -104,27 +82,33 @@ import javax.xml.crypto.Data;
     private void isEnterPressed(KeyEvent event) {
         
         if (event.getCode()== KeyCode.ENTER) {
-            if (!locked) {
-                
-                if (loginUsername.getText().equalsIgnoreCase("user")
-                        && loginPassword.getText().equals("password")) {
-                    
-                    loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
-                    Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
-                } else {
-                    
-                    loginSensumLabel.setText("Login failed \t Tries left: " + tries);
-                    tries--;
-                    
-                    if (tries == 0) {
-                        locked = true;
-                    }
-                }
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
-            }
+            loginMethod();
         }
         
     }
+
+    private void loginMethod() {
+        if (!locked) {
+
+            if (loginUsername.getText().equalsIgnoreCase("user")
+                    && loginPassword.getText().equals("password")) {
+
+                loginSensumLabel.setText("Logged in as " + getNameFromDatabase("12345678910"));
+                Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+            } else {
+
+                loginSensumLabel.setText("Login failed \t Tries left: " + tries);
+                tries--;
+
+                if (tries == 0) {
+                    locked = true;
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
+        }
+    }
+
+
 }
