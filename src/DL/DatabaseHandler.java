@@ -154,7 +154,7 @@ public class DatabaseHandler {
         //TODO catch duplicate id's
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("insert into person (type, password, id, rights, email, phone, name) values ('Borger', '12345678', '" + CPR + "', 'GODMODE', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
+            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', '12345678', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
         } catch (SQLException e) {
             e.printStackTrace();
