@@ -99,7 +99,7 @@ public class NewCaseController extends Application implements Initializable {
         String en=txtEventuelNotes.getText();
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
-            ||(rn.isEmpty()|| rn.trim().isEmpty())||(fln.isEmpty()|| fln.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
+            ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
             ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty());
             createCaseDoneButton.setDisable(isDisabled);
 
