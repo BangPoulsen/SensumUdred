@@ -120,10 +120,20 @@ public class NewCaseController extends Application implements Initializable {
 
         String email = txtEmailAdress.getText();
 
-        String street = txtRoadName.getText();
+        String[] streetSplit = txtRoadName.getText().split(" ");
 
-        String[] streetN = street.split(" ");
-        String streetNumber = streetN[streetN.length-1];
+        String street = "";
+        for (String s: streetSplit
+             ) {
+            if (s != streetSplit[streetSplit.length-1]){
+                street = street + s + " ";
+            }
+        }
+
+        street = street.trim();
+        System.out.println(street);
+
+        String streetNumber = streetSplit[streetSplit.length-1];
 
         String floor = txtFloorNumber.getText();
 
