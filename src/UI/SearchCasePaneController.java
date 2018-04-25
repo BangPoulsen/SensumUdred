@@ -110,6 +110,15 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void txtEnterName(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void txtEnterCprNumber(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtEnterCaseNumber(ActionEvent event) {
     }
 
     }
