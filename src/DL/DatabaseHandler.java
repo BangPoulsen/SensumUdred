@@ -60,6 +60,8 @@ public class DatabaseHandler {
         
     }
 
+    //TODO searchCase()
+
     public void closeConnection(){
         try {
             db.close();

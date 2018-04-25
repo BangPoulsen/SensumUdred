@@ -76,16 +76,13 @@ import javax.xml.crypto.Data;
 
     @FXML
     private void isEnterPressed(KeyEvent event) {
-        
         if (event.getCode()== KeyCode.ENTER) {
             loginMethod();
         }
-        
     }
 
     private void loginMethod() {
         if (!locked) {
-
             if (loginUsername.getText().equalsIgnoreCase("user")
                     && loginPassword.getText().equals("password")) {
 
@@ -100,11 +97,8 @@ import javax.xml.crypto.Data;
                     locked = true;
                 }
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
         }
     }
-
-
 }
