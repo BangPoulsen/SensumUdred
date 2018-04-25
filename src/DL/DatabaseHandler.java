@@ -53,7 +53,6 @@ public class DatabaseHandler {
         }
 
         try {
-            System.out.println(db.getMetaData());
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM person");
 
@@ -68,75 +67,6 @@ public class DatabaseHandler {
         }
 
     }
-
-        public String getName(String CPR){
-
-        try {
-            System.out.println(db.getMetaData());
-            Statement st = db.createStatement();
-
-            ResultSet rs = st.executeQuery("SELECT name FROM person");
-
-
-
-            while (rs.next()) {
-
-                String name = rs.getString("name");
-
-                System.out.println("Navn: " + name);
-
-                return name;
-
-            }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-
-        }
-
-
-
-        return "CPR not found";
-
-    }
-
-
-/*
-    public String getAllInfoCitizen(String name){
-
-        try {
-
-            db = DriverManager.getConnection(url, username, pasword);
-
-            Statement st = db.createStatement();
-
-            ResultSet rs = st.executeQuery("SELECT * FROM person where name = '" + name + "';");
-
-
-
-            while (rs.next()) {
-
-                String CPRnummer = rs.getString("name");
-
-                System.out.println("Name: " + CPRnummer);
-
-                return CPRnummer;
-
-            }
-
-
-
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-
-        }
-
-
-
-        return "Name not found";
-
-    }*/
 
     public void createCase(Case caseI) {
 
@@ -167,7 +97,6 @@ public class DatabaseHandler {
 
     public void closeConnection(){
         try {
-            System.out.println(db.getMetaData());
             db.close();
         } catch (SQLException e) {
             e.printStackTrace();
