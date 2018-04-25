@@ -23,8 +23,8 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEnterCprNumber" layoutX="39.0" layoutY="184.0" onAction="#txtEnterCprNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" />
-      <TextField fx:id="txtEnterCaseNumber" layoutX="39.0" layoutY="215.0" onAction="#txtEnterCaseNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" />
+      <TextField fx:id="txtEnterCprNumber" disable="true" layoutX="39.0" layoutY="184.0" onAction="#txtEnterCprNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" visible="false" />
+      <TextField fx:id="txtEnterCaseNumber" disable="true" layoutX="39.0" layoutY="215.0" onAction="#txtEnterCaseNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" visible="false" />
       <ListView fx:id="listViewCases" layoutX="298.0" layoutY="153.0" prefHeight="275.0" prefWidth="423.0">
          <effect>
             <DropShadow />
