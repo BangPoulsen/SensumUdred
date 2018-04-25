@@ -97,7 +97,6 @@ public class NewCaseController extends Application implements Initializable {
         String pn=txtPhoneNumber.getText();
         String ea=txtEmailAdress.getText();
         String rn=txtRoadName.getText();
-        String fln=txtFloorNumber.getText();
         String zc=txtZipCode.getText();
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
