@@ -67,7 +67,7 @@ public class MenuController extends Application implements Initializable {
 
         Scene scene =new Scene (root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("menu");
+        primaryStage.setTitle("Menu");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -66,7 +68,7 @@ public class SearchCasePaneController extends Application implements Initializab
         Parent root = FXMLLoader.load(getClass().getResource("SearchCasePane.fxml"));
         Scene scene =new Scene (root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("SearchCase");
+        primaryStage.setTitle("Søg sag");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
@@ -77,3 +79,10 @@ public class SearchCasePaneController extends Application implements Initializab
     }
 
     }
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+
+    }
+}
+>>>>>>> 21d813979b4a219550b8204f4c79d225214a69a5

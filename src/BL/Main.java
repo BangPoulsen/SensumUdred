@@ -15,7 +15,6 @@ public class Main {
      */
     public static void main(String[] args) {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        dbHandler.run();
         GUIController guiController = new GUIController();
         guiController.StartApplication();
         dbHandler.closeConnection();
