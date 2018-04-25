@@ -7,6 +7,7 @@ package UI;
 
 import DL.DatabaseHandler;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,10 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -109,6 +107,20 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Slet sag");
+        alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
+        ButtonType buttonTypeOne=new ButtonType("SLET");
+        ButtonType buttonTypeTwo=new ButtonType("Annuller");
+
+        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
         
         dbh.deleteCase();
         
