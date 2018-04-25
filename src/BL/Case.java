@@ -18,11 +18,11 @@ public class Case {
      * constructor for creating a instance of a case
      */
     public Case(Citizen cCitizen,
-         String journalNumber,
+         String caseID,
          String eventuelNotes) {
         
         this.cCitizen = cCitizen;
-        
+        this.cID = caseID;
         
         
         
@@ -74,6 +74,10 @@ public class Case {
 
     public void setcJournal(Journal cJournal) {
         this.cJournal = cJournal;
+    }
+
+    public String getcID(){
+        return this.cID;
     }
     
     /**
