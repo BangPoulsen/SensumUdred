@@ -23,8 +23,8 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEnterCprNumber" layoutX="39.0" layoutY="153.0" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" />
-      <TextField fx:id="txtEnterCaseNumber" layoutX="39.0" layoutY="221.0" prefHeight="52.0" prefWidth="200.0" promptText="Indtast sagsnr" />
+      <TextField fx:id="txtEnterCprNumber" layoutX="39.0" layoutY="184.0" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" />
+      <TextField fx:id="txtEnterCaseNumber" layoutX="39.0" layoutY="215.0" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" />
       <ListView fx:id="listViewCases" layoutX="298.0" layoutY="153.0" prefHeight="275.0" prefWidth="423.0">
          <effect>
             <DropShadow />
@@ -35,9 +35,10 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="searchCaseOrCprButton" layoutX="39.0" layoutY="309.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Søg på cpr/sags-nummer" />
-      <Button fx:id="editCaseButton" layoutX="297.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Rediger sag" />
-      <Button fx:id="deleteCaseButton" layoutX="521.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="200.0" text="Slet sag" />
+      <Button fx:id="searchCaseOrCprButton" layoutX="39.0" layoutY="309.0" mnemonicParsing="false" onAction="#searchCaseOrCprButton" prefHeight="45.0" prefWidth="200.0" text="Søg på cpr/sags-nummer" />
+      <Button fx:id="editCaseButton" layoutX="297.0" layoutY="455.0" mnemonicParsing="false" onAction="#editCaseButton" prefHeight="45.0" prefWidth="200.0" text="Rediger sag" />
+      <Button fx:id="deleteCaseButton" layoutX="521.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteCaseButton" prefHeight="45.0" prefWidth="200.0" text="Slet sag" />
       <Button fx:id="mainMenuButton" layoutX="39.0" layoutY="383.0" mnemonicParsing="false" onAction="#mainMenuButton" prefHeight="45.0" prefWidth="200.0" text="Hovedmenu" />
+      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
    </children>
 </AnchorPane>

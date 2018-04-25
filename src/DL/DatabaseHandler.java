@@ -68,5 +68,9 @@ public class DatabaseHandler {
         }
     }
 
+    public void searchCase() {
+        
+    }
+
 }
 

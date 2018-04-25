@@ -5,6 +5,7 @@
  */
 package UI;
 
+import DL.DatabaseHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
@@ -52,6 +53,11 @@ public class SearchCasePaneController extends Application implements Initializab
     private TextField txtEnterCaseNumber;
     @FXML
     private Button mainMenuButton;
+    
+    private DatabaseHandler dbh;
+    @FXML
+    private TextField txtEnterName;
+    
 
     /**
      * Initializes the controller class.
@@ -81,6 +87,29 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        dbh = new DatabaseHandler();
+        
+    }
+
+    @FXML
+    private void searchCaseOrCprButton(ActionEvent event) {
+        
+        //Search a case
+        dbh.searchCase();
+        
+    }
+
+    @FXML
+    private void editCaseButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteCaseButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtEnterName(ActionEvent event) {
     }
 
     }
