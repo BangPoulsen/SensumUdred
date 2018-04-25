@@ -130,7 +130,6 @@ public class NewCaseController extends Application implements Initializable {
         }
 
         street = street.trim();
-        System.out.println(street);
 
         String streetNumber = streetSplit[streetSplit.length-1];
 
