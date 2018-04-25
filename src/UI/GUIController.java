@@ -45,7 +45,7 @@ public class GUIController extends Application implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("login");
+        primaryStage.setTitle("Login");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();

@@ -33,41 +33,6 @@ public class DatabaseHandler {
         }
     }
 
-    public DatabaseHandler() {
-        try {
-            System.out.println(db.getMetaData());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    
-    
-    public void run() {
-        
-
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT id FROM person");
-
-            while (rs.next()) {
-                String CPRnummer = rs.getString("id");
-                System.out.println("CPRnummer: " + "" + CPRnummer);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-
-        }
-
-    }
-
     public void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
