@@ -18,17 +18,23 @@ import java.sql.Statement;
  * @author malte
  */
 public class DatabaseHandler {
-
-    private Connection db;
     
-    private String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
-    private String username = "pjgbvjcy";
-    private String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
+    private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
+    private static String username = "pjgbvjcy";
+    private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
+
+    private static Connection db;
+
+    static {
+        try {
+            db = DriverManager.getConnection(url, username, pasword);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public DatabaseHandler() {
         try {
-            System.out.println("Test1");
-            db = DriverManager.getConnection(url, username, pasword);
             System.out.println(db.getMetaData());
         } catch (SQLException e) {
             e.printStackTrace();

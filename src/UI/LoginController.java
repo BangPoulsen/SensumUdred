@@ -50,6 +50,8 @@ import javax.xml.crypto.Data;
 
     private boolean locked = false;
 
+    private DatabaseHandler dbh = new DatabaseHandler();
+
     /**
      * Initializes the controller class.
      */
