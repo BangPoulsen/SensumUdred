@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 
 /**
      * FXML Controller class
@@ -86,7 +87,6 @@ import javax.swing.*;
 
     private String getNameFromDatabase(String CPR) {
         //Return the name of a person in database
-        DatabaseHandler dbh = new DatabaseHandler();
         return dbh.getName(CPR);
 
     }

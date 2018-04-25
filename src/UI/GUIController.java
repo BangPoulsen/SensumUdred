@@ -32,17 +32,11 @@ public class GUIController extends Application implements Initializable {
 
     private boolean locked = false;
 
-
-    private DatabaseHandler dbh;
-
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        dbh = new DatabaseHandler();
         // TODO
     }
 

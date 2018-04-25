@@ -19,14 +19,20 @@ import java.sql.Statement;
  */
 public class DatabaseHandler {
 
-    Connection db;
+    private Connection db;
     
-    String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
-    String username = "pjgbvjcy";
-    String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
+    private String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
+    private String username = "pjgbvjcy";
+    private String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
 
     public DatabaseHandler() {
-            //C:\Users\Malte Hesk\Documents\Github\C
+        try {
+            System.out.println("Test1");
+            db = DriverManager.getConnection(url, username, pasword);
+            System.out.println(db.getMetaData());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     
@@ -41,7 +47,7 @@ public class DatabaseHandler {
         }
 
         try {
-            db = DriverManager.getConnection(url, username, pasword);
+            System.out.println(db.getMetaData());
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM person");
 
@@ -49,7 +55,6 @@ public class DatabaseHandler {
                 String CPRnummer = rs.getString("id");
                 System.out.println("CPRnummer: " + "" + CPRnummer);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -61,9 +66,7 @@ public class DatabaseHandler {
         public String getName(String CPR){
 
         try {
-
-            db = DriverManager.getConnection(url, username, pasword);
-
+            System.out.println(db.getMetaData());
             Statement st = db.createStatement();
 
             ResultSet rs = st.executeQuery("SELECT name FROM person");
@@ -79,9 +82,6 @@ public class DatabaseHandler {
                 return name;
 
             }
-
-
-
         } catch (SQLException e) {
 
             e.printStackTrace();
@@ -147,12 +147,9 @@ public class DatabaseHandler {
         //SQL Stuff
         //TODO catch duplicate id's
         try {
-            db = DriverManager.getConnection(url, username, pasword);
             Statement st = db.createStatement();
             st.executeUpdate("insert into person (type, password, id, rights, email, phone, name) values ('Borger', '12345678', '" + CPR + "', 'GODMODE', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
-            
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -160,5 +157,15 @@ public class DatabaseHandler {
         
         
     }
+
+    public void closeConnection(){
+        try {
+            System.out.println(db.getMetaData());
+            db.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
