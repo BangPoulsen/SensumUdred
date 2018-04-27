@@ -36,8 +36,6 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label createCaseLabel;
     @FXML
-    private Button createCaseDoneButton;
-    @FXML
     private Button viewSelectedNote;
     @FXML
     private Label sensumUdredLabel4;
@@ -60,7 +58,11 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label txtJournalNumber;
     @FXML
-    private ListView<?> txtViewNotes;
+    private ListView<String> txtViewNotes;
+    @FXML
+    private Label showCasesLabel;
+    @FXML
+    private Button logoffButton;
 
     /**
      * Initializes the controller class.
@@ -72,11 +74,10 @@ public class ViewCaseController extends Application implements Initializable {
 
     @FXML
     private void LogOffEvent(ActionEvent event) {
+        Switch.switchWindow((Stage)this.logoffButton.getScene().getWindow(),new LoginController());
+        
     }
 
-    @FXML
-    private void keyReleasedProberty(KeyEvent event) {
-    }
 
     @FXML
     private void ViewNoteEvent(ActionEvent event) {
@@ -88,7 +89,7 @@ public class ViewCaseController extends Application implements Initializable {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("ViewCase");
+        primaryStage.setTitle("Se sag");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
@@ -96,6 +97,10 @@ public class ViewCaseController extends Application implements Initializable {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
+
+    @FXML
+    private void keyReleasedProberty(KeyEvent event) {
     }
 
 }
