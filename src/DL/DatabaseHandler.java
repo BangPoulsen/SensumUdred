@@ -70,7 +70,7 @@ public class DatabaseHandler {
     public ResultSet searchCase(String name) {
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen = (select id from person where name like '" + name +"%')");
+            st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen = (select id from person where upper(name) like upper('" + name +"%'))");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {

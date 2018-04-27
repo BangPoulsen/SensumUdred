@@ -8,6 +8,8 @@ package UI;
 import DL.DatabaseHandler;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -99,13 +101,22 @@ public class SearchCasePaneController extends Application implements Initializab
         ResultSet results = dbh.searchCase(txtEnterName.getText());
         
         listViewCases.getItems().clear();
-        
-        
-        for (String caseName : results) {
-            listViewCases.getItems().add(caseName);
+
+        try {
+            ResultSetMetaData rsmdt = results.getMetaData();
+            String caseString;
+            while (results.next()) {
+                caseString = "";
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    caseString = caseString + results.getString(i) + " ";
+                }
+                caseString.trim();
+                System.out.println(caseString);
+                listViewCases.getItems().add(caseString);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        
-        
     }
 
     @FXML
