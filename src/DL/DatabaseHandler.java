@@ -83,7 +83,15 @@ public class DatabaseHandler {
         
     }
 
-    public void deleteCase() {
+    public void deleteCase(String id) {
+        
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("DELETE * FROM sag WHERE id = '" + id + "';");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
         
     }
 
