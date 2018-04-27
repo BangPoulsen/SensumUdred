@@ -10,9 +10,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,15 +101,20 @@ public class SearchCasePaneController extends Application implements Initializab
         
         listViewCases.getItems().clear();
 
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("caseid", "Sags ID");
+        hashMap.put("citizen", "CPR");
+        hashMap.put("name", "Navn");
         try {
             ResultSetMetaData rsmdt = results.getMetaData();
             String caseString;
             while (results.next()) {
                 caseString = "";
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    caseString = caseString + results.getString(i) + " ";
+                    caseString = caseString + hashMap.get(rsmdt.getColumnName(i)) + ": " + results.getString(i) + ", ";
                 }
                 caseString.trim();
+                caseString = caseString.substring(0, caseString.length()-2);
                 System.out.println(caseString);
                 listViewCases.getItems().add(caseString);
             }
