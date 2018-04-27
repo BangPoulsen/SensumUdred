@@ -7,21 +7,29 @@ package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author malte
  */
-public class ViewCaseController implements Initializable {
+public class ViewCaseController extends Application implements Initializable {
 
     @FXML
     private AnchorPane createCasePane;
@@ -60,7 +68,7 @@ public class ViewCaseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void LogOffEvent(ActionEvent event) {
@@ -73,5 +81,21 @@ public class ViewCaseController implements Initializable {
     @FXML
     private void ViewNoteEvent(ActionEvent event) {
     }
-    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("ViewCase.fxml"));
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("ViewCase");
+        primaryStage.setResizable(false);
+        primaryStage.sizeToScene();
+        primaryStage.show();
+
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
+
 }
