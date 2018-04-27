@@ -19,6 +19,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -116,22 +117,48 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
+        /*Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Slet sag");
         alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
         ButtonType buttonTypeOne=new ButtonType("SLET");
         ButtonType buttonTypeTwo=new ButtonType("Annuller");
-
+        
         alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
-
+        
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            // ... user chose OK
-        } else {
-            // ... user chose CANCEL or closed the dialog
+        
+        
+        if (result.isPresent()) {
+        String id = listViewCases.getSelectionModel().getSelectedItems().toString();
+        
+        System.out.println("Id: " + id);
+        
+        dbh.deleteCase(id);
+        } */
+        
+        Alert alert = new Alert(AlertType.NONE);
+        alert.setTitle("Slet sag");
+        alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
+
+        ButtonType buttonTypeOne=new ButtonType("SLET");
+        ButtonType buttonTypeTwo=new ButtonType("Annuller");
+        
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        
+        Optional<ButtonType> result = alert.showAndWait();
+            
+        if (result.get() == buttonTypeOne){
+            String id = listViewCases.getSelectionModel().getSelectedItems().toString();
+        
+            System.out.println("Id: " + id);
+        
+            dbh.deleteCase(id);
+            
+        } else if (result.get() == buttonTypeTwo) {
+            System.out.println("Canceled");
         }
         
-        dbh.deleteCase();
+
         
     }
 
