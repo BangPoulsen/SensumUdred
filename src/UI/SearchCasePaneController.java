@@ -94,7 +94,7 @@ public class SearchCasePaneController extends Application implements Initializab
     private void searchCaseOrCprButton(ActionEvent event) {
         
         //Search a case
-        dbh.searchCase();
+        dbh.searchCase(txtEnterName.getText());
         
     }
 

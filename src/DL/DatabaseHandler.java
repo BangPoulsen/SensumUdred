@@ -7,11 +7,8 @@ package DL;
 
 import BL.Case;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -70,8 +67,30 @@ public class DatabaseHandler {
         }
     }
 
-    public void searchCase() {
-        
+    public ArrayList<String> searchCase(String name) {
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select caseid, citizen from sag where citizen = (select id from person where name = '" + name +"')");
+            ResultSet rs = st.getResultSet();
+            ArrayList<String> results = new ArrayList<>();
+
+            ResultSetMetaData rsmdt = rs.getMetaData();
+            String caseString;
+            while (rs.next()) {
+                caseString = "";
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++){
+                    caseString = caseString + rs.getString(i) + " ";
+                }
+                caseString.trim();
+                results.add(caseString);
+                System.out.println(caseString);
+            }
+
+            return results;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void editCase() {
