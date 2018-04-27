@@ -87,7 +87,7 @@ public class DatabaseHandler {
         
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("DELETE FROM sag WHERE caseid = '" + id + "';");
+            st.executeUpdate("DELETE FROM sag WHERE caseid = '" + id + "';");
             
             System.out.println("Case deleted");
         } catch (SQLException e) {
