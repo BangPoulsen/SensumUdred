@@ -23,9 +23,6 @@ public class Case {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
-        
-        
-        
     }
 /**
  *   This method is a getter for cdate
