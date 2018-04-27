@@ -115,5 +115,24 @@ public class DatabaseHandler {
         
     }
 
+    public String getType(String username) {
+        
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE type = '" + username + "';");
+            
+            while (rs.next()) {
+                                String type = rs.getString("type");
+                                
+                                return type;
+                            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
 }
 

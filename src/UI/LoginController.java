@@ -86,13 +86,20 @@ import javax.xml.crypto.Data;
             
             String username = loginUsername.getText();
             String password = loginPassword.getText();
-            
-            
-            
+
             if (dbh.loginAttempt(username, password)) {
+                
+                switch (dbh.getType(username)){
+                    case "borger":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
+                        break;
+                    case "sagsbehandler":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                        break;
+                }
 
                 
-                Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                
             } else {
 
                 loginSensumLabel.setText("Login failed \t Tries left: " + tries);
