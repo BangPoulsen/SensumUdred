@@ -129,25 +129,8 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
-        /*Alert alert = new Alert(Alert.AlertType.NONE);
-        alert.setTitle("Slet sag");
-        alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
-        ButtonType buttonTypeOne=new ButtonType("SLET");
-        ButtonType buttonTypeTwo=new ButtonType("Annuller");
         
-        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
-        
-        Optional<ButtonType> result = alert.showAndWait();
-        
-        
-        if (result.isPresent()) {
-        String id = listViewCases.getSelectionModel().getSelectedItems().toString();
-        
-        System.out.println("Id: " + id);
-        
-        dbh.deleteCase(id);
-        } */
-        
+       
         Alert alert = new Alert(AlertType.NONE);
         alert.setTitle("Slet sag");
         alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
@@ -161,14 +144,14 @@ public class SearchCasePaneController extends Application implements Initializab
             
         if (result.get() == buttonTypeOne){
             String id = listViewCases.getSelectionModel().getSelectedItems().toString();
-        
-            System.out.println("Id: " + id);
-        
-            dbh.deleteCase(id);
             
-        } else if (result.get() == buttonTypeTwo) {
-            System.out.println("Canceled");
-        }
+            String[] caseID = id.split(" ");
+            
+            String finalID = caseID[0].substring(1);
+        
+            dbh.deleteCase(finalID);
+            
+        } 
         
 
         
