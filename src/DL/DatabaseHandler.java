@@ -123,7 +123,7 @@ public class DatabaseHandler {
             
             while (rs.next()) {
                                 String type = rs.getString("type");
-                                
+                                System.out.println(type);
                                 return type;
                             }
             
