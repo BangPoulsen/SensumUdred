@@ -37,7 +37,7 @@ public class SearchCasePaneController extends Application implements Initializab
     @FXML
     private Label searchCaseLabel;
     @FXML
-    private ListView<?> listViewCases;
+    private ListView<String> listViewCases;
     @FXML
     private Label showCasesLabel;
     @FXML
@@ -96,6 +96,14 @@ public class SearchCasePaneController extends Application implements Initializab
         
         //Search a case
         ArrayList<String> results = dbh.searchCase(txtEnterName.getText());
+        
+        listViewCases.getItems().clear();
+        
+        
+        for (String caseName : results) {
+            listViewCases.getItems().add(caseName);
+        }
+        
         
     }
 
