@@ -83,11 +83,23 @@ import javax.xml.crypto.Data;
 
     private void loginMethod() {
         if (!locked) {
-            if (loginUsername.getText().equalsIgnoreCase("user")
-                    && loginPassword.getText().equals("password")) {
+            
+            String username = loginUsername.getText();
+            String password = loginPassword.getText();
 
-                loginSensumLabel.setText("Logged in as 'Insert name of awesome person'");
-                Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+            if (dbh.loginAttempt(username, password)) {
+                
+                switch (dbh.getType(username)){
+                    case "borger":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
+                        break;
+                    case "sagsbehandler":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                        break;
+                }
+
+                
+                
             } else {
 
                 loginSensumLabel.setText("Login failed \t Tries left: " + tries);
@@ -97,6 +109,8 @@ import javax.xml.crypto.Data;
                     locked = true;
                 }
             }
+            
+            
         } else {
             JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
         }

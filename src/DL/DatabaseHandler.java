@@ -46,7 +46,7 @@ public class DatabaseHandler {
         //TODO catch duplicate id's
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', '12345678', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
+            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', 'password', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
         } catch (SQLException e) {
@@ -99,6 +99,58 @@ public class DatabaseHandler {
 
     public void deleteCase() {
         
+    }
+
+    public boolean loginAttempt(String username, String userPassword) {
+       
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE type = '" + username + "' AND password = '" + userPassword + "';");
+            
+            while (rs.next()) {
+                                String type = rs.getString("email");
+                                String password = rs.getString("password");
+                                String id = rs.getString("id");
+                                //String adress = rs.getString("adress");
+                                String email = rs.getString("email");
+                                String phone = rs.getString("phone");
+                                String name = rs.getString("name");
+                                
+                                
+                       
+                                
+                                
+                                
+                                System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
+                                
+                                return true;
+                            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+        
+    }
+
+    public String getType(String username) {
+        
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE type = '" + username + "';");
+            
+            while (rs.next()) {
+                                String type = rs.getString("type");
+                                
+                                return type;
+                            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
     }
 
 }
