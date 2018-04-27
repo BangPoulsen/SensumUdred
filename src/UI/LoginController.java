@@ -90,10 +90,10 @@ import javax.xml.crypto.Data;
             if (dbh.loginAttempt(username, password)) {
                 
                 switch (dbh.getType(username)){
-                    case "borger":
+                    case "Borger":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
                         break;
-                    case "sagsbehandler":
+                    case "Sagsbehandler":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
                         break;
                 }
