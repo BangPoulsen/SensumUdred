@@ -7,6 +7,7 @@ package UI;
 
 import DL.DatabaseHandler;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Application;
@@ -94,7 +95,7 @@ public class SearchCasePaneController extends Application implements Initializab
     private void searchCaseOrCprButton(ActionEvent event) {
         
         //Search a case
-        dbh.searchCase(txtEnterName.getText());
+        ArrayList<String> results = dbh.searchCase(txtEnterName.getText());
         
     }
 
