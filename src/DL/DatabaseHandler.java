@@ -86,7 +86,7 @@ public class DatabaseHandler {
        
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE type = '" + username + "' AND password = '" + userPassword + "';");
             
             while (rs.next()) {
                                 String type = rs.getString("email");
