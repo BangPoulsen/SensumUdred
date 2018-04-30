@@ -13,6 +13,43 @@ public class Case {
     private Relative cRelative;
     private String cID;
     private Journal cJournal;
+    private String cEventuelNotes;
+
+    public SupportPerson getcSupport() {
+        return cSupport;
+    }
+
+    public void setcSupport(SupportPerson cSupport) {
+        this.cSupport = cSupport;
+    }
+
+    public Consultant getcDoctor() {
+        return cDoctor;
+    }
+
+    public void setcDoctor(Consultant cDoctor) {
+        this.cDoctor = cDoctor;
+    }
+
+    public Relative getcRelative() {
+        return cRelative;
+    }
+
+    public void setcRelative(Relative cRelative) {
+        this.cRelative = cRelative;
+    }
+
+    public void setcID(String cID) {
+        this.cID = cID;
+    }
+
+    public String getcEventuelNotes() {
+        return cEventuelNotes;
+    }
+
+    public void setcEventuelNotes(String cEventuelNotes) {
+        this.cEventuelNotes = cEventuelNotes;
+    }
 
     /**
      * constructor for creating a instance of a case
@@ -23,6 +60,7 @@ public class Case {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
+        this.cEventuelNotes=eventuelNotes;
         
         
         
@@ -60,9 +98,7 @@ public class Case {
         this.cResponsible = cResponsible;
     }
 
-    public Citizen getcCitizen() {
-        return cCitizen;
-    }
+    public Citizen getcCitizen() {return cCitizen;   }
 
     public void setcCitizen(Citizen cCitizen) {
         this.cCitizen = cCitizen;
@@ -76,8 +112,8 @@ public class Case {
         this.cJournal = cJournal;
     }
 
-    public String getcID(){
-        return this.cID;
+    public String getcID(){return this.cID;
+
     }
     
     /**
@@ -92,8 +128,10 @@ public class Case {
                "Citizen: " + cCitizen + "\n" +
                "Journal: " + cJournal;
     }
-    
-} 
+
+
+    }
+
 
 
 

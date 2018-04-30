@@ -9,6 +9,7 @@ import BL.Case;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -41,14 +42,19 @@ public class DatabaseHandler {
         String floor = caseI.getcCitizen().getCiFloor();
         String zipCode = caseI.getcCitizen().getCiZipCode();
         String journalNumber = caseI.getcID();
+        String note = caseI.getcEventuelNotes();
+
 
         //SQL Stuff
         //TODO catch duplicate id's
+
+
         try {
             Statement st = db.createStatement();
             st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', 'password', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
+            st.executeUpdate("INSERT into journal (timestamp, note, caseid) values ('"+new Date().toString()+"', '"+note+"','"+journalNumber+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }
