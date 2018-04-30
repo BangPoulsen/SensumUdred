@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="menuPage" fx:id="menuPane" focusTraversable="true" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuController">
+<AnchorPane id="menuPage" fx:id="menuPane" focusTraversable="true" prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuController">
    <effect>
       <DropShadow />
    </effect>

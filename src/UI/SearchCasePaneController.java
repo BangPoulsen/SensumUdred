@@ -10,9 +10,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +21,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -102,15 +102,20 @@ public class SearchCasePaneController extends Application implements Initializab
         
         listViewCases.getItems().clear();
 
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("caseid", "Sags ID");
+        hashMap.put("citizen", "CPR");
+        hashMap.put("name", "Navn");
         try {
             ResultSetMetaData rsmdt = results.getMetaData();
             String caseString;
             while (results.next()) {
                 caseString = "";
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    caseString = caseString + results.getString(i) + " ";
+                    caseString = caseString + hashMap.get(rsmdt.getColumnName(i)) + ": " + results.getString(i) + ", ";
                 }
                 caseString.trim();
+                caseString = caseString.substring(0, caseString.length()-2);
                 System.out.println(caseString);
                 listViewCases.getItems().add(caseString);
             }
@@ -128,22 +133,33 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.NONE);
+        
+       
+        Alert alert = new Alert(AlertType.NONE);
         alert.setTitle("Slet sag");
         alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
+
         ButtonType buttonTypeOne=new ButtonType("SLET");
         ButtonType buttonTypeTwo=new ButtonType("Annuller");
-
-        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            // ... user chose OK
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
         
-        dbh.deleteCase();
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+        
+        Optional<ButtonType> result = alert.showAndWait();
+            
+        if (result.get() == buttonTypeOne){
+            String id = listViewCases.getSelectionModel().getSelectedItems().toString();
+            
+            String[] caseID = id.split(" ");
+            
+            String finalID = caseID[2].substring(0, caseID[2].length()-1);
+            
+            System.out.println(finalID);
+        
+            dbh.deleteCase(finalID);
+            
+        } 
+        
+
         
     }
 
