@@ -43,6 +43,8 @@ public class NewCaseController extends Application implements Initializable {
     private Label createCaseLabel;
 
     @FXML
+    private TextField txtAutor;
+    @FXML
     private TextField txtFirstName;
 
     @FXML
@@ -102,10 +104,11 @@ public class NewCaseController extends Application implements Initializable {
         String zc=txtZipCode.getText();
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
+        String au=txtAutor.getText();
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
-            ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty());
+            ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty()) ||(au.isEmpty()|| au.trim().isEmpty());
             createCaseDoneButton.setDisable(isDisabled);
 
     }
@@ -143,11 +146,13 @@ public class NewCaseController extends Application implements Initializable {
 
         String eventuelNotes = txtEventuelNotes.getText();
 
+        String autor = txtAutor.getText();
+
 
 
         Citizen citizen = new Citizen(fullName, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
 
-        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes);
+        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, autor);
 
 
 

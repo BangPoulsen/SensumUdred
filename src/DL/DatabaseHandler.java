@@ -43,6 +43,7 @@ public class DatabaseHandler {
         String zipCode = caseI.getcCitizen().getCiZipCode();
         String journalNumber = caseI.getcID();
         String note = caseI.getcEventuelNotes();
+        String autor= caseI.getcAutor();
 
 
         //SQL Stuff
@@ -54,7 +55,7 @@ public class DatabaseHandler {
             st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', 'password', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
-            st.executeUpdate("INSERT into journal (timestamp, note, caseid) values ('"+new Date().toString()+"', '"+note+"','"+journalNumber+"')");
+            st.executeUpdate("INSERT into journal (timestamp,author, note, caseid) values ('"+new Date().toString()+"', '"+autor+"', '"+note+"','"+journalNumber+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

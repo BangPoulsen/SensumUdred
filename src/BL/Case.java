@@ -14,6 +14,13 @@ public class Case {
     private String cID;
     private Journal cJournal;
     private String cEventuelNotes;
+    private String cAutor;
+
+    public String getcAutor() { return cAutor;
+    }
+
+    public void setcAutor(String cAutor) {this.cAutor = cAutor;
+    }
 
     public SupportPerson getcSupport() {
         return cSupport;
@@ -56,11 +63,13 @@ public class Case {
      */
     public Case(Citizen cCitizen,
          String caseID,
-         String eventuelNotes) {
+         String eventuelNotes,
+         String autor ) {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
         this.cEventuelNotes=eventuelNotes;
+        this.cAutor=autor;
         
         
         
