@@ -121,13 +121,6 @@ public class DatabaseHandler {
                                 String phone = rs.getString("phone");
                                 String name = rs.getString("name");
                                 
-                                
-                       
-                                
-                                
-                                
-                                System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
-                                
                                 return true;
                             }
             
@@ -147,7 +140,6 @@ public class DatabaseHandler {
             
             while (rs.next()) {
                                 String id = rs.getString("type");
-                                System.out.println(id);
                                 return id;
                             }
             

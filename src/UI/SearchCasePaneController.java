@@ -133,8 +133,6 @@ public class SearchCasePaneController extends Application implements Initializab
                 
                 String finalID = caseID[2].substring(0, caseID[2].length() - 1);
                 
-                System.out.println(finalID);
-                
                 dbh.deleteCase(finalID);
                 
                 SearchCaseMethod();
@@ -184,7 +182,6 @@ public class SearchCasePaneController extends Application implements Initializab
                 }
                 caseString.trim();
                 caseString = caseString.substring(0, caseString.length()-2);
-                System.out.println(caseString);
                 listViewCases.getItems().add(caseString);
             }
         } catch (SQLException e) {
