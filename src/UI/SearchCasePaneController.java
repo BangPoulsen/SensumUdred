@@ -22,9 +22,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -97,6 +99,72 @@ public class SearchCasePaneController extends Application implements Initializab
     @FXML
     private void searchCaseOrCprButton(ActionEvent event) {
         
+        SearchCaseMethod();
+    }
+
+    @FXML
+    private void editCaseButton(ActionEvent event) {
+        
+        dbh.editCase();
+        
+    }
+
+    @FXML
+    private void deleteCaseButton(ActionEvent event) {
+        
+       
+        if (!listViewCases.getSelectionModel().getSelectedItems().isEmpty()) {
+            
+            Alert alert = new Alert(AlertType.NONE);
+            alert.setTitle("Slet sag");
+            alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
+            
+            ButtonType buttonTypeOne = new ButtonType("SLET");
+            ButtonType buttonTypeTwo = new ButtonType("Annuller");
+            
+            alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+            
+            Optional<ButtonType> result = alert.showAndWait();
+            
+            if (result.get() == buttonTypeOne) {
+                String id = listViewCases.getSelectionModel().getSelectedItems().toString();
+                
+                String[] caseID = id.split(" ");
+                
+                String finalID = caseID[2].substring(0, caseID[2].length() - 1);
+                
+                System.out.println(finalID);
+                
+                dbh.deleteCase(finalID);
+                
+                SearchCaseMethod();
+                
+            }
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Ingen sag valgt");
+            
+        }
+ 
+        
+
+        
+    }
+
+    @FXML
+    private void txtEnterName(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void txtEnterCprNumber(ActionEvent event) {
+    }
+
+    @FXML
+    private void txtEnterCaseNumber(ActionEvent event) {
+    }
+
+    private void SearchCaseMethod() {
         //Search a case
         ResultSet results = dbh.searchCase(txtEnterName.getText());
         
@@ -125,56 +193,15 @@ public class SearchCasePaneController extends Application implements Initializab
     }
 
     @FXML
-    private void editCaseButton(ActionEvent event) {
+    private void isEnterPressed(KeyEvent event) {
         
-        dbh.editCase();
-        
-    }
-
-    @FXML
-    private void deleteCaseButton(ActionEvent event) {
-        
-       
-        Alert alert = new Alert(AlertType.NONE);
-        alert.setTitle("Slet sag");
-        alert.setContentText("Er du sikker på at du vil slette? \n (Dette valg kan ikke fortrydes.)");
-
-        ButtonType buttonTypeOne=new ButtonType("SLET");
-        ButtonType buttonTypeTwo=new ButtonType("Annuller");
-        
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-        
-        Optional<ButtonType> result = alert.showAndWait();
+        if(event.getCode()==event.getCode().ENTER){
             
-        if (result.get() == buttonTypeOne){
-            String id = listViewCases.getSelectionModel().getSelectedItems().toString();
-            
-            String[] caseID = id.split(" ");
-            
-            String finalID = caseID[2].substring(0, caseID[2].length()-1);
-            
-            System.out.println(finalID);
-        
-            dbh.deleteCase(finalID);
-            
-        } 
-        
-
+            SearchCaseMethod();
+        }
         
     }
 
-    @FXML
-    private void txtEnterName(ActionEvent event) {
-        
-    }
 
-    @FXML
-    private void txtEnterCprNumber(ActionEvent event) {
-    }
-
-    @FXML
-    private void txtEnterCaseNumber(ActionEvent event) {
-    }
-
-    }
+}
         

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="searchCasePane" layoutX="2.0" layoutY="2.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.SearchCasePaneController">
+<AnchorPane id="AnchorPane" fx:id="searchCasePane" layoutX="2.0" layoutY="2.0" onKeyPressed="#isEnterPressed" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.SearchCasePaneController">
    <effect>
       <DropShadow />
    </effect>
@@ -47,6 +47,6 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
+      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" onKeyPressed="#isEnterPressed" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
    </children>
 </AnchorPane>
