@@ -147,9 +147,15 @@ public class NewCaseController extends Application implements Initializable {
             String[] streetSplit = txtRoadName.getText().split(" ");
             
             String street = "";
-            for (String s : streetSplit) {
-                if (s != streetSplit[streetSplit.length - 1]) {
-                    street = street + s + " ";
+            for (String s: streetSplit
+                    ) {
+                if (streetSplit.length != 1) {
+                    if (s != streetSplit[streetSplit.length - 1]) {
+                        street = street + s + " ";
+                    }
+                }
+                else {
+                    street = s;
                 }
             }
             

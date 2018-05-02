@@ -23,6 +23,7 @@ public class DatabaseHandler {
     private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
 
     private static Connection db;
+    private static String user = "";
 
     static {
         try {
@@ -61,9 +62,9 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
-        
+
+
+
     }
 
     //TODO searchCase()
@@ -77,6 +78,7 @@ public class DatabaseHandler {
     }
 
     public ResultSet searchCase(String name) {
+        System.out.println(user);
         try {
             Statement st = db.createStatement();
             st.executeQuery("select sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
@@ -89,29 +91,29 @@ public class DatabaseHandler {
     }
 
     public void editCase() {
-        
+
     }
 
     public void deleteCase(String id) {
-        
+
         try {
             Statement st = db.createStatement();
             st.executeUpdate("DELETE FROM sag WHERE caseid = '" + id + "';");
-            
+
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
+
+
     }
 
     public boolean loginAttempt(String username, String userPassword) {
-       
+
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
-            
+
             while (rs.next()) {
                                 String type = rs.getString("email");
                                 String password = rs.getString("password");
@@ -120,38 +122,46 @@ public class DatabaseHandler {
                                 String email = rs.getString("email");
                                 String phone = rs.getString("phone");
                                 String name = rs.getString("name");
-                                
+
+
+
+
+
+
+                                System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
+
                                 return true;
-                            }
-            
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return false;
-        
+
     }
 
     public String getId(String username) {
-        
+
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
-            
+
             while (rs.next()) {
                                 String id = rs.getString("type");
                                 return id;
                             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return null;
     }
 
     public ArrayList<String> getCIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
+        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
@@ -168,5 +178,27 @@ public class DatabaseHandler {
         return caseIDs;
     }
 
+
+    public ResultSet getCitizenInfo(String id) {
+        System.out.println(id);
+        return getInfo(id);
+    }
+
+    public ResultSet getCitizenInfo() {
+        System.out.println(user);
+        return getInfo(user);
+    }
+
+    private ResultSet getInfo(String id) {
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id where sag.citizen = '" + id + "';");
+            ResultSet rs = st.getResultSet();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
