@@ -14,12 +14,12 @@ public class Case {
     private String cID;
     private Journal cJournal;
     private String cEventuelNotes;
-    private String cAutor;
+    private String cauthor;
 
-    public String getcAutor() { return cAutor;
+    public String getcauthor() { return cauthor;
     }
 
-    public void setcAutor(String cAutor) {this.cAutor = cAutor;
+    public void setcauthor(String cauthor) {this.cauthor = cauthor;
     }
 
     public SupportPerson getcSupport() {
@@ -64,12 +64,12 @@ public class Case {
     public Case(Citizen cCitizen,
          String caseID,
          String eventuelNotes,
-         String autor ) {
+         String author ) {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
         this.cEventuelNotes=eventuelNotes;
-        this.cAutor=autor;
+        this.cauthor=author;
         
         
         

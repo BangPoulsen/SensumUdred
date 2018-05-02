@@ -43,7 +43,7 @@ public class NewCaseController extends Application implements Initializable {
     private Label createCaseLabel;
 
     @FXML
-    private TextField txtAutor;
+    private TextField txtauthor;
     @FXML
     private TextField txtFirstName;
 
@@ -104,7 +104,7 @@ public class NewCaseController extends Application implements Initializable {
         String zc=txtZipCode.getText();
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
-        String au=txtAutor.getText();
+        String au=txtauthor.getText();
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
@@ -146,13 +146,13 @@ public class NewCaseController extends Application implements Initializable {
 
         String eventuelNotes = txtEventuelNotes.getText();
 
-        String autor = txtAutor.getText();
+        String author = txtauthor.getText();
 
 
 
         Citizen citizen = new Citizen(fullName, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
 
-        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, autor);
+        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
 
 
 
