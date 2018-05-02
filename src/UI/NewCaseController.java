@@ -106,7 +106,7 @@ public class NewCaseController extends Application implements Initializable {
         String zc=txtZipCode.getText();
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
-        String au=txtauthor.getText();
+        String au=txtAuthor.getText();
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
