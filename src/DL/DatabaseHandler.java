@@ -129,6 +129,7 @@ public class DatabaseHandler {
 
 
                                 System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
+                                user = id;
 
                                 return true;
             }
