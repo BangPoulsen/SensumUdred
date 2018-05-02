@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="2.0" layoutY="2.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.NewCaseController">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" layoutX="2.0" layoutY="2.0" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.NewCaseController">
    <children>
       <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Opret ny sag" underline="true">
          <font>
@@ -28,7 +28,7 @@
       <TextField fx:id="txtRoadName" layoutX="52.0" layoutY="298.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Vejnavn" />
       <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="329.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
       <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="360.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
-      <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
+      <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Kodeord" />
       <TextField fx:id="txtAuthor" layoutX="443.0" layoutY="97.0" prefHeight="30.0" prefWidth="228.0" promptText="Forfatter" />
       <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" onKeyReleased="#keyReleasedProberty" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
       <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" onKeyReleased="#keyReleasedProberty" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />

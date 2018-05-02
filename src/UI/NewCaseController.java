@@ -98,6 +98,7 @@ public class NewCaseController extends Application implements Initializable {
     /**
      *  method that disables createCaseDonebutton if the form is empty
      */
+    @FXML
     public void keyReleasedProberty(){
         
     }
