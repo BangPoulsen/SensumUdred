@@ -7,8 +7,10 @@ package UI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import DL.DatabaseHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,12 +76,16 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Button closeNoteButton;
 
+    private DatabaseHandler dbh;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        dbh = new DatabaseHandler();
+        ResultSet info = dbh.getCitizenInfo();
     }
 
     @FXML

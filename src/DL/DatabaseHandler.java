@@ -123,11 +123,6 @@ public class DatabaseHandler {
                                 String phone = rs.getString("phone");
                                 String name = rs.getString("name");
 
-
-
-
-
-
                                 System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
                                 user = id;
 
