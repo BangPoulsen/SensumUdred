@@ -14,5 +14,28 @@ class Journal {
     private String timeStamp;
     private String caseID;
     private String eventuelNotes;
-    
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public String getCaseID() {
+        return caseID;
+    }
+
+    public void setCaseID(String caseID) {
+        this.caseID = caseID;
+    }
+
+    public String getEventuelNotes() {
+        return eventuelNotes;
+    }
+
+    public void setEventuelNotes(String eventuelNotes) {
+        this.eventuelNotes = eventuelNotes;
+    }
 }

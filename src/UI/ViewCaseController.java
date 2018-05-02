@@ -5,6 +5,7 @@
  */
 package UI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,7 +37,7 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label createCaseLabel;
     @FXML
-    private Button createCaseDoneButton;
+    private Button logoffButton;
     @FXML
     private Button viewSelectedNote;
     @FXML
@@ -72,6 +73,7 @@ public class ViewCaseController extends Application implements Initializable {
 
     @FXML
     private void LogOffEvent(ActionEvent event) {
+        Switch.switchWindow((Stage)logoffButton.getScene().getWindow(),new GUIController());
     }
 
     @FXML
