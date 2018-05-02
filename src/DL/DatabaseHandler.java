@@ -108,7 +108,7 @@ public class DatabaseHandler {
        
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE type = '" + username + "' AND password = '" + userPassword + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
             
             while (rs.next()) {
                                 String type = rs.getString("email");
@@ -137,16 +137,16 @@ public class DatabaseHandler {
         
     }
 
-    public String getType(String username) {
+    public String getId(String username) {
         
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE type = '" + username + "';");
+            ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
             
             while (rs.next()) {
-                                String type = rs.getString("type");
-                                System.out.println(type);
-                                return type;
+                                String id = rs.getString("type");
+                                System.out.println(id);
+                                return id;
                             }
             
         } catch (SQLException e) {
