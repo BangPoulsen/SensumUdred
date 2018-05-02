@@ -158,5 +158,23 @@ public class DatabaseHandler {
         return null;
     }
 
+    public ArrayList<String> getCIDList() {
+        ArrayList<String> caseIDs = new ArrayList<>();
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
+
+            while (rs.next()) {
+                String id = rs.getString("caseid");
+                caseIDs.add(id);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return caseIDs;
+    }
+
 }
 

@@ -6,6 +6,7 @@
 package UI;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -122,8 +123,14 @@ public class NewCaseController extends Application implements Initializable {
 
         Random random = new Random();
         int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+        ArrayList<String> caseIDs = dbh.getCIDList();
         System.out.println(caseID);
         String journalNumber = Integer.toString(caseID);
+
+        while (caseIDs.contains(journalNumber)) {
+            caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+            journalNumber = Integer.toString(caseID);
+        }
 
         String fullName = txtFirstName.getText() + " " + txtLastName.getText();
 
