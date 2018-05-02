@@ -148,7 +148,7 @@ public class NewCaseController extends Application implements Initializable {
 
         String eventuelNotes = txtEventuelNotes.getText();
 
-        String author = txtauthor.getText();
+        String author = txtAuthor.getText();
 
 
 
