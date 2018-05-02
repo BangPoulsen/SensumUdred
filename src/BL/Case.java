@@ -16,7 +16,8 @@ public class Case {
     private String cEventuelNotes;
     private String cauthor;
 
-    public String getcauthor() { return cauthor;
+    public String getcauthor() {
+        return cauthor;
     }
 
     public void setcauthor(String cauthor) {this.cauthor = cauthor;

@@ -89,7 +89,7 @@ import javax.xml.crypto.Data;
 
             if (dbh.loginAttempt(username, password)) {
                 
-                switch (dbh.getType(username)){
+                switch (dbh.getId(username)){
                     case "Borger":
                         
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
