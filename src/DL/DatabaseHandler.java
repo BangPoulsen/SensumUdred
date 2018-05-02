@@ -23,7 +23,6 @@ public class DatabaseHandler {
     private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
 
     private static Connection db;
-    private static String user = "";
 
     static {
         try {
@@ -78,10 +77,9 @@ public class DatabaseHandler {
     }
 
     public ResultSet searchCase(String name) {
-        System.out.println(user);
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
+            st.executeQuery("select sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
@@ -123,16 +121,8 @@ public class DatabaseHandler {
                                 String phone = rs.getString("phone");
                                 String name = rs.getString("name");
                                 
-                                
-                       
-                                
-                                
-                                
-                                System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
-                                user = id;
-                                System.out.println(user);
                                 return true;
-            }
+                            }
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,7 +140,6 @@ public class DatabaseHandler {
             
             while (rs.next()) {
                                 String id = rs.getString("type");
-                                System.out.println(id);
                                 return id;
                             }
             
@@ -163,7 +152,6 @@ public class DatabaseHandler {
 
     public ArrayList<String> getCIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
-        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
@@ -180,27 +168,5 @@ public class DatabaseHandler {
         return caseIDs;
     }
 
-
-    public ResultSet getCitizenInfo(String id) {
-        System.out.println(id);
-        return getInfo(id);
-    }
-
-    public ResultSet getCitizenInfo() {
-        System.out.println(user);
-        return getInfo(user);
-    }
-
-    private ResultSet getInfo(String id) {
-        try {
-            Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id where sag.citizen = '" + id + "';");
-            ResultSet rs = st.getResultSet();
-            return rs;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
 

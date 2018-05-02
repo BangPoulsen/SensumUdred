@@ -102,12 +102,14 @@ import javax.xml.crypto.Data;
                 
             } else {
 
-                loginSensumLabel.setText("Login failed \t Tries left: " + tries);
+                
                 tries--;
 
                 if (tries == 0) {
                     locked = true;
                 }
+                
+                loginSensumLabel.setText("Login failed \t Tries left: " + tries);
             }
             
             

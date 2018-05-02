@@ -28,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -90,15 +91,21 @@ public class NewCaseController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        createCaseDoneButton.setDisable(true);
+       
         // TODO
     }
 
     /**
      *  method that disables createCaseDonebutton if the form is empty
      */
-    @FXML
     public void keyReleasedProberty(){
+        
+    }
+
+
+    @FXML
+    private void createCaseDoneButtonEvent(ActionEvent event) {
+        
         String fn=txtFirstName.getText();
         String ln=txtLastName.getText();
         String cn=txtCprNumber.getText();
@@ -109,75 +116,81 @@ public class NewCaseController extends Application implements Initializable {
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
         String au=txtAuthor.getText();
+        
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
             ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty()) ||(au.isEmpty()|| au.trim().isEmpty());
-            createCaseDoneButton.setDisable(isDisabled);
-
-    }
-
-    @FXML
-    private void createCaseDoneButtonEvent(ActionEvent event) {
-        Switch.switchWindow((Stage)createCaseDoneButton.getScene().getWindow(),new MenuController());
-
-        Random random = new Random();
-        int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
-        ArrayList<String> caseIDs = dbh.getCIDList();
-        System.out.println(caseID);
-        String journalNumber = Integer.toString(caseID);
-
-        while (caseIDs.contains(journalNumber)) {
-            caseID = random.nextInt(9999 - 1000 + 1) + 1000;
-            journalNumber = Integer.toString(caseID);
-        }
-
-        String fullName = txtFirstName.getText() + " " + txtLastName.getText();
-
-        String CPR = txtCprNumber.getText();
-
-        String phoneNumber = txtPhoneNumber.getText();
-
-        String email = txtEmailAdress.getText();
-
-        String[] streetSplit = txtRoadName.getText().split(" ");
-
-        String street = "";
-        for (String s: streetSplit
-             ) {
-            if (streetSplit.length != 1) {
+        
+        if (!isDisabled) {
+            Switch.switchWindow((Stage) createCaseDoneButton.getScene().getWindow(), new MenuController());
+            
+            Random random = new Random();
+            int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+            ArrayList<String> caseIDs = dbh.getCIDList();
+            System.out.println(caseID);
+            String journalNumber = Integer.toString(caseID);
+            
+            while (caseIDs.contains(journalNumber)) {
+                caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+                journalNumber = Integer.toString(caseID);
+            }
+            
+            String fullName = txtFirstName.getText() + " " + txtLastName.getText();
+            
+            String CPR = txtCprNumber.getText();
+            
+            String phoneNumber = txtPhoneNumber.getText();
+            
+            String email = txtEmailAdress.getText();
+            
+            String[] streetSplit = txtRoadName.getText().split(" ");
+            
+            String street = "";
+            for (String s : streetSplit) {
                 if (s != streetSplit[streetSplit.length - 1]) {
                     street = street + s + " ";
                 }
             }
-            else {
-                street = s;
-            }
+            
+            street = street.trim();
+            
+            String streetNumber = streetSplit[streetSplit.length - 1];
+            
+            String floor = txtFloorNumber.getText();
+            
+            String zipCode = txtZipCode.getText();
+            
+            String password = txtJournalNumber.getText();
+            
+            String eventuelNotes = txtEventuelNotes.getText();
+            
+            String author = txtAuthor.getText();
+            
+            Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
+            
+            Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
+            
+            dbh.createCase(caseCreated);
+        } else {
+            
+            String isEmpty = "";
+            
+            if (fn.isEmpty()) isEmpty += "Fornavn, ";
+            if (ln.isEmpty()) isEmpty += "Efteravn, ";
+            if (cn.isEmpty()) isEmpty += "CPR nummer, ";
+            if (pn.isEmpty()) isEmpty += "Tlf. nummer, ";
+            if (ea.isEmpty()) isEmpty += "Email, ";
+            if (rn.isEmpty()) isEmpty += "Vejnavn, ";
+            if (zc.isEmpty()) isEmpty += "Postnummer, ";
+            if (jn.isEmpty()) isEmpty += "Jorunalnummer, ";
+            if (en.isEmpty()) isEmpty += "Notat, ";
+            if (au.isEmpty()) isEmpty += "Forfatter, ";
+                
+            
+            
+            JOptionPane.showMessageDialog(null, "Udfyld venligst: " + isEmpty);
         }
-
-        street = street.trim();
-
-        String streetNumber = streetSplit[streetSplit.length-1];
-
-        String floor = txtFloorNumber.getText();
-
-        String zipCode = txtZipCode.getText();
-
-        String password = txtJournalNumber.getText();
-
-        String eventuelNotes = txtEventuelNotes.getText();
-
-        String author = txtAuthor.getText();
-
-
-
-        Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
-
-        Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
-
-
-
-        dbh.createCase(caseCreated);
     }
     @FXML
     private void createCaseCancelButton (ActionEvent event) {
