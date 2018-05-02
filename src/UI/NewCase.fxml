@@ -29,7 +29,7 @@
       <TextField fx:id="txtFloorNumber" layoutX="52.0" layoutY="329.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Etage" />
       <TextField fx:id="txtZipCode" layoutX="52.0" layoutY="360.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Postnummer" />
       <TextField fx:id="txtJournalNumber" layoutX="52.0" layoutY="391.0" onKeyReleased="#keyReleasedProberty" prefHeight="30.0" prefWidth="300.0" promptText="Journalnummer" />
-      <TextField fx:id="txtAutor" layoutX="443.0" layoutY="88.0" prefHeight="39.0" prefWidth="228.0" promptText="Autor" />
+      <TextField fx:id="txtAuthor" layoutX="443.0" layoutY="88.0" prefHeight="39.0" prefWidth="228.0" promptText="Forfatter" />
       <TextArea fx:id="txtEventuelNotes" layoutX="443.0" layoutY="143.0" onKeyReleased="#keyReleasedProberty" prefHeight="280.0" prefWidth="228.0" promptText="Eventuelle bemærkninger" />
       <Button fx:id="createCaseDoneButton" layoutX="52.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseDoneButtonEvent" onKeyReleased="#keyReleasedProberty" prefHeight="31.0" prefWidth="130.0" text="Opret sag" />
       <Button fx:id="createCaseCancelButton" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" onAction="#createCaseCancelButton" onKeyReleased="#keyReleasedProberty" prefHeight="31.0" prefWidth="130.0" text="Annuller" />

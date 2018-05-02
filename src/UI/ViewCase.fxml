@@ -3,11 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
    <children>
       <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Se sag" underline="true">
          <font>
@@ -18,7 +19,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="viewSelectedNote" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" onAction="#ViewNoteEvent" onKeyReleased="#keyReleasedProberty" prefHeight="31.0" prefWidth="130.0" text="Vis">
+      <Button fx:id="viewSelectedNote" layoutX="222.0" layoutY="458.0" mnemonicParsing="false" onAction="#ViewNoteEventHandler" onKeyReleased="#keyReleasedProberty" prefHeight="31.0" prefWidth="130.0" text="Vis">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -69,6 +70,20 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="showNoteInCasesPane" blendMode="SRC_ATOP" layoutX="299.0" layoutY="153.0" prefHeight="275.0" prefWidth="423.0" style="-fx-background-color: D3D3D3;" visible="false">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="showNoteAuthorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="35.0" prefWidth="391.0" textAlignment="CENTER" />
+            <TextField fx:id="txtNoteInCases" editable="false" layoutY="25.0" prefHeight="250.0" prefWidth="423.0" />
+            <Button fx:id="closeNoteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="391.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeNoteButtonHandler" prefHeight="20.0" prefWidth="30.0" text="X" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
    <effect>
       <DropShadow />

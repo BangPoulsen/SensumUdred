@@ -36,13 +36,10 @@ public class NewCaseController extends Application implements Initializable {
     @FXML
     private AnchorPane createCasePane;
 
-    @FXML
-    private Label menuSensumLabel2;
 
     @FXML
     private Label createCaseLabel;
 
-    @FXML
     private TextField txtauthor;
     @FXML
     private TextField txtFirstName;
@@ -81,6 +78,10 @@ public class NewCaseController extends Application implements Initializable {
     private Button createCaseCancelButton;
 
     private DatabaseHandler dbh = new DatabaseHandler();
+    @FXML
+    private TextField txtAuthor;
+    @FXML
+    private Label sensumUdredLabel4;
 
     /**
      * Initializes the controller class.
@@ -94,6 +95,7 @@ public class NewCaseController extends Application implements Initializable {
     /**
      *  method that disables createCaseDonebutton if the form is empty
      */
+    @FXML
     public void keyReleasedProberty(){
         String fn=txtFirstName.getText();
         String ln=txtLastName.getText();

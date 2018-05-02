@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
@@ -62,6 +63,16 @@ public class ViewCaseController extends Application implements Initializable {
     private Label txtJournalNumber;
     @FXML
     private ListView<?> txtViewNotes;
+    @FXML
+    private Label showCasesLabel;
+    @FXML
+    private AnchorPane showNoteInCasesPane;
+    @FXML
+    private Label showNoteAuthorLabel;
+    @FXML
+    private TextField txtNoteInCases;
+    @FXML
+    private Button closeNoteButton;
 
     /**
      * Initializes the controller class.
@@ -80,9 +91,6 @@ public class ViewCaseController extends Application implements Initializable {
     private void keyReleasedProberty(KeyEvent event) {
     }
 
-    @FXML
-    private void ViewNoteEvent(ActionEvent event) {
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -98,6 +106,20 @@ public class ViewCaseController extends Application implements Initializable {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
+
+    @FXML
+    private void closeNoteButtonHandler(ActionEvent event) {
+        
+        
+        
+        
+    }
+
+    @FXML
+    private void ViewNoteEventHandler(ActionEvent event) {
+        
+        showNoteInCasesPane.setVisible(true);
     }
 
 }
