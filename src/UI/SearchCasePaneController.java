@@ -169,9 +169,10 @@ public class SearchCasePaneController extends Application implements Initializab
         listViewCases.getItems().clear();
 
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("caseid", "Sags ID");
-        hashMap.put("citizen", "CPR");
+        
         hashMap.put("name", "Navn");
+        hashMap.put("citizen", "CPR");
+        
         try {
             ResultSetMetaData rsmdt = results.getMetaData();
             String caseString;
