@@ -91,7 +91,6 @@ import javax.xml.crypto.Data;
                 
                 switch (dbh.getId(username)){
                     case "Borger":
-                        
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
                         break;
                     case "Sagsbehandler":
