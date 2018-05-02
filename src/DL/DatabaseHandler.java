@@ -10,6 +10,7 @@ import BL.Case;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -44,6 +45,7 @@ public class DatabaseHandler {
         String journalNumber = caseI.getcID();
         String note = caseI.getcEventuelNotes();
         String author= caseI.getcauthor();
+        String password = caseI.getcCitizen().getCiPassword();
 
 
         //SQL Stuff
@@ -52,7 +54,7 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', 'password', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
+            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
             st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
             st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
             st.executeUpdate("INSERT into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '"+note+"','"+journalNumber+"','"+author+"')");

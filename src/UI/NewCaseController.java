@@ -6,6 +6,7 @@
 package UI;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import BL.Case;
@@ -118,6 +119,12 @@ public class NewCaseController extends Application implements Initializable {
     @FXML
     private void createCaseDoneButtonEvent(ActionEvent event) {
         Switch.switchWindow((Stage)createCaseDoneButton.getScene().getWindow(),new MenuController());
+
+        Random random = new Random();
+        int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+        System.out.println(caseID);
+        String journalNumber = Integer.toString(caseID);
+
         String fullName = txtFirstName.getText() + " " + txtLastName.getText();
 
         String CPR = txtCprNumber.getText();
@@ -144,7 +151,7 @@ public class NewCaseController extends Application implements Initializable {
 
         String zipCode = txtZipCode.getText();
 
-        String journalNumber = txtJournalNumber.getText();
+        String password = txtJournalNumber.getText();
 
         String eventuelNotes = txtEventuelNotes.getText();
 
@@ -152,7 +159,7 @@ public class NewCaseController extends Application implements Initializable {
 
 
 
-        Citizen citizen = new Citizen(fullName, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
+        Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
 
         Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
 

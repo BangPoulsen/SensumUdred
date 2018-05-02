@@ -6,6 +6,7 @@ public class Citizen {
      * attributes for creating a new citizen
      */
     private String ciName;
+    private String ciPassword;
     private String ciStreet;
     private String ciStreetNumber;
     private String ciFloor;
@@ -17,9 +18,10 @@ public class Citizen {
     /**
      * constructor for creating a instance of a citizen
      */
-    public Citizen(String name, String street, String streetNumber, String floor, String zipCode, String phoneNumber, String email, String userId) {
+    public Citizen(String name, String password, String street, String streetNumber, String floor, String zipCode, String phoneNumber, String email, String userId) {
         this.ciUserId=userId;
         this.ciName = name;
+        this.ciPassword = password;
         this.ciStreet = street;
         this.ciStreetNumber = streetNumber;
         if (floor == "") {
@@ -90,5 +92,9 @@ public class Citizen {
     public void setCiEmail(String ciEmail) {
         this.ciEmail = ciEmail;
     }
+
+    public  String getCiPassword() { return this.ciPassword; }
+
+    public void setCiPassword(String ciPassword) { this.ciPassword = ciPassword; }
     
 }
