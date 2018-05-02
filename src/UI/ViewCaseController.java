@@ -111,7 +111,7 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private void closeNoteButtonHandler(ActionEvent event) {
         
-        
+        showNoteInCasesPane.setVisible(false);
         
         
     }
