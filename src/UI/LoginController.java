@@ -51,11 +51,16 @@ import javax.xml.crypto.Data;
 
     private int tries = 3;
 
-    private boolean locked = false;
     
-    private Date lockedDate;
-
+    private int secondsWait = 120;
+    
     private DatabaseHandler dbh = new DatabaseHandler();
+    
+    private long lockedDate;
+    
+    
+    private boolean locked = isLocked();
+
 
     /**
      * Initializes the controller class.
@@ -63,6 +68,7 @@ import javax.xml.crypto.Data;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        lockedDate = dbh.readDate();
         
         
     }
@@ -109,7 +115,8 @@ import javax.xml.crypto.Data;
                 tries--;
 
                 if (tries == 0) {
-                    lockedDate = new Date();
+                    lockedDate = new Date().getTime();
+                    dbh.writeDate2file(lockedDate);
                     locked = true;
                 }
                 
@@ -119,25 +126,44 @@ import javax.xml.crypto.Data;
             
         } else {
             
-            int secondsWait = 120;
             
-            Date currentDate = new Date();
-            
-            double timePassed = currentDate.getTime() - lockedDate.getTime();
-            
-            int secondsPassed = (int)(timePassed / 1000);
-            
-            
-            if (secondsPassed > secondsWait) {
+            if (isLocked()) {
                 locked = false;
             } else  {
                 
-                int timeLeft = secondsWait - secondsPassed;
+                int timeLeft = secondsWait - getSecondsPassed();
                 
                 JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait : " + timeLeft + " seconds.");
             }
             
             
         }
+    }
+    
+    private int getSecondsPassed(){
+            lockedDate = dbh.readDate();            
+            
+            secondsWait = 120;
+            
+            long currentDate = new Date().getTime();
+            
+            long timePassed = currentDate - lockedDate;
+            
+            return (int)(timePassed / 1000);
+    }
+
+    private boolean isLocked() {
+        
+            lockedDate = dbh.readDate();            
+            
+            secondsWait = 120;
+            
+            long currentDate = new Date().getTime();
+            
+            long timePassed = currentDate - lockedDate;
+            
+            int secondsPassed = (int)(timePassed / 1000);
+            
+            return secondsPassed > secondsWait;
     }
 }

@@ -6,11 +6,18 @@
 package DL;
 
 import BL.Case;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -209,6 +216,40 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public void writeDate2file(long lockedDate) {
+       
+        
+        try {
+            FileWriter fw = new FileWriter(new File("lockedDate.txt"));
+            
+            fw.write(""+lockedDate);
+            
+            fw.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public long readDate() {
+        
+        try {
+
+        Scanner input = new Scanner(new File("lockedDate.txt"));
+        
+        long date = 0;
+            while (input.hasNextLine()) {
+                date = Long.parseLong(input.nextLine());   
+            }
+            
+            return date;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        
+        return -1;
     }
 }
 
