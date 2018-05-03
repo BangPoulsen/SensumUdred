@@ -176,12 +176,12 @@ public class DatabaseHandler {
 
 
     public ResultSet getCitizenInfo(String id) {
-        System.out.println(id);
+        System.out.println("Id: " + id);
         return getInfo(id);
     }
 
     public ResultSet getCitizenInfo() {
-        System.out.println(user);
+        System.out.println("User: " + user);
         return getInfo(user);
     }
 

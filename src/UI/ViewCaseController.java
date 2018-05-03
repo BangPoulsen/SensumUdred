@@ -11,6 +11,9 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import DL.DatabaseHandler;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,6 +89,33 @@ public class ViewCaseController extends Application implements Initializable {
         // TODO
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
+        
+        String userInfo;
+        
+        try {
+            while(info.next()){
+                userInfo = "";
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    userInfo += hashMap.get(rsmdt.getColumnName(i)) + ": " + results.getString(i) + ", ";
+                }
+                caseString.trim();
+                caseString = caseString.substring(0, caseString.length()-2);
+                listViewCases.getItems().add(caseString);
+            }
+            
+            /*sag.caseid,
+            person.name,
+            person.id,
+            person.phone,
+            person.email,
+            adress.street,
+            adress.number,
+            adress.floor,
+            adress.zipcode*/
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @FXML

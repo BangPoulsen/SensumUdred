@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
    <children>
       <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Se sag" underline="true">
          <font>
