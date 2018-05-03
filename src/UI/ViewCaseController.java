@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import DL.DatabaseHandler;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -87,21 +89,28 @@ public class ViewCaseController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put ("caseid", "Sags ID");
+        hashMap.put("name", "Navn");
+        hashMap.put("citizen", "CPR");
+        
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
         
         String userInfo;
         
         try {
+            ResultSetMetaData rsmdt = info.getMetaData();
+            
             while(info.next()){
                 userInfo = "";
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    userInfo += hashMap.get(rsmdt.getColumnName(i)) + ": " + results.getString(i) + ", ";
+                    userInfo = userInfo + hashMap.get(rsmdt.getColumnName(i)) + ": " + info.getString(i) + ", ";
                 }
-                caseString.trim();
-                caseString = caseString.substring(0, caseString.length()-2);
-                listViewCases.getItems().add(caseString);
             }
+            
+            System.out.println("Info: " + info);
             
             /*sag.caseid,
             person.name,
