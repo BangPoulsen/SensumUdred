@@ -28,12 +28,6 @@ import javafx.stage.Stage;
  */
 public class GUIController extends Application implements Initializable {
 
-
-
-    private int tries = 3;
-
-    private boolean locked = false;
-
     /**
      * Initializes the controller class.
      */

@@ -8,6 +8,7 @@ package UI;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Date;
 
 import DL.DatabaseHandler;
 import javafx.application.Application;
@@ -51,6 +52,8 @@ import javax.xml.crypto.Data;
     private int tries = 3;
 
     private boolean locked = false;
+    
+    private Date lockedDate;
 
     private DatabaseHandler dbh = new DatabaseHandler();
 
@@ -106,6 +109,7 @@ import javax.xml.crypto.Data;
                 tries--;
 
                 if (tries == 0) {
+                    lockedDate = new Date();
                     locked = true;
                 }
                 
@@ -114,7 +118,26 @@ import javax.xml.crypto.Data;
             
             
         } else {
-            JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait: " + "TimeLeft.Show()");
+            
+            int secondsWait = 120;
+            
+            Date currentDate = new Date();
+            
+            double timePassed = currentDate.getTime() - lockedDate.getTime();
+            
+            int secondsPassed = (int)(timePassed / 1000);
+            
+            
+            if (secondsPassed > secondsWait) {
+                locked = false;
+            } else  {
+                
+                int timeLeft = secondsWait - secondsPassed;
+                
+                JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait : " + timeLeft + " seconds.");
+            }
+            
+            
         }
     }
 }
