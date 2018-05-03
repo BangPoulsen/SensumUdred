@@ -77,9 +77,11 @@ public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private void ReturnToSearch(ActionEvent event) {
+        Switch.switchWindow((Stage)CancelButton.getScene().getWindow(),new SearchCasePaneController());
     }
 
     @FXML
     private void SaveToDatabase(ActionEvent event) {
+        Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
     }
 }

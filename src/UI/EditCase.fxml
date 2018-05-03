@@ -50,14 +50,50 @@
                                     </content>
                                   </Tab>
                                   <Tab text="Pårørende">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label layoutX="39.0" layoutY="21.0" prefHeight="27.0" prefWidth="250.0" text="Fornavn:" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="336.0" />
+                                                <TextField fx:id="txtFirstNamek" layoutX="313.0" layoutY="15.0" prefHeight="27.0" prefWidth="250.0" promptText="fornavn" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
+                                                <Label layoutX="39.0" layoutY="68.0" prefHeight="27.0" prefWidth="250.0" text="Efternavn:" />
+                                                <TextField fx:id="txtLastNamek" layoutX="313.0" layoutY="62.0" prefHeight="27.0" prefWidth="250.0" promptText="efternavn" AnchorPane.topAnchor="62.0" />
+                                                <Label layoutX="39.0" layoutY="115.0" prefHeight="27.0" prefWidth="250.0" text="Telefon:" />
+                                                <TextField fx:id="txtPhonek" layoutX="313.0" layoutY="109.0" prefHeight="27.0" prefWidth="250.0" promptText="telefon" AnchorPane.topAnchor="109.0" />
+                                                <Label layoutX="39.0" layoutY="162.0" prefHeight="27.0" prefWidth="250.0" text="Email:" />
+                                                <TextField fx:id="txtEmailk" layoutX="313.0" layoutY="156.0" prefHeight="27.0" prefWidth="250.0" promptText="email" AnchorPane.topAnchor="156.0" />
+                                                <Label layoutX="39.0" layoutY="209.0" prefHeight="27.0" prefWidth="250.0" text="Vejnavn:" />
+                                                <TextField fx:id="txtRoadNamek" layoutX="313.0" layoutY="203.0" prefHeight="27.0" prefWidth="250.0" promptText="vejnavn" AnchorPane.topAnchor="203.0" />
+                                                <Label layoutX="39.0" layoutY="257.0" prefHeight="27.0" prefWidth="250.0" text="Etage:" />
+                                                <TextField fx:id="txtFloork" layoutX="313.0" layoutY="251.0" prefHeight="27.0" prefWidth="250.0" promptText="etage" AnchorPane.topAnchor="251.0" />
+                                                <Label layoutX="39.0" layoutY="305.0" prefHeight="27.0" prefWidth="250.0" text="Postnummer:" />
+                                                <TextField fx:id="txtZipCodek" layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="postnummer" AnchorPane.topAnchor="299.0" />
+                                                <Label layoutX="39.0" layoutY="353.0" prefHeight="27.0" prefWidth="250.0" text="Id/Personnummer" />
+                                                <TextField fx:id="txtIdk" layoutX="313.0" layoutY="347.0" prefHeight="27.0" prefWidth="250.0" promptText="id/personnummer" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
                                   </Tab>
                                     <Tab text="Lægeoplysniger">
-                                      <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                      </content>
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label layoutX="39.0" layoutY="21.0" prefHeight="27.0" prefWidth="250.0" text="Fornavn:" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="336.0" />
+                                                <TextField fx:id="txtFirstNamed" layoutX="313.0" layoutY="15.0" prefHeight="27.0" prefWidth="250.0" promptText="fornavn" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
+                                                <Label layoutX="39.0" layoutY="68.0" prefHeight="27.0" prefWidth="250.0" text="Efternavn:" />
+                                                <TextField fx:id="txtLastNamed" layoutX="313.0" layoutY="62.0" prefHeight="27.0" prefWidth="250.0" promptText="efternavn" AnchorPane.topAnchor="62.0" />
+                                                <Label layoutX="39.0" layoutY="115.0" prefHeight="27.0" prefWidth="250.0" text="Telefon:" />
+                                                <TextField fx:id="txtPhoned" layoutX="313.0" layoutY="109.0" prefHeight="27.0" prefWidth="250.0" promptText="telefon" AnchorPane.topAnchor="109.0" />
+                                                <Label layoutX="39.0" layoutY="162.0" prefHeight="27.0" prefWidth="250.0" text="Email:" />
+                                                <TextField fx:id="txtEmaild" layoutX="313.0" layoutY="156.0" prefHeight="27.0" prefWidth="250.0" promptText="email" AnchorPane.topAnchor="156.0" />
+                                                <Label layoutX="39.0" layoutY="209.0" prefHeight="27.0" prefWidth="250.0" text="Vejnavn:" />
+                                                <TextField fx:id="txtRoadNamed" layoutX="313.0" layoutY="203.0" prefHeight="27.0" prefWidth="250.0" promptText="vejnavn" AnchorPane.topAnchor="203.0" />
+                                                <Label layoutX="39.0" layoutY="257.0" prefHeight="27.0" prefWidth="250.0" text="Etage:" />
+                                                <TextField fx:id="txtFloord" layoutX="313.0" layoutY="251.0" prefHeight="27.0" prefWidth="250.0" promptText="etage" AnchorPane.topAnchor="251.0" />
+                                                <Label layoutX="39.0" layoutY="305.0" prefHeight="27.0" prefWidth="250.0" text="Postnummer:" />
+                                                <TextField fx:id="txtZipCoded" layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="postnummer" AnchorPane.topAnchor="299.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
                                     </Tab>
                                 </tabs>
                               </TabPane>
