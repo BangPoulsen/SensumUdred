@@ -98,29 +98,43 @@ public class ViewCaseController extends Application implements Initializable {
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
         
-        String userInfo;
+        String userInfo = "";
         
         try {
             ResultSetMetaData rsmdt = info.getMetaData();
             
             while(info.next()){
-                userInfo = "";
+                
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    userInfo = userInfo + hashMap.get(rsmdt.getColumnName(i)) + ": " + info.getString(i) + ", ";
+                    userInfo = userInfo + info.getString(i) + ", ";
                 }
             }
             
-            System.out.println("Info: " + info);
+            String[] CitizenInfo = userInfo.split(", ");
             
-            /*sag.caseid,
-            person.name,
-            person.id,
-            person.phone,
-            person.email,
-            adress.street,
-            adress.number,
-            adress.floor,
-            adress.zipcode*/
+            String caseid = CitizenInfo[0];
+            String fullName = CitizenInfo[1];
+            String id = CitizenInfo[2];
+            String mobileNumber = CitizenInfo[3];
+            String email  = CitizenInfo[4];
+            String roadName = CitizenInfo[5];
+            String floor = CitizenInfo[6];
+            String zipcode = CitizenInfo[7];
+            
+            String[] fullNameSplit = fullName.split(" ");
+            
+            txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
+            txtLastName.setText("Efternavn: " + fullNameSplit[1]);
+            txtCprNumber.setText("Personnummer: " + id);
+            txtFloorNumber.setText("Etage: " + floor);
+            txtJournalNumber.setText("Sagsnummer: " + caseid);
+            txtZipCode.setText("Postnummer: " + zipcode);
+            txtPhoneNumber.setText("Telefon: " + mobileNumber);
+            txtEmailAdress.setText("Email: " + email);
+            txtRoadName.setText("Vejnavn: " + roadName);
+            
+            
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

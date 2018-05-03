@@ -172,7 +172,7 @@ public class NewCaseController extends Application implements Initializable {
             
             String eventuelNotes = txtEventuelNotes.getText();
             
-            String author = txtAuthor.getText();
+            String author = dbh.getCurrentUser();
             
             Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
             
