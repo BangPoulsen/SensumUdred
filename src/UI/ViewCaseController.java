@@ -116,10 +116,10 @@ public class ViewCaseController extends Application implements Initializable {
             String fullName = CitizenInfo[1];
             String id = CitizenInfo[2];
             String mobileNumber = CitizenInfo[3];
-            String floor = CitizenInfo[4];
-            String zipcode = CitizenInfo[5];
-            String email = CitizenInfo[6];
-            String roadName = CitizenInfo[7];
+            String email  = CitizenInfo[4];
+            String roadName = CitizenInfo[5];
+            String floor = CitizenInfo[6];
+            String zipcode = CitizenInfo[7];
             
             String[] fullNameSplit = fullName.split(" ");
             
