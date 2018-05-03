@@ -196,5 +196,19 @@ public class DatabaseHandler {
         }
         return null;
     }
+
+    public String getCurrentUser() {
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select name from person where id = '" + user + "';");
+            ResultSet rs = st.getResultSet();
+            while(rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }
 

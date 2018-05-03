@@ -88,7 +88,7 @@ import javax.xml.crypto.Data;
             String password = loginPassword.getText();
 
             if (dbh.loginAttempt(username, password)) {
-                
+                System.out.println(dbh.getCurrentUser());
                 switch (dbh.getId(username)){
                     case "Borger":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
