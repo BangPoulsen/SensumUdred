@@ -92,7 +92,8 @@ public class NewCaseController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        // TODO
+        txtEventuelNotes.setWrapText(true);
+        
     }
 
     /**
@@ -116,12 +117,11 @@ public class NewCaseController extends Application implements Initializable {
         String zc=txtZipCode.getText();
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
-        String au=txtAuthor.getText();
         
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
-            ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty()) ||(au.isEmpty()|| au.trim().isEmpty());
+            ||(jn.isEmpty()|| jn.trim().isEmpty())||(en.isEmpty()|| en.trim().isEmpty());
         
         if (!isDisabled) {
             Switch.switchWindow((Stage) createCaseDoneButton.getScene().getWindow(), new MenuController());
@@ -192,7 +192,6 @@ public class NewCaseController extends Application implements Initializable {
             if (zc.isEmpty()) isEmpty += "Postnummer, ";
             if (jn.isEmpty()) isEmpty += "Jorunalnummer, ";
             if (en.isEmpty()) isEmpty += "Notat, ";
-            if (au.isEmpty()) isEmpty += "Forfatter, ";
                 
             
             

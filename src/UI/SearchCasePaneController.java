@@ -66,12 +66,8 @@ public class SearchCasePaneController extends Application implements Initializab
     /**
      * Initializes the controller class.
      */
-    @FXML
-    private void mainMenuButton (ActionEvent event) {
-        Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new MenuController());
 
-    
-    }
+
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -95,6 +91,10 @@ public class SearchCasePaneController extends Application implements Initializab
         dbh = new DatabaseHandler();
         
     }
+    @FXML
+    private void mainMenuButton (ActionEvent event) {
+        Switch.switchWindow((Stage) this.mainMenuButton.getScene().getWindow(), new MenuController());
+    }
 
     @FXML
     private void searchCaseOrCprButton(ActionEvent event) {
@@ -104,7 +104,7 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void editCaseButton(ActionEvent event) {
-        
+        Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
         dbh.editCase();
         
     }
