@@ -254,7 +254,7 @@ public class DatabaseHandler {
 
     public ResultSet getJournal(String id) {
         try {
-            Statement st = db.createStatement();
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
             ResultSet rs = st.getResultSet();
 

@@ -69,7 +69,7 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label txtJournalNumber;
     @FXML
-    private ListView<?> txtViewNotes;
+    private ListView<String> txtViewNotes;
     @FXML
     private Label showCasesLabel;
     @FXML
@@ -82,6 +82,7 @@ public class ViewCaseController extends Application implements Initializable {
     private Button closeNoteButton;
 
     private DatabaseHandler dbh;
+    private ResultSet journal;
 
     /**
      * Initializes the controller class.
@@ -97,7 +98,7 @@ public class ViewCaseController extends Application implements Initializable {
         
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
-        
+
         String userInfo = "";
         
         try {
@@ -132,8 +133,14 @@ public class ViewCaseController extends Application implements Initializable {
             txtPhoneNumber.setText("Telefon: " + mobileNumber);
             txtEmailAdress.setText("Email: " + email);
             txtRoadName.setText("Vejnavn: " + roadName);
-            
-            
+
+            journal = dbh.getJournal(id);
+            String timestamp = "";
+            while (journal.next()){
+                timestamp = journal.getString(2);
+                System.out.println(timestamp);
+                txtViewNotes.getItems().add(timestamp);
+            }
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -175,10 +182,19 @@ public class ViewCaseController extends Application implements Initializable {
         
     }
 
+    //TODO figure out wtf is going on here
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
-        
         showNoteInCasesPane.setVisible(true);
+        int index = txtViewNotes.getSelectionModel().getSelectedIndex();
+        try {
+            if (journal.absolute(index)){
+                showNoteAuthorLabel.setText(journal.getString(3));
+                System.out.println(showNoteAuthorLabel.getText());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
