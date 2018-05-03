@@ -64,7 +64,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ListView fx:id="txtViewNotes" layoutX="298.0" layoutY="178.0" prefHeight="250.0" prefWidth="423.0" />
+      <ListView fx:id="txtViewNotes" layoutX="381.0" layoutY="178.0" prefHeight="250.0" prefWidth="341.0" />
       <Label fx:id="showCasesLabel" layoutX="480.0" layoutY="107.0" text="Notater">
          <font>
             <Font size="24.0" />
