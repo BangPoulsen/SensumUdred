@@ -11,6 +11,11 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import DL.DatabaseHandler;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,8 +89,56 @@ public class ViewCaseController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put ("caseid", "Sags ID");
+        hashMap.put("name", "Navn");
+        hashMap.put("citizen", "CPR");
+        
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
+        
+        String userInfo = "";
+        
+        try {
+            ResultSetMetaData rsmdt = info.getMetaData();
+            
+            while(info.next()){
+                
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    userInfo = userInfo + info.getString(i) + ", ";
+                }
+            }
+            
+            String[] CitizenInfo = userInfo.split(", ");
+            
+            String caseid = CitizenInfo[0];
+            String fullName = CitizenInfo[1];
+            String id = CitizenInfo[2];
+            String mobileNumber = CitizenInfo[3];
+            String floor = CitizenInfo[4];
+            String zipcode = CitizenInfo[5];
+            String email = CitizenInfo[6];
+            String roadName = CitizenInfo[7];
+            
+            String[] fullNameSplit = fullName.split(" ");
+            
+            txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
+            txtLastName.setText("Efternavn: " + fullNameSplit[1]);
+            txtCprNumber.setText("Personnummer: " + id);
+            txtFloorNumber.setText("Etage: " + floor);
+            txtJournalNumber.setText("Sagsnummer: " + caseid);
+            txtZipCode.setText("Postnummer: " + zipcode);
+            txtPhoneNumber.setText("Telefon: " + mobileNumber);
+            txtEmailAdress.setText("Email: " + email);
+            txtRoadName.setText("Vejnavn: " + roadName);
+            
+            
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @FXML
