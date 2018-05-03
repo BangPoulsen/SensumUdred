@@ -64,20 +64,20 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ListView fx:id="txtViewNotes" layoutX="381.0" layoutY="178.0" prefHeight="250.0" prefWidth="341.0" />
+      <ListView fx:id="txtViewNotes" layoutX="381.0" layoutY="178.0" prefHeight="250.0" prefWidth="340.0" />
       <Label fx:id="showCasesLabel" layoutX="480.0" layoutY="107.0" text="Notater">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="showNoteInCasesPane" blendMode="SRC_ATOP" layoutX="299.0" layoutY="153.0" prefHeight="275.0" prefWidth="423.0" style="-fx-background-color: D3D3D3;" visible="false">
+      <AnchorPane fx:id="showNoteInCasesPane" blendMode="SRC_ATOP" layoutX="376.0" layoutY="175.0" prefHeight="250.0" prefWidth="340.0" style="-fx-background-color: D3D3D3;" visible="false">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Label fx:id="showNoteAuthorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="27.0" prefWidth="391.0" textAlignment="CENTER" />
-            <TextField fx:id="txtNoteInCases" editable="false" layoutY="25.0" prefHeight="250.0" prefWidth="423.0" />
-            <Button fx:id="closeNoteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="391.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeNoteButtonHandler" prefHeight="20.0" prefWidth="30.0" text="X" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="showNoteAuthorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="27.0" prefWidth="340.0" textAlignment="CENTER" />
+            <TextField fx:id="txtNoteInCases" editable="false" layoutX="20.0" layoutY="20.0" prefHeight="218.0" prefWidth="320.0" />
+            <Button fx:id="closeNoteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeNoteButtonHandler" prefHeight="20.0" prefWidth="30.0" text="X" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="11.0" />
                </font>
