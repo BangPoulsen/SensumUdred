@@ -94,12 +94,12 @@ public class DatabaseHandler {
 
     }
 
-    public void deleteCase(String id) {
+    public void deleteInfo(String id) {
 
         try {
+            System.out.println(id);
             Statement st = db.createStatement();
-            st.executeUpdate("DELETE FROM sag WHERE caseid = '" + id + "';");
-
+            st.executeUpdate("begin; delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; commit;");
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
