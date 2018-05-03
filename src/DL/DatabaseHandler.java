@@ -188,7 +188,7 @@ public class DatabaseHandler {
     private ResultSet getInfo(String id) {
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id where sag.citizen = '" + id + "';");
+            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + id + "';");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
