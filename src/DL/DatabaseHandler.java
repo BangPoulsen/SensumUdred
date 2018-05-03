@@ -251,5 +251,18 @@ public class DatabaseHandler {
         
         return -1;
     }
+
+    public ResultSet getJournal(String id) {
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
+            ResultSet rs = st.getResultSet();
+
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
