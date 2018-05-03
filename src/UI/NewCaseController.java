@@ -92,7 +92,8 @@ public class NewCaseController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        // TODO
+        txtEventuelNotes.setWrapText(true);
+        
     }
 
     /**
