@@ -7,16 +7,24 @@ package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
  * @author malte
  */
-public class EditCaseController implements Initializable {
+public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private AnchorPane SubTabPaneBorger;
@@ -27,6 +35,20 @@ public class EditCaseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("EditCase.fxml"));
+        Scene scene =new Scene (root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Rediger sag");
+        primaryStage.setResizable(false);
+        primaryStage.sizeToScene();
+        primaryStage.show();
+
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
+        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
 }
