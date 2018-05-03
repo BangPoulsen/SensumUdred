@@ -9,12 +9,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -28,6 +31,26 @@ public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private AnchorPane SubTabPaneBorger;
+    @FXML
+    private Button CancelButton;
+    @FXML
+    private Button SaveButton;
+    @FXML
+    private TextField txtFirstName;
+    @FXML
+    private TextField txtLastName;
+    @FXML
+    private TextField txtCPRNumber;
+    @FXML
+    private TextField txtPhone;
+    @FXML
+    private TextField txtEmail;
+    @FXML
+    private TextField txtRoadName;
+    @FXML
+    private TextField txtFloor;
+    @FXML
+    private TextField txtZipCode;
 
     /**
      * Initializes the controller class.
@@ -50,5 +73,13 @@ public class EditCaseController extends Application implements Initializable {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
+
+    @FXML
+    private void ReturnToSearch(ActionEvent event) {
+    }
+
+    @FXML
+    private void SaveToDatabase(ActionEvent event) {
     }
 }
