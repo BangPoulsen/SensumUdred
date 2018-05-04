@@ -22,11 +22,9 @@ public interface IDataFacade {
     
     public ResultSet searchCase(String name);
     
-    public ResultSet getTimeStamp(String caseID);
-    
     public void editCase();
     
-    public void deleteCase(String id);
+    public void deleteInfo(String id);
     
     public boolean loginAttempt(String username, String userPassword);
     
@@ -44,7 +42,6 @@ public interface IDataFacade {
     
     public long readDate();
     
-    public String getUserInfo();
     
     
     

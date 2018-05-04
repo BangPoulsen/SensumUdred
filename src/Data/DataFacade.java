@@ -34,18 +34,13 @@ public class DataFacade implements IDataFacade {
     }
 
     @Override
-    public ResultSet getTimeStamp(String caseID) {
-        return dbh.getTimeStamp(caseID);
-    }
-
-    @Override
     public void editCase() {
         editCase();
     }
 
     @Override
-    public void deleteCase(String id) {
-        dbh.deleteCase(id);
+    public void deleteInfo(String id) {
+        dbh.deleteInfo(id);
     }
 
     @Override
@@ -88,9 +83,5 @@ public class DataFacade implements IDataFacade {
         return dbh.readDate();
     }
 
-    @Override
-    public String getUserInfo() {
-        return dbh.getUserInfo();
-    }
     
 }
