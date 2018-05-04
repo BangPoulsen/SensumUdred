@@ -5,7 +5,7 @@
  */
 package UI;
 
-import DL.DatabaseHandler;
+import Data.DatabaseHandler;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
