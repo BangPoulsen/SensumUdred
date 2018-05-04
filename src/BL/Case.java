@@ -20,8 +20,7 @@ public class Case {
         return cauthor;
     }
 
-    public void setcauthor(String cauthor) {this.cauthor = cauthor;
-    }
+    public void setcauthor(String cauthor) {this.cauthor = cauthor; }
 
     public SupportPerson getcSupport() {
         return cSupport;
@@ -63,17 +62,14 @@ public class Case {
      * constructor for creating a instance of a case
      */
     public Case(Citizen cCitizen,
-         String caseID,
-         String eventuelNotes,
-         String author ) {
+                String caseID,
+                String eventuelNotes,
+                String author ) {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
         this.cEventuelNotes=eventuelNotes;
         this.cauthor=author;
-        
-        
-        
     }
 /**
  *   This method is a getter for cdate
@@ -108,7 +104,7 @@ public class Case {
         this.cResponsible = cResponsible;
     }
 
-    public Citizen getcCitizen() {return cCitizen;   }
+    public Citizen getcCitizen() { return cCitizen; }
 
     public void setcCitizen(Citizen cCitizen) {
         this.cCitizen = cCitizen;
@@ -122,9 +118,7 @@ public class Case {
         this.cJournal = cJournal;
     }
 
-    public String getcID(){return this.cID;
-
-    }
+    public String getcID(){ return this.cID; }
     
     /**
      * The toString method for a case
@@ -138,9 +132,7 @@ public class Case {
                "Citizen: " + cCitizen + "\n" +
                "Journal: " + cJournal;
     }
-
-
-    }
+}
 
 
 

@@ -111,8 +111,6 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void deleteCaseButton(ActionEvent event) {
-        
-       
         if (!listViewCases.getSelectionModel().getSelectedItems().isEmpty()) {
             
             Alert alert = new Alert(AlertType.NONE);
@@ -139,14 +137,8 @@ public class SearchCasePaneController extends Application implements Initializab
                 
             }
         } else {
-            
             JOptionPane.showMessageDialog(null, "Ingen sag valgt");
-            
         }
- 
-        
-
-        
     }
 
     @FXML
@@ -198,9 +190,6 @@ public class SearchCasePaneController extends Application implements Initializab
             
             SearchCaseMethod();
         }
-        
     }
-
-
 }
         

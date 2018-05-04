@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -60,22 +59,19 @@ public class DatabaseHandler {
         //SQL Stuff
         //TODO catch duplicate id's
 
-
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
-            st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
-            st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
-            st.executeUpdate("INSERT into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '"+note+"','"+journalNumber+"','"+author+"')");
+            st.executeUpdate("" +
+                    "begin; " +
+                    "insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
+                    "insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
+                    "insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
+                    "insert into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '" + note + "','"+journalNumber+"','"+author+"');" +
+                    "commit;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
-
-    //TODO searchCase()
 
     public void closeConnection(){
         try {
@@ -86,7 +82,7 @@ public class DatabaseHandler {
     }
 
     public ResultSet searchCase(String name) {
-        
+
         try {
             Statement st = db.createStatement();
             st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
@@ -97,35 +93,23 @@ public class DatabaseHandler {
         }
         return null;
     }
-    
-    public ResultSet getTimeStamp(String caseID){
-        try {
-            Statement st = db.createStatement();
-            st.executeQuery("select timestamp FROM LOG WHERE caseID = '" + caseID + "'");
-            ResultSet rs = st.getResultSet();
-            return rs;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public void editCase() {
-
+        //TODO implement editCase
     }
 
-    public void deleteCase(String id) {
-
+    public void deleteInfo(String id) {
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("DELETE FROM sag WHERE caseid = '" + id + "';");
-
+            st.executeUpdate("" +
+                    "begin; " +
+                    "delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
+                    "delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
+                    "commit;");
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public boolean loginAttempt(String username, String userPassword) {
@@ -148,13 +132,10 @@ public class DatabaseHandler {
 
                                 return true;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return false;
-
     }
 
     public String getId(String username) {
@@ -171,7 +152,6 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -265,33 +245,17 @@ public class DatabaseHandler {
         return -1;
     }
 
-    public String getUserInfo() {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put ("caseid", "Sags ID");
-        hashMap.put("name", "Navn");
-        hashMap.put("citizen", "CPR");
-        
-        ResultSet info = getCitizenInfo();
-        
-        String userInfo = "";
-        
+    public ResultSet getJournal(String id) {
         try {
-            ResultSetMetaData rsmdt = info.getMetaData();
-            
-            while(info.next()){
-                
-                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    userInfo = userInfo + info.getString(i) + ", ";
-                }
-            }
-            
-            return userInfo;
-            
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
+            ResultSet rs = st.getResultSet();
+
+            return rs;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        return "Nothing found";
+        return null;
     }
 }
 
