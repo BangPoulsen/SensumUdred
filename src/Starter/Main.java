@@ -5,11 +5,6 @@ import Data.DatabaseHandler;
 import UI.GUIController;
 
 public class Main {
-    
-
-        
-
-
     /**
      * @param args the command line arguments
      */
@@ -19,12 +14,4 @@ public class Main {
         guiController.StartApplication();
         dbHandler.closeConnection();
     }
-    
-
 }
-
-
-
-
-
-

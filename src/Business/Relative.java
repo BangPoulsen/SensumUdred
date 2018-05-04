@@ -19,56 +19,29 @@ public class Relative {
         rEmail=email;
         //for testing purposes
         //System.out.println("relative name: " + rName );
-
     }
 /**
  *   This method is a getter for rName
  *   This is the same for the rest of the "get" methods in Relative
  *   @return String current value of rName
  */
-    public String getrName() {
-
-        return rName;
-    }
+    public String getrName() { return rName; }
 /**
  *   This method is a setter for rName
  *   This is the same for the rest of the "set" methods in Relative
  *   @param rName sets the initial value of rName
  */
-    public void setrName(String rName) {
+    public void setrName(String rName) { this.rName = rName; }
 
-        this.rName = rName;
-    }
+    public String getrAdress() { return rAdress; }
 
-    public String getrAdress() {
+    public void setrAdress(String rAdress) { this.rAdress = rAdress; }
 
-        return rAdress;
-    }
+    public String getrPhoneNumber() { return rPhoneNumber; }
 
-    public void setrAdress(String rAdress) {
+    public void setrPhoneNumber(String rPhoneNumber) { this.rPhoneNumber = rPhoneNumber; }
 
-        this.rAdress = rAdress;
-    }
+    public String getrEmail() { return rEmail; }
 
-    public String getrPhoneNumber() {
-
-        return rPhoneNumber;
-    }
-
-    public void setrPhoneNumber(String rPhoneNumber) {
-
-        this.rPhoneNumber = rPhoneNumber;
-    }
-
-    public String getrEmail() {
-
-        return rEmail;
-    }
-
-    public void setrEmail(String rEmail) {
-
-        this.rEmail = rEmail;
-    }
-    
-    
+    public void setrEmail(String rEmail) { this.rEmail = rEmail; }
 }

@@ -49,7 +49,6 @@ public class GUIController extends Application implements Initializable {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
-
     }
 
     public void StartApplication () {

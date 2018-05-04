@@ -69,8 +69,6 @@ import javax.xml.crypto.Data;
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         lockedDate = dbh.readDate();
-        
-        
     }
 
     @FXML
@@ -106,12 +104,7 @@ import javax.xml.crypto.Data;
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
                         break;
                 }
-
-                
-                
             } else {
-
-                
                 tries--;
 
                 if (tries == 0) {
@@ -122,11 +115,7 @@ import javax.xml.crypto.Data;
                 
                 loginSensumLabel.setText("Login failed \t Tries left: " + tries);
             }
-            
-            
         } else {
-            
-            
             if (isLocked()) {
                 locked = false;
             } else  {
@@ -135,8 +124,6 @@ import javax.xml.crypto.Data;
                 
                 JOptionPane.showMessageDialog(null, "Login attempts has been temporarily blocked. \t Please wait : " + timeLeft + " seconds.");
             }
-            
-            
         }
     }
     

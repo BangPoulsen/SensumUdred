@@ -20,7 +20,6 @@ public class Caseworker {
         cwAdress = adress;
         cwPhoneNumber = phoneNumber;
         cwEmail = email;
-
     }
 /**
  *   This method is a getter for cwName
