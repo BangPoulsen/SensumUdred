@@ -82,6 +82,7 @@ public class ViewCaseController extends Application implements Initializable {
     private Button closeNoteButton;
 
     private DatabaseHandler dbh;
+    private ResultSet journal;
 
     /**
      * Initializes the controller class.
@@ -91,6 +92,18 @@ public class ViewCaseController extends Application implements Initializable {
         // TODO
         
             dbh = new DatabaseHandler();
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put ("caseid", "Sags ID");
+        hashMap.put("name", "Navn");
+        hashMap.put("citizen", "CPR");
+        
+        dbh = new DatabaseHandler();
+        ResultSet info = dbh.getCitizenInfo();
+
+        String userInfo = "";
+        
+        try {
+            ResultSetMetaData rsmdt = info.getMetaData();
             
             String userInfo = dbh.getUserInfo();
             
@@ -134,6 +147,14 @@ public class ViewCaseController extends Application implements Initializable {
             
             System.out.println(timeStamps);
             System.out.println("Length of string from column: " + timeStamps);
+
+            journal = dbh.getJournal(id);
+            String timestamp = "";
+            while (journal.next()){
+                timestamp = journal.getString(2);
+                System.out.println(timestamp);
+                txtViewNotes.getItems().add(timestamp);
+            }
             
         } catch (SQLException e) {
             e.printStackTrace();
@@ -178,10 +199,19 @@ public class ViewCaseController extends Application implements Initializable {
         
     }
 
+    //TODO figure out wtf is going on here
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
-        
         showNoteInCasesPane.setVisible(true);
+        int index = txtViewNotes.getSelectionModel().getSelectedIndex();
+        try {
+            if (journal.absolute(index)){
+                showNoteAuthorLabel.setText(journal.getString(3));
+                System.out.println(showNoteAuthorLabel.getText());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

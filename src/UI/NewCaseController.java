@@ -201,7 +201,6 @@ public class NewCaseController extends Application implements Initializable {
     @FXML
     private void createCaseCancelButton (ActionEvent event) {
         Switch.switchWindow((Stage)createCaseCancelButton.getScene().getWindow(),new MenuController());
-
     }
 
     @Override
