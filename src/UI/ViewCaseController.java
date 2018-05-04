@@ -172,16 +172,15 @@ public class ViewCaseController extends Application implements Initializable {
         
         showNoteInCasesPane.setVisible(false);
     }
-
-    //TODO figure out wtf is going on here
+    
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
         showNoteInCasesPane.setVisible(true);
         int index = txtViewNotes.getSelectionModel().getSelectedIndex();
         try {
-            if (journal.absolute(index)){
+            if (journal.absolute(index + 1)){
                 showNoteAuthorLabel.setText(journal.getString(3));
-                System.out.println(showNoteAuthorLabel.getText());
+                txtNoteInCases.setText(journal.getString(4));
             }
         } catch (SQLException e) {
             e.printStackTrace();
