@@ -82,7 +82,6 @@ public class ViewCaseController extends Application implements Initializable {
     private Button closeNoteButton;
 
     private DatabaseHandler dbh;
-    private ResultSet journal;
 
     /**
      * Initializes the controller class.
@@ -91,25 +90,9 @@ public class ViewCaseController extends Application implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put ("caseid", "Sags ID");
-        hashMap.put("name", "Navn");
-        hashMap.put("citizen", "CPR");
-        
-        dbh = new DatabaseHandler();
-        ResultSet info = dbh.getCitizenInfo();
-
-        String userInfo = "";
-        
-        try {
-            ResultSetMetaData rsmdt = info.getMetaData();
+            dbh = new DatabaseHandler();
             
-            while(info.next()){
-                
-                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    userInfo = userInfo + info.getString(i) + ", ";
-                }
-            }
+            String userInfo = dbh.getUserInfo();
             
             String[] CitizenInfo = userInfo.split(", ");
             
@@ -133,18 +116,31 @@ public class ViewCaseController extends Application implements Initializable {
             txtPhoneNumber.setText("Telefon: " + mobileNumber);
             txtEmailAdress.setText("Email: " + email);
             txtRoadName.setText("Vejnavn: " + roadName);
-
-            journal = dbh.getJournal(id);
-            String timestamp = "";
-            while (journal.next()){
-                timestamp = journal.getString(2);
-                System.out.println(timestamp);
-                txtViewNotes.getItems().add(timestamp);
+            
+            ResultSet timeStamp = dbh.getTimeStamp(caseid);
+            
+            String timeStamps = "";
+        
+        try {
+            ResultSetMetaData rsmdt = timeStamp.getMetaData();
+            
+            while(timeStamp.next()){
+                
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    timeStamps = timeStamp.getString(0);
+                }
             }
+            
+            
+            System.out.println(timeStamps);
+            System.out.println("Length of string from column: " + timeStamps);
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
+            //txtViewNotes
+            
+        
         
     }
 
@@ -182,10 +178,11 @@ public class ViewCaseController extends Application implements Initializable {
         
     }
 
-    //TODO figure out wtf is going on here
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
+        
         showNoteInCasesPane.setVisible(true);
+<<<<<<< HEAD
         int index = txtViewNotes.getSelectionModel().getSelectedIndex();
         try {
             if (journal.absolute(index)){
@@ -195,6 +192,8 @@ public class ViewCaseController extends Application implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+=======
+>>>>>>> 240e51280db5da43a8ea6c9d95840191bea8d380
     }
 
 }

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -85,10 +86,22 @@ public class DatabaseHandler {
     }
 
     public ResultSet searchCase(String name) {
-        System.out.println(user);
+        
         try {
             Statement st = db.createStatement();
             st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
+            ResultSet rs = st.getResultSet();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public ResultSet getTimeStamp(String caseID){
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select timestamp FROM LOG WHERE caseID = '" + caseID + "'");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
@@ -101,12 +114,12 @@ public class DatabaseHandler {
 
     }
 
-    public void deleteInfo(String id) {
+    public void deleteCase(String id) {
 
         try {
-            System.out.println(id);
             Statement st = db.createStatement();
-            st.executeUpdate("begin; delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; commit;");
+            st.executeUpdate("DELETE FROM sag WHERE caseid = '" + id + "';");
+
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -252,17 +265,33 @@ public class DatabaseHandler {
         return -1;
     }
 
-    public ResultSet getJournal(String id) {
+    public String getUserInfo() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put ("caseid", "Sags ID");
+        hashMap.put("name", "Navn");
+        hashMap.put("citizen", "CPR");
+        
+        ResultSet info = getCitizenInfo();
+        
+        String userInfo = "";
+        
         try {
-            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
-            ResultSet rs = st.getResultSet();
-
-            return rs;
+            ResultSetMetaData rsmdt = info.getMetaData();
+            
+            while(info.next()){
+                
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    userInfo = userInfo + info.getString(i) + ", ";
+                }
+            }
+            
+            return userInfo;
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        
+        return "Nothing found";
     }
 }
 
