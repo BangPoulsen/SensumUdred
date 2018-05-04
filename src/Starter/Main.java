@@ -1,7 +1,7 @@
-package BL;
+package Starter;
 
 
-import DL.DatabaseHandler;
+import Data.DatabaseHandler;
 import UI.GUIController;
 
 public class Main {

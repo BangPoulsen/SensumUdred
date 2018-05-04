@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import BL.Case;
-import BL.Citizen;
-import DL.DatabaseHandler;
+import Business.Case;
+import Business.Citizen;
+import Data.DatabaseHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
