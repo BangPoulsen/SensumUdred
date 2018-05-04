@@ -82,6 +82,7 @@ public class ViewCaseController extends Application implements Initializable {
     private Button closeNoteButton;
 
     private DatabaseHandler dbh;
+    private ResultSet journal;
 
     /**
      * Initializes the controller class.
