@@ -75,9 +75,9 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private AnchorPane showNoteInCasesPane;
     @FXML
-    private Label showNoteAuthorLabel;
+    private Label NoteAuthorLabel;
     @FXML
-    private TextField txtNoteInCases;
+    private TextField txtActualNote;
     @FXML
     private Button closeNoteButton;
 
@@ -189,8 +189,8 @@ public class ViewCaseController extends Application implements Initializable {
         int index = txtViewNotes.getSelectionModel().getSelectedIndex();
         try {
             if (journal.absolute(index)){
-                showNoteAuthorLabel.setText(journal.getString(3));
-                System.out.println(showNoteAuthorLabel.getText());
+	            NoteAuthorLabel.setText(journal.getString(3));
+                System.out.println(NoteAuthorLabel.getText());
             }
         } catch (SQLException e) {
             e.printStackTrace();
