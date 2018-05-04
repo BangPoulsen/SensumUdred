@@ -1,4 +1,4 @@
-package BL;
+package Business;
 
 public class Case {
     /**
