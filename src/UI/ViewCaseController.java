@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -39,6 +40,9 @@ import javafx.stage.Stage;
  * @author malte
  */
 public class ViewCaseController extends Application implements Initializable {
+    
+        
+    
 
     @FXML
     private AnchorPane createCasePane;
@@ -77,7 +81,7 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label showNoteAuthorLabel;
     @FXML
-    private TextField txtNoteInCases;
+    private TextArea txtNoteInCases;
     @FXML
     private Button closeNoteButton;
 
@@ -161,6 +165,8 @@ public class ViewCaseController extends Application implements Initializable {
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
+        String css = ViewCaseController.class.getResource("ViewCaseStyle.css").toExternalForm();
+        scene.getStylesheets().add(css);
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
