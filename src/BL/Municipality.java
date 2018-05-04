@@ -21,6 +21,7 @@ public class Municipality {
         muAdress = adress;
         muPhoneNumber = phoneNumber;
         muEmail = email;
+
     }
 /**
  *   This method is a getter for muName

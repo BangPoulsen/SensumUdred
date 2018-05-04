@@ -82,7 +82,7 @@ public class DatabaseHandler {
     }
 
     public ResultSet searchCase(String name) {
-        System.out.println(user);
+
         try {
             Statement st = db.createStatement();
             st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
@@ -100,7 +100,6 @@ public class DatabaseHandler {
 
     public void deleteInfo(String id) {
         try {
-            System.out.println(id);
             Statement st = db.createStatement();
             st.executeUpdate("" +
                     "begin; " +
