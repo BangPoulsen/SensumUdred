@@ -182,7 +182,7 @@ public class ViewCaseController extends Application implements Initializable {
     private void ViewNoteEventHandler(ActionEvent event) {
         
         showNoteInCasesPane.setVisible(true);
-<<<<<<< HEAD
+
         int index = txtViewNotes.getSelectionModel().getSelectedIndex();
         try {
             if (journal.absolute(index)){
@@ -192,8 +192,6 @@ public class ViewCaseController extends Application implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-=======
->>>>>>> 240e51280db5da43a8ea6c9d95840191bea8d380
     }
 
 }
