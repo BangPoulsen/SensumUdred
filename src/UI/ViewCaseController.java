@@ -91,11 +91,6 @@ public class ViewCaseController extends Application implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put ("caseid", "Sags ID");
-        hashMap.put("name", "Navn");
-        hashMap.put("citizen", "CPR");
-        
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getCitizenInfo();
 
@@ -105,7 +100,6 @@ public class ViewCaseController extends Application implements Initializable {
             ResultSetMetaData rsmdt = info.getMetaData();
             
             while(info.next()){
-                
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     userInfo = userInfo + info.getString(i) + ", ";
                 }
@@ -145,7 +139,6 @@ public class ViewCaseController extends Application implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
     }
 
     @FXML
@@ -178,8 +171,6 @@ public class ViewCaseController extends Application implements Initializable {
     private void closeNoteButtonHandler(ActionEvent event) {
         
         showNoteInCasesPane.setVisible(false);
-        
-        
     }
 
     //TODO figure out wtf is going on here
@@ -196,5 +187,4 @@ public class ViewCaseController extends Application implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

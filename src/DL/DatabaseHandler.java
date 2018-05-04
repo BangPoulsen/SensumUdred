@@ -59,22 +59,19 @@ public class DatabaseHandler {
         //SQL Stuff
         //TODO catch duplicate id's
 
-
         try {
             Statement st = db.createStatement();
-            st.executeUpdate("insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "')");
-            st.executeUpdate("insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "')");
-            st.executeUpdate("insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "')");
-            st.executeUpdate("INSERT into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '"+note+"','"+journalNumber+"','"+author+"')");
+            st.executeUpdate("" +
+                    "begin; " +
+                    "insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
+                    "insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
+                    "insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
+                    "insert into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '" + note + "','"+journalNumber+"','"+author+"');" +
+                    "commit;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
-
-    //TODO searchCase()
 
     public void closeConnection(){
         try {
@@ -98,21 +95,22 @@ public class DatabaseHandler {
     }
 
     public void editCase() {
-
+        //TODO implement editCase
     }
 
     public void deleteInfo(String id) {
-
         try {
             System.out.println(id);
             Statement st = db.createStatement();
-            st.executeUpdate("begin; delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; commit;");
+            st.executeUpdate("" +
+                    "begin; " +
+                    "delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
+                    "delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
+                    "commit;");
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public boolean loginAttempt(String username, String userPassword) {
@@ -135,13 +133,10 @@ public class DatabaseHandler {
 
                                 return true;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return false;
-
     }
 
     public String getId(String username) {
@@ -158,7 +153,6 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 

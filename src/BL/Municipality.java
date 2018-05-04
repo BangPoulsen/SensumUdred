@@ -27,24 +27,15 @@ public class Municipality {
  *   This is the same for the rest of the "get" methods in Municipality
  *   @return String current value of muName
  */
-    public String getMuName() {
-
-        return muName;
-    }
+    public String getMuName() { return muName; }
 /**
  *   This method is a setter for muName
  *   This is the same for the rest of the "set" methods in Municipality
  *   @param muName sets the initial value of muName
  */
-    public void setMuName(String muName) {
+    public void setMuName(String muName) { this.muName = muName; }
 
-        this.muName = muName;
-    }
-
-    public String getMuAdress() {
-
-        return muAdress;
-    }
+    public String getMuAdress() { return muAdress; }
 
     public void setMuAdress(String muAdress) {
         this.muAdress = muAdress;
@@ -54,19 +45,9 @@ public class Municipality {
         return muPhoneNumber;
     }
 
-    public void setMuPhoneNumber(String muPhoneNumber) {
+    public void setMuPhoneNumber(String muPhoneNumber) { this.muPhoneNumber = muPhoneNumber; }
 
-        this.muPhoneNumber = muPhoneNumber;
-    }
+    public String getMuEmail() { return muEmail; }
 
-    public String getMuEmail() {
-
-        return muEmail;
-    }
-
-    public void setMuEmail(String muEmail) {
-
-        this.muEmail = muEmail;
-    }
-    
+    public void setMuEmail(String muEmail) { this.muEmail = muEmail; }
 }
