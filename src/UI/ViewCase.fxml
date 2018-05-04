@@ -76,7 +76,7 @@
          </effect>
          <children>
             <Label fx:id="showNoteAuthorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="-2.0" prefHeight="27.0" prefWidth="340.0" textAlignment="CENTER" />
-            <TextField fx:id="txtNoteInCases" editable="false" layoutX="20.0" layoutY="20.0" prefHeight="218.0" prefWidth="320.0" />
+            <TextField fx:id="txtNoteInCases" editable="false" prefHeight="250.0" prefWidth="340.0" />
             <Button fx:id="closeNoteButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="2.0" mnemonicParsing="false" onAction="#closeNoteButtonHandler" prefHeight="20.0" prefWidth="30.0" text="X" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="11.0" />

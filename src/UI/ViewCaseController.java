@@ -69,7 +69,7 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private Label txtJournalNumber;
     @FXML
-    private ListView<?> txtViewNotes;
+    private ListView<String> txtViewNotes;
     @FXML
     private Label showCasesLabel;
     @FXML
@@ -90,25 +90,9 @@ public class ViewCaseController extends Application implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put ("caseid", "Sags ID");
-        hashMap.put("name", "Navn");
-        hashMap.put("citizen", "CPR");
-        
-        dbh = new DatabaseHandler();
-        ResultSet info = dbh.getCitizenInfo();
-        
-        String userInfo = "";
-        
-        try {
-            ResultSetMetaData rsmdt = info.getMetaData();
+            dbh = new DatabaseHandler();
             
-            while(info.next()){
-                
-                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                    userInfo = userInfo + info.getString(i) + ", ";
-                }
-            }
+            String userInfo = dbh.getUserInfo();
             
             String[] CitizenInfo = userInfo.split(", ");
             
@@ -133,11 +117,30 @@ public class ViewCaseController extends Application implements Initializable {
             txtEmailAdress.setText("Email: " + email);
             txtRoadName.setText("Vejnavn: " + roadName);
             
+            ResultSet timeStamp = dbh.getTimeStamp(caseid);
             
+            String timeStamps = "";
+        
+        try {
+            ResultSetMetaData rsmdt = timeStamp.getMetaData();
+            
+            while(timeStamp.next()){
+                
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    timeStamps = timeStamp.getString(0);
+                }
+            }
+            
+            
+            System.out.println(timeStamps);
+            System.out.println("Length of string from column: " + timeStamps);
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
+            //txtViewNotes
+            
+        
         
     }
 
