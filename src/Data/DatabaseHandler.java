@@ -229,15 +229,24 @@ public class DatabaseHandler {
     public long readDate() {
         
         try {
-
-        Scanner input = new Scanner(new File("lockedDate.txt"));
+            
+        File lockedDate = new File("lockedDate.txt");
         
-        long date = 0;
+        Scanner input = null;
+        if(lockedDate.exists()){
+            input = new Scanner(lockedDate);
+            
+            long date = 0;
             while (input.hasNextLine()) {
                 date = Long.parseLong(input.nextLine());   
             }
             
             return date;
+        } else{
+            return -1;
+        }
+            
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
