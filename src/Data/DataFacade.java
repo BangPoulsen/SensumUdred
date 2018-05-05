@@ -5,16 +5,16 @@
  */
 package Data;
 
-import Acquantance.IDataFacade;
 import Business.Case;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import Acquantance.IData;
 
 /**
  *
  * @author malte
  */
-public class DataFacade implements IDataFacade {
+public class DataFacade implements IData {
     
     DatabaseHandler dbh = new DatabaseHandler();
 

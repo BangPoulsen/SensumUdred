@@ -9,6 +9,10 @@ package Acquantance;
  *
  * @author malte
  */
-public interface IUIFacade {
+public interface IUI {
+    
+    public void injectBusiness(IBusiness business);
+
+    public void startApplication();
     
 }

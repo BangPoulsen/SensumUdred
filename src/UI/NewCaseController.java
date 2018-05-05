@@ -151,7 +151,7 @@ public class NewCaseController extends Application implements Initializable {
             for (String s: streetSplit
                     ) {
                 if (streetSplit.length != 1) {
-                    if (s != streetSplit[streetSplit.length - 1]) {
+                    if (s == null ? streetSplit[streetSplit.length - 1] != null : !s.equals(streetSplit[streetSplit.length - 1])) {
                         street = street + s + " ";
                     }
                 }
@@ -213,9 +213,13 @@ public class NewCaseController extends Application implements Initializable {
         primaryStage.setTitle("Opret sag");
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
-        primaryStage.show();
+        
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+        
+        primaryStage.show();
+        
+        
     }
 }

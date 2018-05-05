@@ -5,6 +5,8 @@
  */
 package UI;
 
+import Acquantance.IBusiness;
+import Acquantance.IUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,7 +28,9 @@ import javafx.stage.Stage;
  *
  * @author Simon
  */
-public class GUIController extends Application implements Initializable {
+public class GUIController extends Application implements Initializable, IUI {
+
+    private IBusiness business;
 
     /**
      * Initializes the controller class.
@@ -51,7 +55,13 @@ public class GUIController extends Application implements Initializable {
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
     }
 
-    public void StartApplication () {
+    @Override
+    public void injectBusiness(IBusiness business) {
+        this.business = business;
+    }
+
+    @Override
+    public void startApplication() {
         launch(getClass());
     }
 }

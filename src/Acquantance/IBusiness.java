@@ -9,6 +9,8 @@ package Acquantance;
  *
  * @author malte
  */
-public interface IBussinesFacade {
+public interface IBusiness {
+
+    public void injectData(IData data);
     
 }

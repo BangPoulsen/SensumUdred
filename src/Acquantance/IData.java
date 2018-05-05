@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author malte
  */
-public interface IDataFacade {
+public interface IData {
     
     
     public void createCase(Case caseI);
