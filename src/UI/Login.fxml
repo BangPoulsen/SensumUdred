@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="loginPage" fx:id="loginPane" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#isEnterPressed" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #ff00ff;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
+<AnchorPane id="loginPage" fx:id="loginPane" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#isEnterPressed" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
    <children>
-      <TextField id="loginUsername" fx:id="loginUsername" layoutX="50.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: ff99ff;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />
-      <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="50.0" layoutY="102.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: ff99ff;" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="102.0" />
-      <Button id="loginButton" fx:id="loginButton" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: ff0066;" text="Login" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="144.0" />
+      <TextField id="loginUsername" fx:id="loginUsername" layoutX="50.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Username" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />
+      <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="50.0" layoutY="102.0" prefHeight="30.0" prefWidth="200.0" promptText="Password" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="102.0" />
+      <Button id="loginButton" fx:id="loginButton" layoutX="50.0" layoutY="144.0" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="200.0" text="Login" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="144.0" />
       <Label id="loginSensumLabel" fx:id="loginSensumLabel" alignment="CENTER" layoutX="5.0" layoutY="1.0" prefHeight="27.0" prefWidth="290.0" text="Sensum Udred" textAlignment="CENTER" AnchorPane.bottomAnchor="172.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="1.0">
          <effect>
             <Blend />
