@@ -57,8 +57,9 @@ public class EditCaseController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
+        txtToDo.setWrapText(true);
+        txtProblemAssesment.setWrapText(true);
+        txtProblemDescription.setWrapText(true);    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -84,4 +85,11 @@ public class EditCaseController extends Application implements Initializable {
     private void SaveToDatabase(ActionEvent event) {
         Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
     }
-}
+    @FXML
+    void UploadToDatebase(ActionEvent event) {
+
+    }
+    @FXML
+    void FileChooser(ActionEvent event) {
+
+    }

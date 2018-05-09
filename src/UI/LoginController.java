@@ -103,6 +103,9 @@ import javax.xml.crypto.Data;
                     case "Sagsbehandler":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
                         break;
+                    case "admin":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new Admin());
+                        break;
                 }
             } else {
                 tries--;

@@ -23,7 +23,7 @@ public class Admin extends Application implements Initializable {
 
 
 	@FXML
-	private ChoiceBox<?> Choicebox;
+	private ChoiceBox<String> Choicebox;
 
 	@FXML
 	private TextField txtUserName;
@@ -83,6 +83,9 @@ public class Admin extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Choicebox.getItems().removeAll(Choicebox.getItems());
+		Choicebox.getItems().addAll("Sagsbehandler", "Læge", "Støtte");
+		Choicebox.getSelectionModel().select("Option B");
 
 	}
 }
