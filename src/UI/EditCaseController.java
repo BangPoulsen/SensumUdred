@@ -150,6 +150,11 @@ public class EditCaseController extends Application implements Initializable {
         fileChooser.setTitle("Vælg fil");
         selectedFile = fileChooser.showOpenDialog(null);
 
+        if (selectedFile != null) {
+            from=Paths.get(selectedFile.toURI());
+            to=Paths.get("src" + selectedFile.getName());
+            Files.copy(from,to);
+        }
 
     }
 }
