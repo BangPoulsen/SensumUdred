@@ -1,5 +1,6 @@
 package UI;
 
+import Data.DatabaseHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,17 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.scene.control.ListView;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javax.swing.JOptionPane;
 
 
 public class Admin extends Application implements Initializable {
@@ -48,14 +59,34 @@ public class Admin extends Application implements Initializable {
 
 	@FXML
 	private Button LogOff;
-
-	@FXML
-	void CreateUSer(ActionEvent event) {
-
-	}
+        
+        @FXML
+        private ListView<String> txtListUsers;
+        
+        private DatabaseHandler dbh;
 
 	@FXML
 	void deleteUser(ActionEvent event) {
+            
+            if (txtListUsers.getSelectionModel().getSelectedItem() != null) {
+                String personInfo = txtListUsers.getSelectionModel().getSelectedItem();
+                
+                String[] personInfoSplitted = personInfo.split(" ");
+                
+                String selectedID = personInfoSplitted[1].substring(0, personInfoSplitted[1].length() - 1);
+                
+                System.out.println("ID: " + selectedID);
+                
+                dbh.deleteInfo(selectedID);
+                
+                JOptionPane.showMessageDialog(null, "Bruger slettet");
+                
+                loadUsers();
+            } else {
+                JOptionPane.showMessageDialog(null, "Vælg en bruger");
+            }
+            
+            
 
 	}
 
@@ -86,9 +117,76 @@ public class Admin extends Application implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		Choicebox.getItems().removeAll(Choicebox.getItems());
 		Choicebox.getItems().addAll("Sagsbehandler", "Læge", "Støtte");
-		Choicebox.getSelectionModel().select("Option B");
+		Choicebox.getSelectionModel().select("Sagsbehandler");
+                
+                dbh = new DatabaseHandler();
+                
+                loadUsers();
 
 	}
+
+    private void loadUsers() {
+        //Search a case
+        
+        ResultSet results = dbh.getUsers("");
+        
+        txtListUsers.getItems().clear();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        
+        hashMap.put("name", "Navn");
+        hashMap.put("id", "Bruger");
+        hashMap.put("type", "Type");
+        
+        
+        try {
+            ResultSetMetaData rsmdt = results.getMetaData();
+            String caseString;
+            while (results.next()) {
+                
+                
+                    caseString = hashMap.get(rsmdt.getColumnName(2)) + ": " + results.getString(2) + ", " + 
+                                 hashMap.get(rsmdt.getColumnName(1)) + ": " + results.getString(1) + ", " +
+                                 hashMap.get(rsmdt.getColumnName(3)) + ": " + results.getString(3);
+                
+                
+                txtListUsers.getItems().add(caseString);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void CreateUser(ActionEvent event) {
+        
+        String name = txtUserName.getText();
+        String email = txtUserEmail.getText();
+        String phoneNumber = txtUserPhone.getText();
+        String id = txtUserId.getText();
+        String password = txtUserPassword.getText();
+        String type = Choicebox.getSelectionModel().getSelectedItem();
+        
+        if (name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || id.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Udfyld alle felter.");
+        } else {
+            ResultSet results = dbh.createUser(name, email, phoneNumber, id, password, type);
+            
+            JOptionPane.showMessageDialog(null, "Bruger oprettet!");
+            
+            loadUsers();
+            
+            txtUserName.setText("");
+            txtUserEmail.setText("");
+            txtUserPhone.setText("");
+            txtUserId.setText("");
+            txtUserPassword.setText("");
+        }
+        
+    }
+
+
+
 }
 
 
