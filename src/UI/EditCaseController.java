@@ -5,7 +5,10 @@
  */
 package UI;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.*;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
@@ -17,9 +20,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -52,6 +57,8 @@ public class EditCaseController extends Application implements Initializable {
     private TextField txtFloor;
     @FXML
     private TextField txtZipCode;
+    @FXML
+    private Label chosen;
     @FXML
     private TextField txtFirstNamek;
     @FXML
@@ -86,13 +93,19 @@ public class EditCaseController extends Application implements Initializable {
     private TextArea txtProblemDescription;
     @FXML
     private TextArea txtProblemAssesment;
-    
+
     @FXML
     private Button ChooseFile;
     @FXML
     private Button UploadFile;
     @FXML
     private TextArea txtToDo;
+    @FXML
+    private Path to;
+    @FXML
+    private Path from;
+    @FXML
+    private File selectedFile;
 
     /**
      * Initializes the controller class.
@@ -101,12 +114,13 @@ public class EditCaseController extends Application implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         txtToDo.setWrapText(true);
         txtProblemAssesment.setWrapText(true);
-        txtProblemDescription.setWrapText(true);    }
+        txtProblemDescription.setWrapText(true);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("EditCase.fxml"));
-        Scene scene =new Scene (root);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Rediger sag");
         primaryStage.setResizable(false);
@@ -120,19 +134,22 @@ public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private void ReturnToSearch(ActionEvent event) {
-        Switch.switchWindow((Stage)CancelButton.getScene().getWindow(),new SearchCasePaneController());
+        Switch.switchWindow((Stage) CancelButton.getScene().getWindow(), new SearchCasePaneController());
     }
 
     @FXML
     private void SaveToDatabase(ActionEvent event) {
         Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
-    }
-    @FXML
-    void UploadToDatebase(ActionEvent event) {
+
 
     }
+
     @FXML
-    void FileChooser(ActionEvent event) {
+    void FileChooser(ActionEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Vælg fil");
+        selectedFile = fileChooser.showOpenDialog(null);
+
 
     }
 }

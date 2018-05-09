@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.EditCaseController">
+<AnchorPane prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.EditCaseController">
    <children>
       <AnchorPane layoutX="625.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="165.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="625.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -131,8 +131,7 @@
                               <Label layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="284.0" text="Problembeskrivelse" />
                               <Label layoutX="14.0" layoutY="154.0" prefHeight="27.0" prefWidth="284.0" text="Vurdering" />
                               <Label layoutX="14.0" layoutY="296.0" prefHeight="27.0" prefWidth="284.0" text="Indsats" />
-                              <Button fx:id="ChooseFile" layoutX="15.0" layoutY="446.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="64.0" prefWidth="149.0" text="Vælg fil" />
-                              <Button fx:id="UploadFile" layoutX="171.0" layoutY="446.0" mnemonicParsing="false" onAction="#UploadToDatebase" prefHeight="64.0" prefWidth="149.0" text="Upload" />
+                              <Button fx:id="ChooseFile" layoutX="15.0" layoutY="446.0" mnemonicParsing="false" onAction="#FileChooser" prefHeight="64.0" prefWidth="149.0" text="Vedhæft fil.." />
                               <TextArea fx:id="txtProblemDescription" layoutX="14.0" layoutY="41.0" prefHeight="106.0" prefWidth="595.0" />
                               <TextArea fx:id="txtProblemAssesment" layoutX="15.0" layoutY="189.0" prefHeight="106.0" prefWidth="595.0" />
                               <TextArea fx:id="txtToDo" layoutX="14.0" layoutY="323.0" prefHeight="106.0" prefWidth="595.0" />
