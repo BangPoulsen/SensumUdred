@@ -152,7 +152,7 @@ public class EditCaseController extends Application implements Initializable {
 
         if (selectedFile != null) {
             from=Paths.get(selectedFile.toURI());
-            to=Paths.get("src" + selectedFile.getName());
+            to=Paths.get("src/" + selectedFile.getName());
             Files.copy(from,to);
         }
 
