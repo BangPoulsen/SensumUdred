@@ -17,6 +17,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
@@ -51,6 +52,47 @@ public class EditCaseController extends Application implements Initializable {
     private TextField txtFloor;
     @FXML
     private TextField txtZipCode;
+    @FXML
+    private TextField txtFirstNamek;
+    @FXML
+    private TextField txtLastNamek;
+    @FXML
+    private TextField txtPhonek;
+    @FXML
+    private TextField txtEmailk;
+    @FXML
+    private TextField txtRoadNamek;
+    @FXML
+    private TextField txtFloork;
+    @FXML
+    private TextField txtZipCodek;
+    @FXML
+    private TextField txtIdk;
+    @FXML
+    private TextField txtFirstNamed;
+    @FXML
+    private TextField txtLastNamed;
+    @FXML
+    private TextField txtPhoned;
+    @FXML
+    private TextField txtEmaild;
+    @FXML
+    private TextField txtRoadNamed;
+    @FXML
+    private TextField txtFloord;
+    @FXML
+    private TextField txtZipCoded;
+    @FXML
+    private TextArea txtProblemDescription;
+    @FXML
+    private TextArea txtProblemAssesment;
+    
+    @FXML
+    private Button ChooseFile;
+    @FXML
+    private Button UploadFile;
+    @FXML
+    private TextArea txtToDo;
 
     /**
      * Initializes the controller class.
@@ -93,3 +135,4 @@ public class EditCaseController extends Application implements Initializable {
     void FileChooser(ActionEvent event) {
 
     }
+}
