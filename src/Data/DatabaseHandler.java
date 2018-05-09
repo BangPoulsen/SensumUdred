@@ -266,5 +266,36 @@ public class DatabaseHandler {
         }
         return null;
     }
+
+    public ResultSet getUsers(String type) {
+        try {
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'" );
+            ResultSet rs = st.getResultSet();
+
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet createUser(String name, String email, String phoneNumber, String id, String password, String type) {
+        try {
+            Statement st = db.createStatement();
+            //type, password, id, email, phone, name
+            st.execute("INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name +"')" );
+            ResultSet rs = st.getResultSet();
+            
+            System.out.println("");
+            
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
 }
+
 
