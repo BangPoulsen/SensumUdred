@@ -61,6 +61,7 @@ public class Admin extends Application implements Initializable {
 
 	@FXML
 	void logOff(ActionEvent event) {
+            Switch.switchWindow((Stage)LogOff.getScene().getWindow(),new GUIController());
 
 	}
 
