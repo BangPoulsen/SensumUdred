@@ -104,8 +104,12 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @FXML
     private void editCaseButton(ActionEvent event) {
-        Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
-        dbh.editCase();
+        if (listViewCases.getSelectionModel().getSelectedItem() != null) {
+            Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Vælg en sag at redigere");
+        }
         
     }
 

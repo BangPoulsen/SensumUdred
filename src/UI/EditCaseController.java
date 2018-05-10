@@ -11,10 +11,13 @@ import java.net.URL;
 import java.nio.file.*;
 import java.util.ResourceBundle;
 
-import Business.Journal;
 import Data.DatabaseHandler;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -60,8 +63,6 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private TextField txtZipCode;
     @FXML
-    private Label chosen;
-    @FXML
     private TextField responsible;
     @FXML
     private TextField txtFirstNamek;
@@ -104,11 +105,8 @@ public class EditCaseController extends Application implements Initializable {
     private TextArea txtToDo;
 
     private Button UploadFile;
-    @FXML
     private Path to;
-    @FXML
     private Path from;
-    @FXML
     private File selectedFile;
     private DatabaseHandler dbh;
 
@@ -151,12 +149,24 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private void SaveToDatabase(ActionEvent event) {
 
-        String problemdescription = txtProblemDescription.getText();
-        String problemAssesment = txtProblemAssesment.getText();
-        String toDo = txtToDo.getText();
-        String author= dbh.getCurrentUser();
-        //String journalNumber=dbh.searchCase();
-        //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+        if (!txtProblemDescription.getText().isEmpty() || !txtProblemAssesment.getText().isEmpty() || !txtToDo.getText().isEmpty() ) {
+            String problemdescription = txtProblemDescription.getText();
+            String problemAssesment = txtProblemAssesment.getText();
+            String toDo = txtToDo.getText();
+            String author = dbh.getCurrentUser();
+            //String journalNumber=dbh.searchCase();
+            //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+        } else {
+            String missing = "Felter mangler: ";
+            
+            if (txtProblemDescription.getText().isEmpty()) {
+                missing += "problembeskrivelse, ";
+            }else if(txtProblemAssesment.getText().isEmpty()){
+                missing+= "vurdering, ";
+            } else if (txtToDo.getText().isEmpty()){
+                missing += "indsats.";
+            }
+        }
 
 
 
@@ -179,5 +189,53 @@ public class EditCaseController extends Application implements Initializable {
             Files.copy(from,to);
         }
 
+    }
+
+    @FXML
+    private void contactInformationClicked(Event event) {
+        
+        /*ResultSet info = dbh.getCitizenInfo();
+        
+        String userInfo = "";
+        
+        try {
+        ResultSetMetaData rsmdt = info.getMetaData();
+        
+        while(info.next()){
+        for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+        userInfo = userInfo + info.getString(i) + ", ";
+        }
+        }
+        
+        String[] CitizenInfo = userInfo.split(", ");
+        
+        String caseid = CitizenInfo[0];
+        String fullName = CitizenInfo[1];
+        String id = CitizenInfo[2];
+        String mobileNumber = CitizenInfo[3];
+        String email  = CitizenInfo[4];
+        String roadName = CitizenInfo[5];
+        String floor = CitizenInfo[6];
+        String zipcode = CitizenInfo[7];
+        
+        String[] fullNameSplit = fullName.split(" ");
+        
+        txtFirstName.setText(fullNameSplit[0]);
+        txtLastName.setText(fullNameSplit[1]);
+        txtCPRNumber.setText(id);
+        txtFloor.setText(floor);
+        txtZipCode.setText(zipcode);
+        txtPhone.setText(mobileNumber);
+        txtEmail.setText(email);
+        txtRoadName.setText(roadName);
+        
+        
+        
+        } catch (SQLException e) {
+        e.printStackTrace();
+        }*/
+        
+        
+        
     }
 }

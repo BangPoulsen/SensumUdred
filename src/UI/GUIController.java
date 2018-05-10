@@ -10,7 +10,6 @@ import Acquantance.IUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Data.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

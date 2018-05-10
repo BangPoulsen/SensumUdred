@@ -5,7 +5,6 @@ import Acquantance.IBusiness;
 import Acquantance.IData;
 import Business.BusinessFacade;
 import Data.DataFacade;
-import Data.DatabaseHandler;
 import UI.GUIController;
 import Acquantance.IUI;
 
@@ -15,7 +14,6 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        DatabaseHandler dbHandler = new DatabaseHandler();
         
         //Create instance of data interface
         IData data = new DataFacade();

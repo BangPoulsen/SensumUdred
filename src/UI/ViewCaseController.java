@@ -5,7 +5,6 @@
  */
 package UI;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
@@ -13,9 +12,6 @@ import java.util.ResourceBundle;
 import Data.DatabaseHandler;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,11 +24,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -181,15 +177,19 @@ public class ViewCaseController extends Application implements Initializable {
     
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
-        showNoteInCasesPane.setVisible(true);
-        int index = txtViewNotes.getSelectionModel().getSelectedIndex();
-        try {
-            if (journal.absolute(index + 1)){
-                showNoteAuthorLabel.setText(journal.getString(3));
-                txtNoteInCases.setText(journal.getString(4));
+        if (txtViewNotes.getSelectionModel().getSelectedItem()!= null) {
+            showNoteInCasesPane.setVisible(true);
+            int index = txtViewNotes.getSelectionModel().getSelectedIndex();
+            try {
+                if (journal.absolute(index + 1)) {
+                    showNoteAuthorLabel.setText(journal.getString(3));
+                    txtNoteInCases.setText(journal.getString(4));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            JOptionPane.showMessageDialog(null, "Vælg et notat.");
         }
     }
 }

@@ -128,7 +128,7 @@ public class NewCaseController extends Application implements Initializable {
             
             Random random = new Random();
             int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
-            ArrayList<String> caseIDs = dbh.getCIDList();
+            ArrayList<String> caseIDs = dbh.getCaseIDList();
             System.out.println(caseID);
             String journalNumber = Integer.toString(caseID);
             
@@ -152,7 +152,7 @@ public class NewCaseController extends Application implements Initializable {
                     ) {
                 if (streetSplit.length != 1) {
                     if (s == null ? streetSplit[streetSplit.length - 1] != null : !s.equals(streetSplit[streetSplit.length - 1])) {
-                        street = street + s + " ";
+                        street +=  s + " ";
                     }
                 }
                 else {

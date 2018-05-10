@@ -6,7 +6,6 @@
 package Data;
 
 import Business.Case;
-import Business.Journal;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,10 +15,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -97,10 +93,6 @@ public class DatabaseHandler {
         return null;
     }
 
-    public void editCase() {
-        //TODO implement editCase
-    }
-
     public void deleteInfo(String id) {
         try {
             Statement st = db.createStatement();
@@ -158,7 +150,7 @@ public class DatabaseHandler {
         return null;
     }
 
-    public ArrayList<String> getCIDList() {
+    public ArrayList<String> getCaseIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
         System.out.println(user);
         try {
@@ -180,11 +172,12 @@ public class DatabaseHandler {
 
     public ResultSet getCitizenInfo(String id) {
         System.out.println("Id: " + id);
-        return getInfo(id);
+        return  getInfo(id);
     }
 
     public ResultSet getCitizenInfo() {
         System.out.println("User: " + user);
+        
         return getInfo(user);
     }
 

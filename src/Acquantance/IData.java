@@ -30,7 +30,7 @@ public interface IData {
     
     public String getId(String username);
     
-    public ArrayList<String> getCIDList();
+    public ArrayList<String> getCaseIDList();
     
     public ResultSet getCitizenInfo(String id);
     

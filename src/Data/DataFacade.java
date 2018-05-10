@@ -54,8 +54,8 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public ArrayList<String> getCIDList() {
-        return dbh.getCIDList();
+    public ArrayList<String> getCaseIDList() {
+        return dbh.getCaseIDList();
     }
 
     @Override
