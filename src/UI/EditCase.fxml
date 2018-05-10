@@ -118,7 +118,7 @@
                               <TextField editable="false" layoutX="313.0" layoutY="203.0" prefHeight="27.0" prefWidth="250.0" promptText="vejnavn" text="2750" AnchorPane.topAnchor="203.0" />
                               <TextField editable="false" layoutX="313.0" layoutY="251.0" prefHeight="27.0" prefWidth="250.0" promptText="etage" text="58271713" AnchorPane.topAnchor="251.0" />
                               <Label layoutX="39.0" layoutY="257.0" prefHeight="27.0" prefWidth="250.0" text="CVR-nr:" />
-                              <TextField layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="postnummer" AnchorPane.topAnchor="299.0" />
+                              <TextField fx:id="responsible" editable="false" layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="ansvarlig" AnchorPane.topAnchor="299.0" />
                               <Label layoutX="39.0" layoutY="305.0" prefHeight="27.0" prefWidth="250.0" text="Ansvarlig:" />
                            </children>
                         </AnchorPane>

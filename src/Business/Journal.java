@@ -9,11 +9,41 @@ package Business;
  *
  * @author malte
  */
-class Journal {
+public class Journal {
     
     private String timeStamp;
     private String caseID;
     private String eventuelNotes;
+    private String problemDesciption;
+    private String problemAssesment;
+    private String toDo;
+    private String cID;
+    private String author;
+
+    public Journal(String timeStamp, String caseID, String problemDesciption, String problemAssesment, String toDo, String cID, String author) {
+        this.timeStamp = timeStamp;
+        this.caseID = caseID;
+        this.problemDesciption = problemDesciption;
+        this.problemAssesment = problemAssesment;
+        this.toDo = toDo;
+        this.cID = cID;
+        this.author=author;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getcID() {return cID;
+
+    }
+    public void setcID(String cID) {this.cID = cID;
+    }
 
     public String getTimeStamp() {
         return timeStamp;
@@ -37,5 +67,26 @@ class Journal {
 
     public void setEventuelNotes(String eventuelNotes) {
         this.eventuelNotes = eventuelNotes;
+    }
+
+    public String getProblemDesciption() {return problemDesciption;
+    }
+
+    public void setProblemDesciption(String problemDesciption) {this.problemDesciption = problemDesciption;
+    }
+
+    public String getProblemAssesment() {return problemAssesment;
+    }
+
+    public void setProblemAssesment(String problemAssesment) {
+        this.problemAssesment = problemAssesment;
+    }
+
+    public String getToDo() {
+        return toDo;
+    }
+
+    public void setToDo(String toDo) {
+        this.toDo = toDo;
     }
 }

@@ -11,6 +11,8 @@ import java.net.URL;
 import java.nio.file.*;
 import java.util.ResourceBundle;
 
+import Business.Journal;
+import Data.DatabaseHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,6 +62,8 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private Label chosen;
     @FXML
+    private TextField responsible;
+    @FXML
     private TextField txtFirstNamek;
     @FXML
     private TextField txtLastNamek;
@@ -97,15 +101,16 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private Button ChooseFile;
     @FXML
-    private Button UploadFile;
-    @FXML
     private TextArea txtToDo;
+
+    private Button UploadFile;
     @FXML
     private Path to;
     @FXML
     private Path from;
     @FXML
     private File selectedFile;
+    private DatabaseHandler dbh;
 
     /**
      * Initializes the controller class.
@@ -115,6 +120,12 @@ public class EditCaseController extends Application implements Initializable {
         txtToDo.setWrapText(true);
         txtProblemAssesment.setWrapText(true);
         txtProblemDescription.setWrapText(true);
+        dbh = new DatabaseHandler();
+        String currentUser=dbh.getCurrentUser();
+        responsible.setText(currentUser);
+
+
+
     }
 
     @Override
@@ -139,6 +150,18 @@ public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private void SaveToDatabase(ActionEvent event) {
+
+        String problemdescription = txtProblemDescription.getText();
+        String problemAssesment = txtProblemAssesment.getText();
+        String toDo = txtToDo.getText();
+        String author= dbh.getCurrentUser();
+        //String journalNumber=dbh.searchCase();
+        //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+
+
+
+
+
         Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
 
 

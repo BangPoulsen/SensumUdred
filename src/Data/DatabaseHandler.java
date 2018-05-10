@@ -6,6 +6,8 @@
 package Data;
 
 import Business.Case;
+import Business.Journal;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -24,7 +26,7 @@ import java.util.logging.Logger;
  * @author malte
  */
 public class DatabaseHandler {
-    
+
     private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
     private static String username = "pjgbvjcy";
     private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
@@ -40,6 +42,7 @@ public class DatabaseHandler {
         }
     }
 
+
     public void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
@@ -52,7 +55,7 @@ public class DatabaseHandler {
         String zipCode = caseI.getcCitizen().getCiZipCode();
         String journalNumber = caseI.getcID();
         String note = caseI.getcEventuelNotes();
-        String author= caseI.getcauthor();
+        String author = caseI.getcauthor();
         String password = caseI.getcCitizen().getCiPassword();
 
 
@@ -62,18 +65,18 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             st.executeUpdate("" +
-                    "begin; " +
-                    "insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
-                    "insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
-                    "insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
-                    "insert into journal (timestamp, note, caseid, author) values ('"+new Date().toString()+"',  '" + note + "','"+journalNumber+"','"+author+"');" +
-                    "commit;");
+                "begin; " +
+                "insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
+                "insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
+                "insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
+                "insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + note + "','" + journalNumber + "','" + author + "');" +
+                "commit;");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void closeConnection(){
+    public void closeConnection() {
         try {
             db.close();
         } catch (SQLException e) {
@@ -85,7 +88,7 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name +"%'))");
+            st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name + "%'))");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
@@ -102,10 +105,10 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             st.executeUpdate("" +
-                    "begin; " +
-                    "delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
-                    "delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
-                    "commit;");
+                "begin; " +
+                "delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
+                "delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
+                "commit;");
             System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,18 +122,18 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
-                                String type = rs.getString("email");
-                                String password = rs.getString("password");
-                                String id = rs.getString("id");
-                                //String adress = rs.getString("adress");
-                                String email = rs.getString("email");
-                                String phone = rs.getString("phone");
-                                String name = rs.getString("name");
+                String type = rs.getString("email");
+                String password = rs.getString("password");
+                String id = rs.getString("id");
+                //String adress = rs.getString("adress");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                String name = rs.getString("name");
 
-                                System.out.println(type + " " + password + " " + id + " "  + " " + email + " " + phone + " " + name);
-                                user = id;
+                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                user = id;
 
-                                return true;
+                return true;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -145,9 +148,9 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
 
             while (rs.next()) {
-                                String id = rs.getString("type");
-                                return id;
-                            }
+                String id = rs.getString("type");
+                return id;
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -200,9 +203,9 @@ public class DatabaseHandler {
     public String getCurrentUser() {
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select name from person where id = '" + user + "';");
+            st.executeQuery("SELECT name FROM person WHERE id = '" + user + "';");
             ResultSet rs = st.getResultSet();
-            while(rs.next()) {
+            while (rs.next()) {
                 return rs.getString(1);
             }
         } catch (SQLException e) {
@@ -212,45 +215,45 @@ public class DatabaseHandler {
     }
 
     public void writeDate2file(long lockedDate) {
-       
-        
+
+
         try {
             FileWriter fw = new FileWriter(new File("lockedDate.txt"));
-            
-            fw.write(""+lockedDate);
-            
+
+            fw.write("" + lockedDate);
+
             fw.close();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public long readDate() {
-        
+
         try {
-            
-        File lockedDate = new File("lockedDate.txt");
-        
-        Scanner input = null;
-        if(lockedDate.exists()){
-            input = new Scanner(lockedDate);
-            
-            long date = 0;
-            while (input.hasNextLine()) {
-                date = Long.parseLong(input.nextLine());   
+
+            File lockedDate = new File("lockedDate.txt");
+
+            Scanner input = null;
+            if (lockedDate.exists()) {
+                input = new Scanner(lockedDate);
+
+                long date = 0;
+                while (input.hasNextLine()) {
+                    date = Long.parseLong(input.nextLine());
+                }
+
+                return date;
+            } else {
+                return -1;
             }
-            
-            return date;
-        } else{
-            return -1;
-        }
-            
-            
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         return -1;
     }
 
@@ -270,7 +273,7 @@ public class DatabaseHandler {
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'" );
+            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'");
             ResultSet rs = st.getResultSet();
 
             return rs;
@@ -284,18 +287,32 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             //type, password, id, email, phone, name
-            st.execute("INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name +"')" );
+            st.execute("INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "')");
             ResultSet rs = st.getResultSet();
-            
+
             System.out.println("");
-            
+
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return null;
     }
-}
+    public void updateDatabase(String problemDescription, String problemAssesment,String toDo, String author, String journalNumber){
+        try{
+            Statement st = db.createStatement();
+            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '"+ problemDescription + "','" + journalNumber + "','" + author + "');");
+            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + problemAssesment + "','" + journalNumber + "','" + author + "');");
+            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + toDo + "','" + journalNumber + "','" + author + "');");
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+        }
+
+
 
 
