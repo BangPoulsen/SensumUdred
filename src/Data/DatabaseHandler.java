@@ -161,7 +161,7 @@ public class DatabaseHandler {
     }
 
     /**
-     * Finds the type of the user. consider renaming?
+     * Finds the type of the user.
      *
      * @param username Uses this as a persons name to find the corresponding type during an sql querry.
      * @return A string containing the type of the user.
@@ -220,11 +220,11 @@ public class DatabaseHandler {
     }
 
     /**
-     * Gets a lot of info about the user. Maybe rename?
+     * Gets a lot of info about the user.
      *
      * @return a resultset containing the info.
      */
-    public ResultSet getCitizenInfo() {
+    public ResultSet getUserInfo() {
         System.out.println("User: " + user);
         
         return getInfo(user);
@@ -340,6 +340,7 @@ public class DatabaseHandler {
         return null;
     }
 
+    //TODO implement the unused type.
     /**
      * Gets information about Sagsbehandlere, Støttepersoner og læger.
      *
@@ -395,7 +396,7 @@ public class DatabaseHandler {
      * @param problemAssesment A string containing information about an updated review of the assesment of the problem.
      * @param toDo A string containing information about an updated review of what is to be done about the problem.
      * @param author A string containing the author.
-     * @param journalNumber A string containing the journals number. 
+     * @param journalNumber A string containing the journals number.
      */
     public void updateDatabase(String problemDescription, String problemAssesment,String toDo, String author, String journalNumber){
         try{
@@ -407,7 +408,9 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-}
+
+
+        }
 
 
 
