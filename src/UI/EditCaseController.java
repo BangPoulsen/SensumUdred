@@ -5,8 +5,7 @@
  */
 package UI;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.ResourceBundle;
@@ -199,7 +198,24 @@ public class EditCaseController extends Application implements Initializable {
 
     @FXML
     private void contactInformationClicked(Event event) {
-        
+
+        String caseID;
+        String CPR;
+        File file = new File("selectedCase");
+
+
+        try {
+            FileInputStream input = new FileInputStream(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+
+            caseID = reader.readLine();
+            CPR = reader.readLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         ResultSet info = dbh.getCitizenInfo();
         
         String userInfo = "";

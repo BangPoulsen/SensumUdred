@@ -111,14 +111,18 @@ public class SearchCasePaneController extends Application implements Initializab
         if (listViewCases.getSelectionModel().getSelectedItem() != null) {
             String id = listViewCases.getSelectionModel().getSelectedItems().toString();
 
-            String[] caseID = id.split(" ");
+            String[] IDs = id.split(" ");
 
-            String finalID = caseID[2].substring(0, caseID[2].length() - 1);
+            String caseID = IDs[2].substring(0, IDs[2].length() - 1);
+            String cpr = IDs[4].substring(0, IDs[4].length() - 1);
 
             try {
-                FileOutputStream outputStream = new FileOutputStream("selectedUser");
-                byte[] strBytes = finalID.getBytes();
+                FileOutputStream outputStream = new FileOutputStream("selectedCase");
+                byte[] strBytes = caseID.getBytes();
+                byte[] strBytes2 = cpr.getBytes();
                 outputStream.write(strBytes);
+                outputStream.write('\n');
+                outputStream.write(strBytes2);
                 outputStream.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
