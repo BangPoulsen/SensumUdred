@@ -160,17 +160,14 @@ public class DatabaseHandler {
         return false;
     }
 
-<<<<<<< HEAD
-    public String getType(String username) {
-=======
     /**
      * Finds the type of the user. consider renaming?
      *
      * @param username Uses this as a persons name to find the corresponding type during an sql querry.
      * @return A string containing the type of the user.
      */
-    public String getId(String username) {
->>>>>>> cc5b2c53fd2cc450b51a8ca5e171d187decf108f
+    
+    public String getType(String username) {
 
         try {
             Statement st = db.createStatement();
