@@ -421,9 +421,17 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-
-
+    
+    public void logger(String timestamp, String change, String ID, String caseID) {
+        try{
+            Statement st = db.createStatement();
+            st.execute("insert into log (timestamp, change, id, caseid) values ('" + new Date().toString() + "',  '" + change + "','" + ID + "','" + caseID + "');");
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
+    
+}
 
 
 
