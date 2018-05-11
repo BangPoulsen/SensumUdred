@@ -216,7 +216,7 @@ public class EditCaseController extends Application implements Initializable {
             e.printStackTrace();
         }
 
-        ResultSet info = dbh.getCitizenInfo();
+        ResultSet info = dbh.getCitizenInfo("2341");
         
         String userInfo = "";
         
