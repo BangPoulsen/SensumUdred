@@ -14,7 +14,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -61,6 +60,11 @@ public class Admin extends Application implements Initializable {
         
         private DatabaseHandler dbh;
 
+        
+        /**
+         * 
+         * @param event 
+         */
 	@FXML
 	void deleteUser(ActionEvent event) {
             

@@ -6,7 +6,6 @@ public class Case {
      */
     private String cdate;
     private String cStatus;
-    private Caseworker cResponsible;
     private Citizen cCitizen;
     private SupportPerson cSupport;
     private Consultant cDoctor;
@@ -96,14 +95,6 @@ public class Case {
         this.cStatus = cStatus;
     }
 
-    public Caseworker getcResponsible() {
-        return cResponsible;
-    }
-
-    public void setcResponsible(Caseworker cResponsible) {
-        this.cResponsible = cResponsible;
-    }
-
     public Citizen getcCitizen() { return cCitizen; }
 
     public void setcCitizen(Citizen cCitizen) {
@@ -119,19 +110,7 @@ public class Case {
     }
 
     public String getcID(){ return this.cID; }
-    
-    /**
-     * The toString method for a case
-     * @return A String with the date, status, responsible, citizen and journal of a case.
-     */
-    @Override
-    public String toString(){
-        return "Date: " + cdate + "\n" +
-               "Status: " + cStatus + "\n" +
-               "Responsible: " + cResponsible + "\n" +
-               "Citizen: " + cCitizen + "\n" +
-               "Journal: " + cJournal;
-    }
+
 }
 
 
