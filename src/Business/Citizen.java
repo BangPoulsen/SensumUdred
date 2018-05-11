@@ -24,7 +24,7 @@ public class Citizen {
         this.ciPassword = password;
         this.ciStreet = street;
         this.ciStreetNumber = streetNumber;
-        if (floor == "") {
+        if ("".equals(floor)) {
             this.ciFloor = "NULL";
         } else {
             this.ciFloor = floor;
