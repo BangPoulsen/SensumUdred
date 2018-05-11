@@ -104,6 +104,9 @@ import javax.swing.*;
                     case "admin":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new Admin());
                         break;
+                    case "Læge":
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                        break;
                 }
             } else {
                 tries--;
