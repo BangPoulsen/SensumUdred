@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import Business.Case;
 import Business.Citizen;
 import Data.DatabaseHandler;
+import Data.IDExistException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -177,8 +178,12 @@ public class NewCaseController extends Application implements Initializable {
             Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
             
             Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
-            
-            dbh.createCase(caseCreated);
+
+            try {
+                dbh.createCase(caseCreated);
+            } catch (IDExistException e) {
+                JOptionPane.showMessageDialog(null, "Denne person eksisterer allerede i systemet. ");
+            }
         } else {
             
             String isEmpty = "";
