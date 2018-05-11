@@ -181,7 +181,7 @@ public class EditCaseController extends Application implements Initializable {
     void FileChooser(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Vælg fil");
-        selectedFile = fileChooser.showOpenDialog(null);
+        selectedFile = fileChooser.showOpenDialog(SaveButton.getScene().getWindow());
 
         if (selectedFile != null) {
             from=Paths.get(selectedFile.toURI());
