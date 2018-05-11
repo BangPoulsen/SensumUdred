@@ -50,7 +50,6 @@ import javax.swing.*;
 
     private int tries = 3;
 
-    
     private int secondsWait = 120;
     
     private DatabaseHandler dbh = new DatabaseHandler();
