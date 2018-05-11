@@ -7,11 +7,7 @@ public class Case {
     private String cdate;
     private String cStatus;
     private Citizen cCitizen;
-    private SupportPerson cSupport;
-    private Consultant cDoctor;
-    private Relative cRelative;
     private String cID;
-    private Journal cJournal;
     private String cEventuelNotes;
     private String cauthor;
 
@@ -21,29 +17,6 @@ public class Case {
 
     public void setcauthor(String cauthor) {this.cauthor = cauthor; }
 
-    public SupportPerson getcSupport() {
-        return cSupport;
-    }
-
-    public void setcSupport(SupportPerson cSupport) {
-        this.cSupport = cSupport;
-    }
-
-    public Consultant getcDoctor() {
-        return cDoctor;
-    }
-
-    public void setcDoctor(Consultant cDoctor) {
-        this.cDoctor = cDoctor;
-    }
-
-    public Relative getcRelative() {
-        return cRelative;
-    }
-
-    public void setcRelative(Relative cRelative) {
-        this.cRelative = cRelative;
-    }
 
     public void setcID(String cID) {
         this.cID = cID;
@@ -99,14 +72,6 @@ public class Case {
 
     public void setcCitizen(Citizen cCitizen) {
         this.cCitizen = cCitizen;
-    }
-
-    public Journal getcJournal() {
-        return cJournal;
-    }
-
-    public void setcJournal(Journal cJournal) {
-        this.cJournal = cJournal;
     }
 
     public String getcID(){ return this.cID; }

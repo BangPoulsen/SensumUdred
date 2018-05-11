@@ -120,7 +120,7 @@ public class NewCaseController extends Application implements Initializable {
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
         
-        dbh.logger( new Date().toString(), "ny sag oprettet", dbh.getCurrentUser(), "CaseID");
+        dbh.logger( new Date().toString(), "ny sag oprettet", dbh.getCurrentUser(), "");
         
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
