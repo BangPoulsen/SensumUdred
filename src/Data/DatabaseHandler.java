@@ -341,10 +341,10 @@ public class DatabaseHandler {
     }
 
     /**
-     * asd
+     * Gets information about Sagsbehandlere, Støttepersoner og læger.
      *
-     * @param type
-     * @return
+     * @param type unused?
+     * @return A resultset containing the info.
      */
     public ResultSet getUsers(String type) {
         try {
@@ -359,6 +359,17 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Creates a user by adding relevant entries to the Database using an sql statement.
+     *
+     * @param name A string containing the new users name.
+     * @param email A string containing the new users email.
+     * @param phoneNumber A string containing the new users phonenumber.
+     * @param id A string containing the new users ID.
+     * @param password A string containing the new users password.
+     * @param type A string containing the new users type.
+     * @return A resultset containing the entries added.
+     */
     public ResultSet createUser(String name, String email, String phoneNumber, String id, String password, String type) {
         try {
             Statement st = db.createStatement();
@@ -376,6 +387,16 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Updates the journal of a case.
+     * Adds strings with different information to the journal providing a timestamp and what is being written about.
+     *
+     * @param problemDescription A string containing information about an updated review of the description of the problem.
+     * @param problemAssesment A string containing information about an updated review of the assesment of the problem.
+     * @param toDo A string containing information about an updated review of what is to be done about the problem.
+     * @param author A string containing the author.
+     * @param journalNumber A string containing the journals number.
+     */
     public void updateDatabase(String problemDescription, String problemAssesment,String toDo, String author, String journalNumber){
         try{
             Statement st = db.createStatement();
@@ -386,9 +407,7 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-
-
-        }
+}
 
 
 
