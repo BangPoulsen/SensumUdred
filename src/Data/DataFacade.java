@@ -50,7 +50,7 @@ public class DataFacade implements IData {
 
     @Override
     public String getId(String username) {
-        return dbh.getId(username);
+        return dbh.getType(username);
     }
 
     @Override

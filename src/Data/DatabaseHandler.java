@@ -133,15 +133,15 @@ public class DatabaseHandler {
         return false;
     }
 
-    public String getId(String username) {
+    public String getType(String username) {
 
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
 
             while (rs.next()) {
-                String id = rs.getString("type");
-                return id;
+                String type = rs.getString("type");
+                return type;
             }
 
         } catch (SQLException e) {

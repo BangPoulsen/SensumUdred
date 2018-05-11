@@ -29,6 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -149,30 +150,35 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private void SaveToDatabase(ActionEvent event) {
 
-        if (!txtProblemDescription.getText().isEmpty() || !txtProblemAssesment.getText().isEmpty() || !txtToDo.getText().isEmpty() ) {
+        if (!txtProblemDescription.getText().isEmpty() && !txtProblemAssesment.getText().isEmpty() && !txtToDo.getText().isEmpty() ) {
             String problemdescription = txtProblemDescription.getText();
             String problemAssesment = txtProblemAssesment.getText();
             String toDo = txtToDo.getText();
             String author = dbh.getCurrentUser();
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+            
+            Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
+            
         } else {
             String missing = "Felter mangler: ";
             
             if (txtProblemDescription.getText().isEmpty()) {
                 missing += "problembeskrivelse, ";
-            }else if(txtProblemAssesment.getText().isEmpty()){
+            }
+            
+            if(txtProblemAssesment.getText().isEmpty()){
                 missing+= "vurdering, ";
-            } else if (txtToDo.getText().isEmpty()){
+            } 
+            
+            if (txtToDo.getText().isEmpty()){
                 missing += "indsats.";
             }
+            
+            JOptionPane.showMessageDialog(null, missing);
         }
 
-
-
-
-
-        Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
+        
 
 
     }
@@ -209,7 +215,7 @@ public class EditCaseController extends Application implements Initializable {
         
         String[] CitizenInfo = userInfo.split(", ");
         
-        String caseid = CitizenInfo[0];
+        //String caseid = CitizenInfo[0];
         String fullName = CitizenInfo[1];
         String id = CitizenInfo[2];
         String mobileNumber = CitizenInfo[3];
@@ -234,8 +240,6 @@ public class EditCaseController extends Application implements Initializable {
         } catch (SQLException e) {
         e.printStackTrace();
         }*/
-        
-        
         
     }
 }

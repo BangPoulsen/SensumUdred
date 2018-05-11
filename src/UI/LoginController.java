@@ -94,7 +94,7 @@ import javax.swing.*;
 
             if (dbh.loginAttempt(username, password)) {
                 System.out.println(dbh.getCurrentUser());
-                switch (dbh.getId(username)){
+                switch (dbh.getType(username)){
                     case "Borger":
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
                         break;
