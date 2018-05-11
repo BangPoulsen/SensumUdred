@@ -38,7 +38,11 @@ public class DatabaseHandler {
         }
     }
 
-
+    /**
+     * Adds new entries to the sql database tables thus creating a new case and its relevant contents.
+     *
+     * @param caseI Object which defines a case and its relevant contents.
+     */
     public void createCase(Case caseI) {
 
         String fullName = caseI.getcCitizen().getCiName();
@@ -72,6 +76,9 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Closes the established connection to the sql server.
+     */
     public void closeConnection() {
         try {
             db.close();
@@ -80,6 +87,12 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Searches for a specific case using the ID of a person, thus returning a resultset containing mentioned info.
+     *
+     * @param name Should be the ID of a person. Is used in an sql querry to get info
+     * @return a resultset containing information about a case using ID's of a person.
+     */
     public ResultSet searchCase(String name) {
 
         try {
@@ -93,6 +106,11 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Deletes entries from the database that pertains to a specific case, thus deleting a case.
+     *
+     * @param id Is the ID of a person, and is used in an sql querry to find and delete relevant entries.
+     */
     public void deleteInfo(String id) {
         try {
             Statement st = db.createStatement();
@@ -107,6 +125,15 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Attemps to establish a connection to the database using the given username and userPassword,
+     * to do this, it verifies whether the username and userPasswords match with an sql querry
+     * and grants a connection accordingly.
+     *
+     * @param username A string that is the users username ...
+     * @param userPassword A string that is the users password.
+     * @return In case the querry is successful and a connection is established this method will return true.
+     */
     public boolean loginAttempt(String username, String userPassword) {
 
         try {
@@ -133,7 +160,17 @@ public class DatabaseHandler {
         return false;
     }
 
+<<<<<<< HEAD
     public String getType(String username) {
+=======
+    /**
+     * Finds the type of the user. consider renaming?
+     *
+     * @param username Uses this as a persons name to find the corresponding type during an sql querry.
+     * @return A string containing the type of the user.
+     */
+    public String getId(String username) {
+>>>>>>> cc5b2c53fd2cc450b51a8ca5e171d187decf108f
 
         try {
             Statement st = db.createStatement();
@@ -150,6 +187,11 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Gets a list of all the cases ID's using an sql querry.
+     *
+     * @return an array containing strings that are all the cases ID's.
+     */
     public ArrayList<String> getCaseIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
         System.out.println(user);
@@ -169,18 +211,34 @@ public class DatabaseHandler {
         return caseIDs;
     }
 
-
+    /**
+     * Gets a lot of info about a person.
+     *
+     * @param id Is the ID of a person.
+     * @return a resultset containing the info.
+     */
     public ResultSet getCitizenInfo(String id) {
         System.out.println("Id: " + id);
         return  getInfo(id);
     }
 
+    /**
+     * Gets a lot of info about the user. Maybe rename?
+     *
+     * @return a resultset containing the info.
+     */
     public ResultSet getCitizenInfo() {
         System.out.println("User: " + user);
         
         return getInfo(user);
     }
 
+    /**
+     * Generates the resultset containing a lot of info about a person.
+     *
+     * @param id Takes an ID of a person that is used in an sql querry.
+     * @return a resultset containing the gathered info.
+     */
     private ResultSet getInfo(String id) {
         try {
             Statement st = db.createStatement();
@@ -193,6 +251,12 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Gets the name of the current user.
+     * Does an sql querry with the ID of the current user.
+     *
+     * @return A string containing the name of the current user.
+     */
     public String getCurrentUser() {
         try {
             Statement st = db.createStatement();
@@ -207,6 +271,11 @@ public class DatabaseHandler {
         return "";
     }
 
+    /**
+     * Writes the current date to a file.
+     *
+     * @param lockedDate A long containing the date information getting written.
+     */
     public void writeDate2file(long lockedDate) {
 
 
@@ -222,6 +291,11 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Gets a date from a file.
+     *
+     * @return A long containing the date.
+     */
     public long readDate() {
 
         try {
@@ -250,6 +324,12 @@ public class DatabaseHandler {
         return -1;
     }
 
+    /**
+     * Gets a journal from a persons case.
+     *
+     * @param id A string containing a persons ID, used in an sql querry that matches the ID.
+     * @return A resultset containing the journal of the persons case.
+     */
     public ResultSet getJournal(String id) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -263,6 +343,12 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * asd
+     *
+     * @param type
+     * @return
+     */
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
