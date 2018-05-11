@@ -21,6 +21,7 @@ import java.util.Scanner;
  *
  * @author malte
  */
+
 public class DatabaseHandler {
 
     private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
@@ -43,7 +44,7 @@ public class DatabaseHandler {
      *
      * @param caseI Object which defines a case and its relevant contents.
      */
-    public void createCase(Case caseI) {
+    public void createCase(Case caseI) throws IDExistException {
 
         String fullName = caseI.getcCitizen().getCiName();
         String CPR = caseI.getcCitizen().getCiUserId();
@@ -59,8 +60,20 @@ public class DatabaseHandler {
         String password = caseI.getcCitizen().getCiPassword();
 
 
-        //SQL Stuff
-        //TODO catch duplicate id's
+
+
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT id FROM person;");
+
+            while (rs.next()) {
+                if (rs.getString(1).equals(CPR)) {
+                    throw new IDExistException();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         try {
             Statement st = db.createStatement();

@@ -200,7 +200,7 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private void contactInformationClicked(Event event) {
         
-        ResultSet info = dbh.getCitizenInfo();
+        ResultSet info = dbh.getUserInfo();
         
         String userInfo = "";
         

@@ -92,7 +92,7 @@ public class ViewCaseController extends Application implements Initializable {
         // TODO
         
         dbh = new DatabaseHandler();
-        ResultSet info = dbh.getCitizenInfo();
+        ResultSet info = dbh.getUserInfo();
 
         String userInfo = "";
         

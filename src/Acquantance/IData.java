@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public interface IData {
     
     
-    public void createCase(Case caseI);
+
     
     public void closeConnection();
     

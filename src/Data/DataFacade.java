@@ -18,10 +18,7 @@ public class DataFacade implements IData {
     
     DatabaseHandler dbh = new DatabaseHandler();
 
-    @Override
-    public void createCase(Case caseI) {
-         dbh.createCase(caseI);
-    }
+
 
     @Override
     public void closeConnection() {
@@ -65,7 +62,7 @@ public class DataFacade implements IData {
 
     @Override
     public ResultSet getCitizenInfo() {
-        return dbh.getCitizenInfo();
+        return dbh.getUserInfo();
     }
 
     @Override
