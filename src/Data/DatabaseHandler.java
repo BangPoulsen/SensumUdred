@@ -407,9 +407,7 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-
-
-        }
+}
 
 
 
