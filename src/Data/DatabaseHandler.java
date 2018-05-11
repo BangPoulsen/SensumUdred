@@ -375,6 +375,7 @@ public class DatabaseHandler {
 
         return null;
     }
+
     public void updateDatabase(String problemDescription, String problemAssesment,String toDo, String author, String journalNumber){
         try{
             Statement st = db.createStatement();

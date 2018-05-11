@@ -6,6 +6,10 @@
 package UI;
 
 import Data.DatabaseHandler;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -105,6 +109,23 @@ public class SearchCasePaneController extends Application implements Initializab
     @FXML
     private void editCaseButton(ActionEvent event) {
         if (listViewCases.getSelectionModel().getSelectedItem() != null) {
+            String id = listViewCases.getSelectionModel().getSelectedItems().toString();
+
+            String[] caseID = id.split(" ");
+
+            String finalID = caseID[2].substring(0, caseID[2].length() - 1);
+
+            try {
+                FileOutputStream outputStream = new FileOutputStream("selectedUser");
+                byte[] strBytes = finalID.getBytes();
+                outputStream.write(strBytes);
+                outputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+
             Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
 
         } else {
