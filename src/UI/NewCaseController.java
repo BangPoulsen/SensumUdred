@@ -120,7 +120,7 @@ public class NewCaseController extends Application implements Initializable {
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
         
-        dbh.logger( new Date().toString(), "ny sag oprettet", dbh.getCurrentUser(), "");
+        
         
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
@@ -181,6 +181,8 @@ public class NewCaseController extends Application implements Initializable {
             Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
             
             Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
+            
+            dbh.logger( new Date().toString(), "ny sag oprettet", dbh.getCurrentUser(), journalNumber);
 
             try {
                 dbh.createCase(caseCreated);
