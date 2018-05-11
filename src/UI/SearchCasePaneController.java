@@ -162,6 +162,8 @@ public class SearchCasePaneController extends Application implements Initializab
                 
                 dbh.deleteInfo(finalID);
                 
+                dbh.logger( new Date().toString(), "Sag slettet", dbh.getCurrentUser(), finalID);
+                
                 SearchCaseMethod();
                 
             }
