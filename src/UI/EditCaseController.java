@@ -256,7 +256,7 @@ public class EditCaseController extends Application implements Initializable {
         
         String[] CitizenInfo = userInfo.split(", ");
         
-        //String caseid = CitizenInfo[0];
+        // String caseid = CitizenInfo[0];
         String fullName = CitizenInfo[1];
         String id = CitizenInfo[2];
         String mobileNumber = CitizenInfo[3];
