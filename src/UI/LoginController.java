@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import java.util.Date;
 
 import Data.DatabaseHandler;
+import java.util.Objects;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -116,7 +117,7 @@ import javax.swing.*;
 
                 if (tries == 0) {
                     lockedDate = new Date().getTime();
-                    dbh.writeDate2file(lockedDate);
+                    dbh.write2file("lockedDate.txt", Objects.toString(lockedDate), false);
                     locked = true;
                 }
                 

@@ -164,6 +164,8 @@ public class DatabaseHandler {
 
                 System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
+                
+                write2file("currentUser.txt", id + "\t", true);
 
                 return true;
             }
@@ -284,16 +286,18 @@ public class DatabaseHandler {
     /**
      * Writes the current date to a file.
      *
-     * @param lockedDate A long containing the date information getting written.
+     * @param filename the name of the file written to.
+     * @param text the text written to specified file.
+     * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
      */
-    public void writeDate2file(long lockedDate) {
+    public void write2file(String filename, String text, boolean overwrite) {
         
         FileWriter fw = null;
 
         try {
-            fw = new FileWriter(new File("lockedDate.txt"));
+            fw = new FileWriter(new File(filename), overwrite);
 
-            fw.write(Long.toString(lockedDate));
+            fw.write(text);
 
             
 

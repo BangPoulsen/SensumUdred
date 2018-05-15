@@ -49,13 +49,12 @@ public class MenuController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+          
+        
         // TODO
     }    
 
-    @FXML
-    private void createCase(ActionEvent event) {
-        Switch.switchWindow((Stage)createCaseButton.getScene().getWindow(),new NewCaseController());
-    }
 
     @FXML
     private void searchCase(ActionEvent event) {
@@ -83,5 +82,10 @@ public class MenuController extends Application implements Initializable {
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
+    }
+
+    @FXML
+    private void createCase1(ActionEvent event) {
+        Switch.switchWindow((Stage)createCaseButton.getScene().getWindow(),new NewCaseController());
     }
 }
