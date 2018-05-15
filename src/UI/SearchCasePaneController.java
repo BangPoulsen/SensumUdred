@@ -130,6 +130,8 @@ public class SearchCasePaneController extends Application implements Initializab
                 e.printStackTrace();
             }
 
+            dbh.logger( new Date().toString(), "Edit case ", dbh.getCurrentUser(), caseID);
+            
             Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
 
         } else {

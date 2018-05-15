@@ -14,6 +14,8 @@ import Data.DatabaseHandler;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.Scanner;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -157,6 +159,8 @@ public class EditCaseController extends Application implements Initializable {
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
             
+            dbh.logger( new Date().toString(), "Edit case ", dbh.getCurrentUser(), getSelectedCaseID());
+            
             Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
             
         } else {
@@ -195,11 +199,32 @@ public class EditCaseController extends Application implements Initializable {
         }
 
     }
+    
+    private String getSelectedCaseID(){
+        File file = new File("selectedCase");
+
+
+        try {
+            Scanner input = new Scanner(file);
+            String caseID = null;
+            while (input.hasNextLine()){
+                caseID = input.nextLine();
+            }
+            
+            return "No caseID found";
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
 
     @FXML
     private void contactInformationClicked(Event event) {
 
-        String caseID;
+        String caseID = null;
         String CPR;
         File file = new File("selectedCase");
 
@@ -216,7 +241,7 @@ public class EditCaseController extends Application implements Initializable {
             e.printStackTrace();
         }
 
-        ResultSet info = dbh.getCitizenInfo("2341");
+        ResultSet info = dbh.getCitizenInfo(caseID);
         
         String userInfo = "";
         
@@ -224,9 +249,9 @@ public class EditCaseController extends Application implements Initializable {
         ResultSetMetaData rsmdt = info.getMetaData();
         
         while(info.next()){
-        for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-        userInfo = userInfo + info.getString(i) + ", ";
-        }
+            for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                userInfo = userInfo + info.getString(i) + ", ";
+            }
         }
         
         String[] CitizenInfo = userInfo.split(", ");

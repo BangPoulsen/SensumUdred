@@ -18,6 +18,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.scene.control.ListView;
@@ -81,6 +82,8 @@ public class Admin extends Application implements Initializable {
                 
                 JOptionPane.showMessageDialog(null, "Bruger slettet");
                 
+                dbh.logger( new Date().toString(), "Deleted user", dbh.getCurrentUser(), null);
+                
                 loadUsers();
             } else {
                 JOptionPane.showMessageDialog(null, "Vælg en bruger");
@@ -92,6 +95,9 @@ public class Admin extends Application implements Initializable {
 
 	@FXML
 	void logOff(ActionEvent event) {
+            
+            dbh.logger( new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
+            
             Switch.switchWindow((Stage)LogOff.getScene().getWindow(),new GUIController());
 
 	}
@@ -173,6 +179,8 @@ public class Admin extends Application implements Initializable {
             ResultSet results = dbh.createUser(name, email, phoneNumber, id, password, type);
             
             JOptionPane.showMessageDialog(null, "Bruger oprettet!");
+            
+            dbh.logger( new Date().toString(), "Created user", dbh.getCurrentUser(), null);
             
             loadUsers();
             

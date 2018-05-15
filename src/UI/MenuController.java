@@ -5,7 +5,9 @@
  */
 package UI;
 
+import Data.DatabaseHandler;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
@@ -39,6 +41,8 @@ public class MenuController extends Application implements Initializable {
     private Button searchCaseButton;
     @FXML
     private Button logoffButton;
+    
+    private DatabaseHandler dbh;
 
     /**
      * Initializes the controller class.
@@ -60,6 +64,8 @@ public class MenuController extends Application implements Initializable {
 
     @FXML
     private void logoff(ActionEvent event) {
+        dbh = new DatabaseHandler();
+        dbh.logger( new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
         Switch.switchWindow((Stage)logoffButton.getScene().getWindow(),new GUIController());
     }
 
