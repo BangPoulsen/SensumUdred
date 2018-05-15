@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
+<AnchorPane fx:id="createCasePane" focusTraversable="true" prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ViewCaseController">
    <children>
       <Label id="createCaseLabel" fx:id="createCaseLabel" layoutX="52.0" layoutY="62.0" prefHeight="21.0" prefWidth="200.0" text="Se sag" underline="true">
          <font>
@@ -82,7 +82,7 @@
                   <Font size="11.0" />
                </font>
             </Button>
-            <TextArea fx:id="txtNoteInCases" layoutY="3.0" prefHeight="250.0" prefWidth="340.0">
+            <TextArea fx:id="txtNoteInCases" editable="false" layoutY="3.0" prefHeight="250.0" prefWidth="340.0">
                <padding>
                   <Insets bottom="20.0" left="21.0" top="10.0" />
                </padding>
