@@ -159,7 +159,7 @@ public class EditCaseController extends Application implements Initializable {
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
             
-            dbh.logger( new Date().toString(), "Edit case ", dbh.getCurrentUser(), getSelectedCaseID());
+            dbh.logger( new Date().toString(), "Save to case ", dbh.getCurrentUser(), getSelectedCaseID());
             
             Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
             
