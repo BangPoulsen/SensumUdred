@@ -322,7 +322,7 @@ public class DatabaseHandler {
                     String number = input.nextLine();
                     
                     if (!number.equals("")) {
-                        System.out.println("Number: " + number);
+                        System.out.println("Date number: " + number);
                         date = Long.parseLong(number);
                     }
                 }
