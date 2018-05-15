@@ -94,17 +94,20 @@ import javax.swing.*;
 
             if (dbh.loginAttempt(username, password)) {
                 System.out.println(dbh.getCurrentUser());
+                
+                dbh.logger( new Date().toString(), "Login ", dbh.getCurrentUser(), "1237976321");
+                
                 switch (dbh.getType(username)){
-                    case "Borger":
+                    case "Borger": //12345678910 koden
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
                         break;
-                    case "Sagsbehandler":
+                    case "Sagsbehandler": //2341 koden
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
                         break;
-                    case "admin":
+                    case "admin": //0001 admin
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new Admin());
                         break;
-                    case "Læge":
+                    case "Læge": //3412 koden
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
                         break;
                 }
