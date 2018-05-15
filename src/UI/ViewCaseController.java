@@ -161,8 +161,6 @@ public class ViewCaseController extends Application implements Initializable {
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
-        String css = ViewCaseController.class.getResource("ViewCaseStyle.css").toExternalForm();
-        scene.getStylesheets().add(css);
 
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);

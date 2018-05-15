@@ -318,7 +318,13 @@ public class DatabaseHandler {
 
                 long date = 0;
                 while (input.hasNextLine()) {
-                    date = Long.parseLong(input.nextLine());
+                    
+                    String number = input.nextLine();
+                    
+                    if (!number.equals("")) {
+                        System.out.println("Date number: " + number);
+                        date = Long.parseLong(number);
+                    }
                 }
 
                 return date;

@@ -27,9 +27,6 @@
          </cursor>
       </Label>
       <Button id="createCaseButton" fx:id="createCaseButton" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" onAction="#createCase" prefHeight="60.0" prefWidth="90.0" text="Opret sag" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="100.0">
-         <font>
-            <Font size="14.0" />
-         </font>
          <effect>
             <DisplacementMap>
                <input>

@@ -95,7 +95,7 @@ import javax.swing.*;
             if (dbh.loginAttempt(username, password)) {
                 System.out.println(dbh.getCurrentUser());
                 
-                dbh.logger( new Date().toString(), "Login ", dbh.getCurrentUser(), "1237976321");
+                dbh.logger( new Date().toString(), "Login ", dbh.getCurrentUser(), null);
                 
                 switch (dbh.getType(username)){
                     case "Borger": //12345678910 koden
