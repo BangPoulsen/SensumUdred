@@ -182,7 +182,7 @@ public class NewCaseController extends Application implements Initializable {
             
             Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
             
-            dbh.logger( new Date().toString(), "ny sag oprettet", dbh.getCurrentUser(), journalNumber);
+            dbh.logger( new Date().toString(), "Ny sag oprettet", dbh.getCurrentUser(), journalNumber);
 
             try {
                 dbh.createCase(caseCreated);
