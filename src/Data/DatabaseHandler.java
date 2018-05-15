@@ -287,17 +287,25 @@ public class DatabaseHandler {
      * @param lockedDate A long containing the date information getting written.
      */
     public void writeDate2file(long lockedDate) {
-
+        
+        FileWriter fw = null;
 
         try {
-            FileWriter fw = new FileWriter(new File("lockedDate.txt"));
+            fw = new FileWriter(new File("lockedDate.txt"));
 
-            fw.write("" + lockedDate);
+            fw.write(Long.toString(lockedDate));
 
-            fw.close();
+            
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally{
+            
+            try {
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
