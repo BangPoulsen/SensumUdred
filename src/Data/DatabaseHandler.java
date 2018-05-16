@@ -162,9 +162,10 @@ public class DatabaseHandler {
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-                System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                System.out.println("Logged in with: " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
+                System.out.println("Credentials saved to file");
                 write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
 
                 return true;
@@ -173,6 +174,22 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return false;
+    }
+    /**
+     * 
+     * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
+     */
+    
+    public String[] getCurrentUser(){
+        Scanner input = new Scanner("currentUser.txt");
+        
+        while(input.hasNextLine()){
+            String[] userInfo = input.nextLine().split("\t");
+            return userInfo;
+        }
+        
+        return null;
+        
     }
 
     /**
