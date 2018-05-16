@@ -252,8 +252,15 @@ public class DatabaseHandler {
      * @return a resultset containing the info.
      */
     public ResultSet getCitizenInfo(String id) {
-        System.out.println("Id: " + id);
-        return  getInfo(id);
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + id + "';");
+            ResultSet rs = st.getResultSet();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -273,10 +280,10 @@ public class DatabaseHandler {
      * @param id Takes an ID of a person that is used in an sql querry.
      * @return a resultset containing the gathered info.
      */
-    private ResultSet getInfo(String id) {
+    public ResultSet getInfo(String id) {
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + id + "';");
+            st.executeQuery("select person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode from person inner join adress on person.id = adress.id where person.id = '" + id + "';");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
@@ -422,18 +429,29 @@ public class DatabaseHandler {
         return null;
     }
 
-    //TODO implement the unused type.
     /**
      * Gets information about Sagsbehandlere, Støttepersoner og læger.
      *
-     * @param type unused?
      * @return A resultset containing the info.
      */
+
+    public ResultSet getUsers() {
+        try {
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'");
+            ResultSet rs = st.getResultSet();
+
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'");
+            st.executeQuery("SELECT name, id, type FROM Person WHERE type = '" + type + "'");
             ResultSet rs = st.getResultSet();
 
             return rs;
@@ -469,22 +487,43 @@ public class DatabaseHandler {
      * @param id A string containing the new users ID.
      * @param password A string containing the new users password.
      * @param type A string containing the new users type.
-     * @return A resultset containing the entries added.
      */
-    public ResultSet createUser(String name, String email, String phoneNumber, String id, String password, String type) {
+    public void createUser(String name, String email, String phoneNumber, String address, String floor, String zipCode, String id, String password, String type) {
         try {
+            String[] streetSplit = address.split(" ");
+
+            String street = "";
+            for (String s: streetSplit) {
+                if (streetSplit.length != 1) {
+                    if (s == null ? streetSplit[streetSplit.length - 1] != null : !s.equals(streetSplit[streetSplit.length - 1])) {
+                        street +=  s + " ";
+                    }
+                }
+                else {
+                    street = s;
+                }
+            }
+
+            street = street.trim();
+
+            String streetNumber = streetSplit[streetSplit.length - 1];
             Statement st = db.createStatement();
             //type, password, id, email, phone, name
-            st.execute("INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "')");
+            st.executeUpdate("" +
+                    "begin;" +
+                    "INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "');" +
+                    "insert into adress values ('', '" + id + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
+                    "commit;");
             ResultSet rs = st.getResultSet();
+<<<<<<< HEAD
 
 
             return rs;
+=======
+>>>>>>> f54a86388a5f2a7c14ec3fa201da5b738562800a
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return null;
     }
 
     /**
@@ -507,7 +546,47 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-    
+
+    public void updatePerson(String id, String name, String phone, String email, String address, String floor, String zipCode){
+        try {
+            String[] streetSplit = address.split(" ");
+
+            String street = "";
+            for (String s: streetSplit) {
+                if (streetSplit.length != 1) {
+                    if (s == null ? streetSplit[streetSplit.length - 1] != null : !s.equals(streetSplit[streetSplit.length - 1])) {
+                        street +=  s + " ";
+                    }
+                }
+                else {
+                    street = s;
+                }
+            }
+
+            street = street.trim();
+
+            String streetNumber = streetSplit[streetSplit.length - 1];
+
+            Statement st = db.createStatement();
+            st.executeUpdate("" +
+                    "begin;" +
+                    "update person set name = '" + name + "', phone = '" + phone + "', email = '" + email + "' where id = '" + id + "';" +
+                    "update adress set street = '" + street + "', number = '" + streetNumber + "', floor = '" + floor + "', zipcode = '" + zipCode + "' where id = '" + id + "';" +
+                    "commit;");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCase(String caseID, String kin){
+        try {
+            Statement st = db.createStatement();
+            st.executeUpdate("update sag set kin = '" + kin + "' where caseid = '" + caseID + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void logger(String timestamp, String change, String ID, String caseID) {
         try{
             Statement st = db.createStatement();
@@ -516,7 +595,37 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-    
+
+    public String getKin(String caseID){
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select kin from sag where caseid = '" + caseID + "'");
+            ResultSet rs = st.getResultSet();
+            String result = "";
+            while(rs.next()){
+                System.out.println(rs.getString(1));
+                result = rs.getString(1);
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public String getDoctor(String caseID){
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("select consultant from sag where caseid = '" + caseID + "'");
+            ResultSet rs = st.getResultSet();
+            return rs.getString(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
 
 

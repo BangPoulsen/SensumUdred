@@ -8,6 +8,7 @@ package UI;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import Data.DatabaseHandler;
@@ -141,6 +142,7 @@ public class EditCaseController extends Application implements Initializable {
             e.printStackTrace();
         }
         setCitizen();
+        setKin();
     }
 
     @Override
@@ -173,9 +175,29 @@ public class EditCaseController extends Application implements Initializable {
             String author = dbh.getCurrentUser();
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+
+            ResultSet users = dbh.getUsers("Pårørende");
+            Boolean kinExist = false;
+            try{
+                String name = txtFirstNamek.getText() + " " + txtLastNamek.getText();
+                while (users.next()){
+                    System.out.println(users.getString(2));
+                    if(users.getString(2).equals(txtIdk.getText())){
+                        //todo update database
+                        kinExist = true;
+                        dbh.updatePerson(txtIdk.getText(), name, txtPhonek.getText(), txtEmailk.getText(), txtRoadNamek.getText(), txtFloork.getText(), txtZipCodek.getText());
+                    }
+                }
+                if(!kinExist){
+                    dbh.createUser(name, txtEmailk.getText(), txtPhonek.getText(), txtRoadNamek.getText(), txtFloork.getText(),txtZipCodek.getText(), txtIdk.getText(), "kin", "Pårørende");
+                    dbh.updateCase(caseID, txtIdk.getText());
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
             
             dbh.logger( new Date().toString(), "Save to case ", dbh.getCurrentUser(), caseID);
-            
+
             Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
             
         } else {
@@ -195,10 +217,6 @@ public class EditCaseController extends Application implements Initializable {
             
             JOptionPane.showMessageDialog(null, missing);
         }
-
-        
-
-
     }
 
     @FXML
@@ -239,9 +257,9 @@ public class EditCaseController extends Application implements Initializable {
             String id = citizenInfo[2];
             String mobileNumber = citizenInfo[3];
             String email  = citizenInfo[4];
-            String roadName = citizenInfo[5];
-            String floor = citizenInfo[6];
-            String zipcode = citizenInfo[7];
+            String roadName = citizenInfo[5] + " " + citizenInfo[6];
+            String floor = citizenInfo[7];
+            String zipcode = citizenInfo[8];
 
             String[] fullNameSplit = fullName.split(" ");
 
@@ -253,6 +271,52 @@ public class EditCaseController extends Application implements Initializable {
             txtPhone.setText(mobileNumber);
             txtEmail.setText(email);
             txtRoadName.setText(roadName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setKin(){
+        String id = dbh.getKin(caseID);
+        if(id.equals("NULL")){
+            return;
+        }
+        ResultSet info = dbh.getInfo(id);
+
+        try {
+            ResultSetMetaData rsmdt = info.getMetaData();
+            String[] citizenInfo = new String[rsmdt.getColumnCount()];
+
+            while(info.next()){
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    if(info.getString(i) != null){
+                        citizenInfo[i-1] = info.getString(i);
+                        System.out.println(rsmdt.getColumnName(i));
+                    } else {
+                        citizenInfo[i-1] = "";
+                    }
+                }
+            }
+
+            // String caseid = CitizenInfo[0];
+            String fullName = citizenInfo[0];
+            //String id = citizenInfo[2];
+            String mobileNumber = citizenInfo[2];
+            String email  = citizenInfo[3];
+            String roadName = citizenInfo[4] + " " + citizenInfo[5];
+            String floor = citizenInfo[6];
+            String zipcode = citizenInfo[7];
+
+            String[] fullNameSplit = fullName.split(" ");
+
+            txtFirstNamek.setText(fullNameSplit[0]);
+            txtLastNamek.setText(fullNameSplit[1]);
+            txtIdk.setText(id);
+            txtFloork.setText(floor);
+            txtZipCodek.setText(zipcode);
+            txtPhonek.setText(mobileNumber);
+            txtEmailk.setText(email);
+            txtRoadNamek.setText(roadName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
