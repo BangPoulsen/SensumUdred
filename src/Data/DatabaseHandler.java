@@ -6,9 +6,11 @@
 package Data;
 
 import Business.Case;
+import java.io.BufferedReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -16,6 +18,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -225,7 +229,6 @@ public class DatabaseHandler {
      */
     public ArrayList<String> getCaseIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
-        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
@@ -342,14 +345,22 @@ public class DatabaseHandler {
 	 */
 
 	public String[] getCurrentUserFromFile(){
-		Scanner input = new Scanner("currentUser.txt");
-
-		while(input.hasNextLine()){
-			String[] userInfo = input.nextLine().split("\t");
-			return userInfo;
-		}
-
-		return null;
+            
+            try {
+            
+                Scanner input = new Scanner(new File("currentUser.txt"));
+ 
+                while (input.hasNextLine()){
+                    
+                    String[] info = input.nextLine().split("\t");
+                    return info;
+                }
+            
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        
+        return null;
 
 	}
 
@@ -374,7 +385,6 @@ public class DatabaseHandler {
                     String number = input.nextLine();
                     
                     if (!number.equals("")) {
-                        System.out.println("Date number: " + number);
                         date = Long.parseLong(number);
                     }
                 }
@@ -468,7 +478,6 @@ public class DatabaseHandler {
             st.execute("INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "')");
             ResultSet rs = st.getResultSet();
 
-            System.out.println("");
 
             return rs;
         } catch (SQLException e) {

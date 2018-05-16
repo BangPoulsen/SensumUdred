@@ -50,7 +50,12 @@ public class MenuController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-          
+        //String[] currentUserInfo = 
+        dbh.getCurrentUserFromFile();
+         
+        //String type = currentUserInfo[1];
+         
+        //System.out.println(type);
         
         // TODO
     }    

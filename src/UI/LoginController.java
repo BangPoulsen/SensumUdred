@@ -94,7 +94,7 @@ import javax.swing.*;
             String password = loginPassword.getText();
 
             if (dbh.loginAttempt(username, password)) {
-                System.out.println(dbh.getCurrentUser());
+                
                 
                 dbh.logger( new Date().toString(), "Login ", dbh.getCurrentUser(), null);
                 

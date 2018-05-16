@@ -80,8 +80,6 @@ public class Admin extends Application implements Initializable {
                 
                 String selectedID = personInfoSplitted[1].substring(0, personInfoSplitted[1].length() - 1);
                 
-                System.out.println("ID: " + selectedID);
-                
                 dbh.deleteInfo(selectedID);
                 
                 JOptionPane.showMessageDialog(null, "Bruger slettet");

@@ -123,7 +123,6 @@ public class EditCaseController extends Application implements Initializable {
         txtProblemAssesment.setWrapText(true);
         txtProblemDescription.setWrapText(true);
         String currentUser=dbh.getCurrentUser();
-        System.out.println(currentUser);
         responsible.setText(currentUser);
 
         caseID = null;
@@ -135,9 +134,7 @@ public class EditCaseController extends Application implements Initializable {
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
             caseID = reader.readLine();
-            System.out.println(caseID);
             CPR = reader.readLine();
-            System.out.println(CPR);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
