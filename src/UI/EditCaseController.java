@@ -15,7 +15,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Scanner;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -111,21 +110,40 @@ public class EditCaseController extends Application implements Initializable {
     private Path from;
     private File selectedFile;
     private DatabaseHandler dbh;
+    private String CPR;
+    private String caseID;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        dbh = new DatabaseHandler();
         txtToDo.setWrapText(true);
         txtProblemAssesment.setWrapText(true);
         txtProblemDescription.setWrapText(true);
-        dbh = new DatabaseHandler();
         String currentUser=dbh.getCurrentUser();
+        System.out.println(currentUser);
         responsible.setText(currentUser);
 
+        caseID = null;
+        CPR = null;
+        File file = new File("selectedCase");
 
+        try {
+            FileInputStream input = new FileInputStream(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
 
+            caseID = reader.readLine();
+            System.out.println(caseID);
+            CPR = reader.readLine();
+            System.out.println(CPR);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setCitizen();
     }
 
     @Override
@@ -159,7 +177,7 @@ public class EditCaseController extends Application implements Initializable {
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
             
-            dbh.logger( new Date().toString(), "Save to case ", dbh.getCurrentUser(), getSelectedCaseID());
+            dbh.logger( new Date().toString(), "Save to case ", dbh.getCurrentUser(), caseID);
             
             Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
             
@@ -199,88 +217,47 @@ public class EditCaseController extends Application implements Initializable {
         }
 
     }
-    
-    private String getSelectedCaseID(){
-        File file = new File("selectedCase");
-
-
-        try {
-            Scanner input = new Scanner(file);
-            String caseID = null;
-            while (input.hasNextLine()){
-                caseID = input.nextLine();
-            }
-            
-            return "No caseID found";
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    
 
     @FXML
     private void contactInformationClicked(Event event) {
 
-        String caseID = null;
-        String CPR;
-        File file = new File("selectedCase");
+    }
 
+    private void setCitizen(){
+        ResultSet info = dbh.getCitizenInfo(CPR);
 
         try {
-            FileInputStream input = new FileInputStream(file);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+            ResultSetMetaData rsmdt = info.getMetaData();
+            String[] citizenInfo = new String[rsmdt.getColumnCount()];
 
-            caseID = reader.readLine();
-            CPR = reader.readLine();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ResultSet info = dbh.getCitizenInfo(caseID);
-        
-        String userInfo = "";
-        
-        try {
-        ResultSetMetaData rsmdt = info.getMetaData();
-        
-        while(info.next()){
-            for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
-                userInfo = userInfo + info.getString(i) + ", ";
+            while(info.next()){
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    citizenInfo[i-1] = info.getString(i);
+                    System.out.println(rsmdt.getColumnName(i));
+                }
             }
-        }
-        
-        String[] CitizenInfo = userInfo.split(", ");
-        
-        // String caseid = CitizenInfo[0];
-        String fullName = CitizenInfo[1];
-        String id = CitizenInfo[2];
-        String mobileNumber = CitizenInfo[3];
-        String email  = CitizenInfo[4];
-        String roadName = CitizenInfo[5];
-        String floor = CitizenInfo[6];
-        String zipcode = CitizenInfo[7];
-        
-        String[] fullNameSplit = fullName.split(" ");
-        
-        txtFirstName.setText(fullNameSplit[0]);
-        txtLastName.setText(fullNameSplit[1]);
-        txtCPRNumber.setText(id);
-        txtFloor.setText(floor);
-        txtZipCode.setText(zipcode);
-        txtPhone.setText(mobileNumber);
-        txtEmail.setText(email);
-        txtRoadName.setText(roadName);
-        
-        
-        
+
+            // String caseid = CitizenInfo[0];
+            String fullName = citizenInfo[1];
+            String id = citizenInfo[2];
+            String mobileNumber = citizenInfo[3];
+            String email  = citizenInfo[4];
+            String roadName = citizenInfo[5];
+            String floor = citizenInfo[6];
+            String zipcode = citizenInfo[7];
+
+            String[] fullNameSplit = fullName.split(" ");
+
+            txtFirstName.setText(fullNameSplit[0]);
+            txtLastName.setText(fullNameSplit[1]);
+            txtCPRNumber.setText(id);
+            txtFloor.setText(floor);
+            txtZipCode.setText(zipcode);
+            txtPhone.setText(mobileNumber);
+            txtEmail.setText(email);
+            txtRoadName.setText(roadName);
         } catch (SQLException e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
-        
     }
 }
