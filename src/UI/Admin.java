@@ -138,7 +138,7 @@ public class Admin extends Application implements Initializable {
     private void loadUsers() {
         //Search a case
         
-        ResultSet results = dbh.getUsers("");
+        ResultSet results = dbh.getUsers();
         
         txtListUsers.getItems().clear();
 
@@ -180,7 +180,7 @@ public class Admin extends Application implements Initializable {
         if (name.isEmpty() || email.isEmpty() || phoneNumber.isEmpty() || id.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Udfyld alle felter.");
         } else {
-            ResultSet results = dbh.createUser(name, email, phoneNumber, id, password, type);
+            dbh.createUser(name, email, phoneNumber, "", "", "", id, password, type);
             
             JOptionPane.showMessageDialog(null, "Bruger oprettet!");
             
