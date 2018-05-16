@@ -1,0 +1,329 @@
+@startuml
+
+title __UI's Class Diagram__\n
+
+  package UI {
+    class Admin {
+        - Choicebox : ChoiceBox<String>
+        - txtUserName : TextField
+        - txtUserEmail : TextField
+        - txtUserPhone : TextField
+        - txtUserId : TextField
+        - txtUserPassword : TextField
+        - CreateUser : Button
+        - DeleteUser : Button
+        - LogOff : Button
+        - txtListUsers : ListView<String>
+        - txtLog : ListView<String>
+        ~ deleteUser()
+        ~ logOff()
+        + start()
+        + initialize()
+        - loadUsers()
+        - CreateUser()
+        - getLogsClicked()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class EditCaseController {
+        - JournalEntries : ListView
+        - EntryDescription : TextArea
+        - SubTabPaneBorger : AnchorPane
+        - CancelButton : Button
+        - SaveButton : Button
+        - txtFirstName : TextField
+        - txtLastName : TextField
+        - txtCPRNumber : TextField
+        - txtPhone : TextField
+        - txtEmail : TextField
+        - txtRoadName : TextField
+        - txtFloor : TextField
+        - txtZipCode : TextField
+        - responsible : TextField
+        - txtFirstNamek : TextField
+        - txtLastNamek : TextField
+        - txtPhonek : TextField
+        - txtEmailk : TextField
+        - txtRoadNamek : TextField
+        - txtFloork : TextField
+        - txtZipCodek : TextField
+        - txtIdk : TextField
+        - txtFirstNamed : TextField
+        - txtLastNamed : TextField
+        - txtPhoned : TextField
+        - txtEmaild : TextField
+        - txtRoadNamed : TextField
+        - txtFloord : TextField
+        - txtZipCoded : TextField
+        - txtProblemDescription : TextArea
+        - txtProblemAssesment : TextArea
+        - ChooseFile : Button
+        - txtToDo : TextArea
+        - UploadFile : Button
+        - to : Path
+        - from : Path
+        - selectedFile : File
+        - CPR : String
+        - caseID : String
+        + initialize()
+        + start()
+        - ReturnToSearch()
+        - SaveToDatabase()
+        ~ FileChooser()
+        - contactInformationClicked()
+        - setCitizen()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class GUIController {
+        + initialize()
+        + start()
+        + startApplication()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class LoginController {
+        - stage : Stage
+        - loginPane : AnchorPane
+        - loginUsername : TextField
+        - loginPassword : PasswordField
+        - loginButton : Button
+        - loginSensumLabel : Label
+        - tries : int
+        - secondsWait : int
+        - lockedDate : long
+        - locked : boolean
+        + initialize()
+        + Login()
+        + start()
+        - isEnterPressed()
+        - loginMethod()
+        - getSecondsPassed()
+        - isLocked()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class MenuController {
+        - menuPane : AnchorPane
+        - menuSensumLabel1 : Label
+        - createCaseButton : Button
+        - searchCaseButton : Button
+        - logoffButton : Button
+        + initialize()
+        - searchCase()
+        - logoff()
+        + start()
+        - createCase1()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class NewCaseController {
+        - createCasePane : AnchorPane
+        - createCaseLabel : Label
+        - txtauthor : TextField
+        - txtFirstName : TextField
+        - txtLastName : TextField
+        - txtCprNumber : TextField
+        - txtPhoneNumber : TextField
+        - txtEmailAdress : TextField
+        - txtRoadName : TextField
+        - txtFloorNumber : TextField
+        - txtZipCode : TextField
+        - txtJournalNumber : TextField
+        - txtEventuelNotes : TextArea
+        - createCaseDoneButton : Button
+        - createCaseCancelButton : Button
+        - sensumUdredLabel4 : Label
+        + initialize()
+        + keyReleasedProberty()
+        - createCaseDoneButtonEvent()
+        - createCaseCancelButton()
+        + start()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class SearchCasePaneController {
+        - searchCasePane : AnchorPane
+        - sensumUdredLabel3 : Label
+        - searchCaseLabel : Label
+        - listViewCases : ListView<String>
+        - showCasesLabel : Label
+        - searchCaseOrCprButton : Button
+        - editCaseButton : Button
+        - deleteCaseButton : Button
+        - txtEnterCprNumber : TextField
+        - txtEnterCaseNumber : TextField
+        - mainMenuButton : Button
+        - txtEnterName : TextField
+        + start()
+        + initialize()
+        - mainMenuButton()
+        - searchCaseOrCprButton()
+        - editCaseButton()
+        - deleteCaseButton()
+        - txtEnterName()
+        - txtEnterCprNumber()
+        - txtEnterCaseNumber()
+        - SearchCaseMethod()
+        - isEnterPressed()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  package UI {
+    class Switch {
+        {static} + switchWindow()
+    }
+  }
+  
+
+  package UI {
+    class ViewCaseController {
+        - createCasePane : AnchorPane
+        - createCaseLabel : Label
+        - logoffButton : Button
+        - viewSelectedNote : Button
+        - sensumUdredLabel4 : Label
+        - txtFirstName : Label
+        - txtLastName : Label
+        - txtCprNumber : Label
+        - txtPhoneNumber : Label
+        - txtEmailAdress : Label
+        - txtRoadName : Label
+        - txtFloorNumber : Label
+        - txtZipCode : Label
+        - txtJournalNumber : Label
+        - txtViewNotes : ListView<String>
+        - showCasesLabel : Label
+        - showNoteInCasesPane : AnchorPane
+        - showNoteAuthorLabel : Label
+        - txtNoteInCases : TextArea
+        - closeNoteButton : Button
+        - journal : ResultSet
+        + initialize()
+        - LogOffEvent()
+        - keyReleasedProberty()
+        + start()
+        - closeNoteButtonHandler()
+        - ViewNoteEventHandler()
+    }
+  }
+  
+
+  abstract class Parameters {
+      + Parameters()
+      {abstract} + getRaw()
+      {abstract} + getUnnamed()
+      {abstract} + getNamed()
+  }
+  
+
+  Admin -up-|> Initializable
+  Admin -up-|> Application
+  Admin o-- DatabaseHandler : dbh
+  Admin +-down- Parameters
+  EditCaseController -up-|> Initializable
+  EditCaseController -up-|> Application
+  EditCaseController o-- DatabaseHandler : dbh
+  EditCaseController +-down- Parameters
+  GUIController -up-|> Initializable
+  GUIController -up-|> Application
+  GUIController +-down- Parameters
+  LoginController -up-|> Initializable
+  LoginController -up-|> Application
+  LoginController o-- DatabaseHandler : dbh
+  LoginController +-down- Parameters
+  MenuController -up-|> Initializable
+  MenuController -up-|> Application
+  MenuController o-- DatabaseHandler : dbh
+  MenuController +-down- Parameters
+  NewCaseController -up-|> Initializable
+  NewCaseController -up-|> Application
+  NewCaseController o-- DatabaseHandler : dbh
+  NewCaseController +-down- Parameters
+  SearchCasePaneController -up-|> Initializable
+  SearchCasePaneController -up-|> Application
+  SearchCasePaneController o-- DatabaseHandler : dbh
+  SearchCasePaneController +-down- Parameters
+  ViewCaseController -up-|> Initializable
+  ViewCaseController -up-|> Application
+  ViewCaseController o-- DatabaseHandler : dbh
+  ViewCaseController +-down- Parameters
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
