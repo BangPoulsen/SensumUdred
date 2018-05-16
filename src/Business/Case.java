@@ -15,8 +15,9 @@ public class Case {
         return cauthor;
     }
 
-    public void setcauthor(String cauthor) {this.cauthor = cauthor; }
-
+    public void setcauthor(String cauthor){
+        this.cauthor = cauthor; 
+    }
 
     public void setcID(String cID) {
         this.cID = cID;
