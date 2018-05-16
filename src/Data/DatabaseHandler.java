@@ -382,26 +382,7 @@ public class DatabaseHandler {
 
         return -1;
     }
-    
-    /**
-     * Gets the name of the current user.
-     * Does an sql querry with the ID of the current user.
-     *
-     * @return A string containing the name of the current user.
-     */
-    public String getCurrentUser() {
-        try {
-            Statement st = db.createStatement();
-            st.executeQuery("SELECT name FROM person WHERE id = '" + user + "';");
-            ResultSet rs = st.getResultSet();
-            while (rs.next()) {
-                return rs.getString(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
+
 
     /**
      * Gets a journal from a persons case.
