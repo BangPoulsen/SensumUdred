@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.event.Event;
 import javafx.scene.control.ListView;
 import javax.swing.JOptionPane;
 
@@ -60,6 +61,9 @@ public class Admin extends Application implements Initializable {
         private ListView<String> txtListUsers;
         
         private DatabaseHandler dbh;
+        
+        @FXML
+        private ListView<String> txtLog;
 
         
         /**
@@ -189,6 +193,39 @@ public class Admin extends Application implements Initializable {
             txtUserPhone.setText("");
             txtUserId.setText("");
             txtUserPassword.setText("");
+        }
+        
+    }
+
+    @FXML
+    private void getLogsClicked(Event event) {
+        
+        
+        ResultSet results = dbh.getLogs();
+        
+        txtLog.getItems().clear();
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put ("caseid", "Sags ID");
+        hashMap.put("id", "Navn");
+        hashMap.put("change", "Ændring");
+        hashMap.put("timestamp", "Tid");
+        hashMap.put("lognumber", "Log nummer");
+        
+        
+        try {
+            ResultSetMetaData rsmdt = results.getMetaData();
+            String logs;
+            while (results.next()) {
+                logs = "";
+                for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
+                    logs = logs + hashMap.get(rsmdt.getColumnName(i)) + ": " + results.getString(i).trim() + "\t \t \t";
+                }
+                
+                txtLog.getItems().add(logs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         
     }

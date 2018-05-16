@@ -439,6 +439,23 @@ public class DatabaseHandler {
         }
         return null;
     }
+    
+    public ResultSet getLogs() {
+        try {
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            st.executeQuery("SELECT * FROM log");
+            ResultSet rs = st.getResultSet();
+            
+            
+            
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
 
     /**
      * Creates a user by adding relevant entries to the Database using an sql statement.

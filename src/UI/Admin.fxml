@@ -8,10 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<TabPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Admin">
+<TabPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Admin">
    <tabs>
-      <Tab text="admin">
+      <Tab closable="false" text="Brugere">
          <content>
             <AnchorPane prefHeight="569.0" prefWidth="790.0">
                <children>
@@ -37,7 +36,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab text="log">
+      <Tab closable="false" onSelectionChanged="#getLogsClicked" text="Log">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
