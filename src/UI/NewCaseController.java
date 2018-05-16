@@ -131,7 +131,6 @@ public class NewCaseController extends Application implements Initializable {
             Random random = new Random();
             int caseID = random.nextInt(9999 - 1000 + 1) + 1000;
             ArrayList<String> caseIDs = dbh.getCaseIDList();
-            System.out.println(caseID);
             String journalNumber = Integer.toString(caseID);
             
             while (caseIDs.contains(journalNumber)) {
