@@ -24,362 +24,18 @@ import java.util.Scanner;
 
 public class DatabaseHandler {
 
-	private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
-	private static String username = "pjgbvjcy";
-	private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
+    private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
+    private static String username = "pjgbvjcy";
+    private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
 
-	private static Connection db;
-	private static String user = "";
-
-	static {
-		try {
-			db = DriverManager.getConnection(url, username, pasword);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Adds new entries to the sql database tables thus creating a new case and its relevant contents.
-	 *
-	 * @param caseI Object which defines a case and its relevant contents.
-	 */
-	public void createCase(Case caseI) throws IDExistException {
-
-		String fullName = caseI.getcCitizen().getCiName();
-		String CPR = caseI.getcCitizen().getCiUserId();
-		String phoneNumber = caseI.getcCitizen().getCiPhoneNumber();
-		String email = caseI.getcCitizen().getCiEmail();
-		String street = caseI.getcCitizen().getCiStreet();
-		String streetNumber = caseI.getcCitizen().getCiStreetNumber();
-		String floor = caseI.getcCitizen().getCiFloor();
-		String zipCode = caseI.getcCitizen().getCiZipCode();
-		String journalNumber = caseI.getcID();
-		String note = caseI.getcEventuelNotes();
-		String author = caseI.getcauthor();
-		String password = caseI.getcCitizen().getCiPassword();
-
-
-		try {
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT id FROM person;");
-
-			while (rs.next()) {
-				if (rs.getString(1).equals(CPR)) {
-					throw new IDExistException();
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			Statement st = db.createStatement();
-			st.executeUpdate("" +
-				"begin; " +
-				"insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
-				"insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
-				"insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
-				"insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + note + "','" + journalNumber + "','" + author + "');" +
-				"commit;");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Closes the established connection to the sql server.
-	 */
-	public void closeConnection() {
-		try {
-			db.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Searches for a specific case using the ID of a person, thus returning a resultset containing mentioned info.
-	 *
-	 * @param name Should be the ID of a person. Is used in an sql querry to get info
-	 * @return a resultset containing information about a case using ID's of a person.
-	 */
-	public ResultSet searchCase(String name) {
-
-		try {
-			Statement st = db.createStatement();
-			st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name + "%'))");
-			ResultSet rs = st.getResultSet();
-			return rs;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Deletes entries from the database that pertains to a specific case, thus deleting a case.
-	 *
-	 * @param id Is the ID of a person, and is used in an sql querry to find and delete relevant entries.
-	 */
-	public void deleteInfo(String id) {
-		try {
-			Statement st = db.createStatement();
-			st.executeUpdate("" +
-				"begin; " +
-				"delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
-				"delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
-				"commit;");
-			System.out.println("Case deleted");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Attemps to establish a connection to the database using the given username and userPassword,
-	 * to do this, it verifies whether the username and userPasswords match with an sql querry
-	 * and grants a connection accordingly.
-	 *
-	 * @param username     A string that is the users username ...
-	 * @param userPassword A string that is the users password.
-	 * @return In case the querry is successful and a connection is established this method will return true.
-	 */
-	public boolean loginAttempt(String username, String userPassword) {
-
-		try {
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
-
-			while (rs.next()) {
-				String type = rs.getString("email");
-				String password = rs.getString("password");
-				String id = rs.getString("id");
-				//String adress = rs.getString("adress");
-				String email = rs.getString("email");
-				String phone = rs.getString("phone");
-				String name = rs.getString("name");
-
-				System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-				user = id;
-
-				write2file("currentUser.txt", id + "\t", true);
-
-				return true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	/**
-	 * Finds the type of the user.
-	 *
-	 * @param username Uses this as a persons name to find the corresponding type during an sql querry.
-	 * @return A string containing the type of the user.
-	 */
-
-	public String getType(String username) {
-
-		try {
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
-
-			while (rs.next()) {
-				String type = rs.getString("type");
-				return type;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Gets a list of all the cases ID's using an sql querry.
-	 *
-	 * @return an array containing strings that are all the cases ID's.
-	 */
-	public ArrayList<String> getCaseIDList() {
-		ArrayList<String> caseIDs = new ArrayList<>();
-		System.out.println(user);
-		try {
-			Statement st = db.createStatement();
-			ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
-
-			while (rs.next()) {
-				String id = rs.getString("caseid");
-				caseIDs.add(id);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return caseIDs;
-	}
-
-	/**
-	 * Gets a lot of info about a person.
-	 *
-	 * @param id Is the ID of a person.
-	 * @return a resultset containing the info.
-	 */
-	public ResultSet getCitizenInfo(String id) {
-		System.out.println("Id: " + id);
-		return getInfo(id);
-	}
-
-	/**
-	 * Gets a lot of info about the user.
-	 *
-	 * @return a resultset containing the info.
-	 */
-	public ResultSet getUserInfo() {
-		System.out.println("User: " + user);
-
-		return getInfo(user);
-	}
-
-	/**
-	 * Generates the resultset containing a lot of info about a person.
-	 *
-	 * @param id Takes an ID of a person that is used in an sql querry.
-	 * @return a resultset containing the gathered info.
-	 */
-	private ResultSet getInfo(String id) {
-		try {
-			Statement st = db.createStatement();
-			st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + id + "';");
-			ResultSet rs = st.getResultSet();
-			return rs;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	/**
-	 * Gets the name of the current user.
-	 * Does an sql querry with the ID of the current user.
-	 *
-	 * @return A string containing the name of the current user.
-	 */
-	public String getCurrentUser() {
-		try {
-			Statement st = db.createStatement();
-			st.executeQuery("SELECT name FROM person WHERE id = '" + user + "';");
-			ResultSet rs = st.getResultSet();
-			while (rs.next()) {
-				return rs.getString(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
-	/**
-	 * Writes the current date to a file.
-	 *
-	 * @param filename  the name of the file written to.
-	 * @param text      the text written to specified file.
-	 * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
-	 */
-	public void write2file(String filename, String text, boolean overwrite) {
-
-		FileWriter fw = null;
-
-		try {
-			fw = new FileWriter(new File(filename), overwrite);
-
-			fw.write(text);
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-
-			try {
-				fw.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	/**
-	 * Gets a date from a file.
-	 *
-	 * @return A long containing the date.
-	 */
-	public long readDate() {
-
-		try {
-
-			File lockedDate = new File("lockedDate.txt");
-
-			Scanner input = null;
-			if (lockedDate.exists()) {
-				input = new Scanner(lockedDate);
-
-				long date = 0;
-				while (input.hasNextLine()) {
-
-					String number = input.nextLine();
-
-					if (!number.equals("")) {
-						System.out.println("Date number: " + number);
-						date = Long.parseLong(number);
-					}
-				}
-
-				return date;
-			} else {
-				return -1;
-			}
-
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return -1;
-	}
-
-	/**
-	 * Gets a journal from a persons case.
-	 *
-	 * @param id A string containing a persons ID, used in an sql querry that matches the ID.
-	 * @return A resultset containing the journal of the persons case.
-	 */
-	public ResultSet getJournal(String id) {
-		try {
-			Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
-			ResultSet rs = st.getResultSet();
-
-			return rs;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	//TODO implement the unused type.
-
-	/**
-	 * Gets information about Sagsbehandlere, Støttepersoner og læger.
-	 *
-	 * @param
-	 * @return A resultset containing the info.
-	 */
-
+    private static Connection db;
+    private static String user = "";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of c76796d... Logview for admin
     static {
         try {
             db = DriverManager.getConnection(url, username, pasword);
@@ -503,7 +159,11 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
+<<<<<<< HEAD
                 String type = rs.getString("type");
+=======
+                String type = rs.getString("email");
+>>>>>>> parent of c76796d... Logview for admin
                 String password = rs.getString("password");
                 String id = rs.getString("id");
                 //String adress = rs.getString("adress");
@@ -511,10 +171,17 @@ public class DatabaseHandler {
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
+<<<<<<< HEAD
                 System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
                 write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
+=======
+                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                user = id;
+                
+                write2file("currentUser.txt", id + "\t", true);
+>>>>>>> parent of c76796d... Logview for admin
 
                 return true;
             }
@@ -536,6 +203,7 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
+<<<<<<< HEAD
 >>>>>>> 705707ffdb5c0d6ed0ff06e52138212ef029fddd
 
 
@@ -589,6 +257,67 @@ public class DatabaseHandler {
     }
 
     /**
+=======
+
+            while (rs.next()) {
+                String type = rs.getString("type");
+                return type;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Gets a list of all the cases ID's using an sql querry.
+     *
+     * @return an array containing strings that are all the cases ID's.
+     */
+    public ArrayList<String> getCaseIDList() {
+        ArrayList<String> caseIDs = new ArrayList<>();
+        System.out.println(user);
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
+
+            while (rs.next()) {
+                String id = rs.getString("caseid");
+                caseIDs.add(id);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return caseIDs;
+    }
+
+    /**
+     * Gets a lot of info about a person.
+     *
+     * @param id Is the ID of a person.
+     * @return a resultset containing the info.
+     */
+    public ResultSet getCitizenInfo(String id) {
+        System.out.println("Id: " + id);
+        return  getInfo(id);
+    }
+
+    /**
+     * Gets a lot of info about the user.
+     *
+     * @return a resultset containing the info.
+     */
+    public ResultSet getUserInfo() {
+        System.out.println("User: " + user);
+        
+        return getInfo(user);
+    }
+
+    /**
+>>>>>>> parent of c76796d... Logview for admin
      * Generates the resultset containing a lot of info about a person.
      *
      * @param id Takes an ID of a person that is used in an sql querry.
@@ -633,12 +362,20 @@ public class DatabaseHandler {
      * @param text the text written to specified file.
      * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
      */
+<<<<<<< HEAD
     public void write2file(String filename, String text) {
+=======
+    public void write2file(String filename, String text, boolean overwrite) {
+>>>>>>> parent of c76796d... Logview for admin
         
         FileWriter fw = null;
 
         try {
+<<<<<<< HEAD
             fw = new FileWriter(new File(filename));
+=======
+            fw = new FileWriter(new File(filename), overwrite);
+>>>>>>> parent of c76796d... Logview for admin
 
             fw.write(text);
 
@@ -721,7 +458,10 @@ public class DatabaseHandler {
      * @param type unused?
      * @return A resultset containing the info.
      */
+<<<<<<< HEAD
 >>>>>>> 705707ffdb5c0d6ed0ff06e52138212ef029fddd
+=======
+>>>>>>> parent of c76796d... Logview for admin
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
