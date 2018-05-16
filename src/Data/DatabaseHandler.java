@@ -160,21 +160,13 @@ public class DatabaseHandler {
 
                 String password = rs.getString("password");
                 String id = rs.getString("id");
-                //String adress = rs.getString("adress");
                 String email = rs.getString("email");
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-                System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-
-                System.out.println("Logged in with: " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
-                System.out.println("Credentials saved to file");
                 write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
-
-                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-                user = id;
 
 
                 return true;
