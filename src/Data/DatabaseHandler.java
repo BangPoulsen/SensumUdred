@@ -603,7 +603,12 @@ public class DatabaseHandler {
             Statement st = db.createStatement();
             st.executeQuery("select consultant from sag where caseid = '" + caseID + "'");
             ResultSet rs = st.getResultSet();
-            return rs.getString(1);
+            String result = "";
+            while(rs.next()){
+                System.out.println(rs.getString(1));
+                result = rs.getString(1);
+            }
+            return result;
         } catch (SQLException e) {
             e.printStackTrace();
         }
