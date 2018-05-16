@@ -6,11 +6,9 @@
 package Data;
 
 import Business.Case;
-import java.io.BufferedReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,8 +16,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -229,6 +225,7 @@ public class DatabaseHandler {
      */
     public ArrayList<String> getCaseIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
+        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
@@ -346,31 +343,6 @@ public class DatabaseHandler {
         }
     }
 
-	/**
-	 *
-	 * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
-	 */
-
-	public String[] getCurrentUserFromFile(){
-            
-            try {
-            
-                Scanner input = new Scanner(new File("currentUser.txt"));
- 
-                while (input.hasNextLine()){
-                    
-                    String[] info = input.nextLine().split("\t");
-                    return info;
-                }
-            
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        
-        return null;
-
-	}
-
     /**
      * Gets a date from a file.
      *
@@ -392,6 +364,7 @@ public class DatabaseHandler {
                     String number = input.nextLine();
                     
                     if (!number.equals("")) {
+                        System.out.println("Date number: " + number);
                         date = Long.parseLong(number);
                     }
                 }
@@ -514,13 +487,6 @@ public class DatabaseHandler {
                     "INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "');" +
                     "insert into adress values ('', '" + id + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
                     "commit;");
-            ResultSet rs = st.getResultSet();
-<<<<<<< HEAD
-
-
-            return rs;
-=======
->>>>>>> f54a86388a5f2a7c14ec3fa201da5b738562800a
         } catch (SQLException e) {
             e.printStackTrace();
         }
