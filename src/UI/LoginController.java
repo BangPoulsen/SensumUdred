@@ -117,7 +117,7 @@ import javax.swing.*;
 
                 if (tries == 0) {
                     lockedDate = new Date().getTime();
-                    dbh.write2file("lockedDate.txt", Objects.toString(lockedDate), false);
+                    dbh.write2file("lockedDate.txt", Objects.toString(lockedDate));
                     locked = true;
                 }
                 

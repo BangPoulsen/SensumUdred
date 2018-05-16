@@ -154,7 +154,7 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
-                String type = rs.getString("email");
+                String type = rs.getString("type");
                 String password = rs.getString("password");
                 String id = rs.getString("id");
                 //String adress = rs.getString("adress");
@@ -162,10 +162,10 @@ public class DatabaseHandler {
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
-                write2file("currentUser.txt", id + "\t", true);
+                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
 
                 return true;
             }
@@ -290,12 +290,12 @@ public class DatabaseHandler {
      * @param text the text written to specified file.
      * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
      */
-    public void write2file(String filename, String text, boolean overwrite) {
+    public void write2file(String filename, String text) {
         
         FileWriter fw = null;
 
         try {
-            fw = new FileWriter(new File(filename), overwrite);
+            fw = new FileWriter(new File(filename));
 
             fw.write(text);
 
