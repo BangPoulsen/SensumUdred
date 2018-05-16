@@ -31,6 +31,7 @@ public class DatabaseHandler {
     private static Connection db;
     private static String user = "";
 
+
     static {
         try {
             db = DriverManager.getConnection(url, username, pasword);
@@ -154,7 +155,9 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
-                String type = rs.getString("email");
+
+                String type = rs.getString("type");
+
                 String password = rs.getString("password");
                 String id = rs.getString("id");
                 //String adress = rs.getString("adress");
@@ -162,10 +165,17 @@ public class DatabaseHandler {
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+
+                System.out.println("Logged in with: " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
-                write2file("currentUser.txt", id + "\t", true);
+                System.out.println("Credentials saved to file");
+                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
+
+                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
+                user = id;
+
 
                 return true;
             }
@@ -173,6 +183,22 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return false;
+    }
+    /**
+     * 
+     * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
+     */
+    
+    public String[] getCurrentUserInfo(){
+        Scanner input = new Scanner("currentUser.txt");
+        
+        while(input.hasNextLine()){
+            String[] userInfo = input.nextLine().split("\t");
+            return userInfo;
+        }
+        
+        return null;
+        
     }
 
     /**
@@ -288,14 +314,18 @@ public class DatabaseHandler {
      *
      * @param filename the name of the file written to.
      * @param text the text written to specified file.
-     * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
+
      */
-    public void write2file(String filename, String text, boolean overwrite) {
+
+    public void write2file(String filename, String text) {
         
         FileWriter fw = null;
 
         try {
-            fw = new FileWriter(new File(filename), overwrite);
+
+            fw = new FileWriter(new File(filename));
+
+            fw = new FileWriter(new File(filename), false);
 
             fw.write(text);
 
@@ -312,6 +342,23 @@ public class DatabaseHandler {
             }
         }
     }
+
+	/**
+	 *
+	 * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
+	 */
+
+	public String[] getCurrentUserFromFile(){
+		Scanner input = new Scanner("currentUser.txt");
+
+		while(input.hasNextLine()){
+			String[] userInfo = input.nextLine().split("\t");
+			return userInfo;
+		}
+
+		return null;
+
+	}
 
     /**
      * Gets a date from a file.
@@ -352,6 +399,7 @@ public class DatabaseHandler {
         return -1;
     }
 
+
     /**
      * Gets a journal from a persons case.
      *
@@ -378,6 +426,7 @@ public class DatabaseHandler {
      * @param type unused?
      * @return A resultset containing the info.
      */
+
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -390,6 +439,23 @@ public class DatabaseHandler {
         }
         return null;
     }
+    
+    public ResultSet getLogs() {
+        try {
+            Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            st.executeQuery("SELECT * FROM log");
+            ResultSet rs = st.getResultSet();
+            
+            
+            
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
 
     /**
      * Creates a user by adding relevant entries to the Database using an sql statement.
