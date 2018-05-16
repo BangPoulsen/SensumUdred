@@ -28,7 +28,6 @@ import javax.swing.JOptionPane;
 public class Admin extends Application implements Initializable {
 
 
-
 	@FXML
 	private ChoiceBox<String> Choicebox;
 
@@ -55,57 +54,58 @@ public class Admin extends Application implements Initializable {
 
 	@FXML
 	private Button LogOff;
-        
-        @FXML
-        private ListView<String> txtListUsers;
-        
-        private DatabaseHandler dbh;
 
-        
-        /**
-         * 
-         * @param event 
-         */
+	@FXML
+	private ListView<?> txtLog;
+
+	@FXML
+	private ListView<String> txtListUsers;
+
+	private DatabaseHandler dbh;
+
+
+	/**
+	 * @param event
+	 */
 	@FXML
 	void deleteUser(ActionEvent event) {
-            
-            if (txtListUsers.getSelectionModel().getSelectedItem() != null) {
-                String personInfo = txtListUsers.getSelectionModel().getSelectedItem();
-                
-                String[] personInfoSplitted = personInfo.split(" ");
-                
-                String selectedID = personInfoSplitted[1].substring(0, personInfoSplitted[1].length() - 1);
-                
-                System.out.println("ID: " + selectedID);
-                
-                dbh.deleteInfo(selectedID);
-                
-                JOptionPane.showMessageDialog(null, "Bruger slettet");
-                
-                dbh.logger( new Date().toString(), "Deleted user", dbh.getCurrentUser(), null);
-                
-                loadUsers();
-            } else {
-                JOptionPane.showMessageDialog(null, "Vælg en bruger");
-            }
-            
-            
+
+		if (txtListUsers.getSelectionModel().getSelectedItem() != null) {
+			String personInfo = txtListUsers.getSelectionModel().getSelectedItem();
+
+			String[] personInfoSplitted = personInfo.split(" ");
+
+			String selectedID = personInfoSplitted[1].substring(0, personInfoSplitted[1].length() - 1);
+
+			System.out.println("ID: " + selectedID);
+
+			dbh.deleteInfo(selectedID);
+
+			JOptionPane.showMessageDialog(null, "Bruger slettet");
+
+			dbh.logger(new Date().toString(), "Deleted user", dbh.getCurrentUser(), null);
+
+			loadUsers();
+		} else {
+			JOptionPane.showMessageDialog(null, "Vælg en bruger");
+		}
+
 
 	}
 
 	@FXML
 	void logOff(ActionEvent event) {
-            
-            dbh.logger( new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
-            
-            Switch.switchWindow((Stage)LogOff.getScene().getWindow(),new GUIController());
+
+		dbh.logger(new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
+
+		Switch.switchWindow((Stage) LogOff.getScene().getWindow(), new GUIController());
 
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
-		Scene scene =new Scene (root);
+		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Opret bruger");
 		primaryStage.setResizable(false);
@@ -118,18 +118,26 @@ public class Admin extends Application implements Initializable {
 	}
 
 
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Choicebox.getItems().removeAll(Choicebox.getItems());
 		Choicebox.getItems().addAll("Sagsbehandler", "Læge", "Støtte");
 		Choicebox.getSelectionModel().select("Sagsbehandler");
-                
-                dbh = new DatabaseHandler();
-                
-                loadUsers();
+
+		dbh = new DatabaseHandler();
+
+		loadUsers();
 
 	}
+
+
+
+
+
+
+	
+
+
 
     private void loadUsers() {
         //Search a case
