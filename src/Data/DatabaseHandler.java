@@ -152,12 +152,12 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + 
+                    "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
 
                 String type = rs.getString("type");
-
                 String password = rs.getString("password");
                 String id = rs.getString("id");
                 String email = rs.getString("email");
@@ -166,7 +166,8 @@ public class DatabaseHandler {
 
                 user = id;
                 
-                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
+                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" 
+                        + phone + "\t" + name + "\t" + password);
 
 
                 return true;
