@@ -152,29 +152,22 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + 
+                    "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
 
                 String type = rs.getString("type");
-
                 String password = rs.getString("password");
                 String id = rs.getString("id");
-                //String adress = rs.getString("adress");
                 String email = rs.getString("email");
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-                System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-
-                System.out.println("Logged in with: " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
-                System.out.println("Credentials saved to file");
-                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
-
-                System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-                user = id;
+                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" 
+                        + phone + "\t" + name + "\t" + password);
 
 
                 return true;
