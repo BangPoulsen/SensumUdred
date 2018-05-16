@@ -175,8 +175,7 @@ public class DatabaseHandler {
 
                 System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
-                
-                write2file("currentUser.txt", id + "\t");
+
 
                 return true;
             }
@@ -315,7 +314,7 @@ public class DatabaseHandler {
      *
      * @param filename the name of the file written to.
      * @param text the text written to specified file.
-     * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
+
      */
 
     public void write2file(String filename, String text) {
@@ -343,6 +342,23 @@ public class DatabaseHandler {
             }
         }
     }
+
+	/**
+	 *
+	 * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
+	 */
+
+	public String[] getCurrentUserFromFile(){
+		Scanner input = new Scanner("currentUser.txt");
+
+		while(input.hasNextLine()){
+			String[] userInfo = input.nextLine().split("\t");
+			return userInfo;
+		}
+
+		return null;
+
+	}
 
     /**
      * Gets a date from a file.
