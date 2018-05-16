@@ -31,11 +31,7 @@ public class DatabaseHandler {
     private static Connection db;
     private static String user = "";
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of c76796d... Logview for admin
+
     static {
         try {
             db = DriverManager.getConnection(url, username, pasword);
@@ -159,11 +155,9 @@ public class DatabaseHandler {
             ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
-<<<<<<< HEAD
+
                 String type = rs.getString("type");
-=======
-                String type = rs.getString("email");
->>>>>>> parent of c76796d... Logview for admin
+
                 String password = rs.getString("password");
                 String id = rs.getString("id");
                 //String adress = rs.getString("adress");
@@ -171,22 +165,18 @@ public class DatabaseHandler {
                 String phone = rs.getString("phone");
                 String name = rs.getString("name");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
                 System.out.println("Han er " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
-=======
+
                 System.out.println("Logged in with: " + type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
->>>>>>> 183e63bf4d87728813769b7f268bc688fd852031
                 user = id;
                 
                 System.out.println("Credentials saved to file");
                 write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" + phone + "\t" + name + "\t" + password);
-=======
+
                 System.out.println(type + " " + password + " " + id + " " + " " + email + " " + phone + " " + name);
                 user = id;
                 
-                write2file("currentUser.txt", id + "\t", true);
->>>>>>> parent of c76796d... Logview for admin
+                write2file("currentUser.txt", id + "\t");
 
                 return true;
             }
@@ -200,7 +190,7 @@ public class DatabaseHandler {
      * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
      */
     
-    public String[] getCurrentUser(){
+    public String[] getCurrentUserInfo(){
         Scanner input = new Scanner("currentUser.txt");
         
         while(input.hasNextLine()){
@@ -224,61 +214,6 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
-<<<<<<< HEAD
->>>>>>> 705707ffdb5c0d6ed0ff06e52138212ef029fddd
-
-
-
-<<<<<<< HEAD
-=======
-    /**
-     * Gets a list of all the cases ID's using an sql querry.
-     *
-     * @return an array containing strings that are all the cases ID's.
-     */
-    public ArrayList<String> getCaseIDList() {
-        ArrayList<String> caseIDs = new ArrayList<>();
-        System.out.println(user);
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
-
-            while (rs.next()) {
-                String id = rs.getString("caseid");
-                caseIDs.add(id);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return caseIDs;
-    }
-
-    /**
-     * Gets a lot of info about a person.
-     *
-     * @param id Is the ID of a person.
-     * @return a resultset containing the info.
-     */
-    public ResultSet getCitizenInfo(String id) {
-        System.out.println("Id: " + id);
-        return  getInfo(id);
-    }
-
-    /**
-     * Gets a lot of info about the user.
-     *
-     * @return a resultset containing the info.
-     */
-    public ResultSet getUserInfo() {
-        System.out.println("User: " + user);
-        
-        return getInfo(user);
-    }
-
-    /**
-=======
 
             while (rs.next()) {
                 String type = rs.getString("type");
@@ -338,7 +273,6 @@ public class DatabaseHandler {
     }
 
     /**
->>>>>>> parent of c76796d... Logview for admin
      * Generates the resultset containing a lot of info about a person.
      *
      * @param id Takes an ID of a person that is used in an sql querry.
@@ -383,20 +317,16 @@ public class DatabaseHandler {
      * @param text the text written to specified file.
      * @param overwrite Whether the text should override the file or apppend to it. True = append, false = override.
      */
-<<<<<<< HEAD
+
     public void write2file(String filename, String text) {
-=======
-    public void write2file(String filename, String text, boolean overwrite) {
->>>>>>> parent of c76796d... Logview for admin
         
         FileWriter fw = null;
 
         try {
-<<<<<<< HEAD
+
             fw = new FileWriter(new File(filename));
-=======
-            fw = new FileWriter(new File(filename), overwrite);
->>>>>>> parent of c76796d... Logview for admin
+
+            fw = new FileWriter(new File(filename), false);
 
             fw.write(text);
 
@@ -452,6 +382,26 @@ public class DatabaseHandler {
 
         return -1;
     }
+    
+    /**
+     * Gets the name of the current user.
+     * Does an sql querry with the ID of the current user.
+     *
+     * @return A string containing the name of the current user.
+     */
+    public String getCurrentUser() {
+        try {
+            Statement st = db.createStatement();
+            st.executeQuery("SELECT name FROM person WHERE id = '" + user + "';");
+            ResultSet rs = st.getResultSet();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     /**
      * Gets a journal from a persons case.
@@ -479,10 +429,7 @@ public class DatabaseHandler {
      * @param type unused?
      * @return A resultset containing the info.
      */
-<<<<<<< HEAD
->>>>>>> 705707ffdb5c0d6ed0ff06e52138212ef029fddd
-=======
->>>>>>> parent of c76796d... Logview for admin
+
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
