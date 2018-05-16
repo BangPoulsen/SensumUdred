@@ -84,8 +84,6 @@ public class NewCaseController extends Application implements Initializable {
 
     private DatabaseHandler dbh = new DatabaseHandler();
     @FXML
-    private TextField txtAuthor;
-    @FXML
     private Label sensumUdredLabel4;
 
     /**
