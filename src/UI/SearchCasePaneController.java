@@ -30,7 +30,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
 
 /**
  * FXML Controller class
@@ -187,6 +188,21 @@ public class SearchCasePaneController extends Application implements Initializab
         } else {
             JOptionPane.showMessageDialog(null, "Ingen sag valgt");
         }
+    }
+
+    @FXML
+    private void txtEnterName(ActionEvent event){
+
+    }
+
+    @FXML
+    private void txtEnterCprNumber(ActionEvent event){
+
+    }
+
+    @FXML
+    private void txtEnterCaseNumber(ActionEvent event){
+
     }
     
     /**
