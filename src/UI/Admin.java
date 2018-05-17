@@ -99,7 +99,10 @@ public class Admin extends Application implements Initializable {
 	void logOff(ActionEvent event) {
             
             dbh.logger( new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
+<<<<<<< HEAD
             
+=======
+>>>>>>> 24062503c2aafa7c76f5aba719d57689606c8f2c
             Switch.switchWindow((Stage)LogOff.getScene().getWindow(),new GUIController());
 
 	}
