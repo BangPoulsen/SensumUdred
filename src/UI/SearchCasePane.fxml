@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="searchCasePane" layoutX="2.0" layoutY="2.0" onKeyPressed="#isEnterPressed" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.SearchCasePaneController">
+<AnchorPane id="AnchorPane" fx:id="searchCasePane" layoutX="2.0" layoutY="2.0" onKeyPressed="#isEnterPressed" prefHeight="569.0" prefWidth="790.0" style="-fx-background-color: D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.SearchCasePaneController">
    <effect>
       <DropShadow />
    </effect>
@@ -25,8 +25,8 @@
       </Label>
       <TextField fx:id="txtEnterCprNumber" disable="true" layoutX="39.0" layoutY="184.0" onAction="#txtEnterCprNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" visible="false" />
       <TextField fx:id="txtEnterCaseNumber" disable="true" layoutX="39.0" layoutY="215.0" onAction="#txtEnterCaseNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" visible="false" />
-      <ListView fx:id="listViewCases" layoutX="298.0" layoutY="153.0" prefHeight="275.0" prefWidth="423.0" />
-      <Label fx:id="showCasesLabel" layoutX="479.0" layoutY="107.0" text="Sager">
+      <ListView fx:id="listViewCases" layoutX="288.0" layoutY="153.0" prefHeight="275.0" prefWidth="451.0" />
+      <Label fx:id="showCasesLabel" layoutX="484.0" layoutY="108.0" text="Sager">
          <font>
             <Font size="24.0" />
          </font>
@@ -35,11 +35,11 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="editCaseButton" layoutX="297.0" layoutY="455.0" mnemonicParsing="false" onAction="#editCaseButton" prefHeight="45.0" prefWidth="200.0" text="Rediger sag">
+      <Button fx:id="editCaseButton" layoutX="288.0" layoutY="455.0" mnemonicParsing="false" onAction="#editCaseButton" prefHeight="45.0" prefWidth="200.0" text="Rediger sag">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="deleteCaseButton" layoutX="521.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteCaseButton" prefHeight="45.0" prefWidth="200.0" text="Slet sag">
+      <Button fx:id="deleteCaseButton" layoutX="539.0" layoutY="455.0" mnemonicParsing="false" onAction="#deleteCaseButton" prefHeight="45.0" prefWidth="200.0" text="Slet sag">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -47,6 +47,6 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" onKeyPressed="#isEnterPressed" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
+      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" onKeyPressed="#isEnterPressed" prefHeight="31.0" prefWidth="209.0" promptText="Indtast Navn" />
    </children>
 </AnchorPane>
