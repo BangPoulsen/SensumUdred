@@ -69,10 +69,8 @@ public class MenuController extends Application implements Initializable {
     private void logoff(ActionEvent event) {
         dbh = new DatabaseHandler();
         dbh.logger( new Date().toString(), "Log off ", dbh.getCurrentUser(), null);
-<<<<<<< HEAD
 
-=======
->>>>>>> 24062503c2aafa7c76f5aba719d57689606c8f2c
+
         Switch.switchWindow((Stage)logoffButton.getScene().getWindow(),new GUIController());
     }
 
