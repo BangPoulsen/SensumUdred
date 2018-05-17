@@ -39,26 +39,10 @@ import javax.swing.JOptionPane;
  */
 public class SearchCasePaneController extends Application implements Initializable {
 
-    @FXML
-    private AnchorPane searchCasePane;
-    @FXML
-    private Label sensumUdredLabel3;
-    @FXML
-    private Label searchCaseLabel;
+
     @FXML
     private ListView<String> listViewCases;
-    @FXML
-    private Label showCasesLabel;
-    @FXML
-    private Button searchCaseOrCprButton;
-    @FXML
-    private Button editCaseButton;
-    @FXML
-    private Button deleteCaseButton;
-    @FXML
-    private TextField txtEnterCprNumber;
-    @FXML
-    private TextField txtEnterCaseNumber;
+
     @FXML
     private Button mainMenuButton;
     

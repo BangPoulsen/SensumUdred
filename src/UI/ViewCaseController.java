@@ -107,7 +107,7 @@ public class ViewCaseController extends Application implements Initializable {
             String[] fullNameSplit = fullName.split(" ");
             
             txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
-            txtLastName.setText("Efternavn: " + fullNameSplit[1]);
+            if (fullNameSplit.length > 1) txtLastName.setText("Efternavn: " + fullNameSplit[1]);
             txtCprNumber.setText("Personnummer: " + id);
             txtFloorNumber.setText("Etage: " + floor);
             txtJournalNumber.setText("Sagsnummer: " + caseid);

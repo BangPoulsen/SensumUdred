@@ -32,10 +32,6 @@ import javafx.stage.Stage;
 public class MenuController extends Application implements Initializable {
 
     @FXML
-    private AnchorPane menuPane;
-    @FXML
-    private Label menuSensumLabel1;
-    @FXML
     private Button createCaseButton;
     @FXML
     private Button searchCaseButton;

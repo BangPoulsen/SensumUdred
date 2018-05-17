@@ -38,14 +38,7 @@ import javax.swing.JOptionPane;
  * @author malte
  */
 public class NewCaseController extends Application implements Initializable {
-    @FXML
-    private AnchorPane createCasePane;
 
-
-    @FXML
-    private Label createCaseLabel;
-
-    private TextField txtauthor;
     @FXML
     private TextField txtFirstName;
 
