@@ -176,13 +176,15 @@ public class EditCaseController extends Application implements Initializable {
             //String journalNumber=dbh.searchCase();
             //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
 
-            ResultSet users = dbh.getUsers("Pårørende");
+            ResultSet kin = dbh.getUsers("Pårørende");
+
             Boolean kinExist = false;
+
             try{
                 String name = txtFirstNamek.getText() + " " + txtLastNamek.getText();
-                while (users.next()){
-                    System.out.println(users.getString(2));
-                    if(users.getString(2).equals(txtIdk.getText())){
+                while (kin.next()){
+                    System.out.println(kin.getString(2));
+                    if(kin.getString(2).equals(txtIdk.getText())){
                         //todo update database
                         kinExist = true;
                         dbh.updatePerson(txtIdk.getText(), name, txtPhonek.getText(), txtEmailk.getText(), txtRoadNamek.getText(), txtFloork.getText(), txtZipCodek.getText());
@@ -192,6 +194,9 @@ public class EditCaseController extends Application implements Initializable {
                     dbh.createUser(name, txtEmailk.getText(), txtPhonek.getText(), txtRoadNamek.getText(), txtFloork.getText(),txtZipCodek.getText(), txtIdk.getText(), "kin", "Pårørende");
                     dbh.updateCase(caseID, txtIdk.getText());
                 }
+
+                name = txtFirstName.getText() + " " + txtLastName.getText();
+                dbh.updatePerson(txtCPRNumber.getText(), name, txtPhone.getText(), txtEmail.getText(), txtRoadName.getText(), txtFloor.getText(), txtZipCode.getText());
             } catch (SQLException e){
                 e.printStackTrace();
             }
@@ -263,8 +268,20 @@ public class EditCaseController extends Application implements Initializable {
 
             String[] fullNameSplit = fullName.split(" ");
 
-            txtFirstName.setText(fullNameSplit[0]);
-            txtLastName.setText(fullNameSplit[1]);
+            if(fullNameSplit.length > 2){
+                String firstName = "";
+                for(int i = 0; i < fullNameSplit.length-2; i++){
+                    firstName += fullNameSplit[i] + " ";
+                }
+                firstName += fullNameSplit[fullNameSplit.length-2];
+                txtFirstName.setText(firstName);
+                txtLastName.setText(fullNameSplit[fullNameSplit.length-1]);
+            } else if(fullNameSplit.length == 2) {
+                txtFirstName.setText(fullNameSplit[0]);
+                txtLastName.setText(fullNameSplit[1]);
+            } else {
+                txtFirstName.setText(fullNameSplit[0]);
+            }
             txtCPRNumber.setText(id);
             txtFloor.setText(floor);
             txtZipCode.setText(zipcode);
