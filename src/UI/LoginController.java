@@ -109,7 +109,7 @@ import javax.swing.*;
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new Admin());
                         break;
                     case "Læge": //3412 koden
-                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new MenuController());
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new DoctorMenu());
                         break;
                 }
             } else {
