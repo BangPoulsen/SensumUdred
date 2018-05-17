@@ -13,7 +13,7 @@
       <DropShadow />
    </effect>
    <children>
-      <Label fx:id="sensumUdredLabel3" alignment="CENTER" focusTraversable="false" layoutX="-1.0" layoutY="14.0" prefHeight="55.0" prefWidth="790.0" text="Sensum Udred">
+      <Label fx:id="sensumUdredLabel3" alignment="CENTER" focusTraversable="false" layoutX="-1.0" layoutY="14.0" prefHeight="55.0" prefWidth="790.0" text="Sensum Udred her">
          <font>
             <Font size="30.0" />
          </font>

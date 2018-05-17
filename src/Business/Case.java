@@ -32,7 +32,7 @@ public class Case {
     }
 
     /**
-     * constructor for creating a instance of a case
+     * Constructor for creating a instance of a case
      */
     public Case(Citizen cCitizen,
                 String caseID,

@@ -38,12 +38,7 @@ import javax.swing.JOptionPane;
  * @author malte
  */
 public class EditCaseController extends Application implements Initializable {
-    @FXML
-    private ListView JournalEntries;
-    @FXML
-    private TextArea EntryDescription;
-    @FXML
-    private AnchorPane SubTabPaneBorger;
+
     @FXML
     private Button CancelButton;
     @FXML
@@ -83,30 +78,12 @@ public class EditCaseController extends Application implements Initializable {
     @FXML
     private TextField txtIdk;
     @FXML
-    private TextField txtFirstNamed;
-    @FXML
-    private TextField txtLastNamed;
-    @FXML
-    private TextField txtPhoned;
-    @FXML
-    private TextField txtEmaild;
-    @FXML
-    private TextField txtRoadNamed;
-    @FXML
-    private TextField txtFloord;
-    @FXML
-    private TextField txtZipCoded;
-    @FXML
     private TextArea txtProblemDescription;
     @FXML
     private TextArea txtProblemAssesment;
-
-    @FXML
-    private Button ChooseFile;
     @FXML
     private TextArea txtToDo;
 
-    private Button UploadFile;
     private Path to;
     private Path from;
     private File selectedFile;

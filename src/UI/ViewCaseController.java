@@ -41,15 +41,7 @@ public class ViewCaseController extends Application implements Initializable {
     
 
     @FXML
-    private AnchorPane createCasePane;
-    @FXML
-    private Label createCaseLabel;
-    @FXML
     private Button logoffButton;
-    @FXML
-    private Button viewSelectedNote;
-    @FXML
-    private Label sensumUdredLabel4;
     @FXML
     private Label txtFirstName;
     @FXML
@@ -71,15 +63,11 @@ public class ViewCaseController extends Application implements Initializable {
     @FXML
     private ListView<String> txtViewNotes;
     @FXML
-    private Label showCasesLabel;
-    @FXML
     private AnchorPane showNoteInCasesPane;
     @FXML
     private Label showNoteAuthorLabel;
     @FXML
     private TextArea txtNoteInCases;
-    @FXML
-    private Button closeNoteButton;
 
     private DatabaseHandler dbh;
     private ResultSet journal;

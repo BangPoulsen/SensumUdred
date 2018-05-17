@@ -49,12 +49,6 @@ public class Admin extends Application implements Initializable {
 	private TextField txtUserPassword;
 
 	@FXML
-	private Button CreateUser;
-
-	@FXML
-	private Button DeleteUser;
-
-	@FXML
 	private Button LogOff;
         
         @FXML
