@@ -5,14 +5,14 @@ import UI.GUIController;
 
 
 public class Main {
+
     /**
-     * @param args the command line arguments
+     * The main method, starts the application by turning on the UI.
+     *
+     * @param args
      */
     public static void main(String[] args) {
-        
-
-        
-        //Start application throught the presentation layer   
+        //Starts application through the presentation layer
         
         GUIController ui = new GUIController();
         
