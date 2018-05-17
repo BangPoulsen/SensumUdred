@@ -69,10 +69,8 @@ public class SearchCasePaneController extends Application implements Initializab
 
     /**
      * Initializes the controller class.
+     * @throws java.lang.Exception
      */
-
-
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("SearchCasePane.fxml"));
@@ -95,17 +93,30 @@ public class SearchCasePaneController extends Application implements Initializab
         dbh = new DatabaseHandler();
         
     }
+    
+    /**
+     * Switches pane back to the main menu.
+     * @param event called from the UI.
+     */
     @FXML
     private void mainMenuButton (ActionEvent event) {
         Switch.switchWindow((Stage) this.mainMenuButton.getScene().getWindow(), new MenuController());
     }
 
+    /**
+     * Calls searchCaseMethod();
+     * @param event called from the UI.
+     */
     @FXML
     private void searchCaseOrCprButton(ActionEvent event) {
         
         SearchCaseMethod();
     }
 
+    /**
+     * Saves the selected case and switches to the EditCaseController.
+     * @param event called from the UI.
+     */
     @FXML
     private void editCaseButton(ActionEvent event) {
         if (listViewCases.getSelectionModel().getSelectedItem() != null) {
@@ -140,6 +151,10 @@ public class SearchCasePaneController extends Application implements Initializab
         
     }
 
+    /**
+     * 
+     * @param event called from the UI.
+     */
     @FXML
     private void deleteCaseButton(ActionEvent event) {
         if (!listViewCases.getSelectionModel().getSelectedItems().isEmpty()) {
@@ -173,20 +188,10 @@ public class SearchCasePaneController extends Application implements Initializab
             JOptionPane.showMessageDialog(null, "Ingen sag valgt");
         }
     }
-
-    @FXML
-    private void txtEnterName(ActionEvent event) {
-        
-    }
-
-    @FXML
-    private void txtEnterCprNumber(ActionEvent event) {
-    }
-
-    @FXML
-    private void txtEnterCaseNumber(ActionEvent event) {
-    }
-
+    
+    /**
+     * Searches cases based on what's written in search field and displays them on the list.
+     */
     private void SearchCaseMethod() {
         //Search a case
         ResultSet results = dbh.searchCase(txtEnterName.getText());
@@ -216,6 +221,10 @@ public class SearchCasePaneController extends Application implements Initializab
         }
     }
 
+    /**
+     * Calls searchCaseMethod() when enter is pressed.
+     * @param event 
+     */
     @FXML
     private void isEnterPressed(KeyEvent event) {
         

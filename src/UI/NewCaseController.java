@@ -35,7 +35,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author malte
+ * 
  */
 public class NewCaseController extends Application implements Initializable {
     @FXML
@@ -105,6 +105,10 @@ public class NewCaseController extends Application implements Initializable {
     }
 
 
+    /**
+     * Saves a case to the database automatically assigning a caseID.
+     * @param event called by the UI.
+     */
     @FXML
     private void createCaseDoneButtonEvent(ActionEvent event) {
         
@@ -204,6 +208,11 @@ public class NewCaseController extends Application implements Initializable {
             JOptionPane.showMessageDialog(null, "Udfyld venligst: " + isEmpty);
         }
     }
+    
+    /**
+     * Goes back to the main menu without creating a case.
+     * @param event called from UI.
+     */
     @FXML
     private void createCaseCancelButton (ActionEvent event) {
         Switch.switchWindow((Stage)createCaseCancelButton.getScene().getWindow(),new MenuController());

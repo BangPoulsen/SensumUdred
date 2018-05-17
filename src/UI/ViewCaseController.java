@@ -85,7 +85,9 @@ public class ViewCaseController extends Application implements Initializable {
     private ResultSet journal;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class and displays the information of the current user.
+     * @param url a URL.
+     * @param rb A ResourceBundle.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -140,17 +142,21 @@ public class ViewCaseController extends Application implements Initializable {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Logs the current user off.
+     * @param event Called from the UI.
+     */
     @FXML
     private void LogOffEvent(ActionEvent event) {
         Switch.switchWindow((Stage)logoffButton.getScene().getWindow(),new GUIController());
     }
-
-    @FXML
-    private void keyReleasedProberty(KeyEvent event) {
-    }
-
-
+    
+    /**
+     * Opens the GUI of the viewCaseController.
+     * @param primaryStage The primary stage of the application.
+     * @throws Exception Throws an exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("ViewCase.fxml"));
@@ -167,12 +173,20 @@ public class ViewCaseController extends Application implements Initializable {
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
     }
 
+    /**
+     * Closes the note of a case.
+     * @param event Called from the UI.
+     */
     @FXML
     private void closeNoteButtonHandler(ActionEvent event) {
         
         showNoteInCasesPane.setVisible(false);
     }
     
+    /**
+     * Views a selected note from the list. 
+     * @param event Called from the UI.
+     */
     @FXML
     private void ViewNoteEventHandler(ActionEvent event) {
         if (txtViewNotes.getSelectionModel().getSelectedItem()!= null) {
