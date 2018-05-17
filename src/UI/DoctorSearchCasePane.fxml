@@ -23,8 +23,8 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEnterCprNumber" disable="true" layoutX="39.0" layoutY="184.0" onAction="#txtEnterCprNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" visible="false" />
-      <TextField fx:id="txtEnterCaseNumber" disable="true" layoutX="39.0" layoutY="215.0" onAction="#txtEnterCaseNumber" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" visible="false" />
+      <TextField fx:id="txtEnterCprNumber" disable="true" layoutX="39.0" layoutY="184.0"  prefHeight="31.0" prefWidth="200.0" promptText="Indtast CPR-nummer" visible="false" />
+      <TextField fx:id="txtEnterCaseNumber" disable="true" layoutX="39.0" layoutY="215.0" prefHeight="31.0" prefWidth="200.0" promptText="Indtast sagsnr" visible="false" />
       <ListView fx:id="listViewCases" layoutX="283.0" layoutY="153.0" prefHeight="275.0" prefWidth="451.0" />
       <Label fx:id="showCasesLabel" layoutX="479.0" layoutY="107.0" text="Sager">
          <font>
@@ -46,6 +46,6 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onAction="#txtEnterName" onKeyPressed="#isEnterPressed" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
+      <TextField fx:id="txtEnterName" layoutX="39.0" layoutY="153.0" onKeyPressed="#isEnterPressed" prefHeight="31.0" prefWidth="200.0" promptText="Indtast Navn" />
    </children>
 </AnchorPane>
