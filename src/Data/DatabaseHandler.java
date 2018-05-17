@@ -91,17 +91,6 @@ public class DatabaseHandler {
     }
 
     /**
-     * Closes the established connection to the sql server.
-     */
-    public void closeConnection() {
-        try {
-            db.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Searches for a specific case using the ID of a person, thus returning a resultset containing mentioned info.
      *
      * @param name Should be the ID of a person. Is used in an sql querry to get info
