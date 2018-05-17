@@ -21,7 +21,6 @@ import java.util.Scanner;
  *
  * @author malte
  */
-
 public class DatabaseHandler {
 
     private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
@@ -152,7 +151,7 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username + 
+            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username +
                     "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
@@ -165,8 +164,8 @@ public class DatabaseHandler {
                 String name = rs.getString("name");
 
                 user = id;
-                
-                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t" 
+
+                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t"
                         + phone + "\t" + name + "\t" + password);
 
 
@@ -177,21 +176,21 @@ public class DatabaseHandler {
         }
         return false;
     }
+
     /**
-     * 
+     *
      * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
      */
-    
     public String[] getCurrentUserInfo(){
         Scanner input = new Scanner("currentUser.txt");
-        
+
         while(input.hasNextLine()){
             String[] userInfo = input.nextLine().split("\t");
             return userInfo;
         }
-        
+
         return null;
-        
+
     }
 
     /**
@@ -200,7 +199,6 @@ public class DatabaseHandler {
      * @param username Uses this as a persons name to find the corresponding type during an sql querry.
      * @return A string containing the type of the user.
      */
-    
     public String getType(String username) {
 
         try {
@@ -267,7 +265,7 @@ public class DatabaseHandler {
      */
     public ResultSet getUserInfo() {
         System.out.println("User: " + user);
-        
+
         return getInfo(user);
     }
 
@@ -314,11 +312,9 @@ public class DatabaseHandler {
      *
      * @param filename the name of the file written to.
      * @param text the text written to specified file.
-
      */
-
     public void write2file(String filename, String text) {
-        
+
         FileWriter fw = null;
 
         try {
@@ -329,12 +325,12 @@ public class DatabaseHandler {
 
             fw.write(text);
 
-            
+
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally{
-            
+
             try {
                 fw.close();
             } catch (IOException e) {
@@ -360,9 +356,9 @@ public class DatabaseHandler {
 
                 long date = 0;
                 while (input.hasNextLine()) {
-                    
+
                     String number = input.nextLine();
-                    
+
                     if (!number.equals("")) {
                         System.out.println("Date number: " + number);
                         date = Long.parseLong(number);
@@ -381,7 +377,6 @@ public class DatabaseHandler {
 
         return -1;
     }
-
 
     /**
      * Gets a journal from a persons case.
@@ -407,7 +402,6 @@ public class DatabaseHandler {
      *
      * @return A resultset containing the info.
      */
-
     public ResultSet getUsers() {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -421,6 +415,12 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Fetches a list of the current Users in the fatabase using an sql statement.
+     *
+     * @param type A String containing information pertaining as to what occupation the person has.
+     * @return A resultset of users.
+     */
     public ResultSet getUsers(String type) {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -433,23 +433,26 @@ public class DatabaseHandler {
         }
         return null;
     }
-    
+
+    /**
+     * Gets the logs written in the database.
+     *
+     * @return A resultset containing everything from the table log.
+     */
     public ResultSet getLogs() {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("SELECT * FROM log");
             ResultSet rs = st.getResultSet();
-            
-            
-            
+
+
+
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-    
-    
 
     /**
      * Creates a user by adding relevant entries to the Database using an sql statement.
@@ -513,6 +516,17 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Attempts to update a persons information within the database.
+     *
+     * @param id
+     * @param name
+     * @param phone
+     * @param email
+     * @param address
+     * @param floor
+     * @param zipCode
+     */
     public void updatePerson(String id, String name, String phone, String email, String address, String floor, String zipCode){
         try {
             String[] streetSplit = address.split(" ");
@@ -544,6 +558,12 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Attempts to update a case within the database. currently only affects its kin column.
+     *
+     * @param caseID
+     * @param kin A string that contains a kins PersonID
+     */
     public void updateCase(String caseID, String kin){
         try {
             Statement st = db.createStatement();
@@ -553,6 +573,14 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Logs information about an event where things are changed in the system.
+     *
+     * @param timestamp
+     * @param change A String containing the changes made.
+     * @param ID A String containing PersonID
+     * @param caseID
+     */
     public void logger(String timestamp, String change, String ID, String caseID) {
         try{
             Statement st = db.createStatement();
@@ -562,6 +590,12 @@ public class DatabaseHandler {
         }
     }
 
+    /**
+     * Gets a kin from a specific case.
+     *
+     * @param caseID
+     * @return A string containing the PersonID of the kin.
+     */
     public String getKin(String caseID){
         try {
             Statement st = db.createStatement();
@@ -580,6 +614,12 @@ public class DatabaseHandler {
         return null;
     }
 
+    /**
+     * Gets a doctor from a specific case.
+     *
+     * @param caseID
+     * @return A string containing the PersonID of the doctor.
+     */
     public String getDoctor(String caseID){
         try {
             Statement st = db.createStatement();
