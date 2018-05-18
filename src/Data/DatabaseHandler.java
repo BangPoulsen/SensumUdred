@@ -153,23 +153,14 @@ public class DatabaseHandler {
 
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Person WHERE id = '" + username +
+            ResultSet rs = st.executeQuery("SELECT id FROM Person WHERE id = '" + username +
                     "' AND password = '" + userPassword + "';");
 
             while (rs.next()) {
 
-                String type = rs.getString("type");
-                String password = rs.getString("password");
                 String id = rs.getString("id");
-                String email = rs.getString("email");
-                String phone = rs.getString("phone");
-                String name = rs.getString("name");
 
                 user = id;
-
-                write2file("currentUser.txt", id + "\t" + type + "\t" + email + "\t"
-                        + phone + "\t" + name + "\t" + password);
-
 
                 return true;
             }
@@ -177,22 +168,6 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return false;
-    }
-
-    /**
-     *
-     * @return an array of strings with info about the current user. Index 0 = id, 1 = type, 2 = email, 3 = phone, 4 = name, 5 = password.
-     */
-    public String[] getCurrentUserInfo(){
-        Scanner input = new Scanner("currentUser.txt");
-
-        while(input.hasNextLine()){
-            String[] userInfo = input.nextLine().split("\t");
-            return userInfo;
-        }
-
-        return null;
-
     }
 
     /**

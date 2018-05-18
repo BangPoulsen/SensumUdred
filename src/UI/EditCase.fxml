@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.EditCaseController">
+<AnchorPane prefHeight="569.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.EditCaseController">
    <children>
       <AnchorPane layoutX="625.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="165.0" style="-fx-background-color: #D3D3D3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="625.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -80,19 +80,19 @@
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
                                                 <Label layoutX="39.0" layoutY="21.0" prefHeight="27.0" prefWidth="250.0" text="Fornavn:" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="336.0" />
-                                                <TextField fx:id="txtFirstNamed" layoutX="313.0" layoutY="15.0" prefHeight="27.0" prefWidth="250.0" promptText="fornavn" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
+                                                <TextField fx:id="txtFirstNamed" editable="false" layoutX="313.0" layoutY="15.0" prefHeight="27.0" prefWidth="250.0" promptText="fornavn" text="Sebastian" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="15.0" />
                                                 <Label layoutX="39.0" layoutY="68.0" prefHeight="27.0" prefWidth="250.0" text="Efternavn:" />
-                                                <TextField fx:id="txtLastNamed" layoutX="313.0" layoutY="62.0" prefHeight="27.0" prefWidth="250.0" promptText="efternavn" AnchorPane.topAnchor="62.0" />
+                                                <TextField fx:id="txtLastNamed" editable="false" layoutX="313.0" layoutY="62.0" prefHeight="27.0" prefWidth="250.0" promptText="efternavn" text="Wijk" AnchorPane.topAnchor="62.0" />
                                                 <Label layoutX="39.0" layoutY="115.0" prefHeight="27.0" prefWidth="250.0" text="Telefon:" />
-                                                <TextField fx:id="txtPhoned" layoutX="313.0" layoutY="109.0" prefHeight="27.0" prefWidth="250.0" promptText="telefon" AnchorPane.topAnchor="109.0" />
+                                                <TextField fx:id="txtPhoned" editable="false" layoutX="313.0" layoutY="109.0" prefHeight="27.0" prefWidth="250.0" promptText="telefon" text="27207414" AnchorPane.topAnchor="109.0" />
                                                 <Label layoutX="39.0" layoutY="162.0" prefHeight="27.0" prefWidth="250.0" text="Email:" />
-                                                <TextField fx:id="txtEmaild" layoutX="313.0" layoutY="156.0" prefHeight="27.0" prefWidth="250.0" promptText="email" AnchorPane.topAnchor="156.0" />
+                                                <TextField fx:id="txtEmaild" editable="false" layoutX="313.0" layoutY="156.0" prefHeight="27.0" prefWidth="250.0" promptText="email" text="Sebastian@wijk.live.dk" AnchorPane.topAnchor="156.0" />
                                                 <Label layoutX="39.0" layoutY="209.0" prefHeight="27.0" prefWidth="250.0" text="Vejnavn:" />
-                                                <TextField fx:id="txtRoadNamed" layoutX="313.0" layoutY="203.0" prefHeight="27.0" prefWidth="250.0" promptText="vejnavn" AnchorPane.topAnchor="203.0" />
+                                                <TextField fx:id="txtRoadNamed" editable="false" layoutX="313.0" layoutY="203.0" prefHeight="27.0" prefWidth="250.0" promptText="vejnavn" text="Reventlowsvej 24" AnchorPane.topAnchor="203.0" />
                                                 <Label layoutX="39.0" layoutY="257.0" prefHeight="27.0" prefWidth="250.0" text="Etage:" />
-                                                <TextField fx:id="txtFloord" layoutX="313.0" layoutY="251.0" prefHeight="27.0" prefWidth="250.0" promptText="etage" AnchorPane.topAnchor="251.0" />
+                                                <TextField fx:id="txtFloord" editable="false" layoutX="313.0" layoutY="251.0" prefHeight="27.0" prefWidth="250.0" promptText="etage" text="1" AnchorPane.topAnchor="251.0" />
                                                 <Label layoutX="39.0" layoutY="305.0" prefHeight="27.0" prefWidth="250.0" text="Postnummer:" />
-                                                <TextField fx:id="txtZipCoded" layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="postnummer" AnchorPane.topAnchor="299.0" />
+                                                <TextField fx:id="txtZipCoded" editable="false" layoutX="313.0" layoutY="299.0" prefHeight="27.0" prefWidth="250.0" promptText="postnummer" text="5000" AnchorPane.topAnchor="299.0" />
                                              </children>
                                           </AnchorPane>
                                        </content>
