@@ -337,7 +337,7 @@ public class EditCaseController extends Application implements Initializable {
             } else if(fullNameSplit.length == 2) {
                 txtFirstNamek.setText(fullNameSplit[0]);
                 txtLastNamek.setText(fullNameSplit[1]);
-            } else {
+            } else if (fullNameSplit.length != 0) {
                 txtFirstNamek.setText(fullNameSplit[0]);
             }
             txtIdk.setText(id);
