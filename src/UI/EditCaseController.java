@@ -8,7 +8,6 @@ package UI;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import Data.DatabaseHandler;
@@ -173,8 +172,7 @@ public class EditCaseController extends Application implements Initializable {
             String problemAssesment = txtProblemAssesment.getText();
             String toDo = txtToDo.getText();
             String author = dbh.getCurrentUser();
-            //String journalNumber=dbh.searchCase();
-            //dbh.updateDatabase(problemdescription,problemAssesment,toDo,author,journalNumber);
+            dbh.updateJournal(problemdescription,problemAssesment,toDo,author, caseID);
 
             ResultSet kin = dbh.getUsers("Pårørende");
 

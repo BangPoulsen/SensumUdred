@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -30,10 +31,10 @@ public class DatabaseHandler {
     private static Connection db;
     private static String user = "";
 
-
     static {
         try {
             db = DriverManager.getConnection(url, username, pasword);
+            Statement st = db.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -61,7 +62,6 @@ public class DatabaseHandler {
 
 
 
-
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM person;");
@@ -76,13 +76,14 @@ public class DatabaseHandler {
         }
 
         try {
+            String jNumber = getRandomJID();
             Statement st = db.createStatement();
             st.executeUpdate("" +
                 "begin; " +
                 "insert into person (type, password, id, email, phone, name) values ('Borger', '" + password + "', '" + CPR + "', '" + email + "', '" + phoneNumber + "', '" + fullName + "'); " +
                 "insert into adress (id, street, number, floor, zipcode) values ('" + CPR + "', '" + street + "', '" + streetNumber + "', '" + floor + "', '" + zipCode + "');" +
                 "insert into sag (caseid, kin, support, consultant, responsible, citizen) values ('" + journalNumber + "', 'NULL', 'NULL', 'NULL', 'NULL', '" + CPR + "');" +
-                "insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + note + "','" + journalNumber + "','" + author + "');" +
+                "insert into journal (timestamp, note, caseid, author, jid) values ('" + new Date().toString() + "',  '" + note + "','" + journalNumber + "','" + author + "', '" + jNumber + "');" +
                 "commit;");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -129,8 +130,9 @@ public class DatabaseHandler {
             Statement st = db.createStatement();
             st.executeUpdate("" +
                 "begin; " +
-                "delete from person where person.id = '" + id + "'; delete from sag where sag.citizen = '" + id + "'; " +
                 "delete from journal using sag where journal.caseid = sag.caseid and sag.citizen = '" + id + "'; " +
+                "delete from sag where sag.citizen = '" + id + "'; " +
+                "delete from person where person.id = '" + id + "'; " +
                 "commit;");
             System.out.println("Case deleted");
         } catch (SQLException e) {
@@ -503,14 +505,17 @@ public class DatabaseHandler {
      * @param problemAssesment A string containing information about an updated review of the assesment of the problem.
      * @param toDo A string containing information about an updated review of what is to be done about the problem.
      * @param author A string containing the author.
-     * @param journalNumber A string containing the journals number.
+     * @param caseID A string containing the case ID.
      */
-    public void updateDatabase(String problemDescription, String problemAssesment,String toDo, String author, String journalNumber){
+    public void updateJournal(String problemDescription, String problemAssesment, String toDo, String author, String caseID){
         try{
+            String jNumber = getRandomJID();
             Statement st = db.createStatement();
-            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '"+ problemDescription + "','" + journalNumber + "','" + author + "');");
-            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + problemAssesment + "','" + journalNumber + "','" + author + "');");
-            st.execute(" insert into journal (timestamp, note, caseid, author) values ('" + new Date().toString() + "',  '" + toDo + "','" + journalNumber + "','" + author + "');");
+            st.execute(" insert into journal (timestamp, note, caseid, author, jID) values ('" + new Date().toString() + "',  'Problem: "+ problemDescription + "','" + caseID + "','" + author + "', '" + jNumber + "');");
+            jNumber = getRandomJID();
+            st.execute(" insert into journal (timestamp, note, caseid, author, jID) values ('" + new Date().toString() + "',  'Vurdering: " + problemAssesment + "','" + caseID + "','" + author + "', '" + jNumber + "');");
+            jNumber = getRandomJID();
+            st.execute(" insert into journal (timestamp, note, caseid, author, jID) values ('" + new Date().toString() + "',  'Indsats: " + toDo + "','" + caseID + "','" + author + "', '" + jNumber + "');");
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -636,6 +641,33 @@ public class DatabaseHandler {
         }
 
         return null;
+    }
+
+    private String getRandomJID(){
+        Random random = new Random();
+        int caseID = random.nextInt(99999 - 10000 + 1) + 10000;
+
+        ArrayList<String> jIDs = new ArrayList<>();
+        System.out.println(user);
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT jid FROM journal;");
+
+            while (rs.next()) {
+                String id = rs.getString("jid");
+                jIDs.add(id);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String journalNumber = Integer.toString(caseID);
+
+        while (jIDs.contains(journalNumber)) {
+            caseID = random.nextInt(9999 - 1000 + 1) + 1000;
+            journalNumber = Integer.toString(caseID);
+        }
+        return journalNumber;
     }
 }
 

@@ -176,7 +176,7 @@ public class SearchCasePaneController extends Application implements Initializab
                 
                 String[] caseID = id.split(" ");
                 
-                String finalID = caseID[2].substring(0, caseID[2].length() - 1);
+                String finalID = caseID[4].substring(0, caseID[4].length() - 1);
                 
                 dbh.deleteInfo(finalID);
                 
