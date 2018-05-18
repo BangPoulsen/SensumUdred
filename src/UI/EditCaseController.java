@@ -326,8 +326,20 @@ public class EditCaseController extends Application implements Initializable {
 
             String[] fullNameSplit = fullName.split(" ");
 
-            txtFirstNamek.setText(fullNameSplit[0]);
-            txtLastNamek.setText(fullNameSplit[1]);
+            if(fullNameSplit.length > 2){
+                String firstName = "";
+                for(int i = 0; i < fullNameSplit.length-2; i++){
+                    firstName += fullNameSplit[i] + " ";
+                }
+                firstName += fullNameSplit[fullNameSplit.length-2];
+                txtFirstNamek.setText(firstName);
+                txtLastNamek.setText(fullNameSplit[fullNameSplit.length-1]);
+            } else if(fullNameSplit.length == 2) {
+                txtFirstNamek.setText(fullNameSplit[0]);
+                txtLastNamek.setText(fullNameSplit[1]);
+            } else {
+                txtFirstNamek.setText(fullNameSplit[0]);
+            }
             txtIdk.setText(id);
             txtFloork.setText(floor);
             txtZipCodek.setText(zipcode);
