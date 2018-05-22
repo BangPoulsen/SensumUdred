@@ -8,6 +8,7 @@ package UI;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import Data.DatabaseHandler;
@@ -16,6 +17,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Date;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -112,6 +115,7 @@ public class EditCaseController extends Application implements Initializable {
     private DatabaseHandler dbh;
     private String CPR;
     private String caseID;
+    private HashMap<Integer, String> journals;
 
     /**
      * Initializes the controller class.
@@ -124,6 +128,7 @@ public class EditCaseController extends Application implements Initializable {
         txtProblemDescription.setWrapText(true);
         String currentUser=dbh.getCurrentUser();
         responsible.setText(currentUser);
+        journals = new HashMap<>();
 
         caseID = null;
         CPR = null;
@@ -142,6 +147,18 @@ public class EditCaseController extends Application implements Initializable {
         }
         setCitizen();
         setKin();
+        setJournals();
+        System.out.println(caseID);
+
+        JournalEntries.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                System.out.println(JournalEntries.getSelectionModel().getSelectedItems().toString());
+
+                System.out.println(journals.get(JournalEntries.getSelectionModel().getSelectedIndex()));
+                EntryDescription.setText(journals.get(JournalEntries.getSelectionModel().getSelectedIndex()));
+            }
+        });
     }
 
     @Override
@@ -189,7 +206,6 @@ public class EditCaseController extends Application implements Initializable {
             try{
                 String name = txtFirstNamek.getText() + " " + txtLastNamek.getText();
                 while (kin.next()){
-                    System.out.println(kin.getString(2));
                     if(kin.getString(2).equals(txtIdk.getText())){
                         //todo update database
                         kinExist = true;
@@ -267,7 +283,6 @@ public class EditCaseController extends Application implements Initializable {
             while(info.next()){
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     citizenInfo[i-1] = info.getString(i);
-                    System.out.println(rsmdt.getColumnName(i));
                 }
             }
 
@@ -325,7 +340,6 @@ public class EditCaseController extends Application implements Initializable {
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     if(info.getString(i) != null){
                         citizenInfo[i-1] = info.getString(i);
-                        System.out.println(rsmdt.getColumnName(i));
                     } else {
                         citizenInfo[i-1] = "";
                     }
@@ -364,6 +378,25 @@ public class EditCaseController extends Application implements Initializable {
             txtEmailk.setText(email);
             txtRoadNamek.setText(roadName);
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setJournals(){
+        ResultSet rs = dbh.getJournals(caseID);
+        String caseString;
+        JournalEntries.getItems().clear();
+        int i = 0;
+        try {
+            while (rs.next()) {
+                caseString = "";
+                caseString = caseString + "Tid: " + rs.getString(1) + ", Skrevet af: " + rs.getString(3);
+                caseString.trim();
+                JournalEntries.getItems().add(caseString);
+                journals.put(i, rs.getString(4));
+                i++;
+            }
+        } catch (SQLException e){
             e.printStackTrace();
         }
     }

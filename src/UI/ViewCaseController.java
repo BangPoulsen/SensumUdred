@@ -134,7 +134,6 @@ public class ViewCaseController extends Application implements Initializable {
             String timestamp = "";
             while (journal.next()){
                 timestamp = journal.getString(2);
-                System.out.println(timestamp);
                 txtViewNotes.getItems().add(timestamp);
             }
             

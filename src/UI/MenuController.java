@@ -53,8 +53,6 @@ public class MenuController extends Application implements Initializable {
         //String[] currentUserInfo =
          
         //String type = currentUserInfo[1];
-         
-        //System.out.println(type);
         
         // TODO
     }

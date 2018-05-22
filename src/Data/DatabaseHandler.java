@@ -134,7 +134,6 @@ public class DatabaseHandler {
                 "delete from sag where sag.citizen = '" + id + "'; " +
                 "delete from person where person.id = '" + id + "'; " +
                 "commit;");
-            System.out.println("Case deleted");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -200,7 +199,6 @@ public class DatabaseHandler {
      */
     public ArrayList<String> getCaseIDList() {
         ArrayList<String> caseIDs = new ArrayList<>();
-        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
@@ -241,8 +239,6 @@ public class DatabaseHandler {
      * @return a resultset containing the info.
      */
     public ResultSet getUserInfo() {
-        System.out.println("User: " + user);
-
         return getInfo(user);
     }
 
@@ -337,7 +333,6 @@ public class DatabaseHandler {
                     String number = input.nextLine();
 
                     if (!number.equals("")) {
-                        System.out.println("Date number: " + number);
                         date = Long.parseLong(number);
                     }
                 }
@@ -583,7 +578,6 @@ public class DatabaseHandler {
             ResultSet rs = st.getResultSet();
             String result = "";
             while(rs.next()){
-                System.out.println(rs.getString(1));
                 result = rs.getString(1);
             }
             return result;
@@ -607,7 +601,6 @@ public class DatabaseHandler {
             ResultSet rs = st.getResultSet();
             String result = "";
             while(rs.next()){
-                System.out.println(rs.getString(1));
                 result = rs.getString(1);
             }
             return result;
@@ -618,12 +611,11 @@ public class DatabaseHandler {
         return null;
     }
 
-    private String getRandomJID(){
+    private String getRandomJID() {
         Random random = new Random();
         int caseID = random.nextInt(99999 - 10000 + 1) + 10000;
 
         ArrayList<String> jIDs = new ArrayList<>();
-        System.out.println(user);
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT jid FROM journal;");
@@ -643,6 +635,18 @@ public class DatabaseHandler {
             journalNumber = Integer.toString(caseID);
         }
         return journalNumber;
+    }
+
+    public ResultSet getJournals(String caseID){
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT timestamp, caseid, author, note from journal where caseid = '" + caseID + "'");
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
 
