@@ -57,14 +57,21 @@ public class MenuController extends Application implements Initializable {
         //System.out.println(type);
         
         // TODO
-    }    
+    }
 
-
+    /**
+     * gets the search case window.
+     * @param event
+     */
     @FXML
     private void searchCase(ActionEvent event) {
         Switch.switchWindow((Stage)searchCaseButton.getScene().getWindow(),new SearchCasePaneController());
     }
 
+    /**
+     * logs off, and does all the relevant things to do that.
+     * @param event
+     */
     @FXML
     private void logoff(ActionEvent event) {
         dbh = new DatabaseHandler();
@@ -88,6 +95,10 @@ public class MenuController extends Application implements Initializable {
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
     }
 
+    /**
+     * gets the make case window. 
+     * @param event
+     */
     @FXML
     private void createCase1(ActionEvent event) {
         Switch.switchWindow((Stage)createCaseButton.getScene().getWindow(),new NewCaseController());

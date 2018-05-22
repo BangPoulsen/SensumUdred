@@ -159,11 +159,19 @@ public class EditCaseController extends Application implements Initializable {
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2);
     }
 
+    /**
+     * returns you to the last window, does this by calling it directly.
+     * @param event
+     */
     @FXML
     private void ReturnToSearch(ActionEvent event) {
         Switch.switchWindow((Stage) CancelButton.getScene().getWindow(), new SearchCasePaneController());
     }
 
+    /**
+     * Saves various information about a case from text boxes to the database, and updates the information all the right places in it.
+     * @param event
+     */
     @FXML
     private void SaveToDatabase(ActionEvent event) {
 
@@ -222,6 +230,11 @@ public class EditCaseController extends Application implements Initializable {
         }
     }
 
+    /**
+     * Copies a selected file to the source directory.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void FileChooser(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -241,6 +254,9 @@ public class EditCaseController extends Application implements Initializable {
 
     }
 
+    /**
+     * gets information about a person using their cpr, prints it to the relevant textboxes.
+     */
     private void setCitizen(){
         ResultSet info = dbh.getCitizenInfo(CPR);
 
@@ -291,6 +307,9 @@ public class EditCaseController extends Application implements Initializable {
         }
     }
 
+    /**
+     * gets information about a person using their cpr, prints it to the relevant textboxes.
+     */
     private void setKin(){
         String id = dbh.getKin(caseID);
         if(id.equals("NULL")){

@@ -33,6 +33,11 @@ public class DoctorMenu extends Application implements Initializable {
 	@FXML
 	private Button logoffButton;
 	private DatabaseHandler dbh;
+
+	/**
+	 * Logs the user off, and takes the necessary steps to do so.
+	 * @param event
+	 */
 	@FXML
 	void logoff(ActionEvent event) {
 		dbh = new DatabaseHandler();
@@ -40,6 +45,10 @@ public class DoctorMenu extends Application implements Initializable {
 		Switch.switchWindow((Stage)logoffButton.getScene().getWindow(),new GUIController());
 	}
 
+	/**
+	 * Switches to the window of the doctors search function.
+	 * @param event
+	 */
 	@FXML
 	void searchCasedoctor(ActionEvent event) {
 		Switch.switchWindow((Stage)searchCaseButtondoctor.getScene().getWindow(),new DoctorSearchCasePane());

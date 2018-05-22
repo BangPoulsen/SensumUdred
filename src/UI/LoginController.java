@@ -87,6 +87,9 @@ import javax.swing.*;
         }
     }
 
+    /**
+     * checks the database for whether the login credentials match.
+     */
     private void loginMethod() {
         if (!locked) {
             
@@ -134,7 +137,11 @@ import javax.swing.*;
             }
         }
     }
-    
+
+    /**
+     * returns the time which has passed, used for the lock mechanism.
+     * @return
+     */
     private int getSecondsPassed(){
             lockedDate = dbh.readDate();            
             
@@ -147,6 +154,10 @@ import javax.swing.*;
             return (int)(timePassed / 1000);
     }
 
+    /**
+     * checks whether the time since lock has been passed.
+     * @return
+     */
     private boolean isLocked() {
         
             lockedDate = dbh.readDate();            
