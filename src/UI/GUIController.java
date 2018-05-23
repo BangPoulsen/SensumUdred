@@ -5,9 +5,6 @@
  */
 package UI;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,8 +12,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
-
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
         
@@ -33,7 +32,6 @@ public class GUIController extends Application implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     @Override

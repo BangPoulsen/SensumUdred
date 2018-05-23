@@ -5,16 +5,10 @@
  */
 package UI;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.ResourceBundle;
-
 import Business.Case;
 import Business.Citizen;
 import Data.DatabaseHandler;
 import Data.IDExistException;
-import java.util.Date;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +24,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -122,8 +122,6 @@ public class NewCaseController extends Application implements Initializable {
         String jn=txtJournalNumber.getText();
         String en=txtEventuelNotes.getText();
         
-        
-        
         boolean isDisabled=(fn.isEmpty()|| fn.trim().isEmpty())||(ln.isEmpty()|| ln.trim().isEmpty())
             ||(cn.isEmpty()|| cn.trim().isEmpty())||(pn.isEmpty()|| pn.trim().isEmpty())||(ea.isEmpty()|| ea.trim().isEmpty())
             ||(rn.isEmpty()|| rn.trim().isEmpty())||(zc.isEmpty()|| zc.trim().isEmpty())
@@ -143,15 +141,10 @@ public class NewCaseController extends Application implements Initializable {
             }
             
             String fullName = txtFirstName.getText() + " " + txtLastName.getText();
-            
             String CPR = txtCprNumber.getText();
-            
             String phoneNumber = txtPhoneNumber.getText();
-            
             String email = txtEmailAdress.getText();
-            
             String[] streetSplit = txtRoadName.getText().split(" ");
-            
             String street = "";
             for (String s: streetSplit) {
                 if (streetSplit.length != 1) {
@@ -165,23 +158,14 @@ public class NewCaseController extends Application implements Initializable {
             }
             
             street = street.trim();
-            
             String streetNumber = streetSplit[streetSplit.length - 1];
-            
             String floor = txtFloorNumber.getText();
-            
             String zipCode = txtZipCode.getText();
-            
             String password = txtJournalNumber.getText();
-            
             String eventuelNotes = txtEventuelNotes.getText();
-            
             String author = dbh.getCurrentUser();
-            
             Citizen citizen = new Citizen(fullName, password, street, streetNumber, floor, zipCode, phoneNumber, email, CPR);
-            
             Case caseCreated = new Case(citizen, journalNumber, eventuelNotes, author);
-            
             dbh.logger( new Date().toString(), "Ny sag oprettet", dbh.getCurrentUser(), journalNumber);
 
             try {
@@ -190,7 +174,6 @@ public class NewCaseController extends Application implements Initializable {
                 JOptionPane.showMessageDialog(null, "Denne person eksisterer allerede i systemet. ");
             }
         } else {
-            
             String isEmpty = "";
             
             if (fn.isEmpty()) isEmpty += "Fornavn, ";
@@ -202,9 +185,7 @@ public class NewCaseController extends Application implements Initializable {
             if (zc.isEmpty()) isEmpty += "Postnummer, ";
             if (jn.isEmpty()) isEmpty += "Jorunalnummer, ";
             if (en.isEmpty()) isEmpty += "Notat, ";
-                
-            
-            
+
             JOptionPane.showMessageDialog(null, "Udfyld venligst: " + isEmpty);
         }
     }

@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,18 +22,15 @@ import java.util.Scanner;
  * @author malte
  */
 public class DatabaseHandler {
-
     private static String url = "jdbc:postgresql://stampy.db.elephantsql.com:5432/pjgbvjcy";
     private static String username = "pjgbvjcy";
-    private static String pasword = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
-
+    private static String password = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
     private static Connection db;
     private static String user = "";
 
     static {
         try {
-            db = DriverManager.getConnection(url, username, pasword);
-            Statement st = db.createStatement();
+            db = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -56,16 +52,13 @@ public class DatabaseHandler {
         String floor = caseI.getcCitizen().getCiFloor();
         String zipCode = caseI.getcCitizen().getCiZipCode();
         String journalNumber = caseI.getcID();
-        String note = caseI.getcEventuelNotes();
+        String note = caseI.getcNotes();
         String author = caseI.getcauthor();
         String password = caseI.getcCitizen().getCiPassword();
-
-
 
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT id FROM person;");
-
             while (rs.next()) {
                 if (rs.getString(1).equals(CPR)) {
                     throw new IDExistException();
@@ -91,24 +84,12 @@ public class DatabaseHandler {
     }
 
     /**
-     * Closes the established connection to the sql server.
-     */
-    public void closeConnection() {
-        try {
-            db.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * Searches for a specific case using the ID of a person, thus returning a resultset containing mentioned info.
      *
      * @param name Should be the ID of a person. Is used in an sql querry to get info
      * @return a resultset containing information about a case using ID's of a person.
      */
     public ResultSet searchCase(String name) {
-
         try {
             Statement st = db.createStatement();
             st.executeQuery("select sag.caseid, sag.citizen, person.name from sag inner join person on person.id = sag.citizen where sag.citizen in (select id from person where upper(name) like upper('" + name + "%'))");
@@ -149,18 +130,12 @@ public class DatabaseHandler {
      * @return In case the querry is successful and a connection is established this method will return true.
      */
     public boolean loginAttempt(String username, String userPassword) {
-
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT id FROM Person WHERE id = '" + username +
-                    "' AND password = '" + userPassword + "';");
-
+            ResultSet rs = st.executeQuery("SELECT id FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
             while (rs.next()) {
-
                 String id = rs.getString("id");
-
                 user = id;
-
                 return true;
             }
         } catch (SQLException e) {
@@ -176,16 +151,13 @@ public class DatabaseHandler {
      * @return A string containing the type of the user.
      */
     public String getType(String username) {
-
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT type FROM Person WHERE id = '" + username + "';");
-
             while (rs.next()) {
                 String type = rs.getString("type");
                 return type;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -202,16 +174,13 @@ public class DatabaseHandler {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT caseid FROM sag;");
-
             while (rs.next()) {
                 String id = rs.getString("caseid");
                 caseIDs.add(id);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return caseIDs;
     }
 
@@ -287,23 +256,14 @@ public class DatabaseHandler {
      * @param text the text written to specified file.
      */
     public void write2file(String filename, String text) {
-
         FileWriter fw = null;
-
         try {
-
             fw = new FileWriter(new File(filename));
-
             fw = new FileWriter(new File(filename), false);
-
             fw.write(text);
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally{
-
             try {
                 fw.close();
             } catch (IOException e) {
@@ -318,35 +278,25 @@ public class DatabaseHandler {
      * @return A long containing the date.
      */
     public long readDate() {
-
         try {
-
             File lockedDate = new File("lockedDate.txt");
-
-            Scanner input = null;
+            Scanner input;
             if (lockedDate.exists()) {
                 input = new Scanner(lockedDate);
-
                 long date = 0;
                 while (input.hasNextLine()) {
-
                     String number = input.nextLine();
-
                     if (!number.equals("")) {
                         date = Long.parseLong(number);
                     }
                 }
-
                 return date;
             } else {
                 return -1;
             }
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return -1;
     }
 
@@ -361,7 +311,6 @@ public class DatabaseHandler {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("select journal.caseid, journal.timestamp, journal.author, journal.note from journal, sag where sag.citizen = '" + id + "' and sag.caseid = journal.caseid");
             ResultSet rs = st.getResultSet();
-
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -379,7 +328,6 @@ public class DatabaseHandler {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'");
             ResultSet rs = st.getResultSet();
-
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -398,7 +346,6 @@ public class DatabaseHandler {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("SELECT name, id, type FROM Person WHERE type = '" + type + "'");
             ResultSet rs = st.getResultSet();
-
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -416,9 +363,6 @@ public class DatabaseHandler {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             st.executeQuery("SELECT * FROM log");
             ResultSet rs = st.getResultSet();
-
-
-
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -451,12 +395,9 @@ public class DatabaseHandler {
                     street = s;
                 }
             }
-
             street = street.trim();
-
             String streetNumber = streetSplit[streetSplit.length - 1];
             Statement st = db.createStatement();
-            //type, password, id, email, phone, name
             st.executeUpdate("" +
                     "begin;" +
                     "INSERT INTO person VALUES ('" + type + "', '" + password + "', '" + id + "', '" + email + "', '" + phoneNumber + "', '" + name + "');" +
@@ -505,7 +446,6 @@ public class DatabaseHandler {
     public void updatePerson(String id, String name, String phone, String email, String address, String floor, String zipCode){
         try {
             String[] streetSplit = address.split(" ");
-
             String street = "";
             for (String s: streetSplit) {
                 if (streetSplit.length != 1) {
@@ -519,9 +459,7 @@ public class DatabaseHandler {
             }
 
             street = street.trim();
-
             String streetNumber = streetSplit[streetSplit.length - 1];
-
             Statement st = db.createStatement();
             st.executeUpdate("" +
                     "begin;" +
@@ -559,7 +497,7 @@ public class DatabaseHandler {
     public void logger(String timestamp, String change, String ID, String caseID) {
         try{
             Statement st = db.createStatement();
-            st.execute("insert into log (timestamp, change, id, caseid) values ('" + new Date().toString() + "',  '" + change + "','" + ID + "','" + caseID + "');");
+            st.execute("insert into log (timestamp, change, id, caseid) values ('" + timestamp + "',  '" + change + "','" + ID + "','" + caseID + "');");
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -584,7 +522,6 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -607,29 +544,28 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
+    /**
+     * Generates a random ID for journals
+     * @return
+     */
     private String getRandomJID() {
         Random random = new Random();
         int caseID = random.nextInt(99999 - 10000 + 1) + 10000;
-
         ArrayList<String> jIDs = new ArrayList<>();
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT jid FROM journal;");
-
             while (rs.next()) {
                 String id = rs.getString("jid");
                 jIDs.add(id);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         String journalNumber = Integer.toString(caseID);
-
         while (jIDs.contains(journalNumber)) {
             caseID = random.nextInt(9999 - 1000 + 1) + 1000;
             journalNumber = Integer.toString(caseID);
@@ -637,6 +573,11 @@ public class DatabaseHandler {
         return journalNumber;
     }
 
+    /**
+     * Takes a caseID and returns all journal entries related to that caseID
+     * @param caseID
+     * @return
+     */
     public ResultSet getJournals(String caseID){
         try {
             Statement st = db.createStatement();
@@ -645,7 +586,6 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

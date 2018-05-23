@@ -111,6 +111,5 @@ public class DoctorSearchCasePane extends Application implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		dbh = new DatabaseHandler();
-
 	}
 }

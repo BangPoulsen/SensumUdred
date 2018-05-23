@@ -6,16 +6,6 @@
 package UI;
 
 import Data.DatabaseHandler;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.*;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +22,17 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -90,9 +91,7 @@ public class SearchCasePaneController extends Application implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
         dbh = new DatabaseHandler();
-        
     }
     
     /**
@@ -110,7 +109,6 @@ public class SearchCasePaneController extends Application implements Initializab
      */
     @FXML
     private void searchCaseOrCprButton(ActionEvent event) {
-        
         SearchCaseMethod();
     }
 
@@ -122,9 +120,7 @@ public class SearchCasePaneController extends Application implements Initializab
     private void editCaseButton(ActionEvent event) {
         if (listViewCases.getSelectionModel().getSelectedItem() != null) {
             String id = listViewCases.getSelectionModel().getSelectedItems().toString();
-
             String[] IDs = id.split(" ");
-
             String caseID = IDs[2].substring(0, IDs[2].length() - 1);
             String cpr = IDs[4].substring(0, IDs[4].length() - 1);
 
@@ -141,15 +137,11 @@ public class SearchCasePaneController extends Application implements Initializab
             } catch (IOException e){
                 e.printStackTrace();
             }
-
             dbh.logger( new Date().toString(), "Edit case ", dbh.getCurrentUser(), caseID);
-            
             Switch.switchWindow((Stage)this.mainMenuButton.getScene().getWindow(),new EditCaseController());
-
         } else {
             JOptionPane.showMessageDialog(null, "Vælg en sag at redigere");
         }
-        
     }
 
     /**
@@ -166,24 +158,16 @@ public class SearchCasePaneController extends Application implements Initializab
             
             ButtonType buttonTypeOne = new ButtonType("SLET");
             ButtonType buttonTypeTwo = new ButtonType("Annuller");
-            
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-            
             Optional<ButtonType> result = alert.showAndWait();
             
             if (result.get() == buttonTypeOne) {
                 String id = listViewCases.getSelectionModel().getSelectedItems().toString();
-                
                 String[] caseID = id.split(" ");
-                
                 String finalID = caseID[4].substring(0, caseID[4].length() - 1);
-                
                 dbh.deleteInfo(finalID);
-                
                 dbh.logger( new Date().toString(), "Sag slettet", dbh.getCurrentUser(), finalID);
-                
                 SearchCaseMethod();
-                
             }
         } else {
             JOptionPane.showMessageDialog(null, "Ingen sag valgt");
@@ -211,9 +195,7 @@ public class SearchCasePaneController extends Application implements Initializab
     private void SearchCaseMethod() {
         //Search a case
         ResultSet results = dbh.searchCase(txtEnterName.getText());
-        
         listViewCases.getItems().clear();
-
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put ("caseid", "Sags ID");
         hashMap.put("name", "Navn");
@@ -243,9 +225,7 @@ public class SearchCasePaneController extends Application implements Initializab
      */
     @FXML
     private void isEnterPressed(KeyEvent event) {
-        
         if(event.getCode()==event.getCode().ENTER){
-            
             SearchCaseMethod();
         }
     }

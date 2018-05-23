@@ -12,11 +12,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        //Starts application through the presentation layer
-        
         GUIController ui = new GUIController();
-        
         ui.startApplication();
-        
     }
 }

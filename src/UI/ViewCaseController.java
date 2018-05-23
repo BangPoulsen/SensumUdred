@@ -5,13 +5,7 @@
  */
 package UI;
 
-import java.net.URL;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
-
 import Data.DatabaseHandler;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,11 +18,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -36,10 +35,6 @@ import javax.swing.JOptionPane;
  * @author malte
  */
 public class ViewCaseController extends Application implements Initializable {
-    
-        
-    
-
     @FXML
     private AnchorPane createCasePane;
     @FXML
@@ -91,24 +86,18 @@ public class ViewCaseController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
         dbh = new DatabaseHandler();
         ResultSet info = dbh.getUserInfo();
-
         String userInfo = "";
-        
         try {
             ResultSetMetaData rsmdt = info.getMetaData();
-            
             while(info.next()){
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     userInfo = userInfo + info.getString(i) + ", ";
                 }
             }
-            
+
             String[] CitizenInfo = userInfo.split(", ");
-            
             String caseid = CitizenInfo[0];
             String fullName = CitizenInfo[1];
             String id = CitizenInfo[2];
@@ -117,7 +106,6 @@ public class ViewCaseController extends Application implements Initializable {
             String roadName = CitizenInfo[5];
             String floor = CitizenInfo[6];
             String zipcode = CitizenInfo[7];
-            
             String[] fullNameSplit = fullName.split(" ");
             
             txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
@@ -136,7 +124,6 @@ public class ViewCaseController extends Application implements Initializable {
                 timestamp = journal.getString(2);
                 txtViewNotes.getItems().add(timestamp);
             }
-            
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -178,8 +165,12 @@ public class ViewCaseController extends Application implements Initializable {
      */
     @FXML
     private void closeNoteButtonHandler(ActionEvent event) {
-        
         showNoteInCasesPane.setVisible(false);
+    }
+
+    @FXML
+    private void keyReleasedProberty(ActionEvent event){
+
     }
     
     /**

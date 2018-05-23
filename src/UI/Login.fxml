@@ -6,9 +6,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane id="loginPage" fx:id="loginPane" centerShape="false" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#isEnterPressed" prefHeight="200.0" prefWidth="300.0" scaleShape="false" style="-fx-background-color: #D3D3D3;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
    <children>
       <TextField id="loginUsername" fx:id="loginUsername" layoutX="50.0" layoutY="70.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Username" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />

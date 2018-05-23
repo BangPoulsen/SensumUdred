@@ -5,17 +5,7 @@
  */
 package UI;
 
-import java.io.*;
-import java.net.URL;
-import java.nio.file.*;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-
 import Data.DatabaseHandler;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.util.Date;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -27,12 +17,27 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -137,7 +142,6 @@ public class EditCaseController extends Application implements Initializable {
         try {
             FileInputStream input = new FileInputStream(file);
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-
             caseID = reader.readLine();
             CPR = reader.readLine();
         } catch (FileNotFoundException e) {
@@ -198,16 +202,13 @@ public class EditCaseController extends Application implements Initializable {
             String toDo = txtToDo.getText();
             String author = dbh.getCurrentUser();
             dbh.updateJournal(problemdescription,problemAssesment,toDo,author, caseID);
-
             ResultSet kin = dbh.getUsers("Pårørende");
-
             Boolean kinExist = false;
 
             try{
                 String name = txtFirstNamek.getText() + " " + txtLastNamek.getText();
                 while (kin.next()){
                     if(kin.getString(2).equals(txtIdk.getText())){
-                        //todo update database
                         kinExist = true;
                         dbh.updatePerson(txtIdk.getText(), name, txtPhonek.getText(), txtEmailk.getText(), txtRoadNamek.getText(), txtFloork.getText(), txtZipCodek.getText());
                     }
@@ -216,7 +217,6 @@ public class EditCaseController extends Application implements Initializable {
                     dbh.createUser(name, txtEmailk.getText(), txtPhonek.getText(), txtRoadNamek.getText(), txtFloork.getText(),txtZipCodek.getText(), txtIdk.getText(), "kin", "Pårørende");
                     dbh.updateCase(caseID, txtIdk.getText());
                 }
-
                 name = txtFirstName.getText() + " " + txtLastName.getText();
                 dbh.updatePerson(txtCPRNumber.getText(), name, txtPhone.getText(), txtEmail.getText(), txtRoadName.getText(), txtFloor.getText(), txtZipCode.getText());
             } catch (SQLException e){
@@ -224,7 +224,6 @@ public class EditCaseController extends Application implements Initializable {
             }
             
             dbh.logger( new Date().toString(), "Save to case ", dbh.getCurrentUser(), caseID);
-
             Switch.switchWindow((Stage) SaveButton.getScene().getWindow(), new MenuController());
             
         } else {
@@ -286,7 +285,6 @@ public class EditCaseController extends Application implements Initializable {
                 }
             }
 
-            // String caseid = CitizenInfo[0];
             String fullName = citizenInfo[1];
             String id = citizenInfo[2];
             String mobileNumber = citizenInfo[3];
@@ -294,7 +292,6 @@ public class EditCaseController extends Application implements Initializable {
             String roadName = citizenInfo[5] + " " + citizenInfo[6];
             String floor = citizenInfo[7];
             String zipcode = citizenInfo[8];
-
             String[] fullNameSplit = fullName.split(" ");
 
             if(fullNameSplit.length > 2){
@@ -335,7 +332,6 @@ public class EditCaseController extends Application implements Initializable {
         try {
             ResultSetMetaData rsmdt = info.getMetaData();
             String[] citizenInfo = new String[rsmdt.getColumnCount()];
-
             while(info.next()){
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     if(info.getString(i) != null){
@@ -346,15 +342,12 @@ public class EditCaseController extends Application implements Initializable {
                 }
             }
 
-            // String caseid = CitizenInfo[0];
             String fullName = citizenInfo[0];
-            //String id = citizenInfo[2];
             String mobileNumber = citizenInfo[2];
             String email  = citizenInfo[3];
             String roadName = citizenInfo[4] + " " + citizenInfo[5];
             String floor = citizenInfo[6];
             String zipcode = citizenInfo[7];
-
             String[] fullNameSplit = fullName.split(" ");
 
             if(fullNameSplit.length > 2){

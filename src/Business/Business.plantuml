@@ -7,7 +7,7 @@ title __BUSINESS's Class Diagram__\n
         - cdate : String
         - cStatus : String
         - cID : String
-        - cEventuelNotes : String
+        - cNotes : String
         - cauthor : String
         + getcauthor()
         + setcauthor()

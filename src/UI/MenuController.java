@@ -6,10 +6,6 @@
 package UI;
 
 import Data.DatabaseHandler;
-import java.net.URL;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -49,12 +49,6 @@ public class MenuController extends Application implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        //String[] currentUserInfo =
-         
-        //String type = currentUserInfo[1];
-        
-        // TODO
     }
 
     /**

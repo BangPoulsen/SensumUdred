@@ -8,7 +8,7 @@ public class Case {
     private String cStatus;
     private Citizen cCitizen;
     private String cID;
-    private String cEventuelNotes;
+    private String cNotes;
     private String cauthor;
 
     public String getcauthor() {
@@ -23,12 +23,12 @@ public class Case {
         this.cID = cID;
     }
 
-    public String getcEventuelNotes() {
-        return cEventuelNotes;
+    public String getcNotes() {
+        return cNotes;
     }
 
-    public void setcEventuelNotes(String cEventuelNotes) {
-        this.cEventuelNotes = cEventuelNotes;
+    public void setcNotes(String cNotes) {
+        this.cNotes = cNotes;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Case {
         
         this.cCitizen = cCitizen;
         this.cID = caseID;
-        this.cEventuelNotes=eventuelNotes;
+        this.cNotes =eventuelNotes;
         this.cauthor=author;
     }
 /**
