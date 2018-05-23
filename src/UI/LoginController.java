@@ -61,12 +61,12 @@ public class LoginController extends Application implements Initializable {
     }
 
     @FXML
-    public void Login(ActionEvent event) throws IOException {
+    public void Login(ActionEvent event) {
         loginMethod();
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
 
     }
 

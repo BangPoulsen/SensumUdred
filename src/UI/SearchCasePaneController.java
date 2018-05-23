@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
@@ -225,7 +226,7 @@ public class SearchCasePaneController extends Application implements Initializab
      */
     @FXML
     private void isEnterPressed(KeyEvent event) {
-        if(event.getCode()==event.getCode().ENTER){
+        if(event.getCode()== KeyCode.ENTER){
             SearchCaseMethod();
         }
     }
