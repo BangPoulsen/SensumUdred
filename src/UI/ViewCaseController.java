@@ -87,13 +87,14 @@ public class ViewCaseController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dbh = new DatabaseHandler();
-        ResultSet info = dbh.getUserInfo();
+        ResultSet info = dbh.getCitizenInfo();
         String userInfo = "";
         try {
             ResultSetMetaData rsmdt = info.getMetaData();
             while(info.next()){
                 for (int i = 1; i <= rsmdt.getColumnCount(); i++) {
                     userInfo = userInfo + info.getString(i) + ", ";
+                    System.out.println(userInfo);
                 }
             }
 
@@ -107,6 +108,7 @@ public class ViewCaseController extends Application implements Initializable {
             String floor = CitizenInfo[6];
             String zipcode = CitizenInfo[7];
             String[] fullNameSplit = fullName.split(" ");
+            System.out.println(fullName);
             
             txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
             txtLastName.setText("Efternavn: " + fullNameSplit[1]);
