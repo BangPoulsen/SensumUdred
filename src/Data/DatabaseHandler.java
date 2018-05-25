@@ -343,7 +343,7 @@ public class DatabaseHandler {
     public ResultSet getUsers() {
         try {
             Statement st = db.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge'");
+            st.executeQuery("SELECT name, id, type FROM Person WHERE type = 'Sagsbehandler' OR type = 'støtte' OR type = 'Læge' OR type = 'Støtte'");
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {
