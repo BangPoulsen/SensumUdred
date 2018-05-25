@@ -102,6 +102,12 @@ public class LoginController extends Application implements Initializable {
                     case "Læge": //3412 koden
                         Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new DoctorMenu());
                         break;
+                    case "støtte": //1243 koden
+                        Switch.switchWindow((Stage) loginButton.getScene().getWindow(), new ViewCaseController());
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null, "User type not found!");
+                     
                 }
             } else {
                 tries--;
