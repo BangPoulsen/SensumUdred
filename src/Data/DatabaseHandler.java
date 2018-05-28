@@ -27,6 +27,7 @@ public class DatabaseHandler {
     private static String password = "eLDL8lqV2NwnApxtHn9DtBQorsPYEwls";
     private static Connection db;
     private static String user = "";
+    private static String userType = "";
 
     static {
         try {
@@ -132,10 +133,12 @@ public class DatabaseHandler {
     public boolean loginAttempt(String username, String userPassword) {
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT id FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
+            ResultSet rs = st.executeQuery("SELECT id, type FROM Person WHERE id = '" + username + "' AND password = '" + userPassword + "';");
             while (rs.next()) {
                 String id = rs.getString("id");
+                String type = rs.getString("type");
                 user = id;
+                userType = type;
                 return true;
             }
         } catch (SQLException e) {
@@ -210,7 +213,11 @@ public class DatabaseHandler {
     public ResultSet getCitizenInfo() {
         try {
             Statement st = db.createStatement();
-            st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + user + "';");
+            if(userType.equals("Borger")) {
+                st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.citizen = '" + user + "';");
+            } else if(userType.equals("Støtte")){
+                st.executeQuery("select sag.caseid, person.name, person.id, person.phone, person.email, adress.street, adress.number, adress.floor, adress.zipcode, sag.consultant, sag.kin, sag.responsible, sag.support, journal.author, journal.timestamp, journal.note from sag inner join person on person.id = sag.citizen inner join adress on person.id = adress.id inner join journal on sag.caseid = journal.caseid where sag.support = '" + user + "';");
+            }
             ResultSet rs = st.getResultSet();
             return rs;
         } catch (SQLException e) {

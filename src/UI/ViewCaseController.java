@@ -104,14 +104,26 @@ public class ViewCaseController extends Application implements Initializable {
             String id = CitizenInfo[2];
             String mobileNumber = CitizenInfo[3];
             String email  = CitizenInfo[4];
-            String roadName = CitizenInfo[5];
-            String floor = CitizenInfo[6];
-            String zipcode = CitizenInfo[7];
+            String roadName = CitizenInfo[5] + " " + CitizenInfo[6];
+            String floor = CitizenInfo[7];
+            String zipcode = CitizenInfo[8];
             String[] fullNameSplit = fullName.split(" ");
             System.out.println(fullName);
-            
-            txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
-            txtLastName.setText("Efternavn: " + fullNameSplit[1]);
+
+            if(fullNameSplit.length > 2){
+                String firstName = "";
+                for(int i = 0; i < fullNameSplit.length-2; i++){
+                    firstName += fullNameSplit[i] + " ";
+                }
+                firstName += fullNameSplit[fullNameSplit.length-2];
+                txtFirstName.setText("Fornavn: " + firstName);
+                txtLastName.setText("Efternavn: " + fullNameSplit[fullNameSplit.length-1]);
+            } else if(fullNameSplit.length == 2) {
+                txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
+                txtLastName.setText("Efternavn: " + fullNameSplit[1]);
+            } else {
+                txtFirstName.setText("Fornavn: " + fullNameSplit[0]);
+            }
             txtCprNumber.setText("Personnummer: " + id);
             txtFloorNumber.setText("Etage: " + floor);
             txtJournalNumber.setText("Sagsnummer: " + caseid);
